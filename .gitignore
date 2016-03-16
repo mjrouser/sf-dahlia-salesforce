@@ -1,0 +1,7 @@
+/src/classes/*
+/src/pages/*
+/src/components/*
+/src/staticresources/*
+/src/triggers/*
+!/src/classes/Listing*
+
