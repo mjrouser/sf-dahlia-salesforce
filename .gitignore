@@ -5,3 +5,5 @@
 /src/triggers/*
 !/src/classes/Listing*
 
+.project
+salesforce.schema
