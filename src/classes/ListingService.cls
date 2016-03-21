@@ -7,6 +7,8 @@ global  class ListingService {
     private static final String LISTING_PREFERENCE_QUERY = 'SELECT Id, NAME, Listing__c, Lottery_Preference__c FROM Listing_Lottery_Preference__c ';
     private static final String LISTING_QUERY_ORDER = ' ORDER BY Unit_Type__c';
     private static final String LOTTERY_PREFERENCE_QUERY = 'SELECT Id, Name, Description__c FROM Lottery_Preference__c ';
+  	private static final String UNIT_BY_LISTING_QUERY = 'SELECT Unit_Type__c, BMR_Rent_Monthly__c, BMR_Rental_Minimum_Monthly_Income_Needed__c, Unit_Square_Footage__c,  Unit_Number__c, Unit_Floor__c, Other_Accessibility_Information__c,Number_of_Bathrooms__c FROM Unit__c where Listing__c = :listingID  ORDER BY Unit_Type__c ';
+    
 
  //
     
@@ -353,8 +355,9 @@ global  class ListingService {
     
     global static List<Unit__c> getUnitsByListingID(String listingID)
     { 
-       
-        return [SELECT Unit_Type__c, BMR_Rent_Monthly__c, BMR_Rental_Minimum_Monthly_Income_Needed__c, Unit_Square_Footage__c,  Unit_Number__c, Unit_Floor__c, Other_Accessibility_Information__c,Number_of_Bathrooms__c FROM Unit__c where Listing__c = :listingID  ORDER BY Unit_Type__c ];
+       String query =  UNIT_BY_LISTING_QUERY;
+       return (List<Unit__c>) Database.query(query);
+    //    return [SELECT Unit_Type__c, BMR_Rent_Monthly__c, BMR_Rental_Minimum_Monthly_Income_Needed__c, Unit_Square_Footage__c,  Unit_Number__c, Unit_Floor__c, Other_Accessibility_Information__c,Number_of_Bathrooms__c FROM Unit__c where Listing__c = :listingID  ORDER BY Unit_Type__c ];
     } 
     
     
