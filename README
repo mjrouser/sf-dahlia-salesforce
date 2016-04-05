@@ -1,0 +1,20 @@
+This is the housing portal api code - 
+This code provides the rest api against the Housing portal
+
+
+
+BUILD/Deploy
+The assets are under the /src/classes folder
+
+The build.properties and build.xml is for deployment via SFDC Migration toolkit. (Ant)
+
+If you want to deploy this to your org, simply put your SFDC credentials including token and run the ant/deploy
+
+
+
+Documentation  -
+Under "Swagger"
+To see the rest documentation open up the following url
+http://editor.swagger.io/ 
+load the swagger.json files included to see the appropriate api.
+
