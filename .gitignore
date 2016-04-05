@@ -4,6 +4,8 @@
 /src/staticresources/*
 /src/triggers/*
 !/src/classes/Listing*
+!/src/classes/API*
 
 .project
 salesforce.schema
+build.properties

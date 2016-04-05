@@ -1,0 +1,24 @@
+<project name="Cu Advising Config" default="retrieveConfig" basedir="." xmlns:sf="antlib:com.salesforce">
+
+    <property file="build.properties"/>
+    <property environment="env"/>
+
+
+<target name="proxy">
+	<!--<property name="proxy.host" value="proxyfarm"/>
+	<property name="proxy.port" value="84"/>
+
+	<setproxy proxyhost="${proxy.host}" proxyport="${proxy.port}" proxyuser="" proxypassword=""/>-->
+</target>
+
+  
+<target name="retrieveCode" depends="proxy">
+      <!-- Retrieve the contents into another directory -->
+	<sf:retrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" retrieveTarget="src" unpackaged="src/package.xml"/>
+</target>
+
+<target name="deployCode" depends="proxy">
+	<sf:deploy	username="${target.username}" password="${target.password}" serverurl="${sf.serverurl}" deployroot="src"/>
+</target>
+
+</project>
