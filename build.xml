@@ -1,4 +1,4 @@
-<project name="Cu Advising Config" default="retrieveConfig" basedir="." xmlns:sf="antlib:com.salesforce">
+<project name="SFMO Listing Ant" default="retrieveConfig" basedir="." xmlns:sf="antlib:com.salesforce">
 
     <property file="build.properties"/>
     <property environment="env"/>

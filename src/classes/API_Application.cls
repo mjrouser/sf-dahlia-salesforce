@@ -2,6 +2,7 @@ global with sharing class API_Application {
     
     global class ShortForm {
     	global String id;
+    	global ID listingID;
         global Person primaryApplicant;
         global Person secondaryContact;
         global List<Person> householdMembers;
@@ -10,7 +11,7 @@ global with sharing class API_Application {
         global Integer yearsHomeless;
         global Boolean isResident;
 
-        global ShortForm() {}
+        global ShortForm() {} 
 
         global ShortForm(Application__c app, List<Contact> hms) {
             this.id = app.Id;
@@ -20,6 +21,8 @@ global with sharing class API_Application {
             for (Contact c : hms) {
                 this.householdMembers.add(new Person(c));
             }
+            
+            this.listingID =  app.Listing__c; 
             this.worksInSanFrancisco = app.Works_In_SF__c;
             this.currentStatus = app.Status__c;
             this.yearsHomeless = Integer.valueOf(app.Years_Homeless__c);
@@ -29,6 +32,7 @@ global with sharing class API_Application {
         global Application__c toApplication() {
             Application__c app = new Application__c();
             app.Id = this.id;
+            app.Listing__c = listingID; 
             app.Primary_Applicant__c = this.primaryApplicant == null ? null : this.primaryApplicant.id;
             app.Secondary_Contact__c = this.secondaryContact == null ? null : this.secondaryContact.id;
             app.Works_In_SF__c = this.worksInSanFrancisco;
