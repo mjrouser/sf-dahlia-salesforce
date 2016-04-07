@@ -71,7 +71,12 @@
             description: "Certificate of Preference, Ellis Act, Live\\Work"
             required: false
             type: "string"
-      
+          - 
+            name: "pref2"
+            in: "query"
+            description: "here is a very long descirippoint that wer are writing blah blah blah"
+            required: false
+            type: "string"
         tags: 
           - "Products"
         responses: 
@@ -118,6 +123,43 @@
             description: "sfdc listing id"
             required: false
             type: "string"
+          - 
+            name: "householdsize"
+            in: "query"
+            description: "household size"
+            required: false
+            type: "string"
+          - 
+            name: "incomelevel"
+            in: "query"
+            description: "income level"
+            required: false
+            type: "string"
+          - 
+            name: "childrenUnder6"
+            in: "query"
+            description: "number of children under 6"
+            required: false
+            type: "string"
+          - 
+            name: "preference"
+            in: "query"
+            description: "Certificate of Preference, Ellis Act, Live\\Work"
+            required: false
+            type: "string"
+        tags: 
+          - "Products"
+        responses: 
+          200: 
+            description: "An array of products"
+            schema: 
+              type: "array"
+              items: 
+                $ref: "#/definitions/ListingDetails"
+    /ListingDetails/Criteria/: 
+      get: 
+        description: "This queries the Listing information and its summary information."
+        parameters: 
           - 
             name: "householdsize"
             in: "query"
@@ -388,9 +430,7 @@
         maxSquareFt: 
           type: "integer"
           description: "largest unit at this type for this listing"
-        newfield: 
-          type: "integer"
-          description: "largest unit at this type for this listing"
+
     ListingDetails: 
       type: "object"
       description: "summary statistics of a given unit type per listing"
@@ -679,3 +719,4 @@
         Status__c:
           type: string
           description: Status of the Lottery Member for the given Lottery
+  
