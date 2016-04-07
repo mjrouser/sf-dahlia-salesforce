@@ -29,7 +29,7 @@
             schema: 
               type: "array"
               items: 
-                $ref: "#/definitions/ListingDetails"
+                $ref: "#/definitions/Listing__c"
          
     /Listing: 
       get: 
@@ -71,12 +71,7 @@
             description: "Certificate of Preference, Ellis Act, Live\\Work"
             required: false
             type: "string"
-          - 
-            name: "pref2"
-            in: "query"
-            description: "here is a very long descirippoint that wer are writing blah blah blah"
-            required: false
-            type: "string"
+      
         tags: 
           - "Products"
         responses: 
@@ -85,7 +80,7 @@
             schema: 
               type: "array"
               items: 
-                $ref: "#/definitions/ListingDetails"
+                $ref: "#/definitions/Listing__c"
      
     /ListingDetails/{sfdcid}: 
       get: 
@@ -684,4 +679,3 @@
         Status__c:
           type: string
           description: Status of the Lottery Member for the given Lottery
-  

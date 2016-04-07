@@ -18,3 +18,9 @@ To see the rest documentation open up the following url
 http://editor.swagger.io/ 
 load the swagger.json files included to see the appropriate api.
 
+In order to test the api.  We recommend using the rest explorer
+
+https://workbench.developerforce.com/restExplorer.php 
+Or apogee or any other salesforce compatible rest explorer
+
+https://enterprise.apigee.com/platform/lukelim/
