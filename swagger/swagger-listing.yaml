@@ -33,6 +33,7 @@
           Listing information coupled with detailed information on unit summary data, and if a criteria was passed in the request, it will show the "match" on the citeria
         UnitSummary: summary information on particular unit types for a listing
         ShortForm: the shortform application for a particular person for a particular listing this includes contact/household information for a person
+        LotteryMember: current lottery memebers for a given listing
 
         ami: ami calculation
     public:
@@ -44,6 +45,7 @@
     - restrictedAccess:
       - Listing
       - ListingDetails
+      - LotteryMember
       - UnitSummary
       - ShortForm
       - ami
@@ -310,49 +312,7 @@
               type: "array"
               items: 
                 $ref: "#/definitions/Lottery_Preference__c"
-    /LotteryMember/{id}': 
-      get: 
-        description: "returns stats for listings by unit type"
-        parameters: 
-          - 
-            name: "id"
-            in: "path"
-            description: "listing id"
-            required: true
-            type: "string"
-       
-        responses: 
-          200: 
-            description: "Units by listing ID"
-            schema: 
-              type: "array"
-              items: 
-                $ref: "#/definitions/Lottery_Member__c" 
-    /LotteryMember/': 
-      get: 
-        description: "returns lottery Members for listing - either id or ids is required"
-        parameters: 
-          - 
-            name: "id"
-            in: "query"
-            description: "listing id"
-            required: true
-            type: "string"
-          - 
-            name: "ids"
-            in: "query"
-            description: "listing ids by ',' "
-            required: true
-            type: "string"
-       
-        responses: 
-          200: 
-            description: "Units by listing ID"
-            schema: 
-              type: "array"
-              items: 
-                $ref: "#/definitions/Lottery_Member__c" 
-    
+
     /Listing/UnitSummary/{id}': 
       get: 
         description: "returns UnitSummary for listings by unit type"
@@ -440,7 +400,55 @@
             description: "AMI entry"
             schema: 
               $ref: "#/definitions/AMI"
-    
+    /LotteryMember/{id}': 
+      get: 
+        security:
+          - restrictedAccess: 
+            - LotteryMember
+        description: "returns stats for listings by unit type"
+        parameters: 
+          - 
+            name: "id"
+            in: "path"
+            description: "listing id"
+            required: true
+            type: "string"
+       
+        responses: 
+          200: 
+            description: "Units by listing ID"
+            schema: 
+              type: "array"
+              items: 
+                $ref: "#/definitions/Lottery_Member__c" 
+    /LotteryMember/': 
+      get: 
+        security:
+          - restrictedAccess: 
+            - LotteryMember
+        description: "returns lottery Members for listing - either id or ids is required"
+        parameters: 
+          - 
+            name: "id"
+            in: "query"
+            description: "listing id"
+            required: true
+            type: "string"
+          - 
+            name: "ids"
+            in: "query"
+            description: "listing ids by ',' "
+            required: true
+            type: "string"
+       
+        responses: 
+          200: 
+            description: "Units by listing ID"
+            schema: 
+              type: "array"
+              items: 
+                $ref: "#/definitions/Lottery_Member__c" 
+     
     /shortForm/list/{ContactID}: 
       get: 
         security:

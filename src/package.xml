@@ -26,6 +26,13 @@
         <members>ListingLotteryPrefApiTest</members>
         <members>ListingLotteryService</members>
         <members>ListingService</members>
+        <members>ListingUnitSummaryApi</members>
+        <members>ListingUnitApi</members>
+
+        <members>LOT_RandomBaseRequest</members>
+        <members>LOT_RandomDrawReq</members>
+
+        
         <name>ApexClass</name>
     </types>
     <version>35.0</version>
