@@ -5,6 +5,7 @@
 /src/triggers/*
 !/src/classes/Listing*
 !/src/classes/API*
+!/src/classes/LOT*
 
 .project
 salesforce.schema
