@@ -234,7 +234,7 @@
                 $ref: "#/definitions/ListingDetails"
     /Listing/Units/{id}': 
       get: 
-        description: "returns Units for listing based on UNIT ID"
+        description: "returns Units for listing based on Listing ID"
         parameters: 
           - 
             name: "id"
@@ -251,7 +251,7 @@
                 $ref: "#/definitions/Unit__c"
     /Listing/Units/': 
       get: 
-        description: "returns Units for listing based on UNIT ID"
+        description: "returns Units for listing based on Listing ID"
         parameters: 
           - 
             name: "id"

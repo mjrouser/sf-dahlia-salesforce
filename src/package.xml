@@ -16,6 +16,8 @@
         <members>API_ShortForm_PostContactDeleteTest</members>
         <members>API_ShortForm_PostDelete</members>
         <members>API_ShortForm_PostDeleteTest</members>
+        <members>LOT_RandomBaseRequest</members>
+        <members>LOT_RandomDrawReq</members>
         <members>ListingAMIApi</members>
         <members>ListingApi</members>
         <members>ListingApiTest</members>
@@ -26,13 +28,8 @@
         <members>ListingLotteryPrefApiTest</members>
         <members>ListingLotteryService</members>
         <members>ListingService</members>
-        <members>ListingUnitSummaryApi</members>
         <members>ListingUnitApi</members>
-
-        <members>LOT_RandomBaseRequest</members>
-        <members>LOT_RandomDrawReq</members>
-
-        
+        <members>ListingUnitSummaryApi</members>
         <name>ApexClass</name>
     </types>
     <version>35.0</version>
