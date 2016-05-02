@@ -1,18 +1,60 @@
 ---
   swagger: "2.0"
   info: 
-    title: "SFMOHD API"
-    description: "Read Listing Data with Salesforce"
     version: "1.2.0"
+    title: "SFMOHD API"
+    description:  | 
+      The first version of the SFMO Housing API is an exciting step in providing information to listings to apply.  We want to make it easy for you, to build apps and have open access to city Listing data to apply for affordable housing
+      
+      There are two ways to connect to the api-  
+      The listing data is public domain and can be accessed at <publicsite>/salesforce.com/apexrest
+      You can connect your listing information to this 
+      
+      To connect a full fledge application to the city data in order to facilitate applications please email the city, and we will get you the proper credentials.  
+      All application data requires oauth to connect.
+      
+ 
   host: "salesforce.com"
   schemes: 
     - "https"
   basePath: "/services/apexrest"
   produces: 
     - "application/json"
+    
+  securityDefinitions:
+    restrictedAccess:
+      type: oauth2
+      flow: password
+      tokenUrl: https://test.salesforce.com/services/oauth2/token
+      scopes:
+        Listing: |
+          Information of a particular listing, including qualifications, to apply for listing as well as details on the listing itself - this is available via public and pwd based oauth
+        ListingDetails: | 
+          Listing information coupled with detailed information on unit summary data, and if a criteria was passed in the request, it will show the "match" on the citeria
+        UnitSummary: summary information on particular unit types for a listing
+        ShortForm: the shortform application for a particular person for a particular listing this includes contact/household information for a person
+
+        ami: ami calculation
+    public:
+      type: apiKey
+      in: query
+      name: access_token
+      
+  security:
+    - restrictedAccess:
+      - Listing
+      - ListingDetails
+      - UnitSummary
+      - ShortForm
+      - ami
+  
+    - public: []
+ 
+
   paths: 
     /Listing/{sfdcid}: 
       get: 
+        
         description: "This returns the Listing information and its summary information."
         parameters: 
           - 
@@ -71,12 +113,7 @@
             description: "Certificate of Preference, Ellis Act, Live\\Work"
             required: false
             type: "string"
-          - 
-            name: "pref2"
-            in: "query"
-            description: "here is a very long descirippoint that wer are writing blah blah blah"
-            required: false
-            type: "string"
+     
         tags: 
           - "Products"
         responses: 
@@ -316,9 +353,9 @@
               items: 
                 $ref: "#/definitions/Lottery_Member__c" 
     
-    /Listing/UnitStats/{id}': 
+    /Listing/UnitSummary/{id}': 
       get: 
-        description: "returns stats for listings by unit type"
+        description: "returns UnitSummary for listings by unit type"
         parameters: 
           - 
             name: "id"
@@ -333,10 +370,10 @@
             schema: 
               type: "array"
               items: 
-                $ref: "#/definitions/UnitStat"                
-    /Listing/UnitStats/': 
+                $ref: "#/definitions/UnitSummary"                
+    /Listing/UnitSummary/': 
       get: 
-        description: "returns stats for listings by unit type"
+        description: "returns UnitSummary for listings by unit type"
         parameters: 
           - 
             name: "id"
@@ -351,7 +388,7 @@
             schema: 
               type: "array"
               items: 
-                $ref: "#/definitions/UnitStat"
+                $ref: "#/definitions/UnitSummary"
     /ami: 
       get: 
         description: "Returns the ami table value based on 2 passed in parameters"
@@ -403,8 +440,111 @@
             description: "AMI entry"
             schema: 
               $ref: "#/definitions/AMI"
-      
+    
+    /shortForm/list/{ContactID}: 
+      get: 
+        security:
+          - restrictedAccess: 
+            - ShortForm
+        parameters:
+          - in: path
+            name: ContactID
+            description: list of shortforms by contact
+            required: true
+            type: string
+        description: "This returns the Listing information and its summary information."
+        tags: 
+          - "Short form Application"
+        responses: 
+          "404":
+            description: Short form not found
+          "200":
+            description: successful operation
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/ShortForm'
+          "400":
+            description: Invalid ID supplied
+            
+    /shortForm/{shortFormId}: 
+      get: 
+        security:
+          - restrictedAccess: 
+            - ShortForm
+        parameters:
+          - in: path
+            name: shortFormId
+            description: ID of shortform
+            required: true
+            type: string
+        description: "This returns the Listing information and its summary information."
+        tags: 
+          - "Short form Application"
+        responses: 
+          "404":
+            description: Short form not found
+          "200":
+            description: successful operation
+            schema:
+              $ref: "#/definitions/ShortForm"
+          "400":
+            description: Invalid ID supplied
+    /shortForm/: 
+      post: 
+        security:
+          - restrictedAccess: 
+            - ShortForm
+        parameters:
+        - in: body
+          name: body
+          description: short form placed
+          required: false
+          schema:
+            $ref: "#/definitions/ShortForm"
+        tags: 
+        - "Short form Application"
+        responses: 
+          "404":
+            description: Short form not found
+          "200":
+            description: Success
+            schema:
+              $ref: "#/definitions/ShortForm"
+          "400":
+            description: Invalid ID supplied
+    /shortForm/delete/:
+      post:
+        security:
+          - restrictedAccess: 
+            - ShortForm
+        description: deletes specified application
+        parameters:
+        - name: id
+          in: query
+          description: ID shortForm To Delete
+          type: string
+          required: true
+        responses:
+          200:
+            description: OK
+    /shortForm/contact/delete:
+      post:
+        security:
+          - restrictedAccess: 
+            - ShortForm
+        description: deletes specified contact from household
+        parameters:
+        - name: id
+          in: query
+          description: ID of contact to delete
+          type: string
+          required: true
+        responses:
+          200:
+            description: OK    
   definitions: 
+
     UnitSummary: 
       type: "object"
       description: "summary statistics of a given unit type per listing"
@@ -430,6 +570,19 @@
         maxSquareFt: 
           type: "integer"
           description: "largest unit at this type for this listing"
+        minMonthlyRent: 
+          type: "number"
+          description: "lowest rent at this type for this listing"
+        maxMonthlyRent: 
+          type: "number"
+          description: "highest rent at this type for this listing"
+        minRentalMinIncome: 
+          type: "number"
+          description: "lowest minimum required income at this type for this listing"
+        maxRentalMinIncome: 
+          type: "number"
+          description: "highest minimum required income at this type for this listing"
+   
 
     ListingDetails: 
       type: "object"
@@ -650,32 +803,7 @@
           type: number
           format: double
           description: ''
-    UnitStat: 
-      type: "object"
-      description: "summary statistics of units type by listing and unit type"
-      properties: 
-        listingID: 
-          type: "string"
-          description: "SFDC ID"
-        unitType: 
-          type: "string"
-          description: "Type of Unit"
-        totalUnits: 
-          type: "number"
-          description: "total number of for the listing by unit type "
-        minOccupancy: 
-          type: "number"
-          description: "min occupancy for the listing by unit type"
-        maxOccupancy: 
-          type: "number"
-          description: "min occupancy for the listing by unit type"
-        minSquareFt: 
-          type: "number"
-          description: "max number of square feet for the listing by unit type"
-        maxSquareFt: 
-          type: "number"
-          description: "max number of square feet for the listing by unit type "
-    
+  
     AMI: 
       type: "object"
       description: "summary statistics of a given unit type per listing"
@@ -700,7 +828,7 @@
         Description__c:
           type: string
           description: ''
-          
+        
     Lottery_Member__c:
       type: object
       description: Lotttery Members. Will ultimately be a join of contacts and listings but initially it will just be a child of listings with information about the lottery results.
@@ -719,4 +847,112 @@
         Status__c:
           type: string
           description: Status of the Lottery Member for the given Lottery
+    ShortForm: 
+      type: "object"
+      description: "ShortForm for housing"
+      properties: 
+        ID: 
+          type: "string"
+          description: "Sfdc ID"
+        Primary Applicant:  
+          $ref: '#/definitions/Contact'
+
+        Secondary Contact:  
+          $ref: '#/definitions/Contact'
+
+        Household Members:  
+          type: array
+          items:
+              $ref: '#/definitions/Contact'
+        Works in San Francisco: 
+          type: "boolean"
+          description: "currently works In SF"
+        Current Status: 
+          type: "string"
+          description: "homeless, renting, home owner?"
+        Years Homeless: 
+          type: "integer"
+          description: "number of years homeless"
+        isResident: 
+          type: "boolean"
+          description: "is a resident of SF"
+       
+     
+    Contact: 
+      type: "object"
+      description: "Applicant Contact"
+      properties: 
+        ID: 
+          type: "string"
+          description: "sfdc ID"
+        firstName: 
+          type: "string"
+          description: "first name"
+        lastName: 
+          type: "string"
+          description: "the listing id"
+        DOB: 
+          type: "string"
+          description: "date of Birth"
+        email: 
+          type: "string"
+          description: "email"
+        phone: 
+          type: "string"
+          description: "phone number"
+        address: 
+          type: "string"
+          description: "Address"
+        city: 
+          type: "string"
+          description: "City"
+        state: 
+          type: "string"
+          description: "State"
+        zip: 
+          type: "string"
+          description: "Zip"
+        mailingAddress: 
+          type: "string"
+          description: "Mailing address"
+        mailingCity: 
+          type: "string"
+          description: "Mailing City"
+        mailingState: 
+          type: "string"
+          description: "Mailing State"
+        mailingZip: 
+          type: "string"
+          description: "Mailing zip"
+        workAddress: 
+          type: "string"
+          description: "working address"
+        workCity: 
+          type: "string"
+          description: "working City"
+        workState: 
+          type: "string"
+          description: "working state"
+        workZip: 
+          type: "string"
+          description: "working zip"
+        gender: 
+          type: "string"
+          description: "gender"
+        holdsCOP: 
+          type: "boolean"
+          description: "has a certificate of preference"
+        holdsDTP: 
+          type: "boolean"
+          description: "has displaced tenant preference"
+        relationship: 
+          type: "string"
+          description: "relationship to primary applicant"
+        annualIncome: 
+          type: "number"
+          description: "displaced tenant pref"
+        incomeType: 
+          type: "string"
+          description: "displaced tenant pref"
+   
   
