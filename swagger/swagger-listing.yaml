@@ -66,10 +66,10 @@
             required: true
             type: "string"
         tags: 
-          - "ListingDetails"
+          - "Listing"
         responses: 
           200: 
-            description: "An array of products"
+            description: "An array of listings"
             schema: 
               type: "array"
               items: 
@@ -117,10 +117,10 @@
             type: "string"
      
         tags: 
-          - "Products"
+          - "Listing"
         responses: 
           200: 
-            description: "An array of products"
+            description: "An array of listing"
             schema: 
               type: "array"
               items: 
@@ -137,10 +137,10 @@
             required: true
             type: "string"
         tags: 
-          - "ListingDetails"
+          - "Listing"
         responses: 
           200: 
-            description: "An array of products"
+            description: "An array of listing details"
             schema: 
               type: "array"
               items: 
@@ -190,7 +190,7 @@
           - "Products"
         responses: 
           200: 
-            description: "An array of products"
+            description: "An array of listing details"
             schema: 
               type: "array"
               items: 
@@ -224,10 +224,10 @@
             required: false
             type: "string"
         tags: 
-          - "Products"
+          - "listing"
         responses: 
           200: 
-            description: "An array of products"
+            description: "An array of listingdetails queried by criteria <this end point doesn't exist it is proposed>"
             schema: 
               type: "array"
               items: 
@@ -242,6 +242,8 @@
             description: "listing id"
             required: true
             type: "string"
+        tags: 
+          - "listing"
         responses: 
           200: 
             description: "Units by listing ID"
@@ -259,7 +261,8 @@
             description: "listing id"
             required: true
             type: "string"
-       
+        tags: 
+          - "listing"    
         responses: 
           200: 
             description: "Units by listing ID"
@@ -269,7 +272,7 @@
                 $ref: "#/definitions/Unit__c"
     /LotteryPreference/{id}': 
       get: 
-        description: "returns stats for lottery Preference by ID"
+        description: "returns lottery Preference by ID"
         parameters: 
           - 
             name: "id"
@@ -277,7 +280,8 @@
             description: "lottery preference id"
             required: true
             type: "string"
-     
+        tags: 
+          - "reference data" 
         responses: 
           200: 
             description: "Units by listing ID"
@@ -303,7 +307,8 @@
             required: false
             type: "string"
        
-       
+        tags: 
+          - "reference data"    
        
         responses: 
           200: 
@@ -323,7 +328,8 @@
             description: "listing id"
             required: true
             type: "string"
-       
+        tags: 
+          - "listing"       
         responses: 
           200: 
             description: "Units by listing ID"
@@ -341,7 +347,8 @@
             description: "listing id"
             required: true
             type: "string"
-       
+        tags: 
+          - "listing"      
         responses: 
           200: 
             description: "Units by listing ID"
@@ -371,6 +378,8 @@
             description: "household size"
             required: false
             type: "number"
+        tags: 
+          - "reference data"    
         responses: 
           200: 
             description: "AMI entry"
@@ -395,6 +404,10 @@
             description: "household size"
             required: true
             type: "number"
+        tags: 
+          - "reference data"  
+          - "service calculator"  
+
         responses: 
           200: 
             description: "AMI entry"
@@ -405,7 +418,8 @@
         security:
           - restrictedAccess: 
             - LotteryMember
-        description: "returns stats for listings by unit type"
+            - Listing
+        description: "returns lottery members by listing id"
         parameters: 
           - 
             name: "id"
@@ -413,7 +427,9 @@
             description: "listing id"
             required: true
             type: "string"
-       
+        tags: 
+          - "Listing data"  
+          - "Application"     
         responses: 
           200: 
             description: "Units by listing ID"
@@ -426,6 +442,8 @@
         security:
           - restrictedAccess: 
             - LotteryMember
+            - Listing
+
         description: "returns lottery Members for listing - either id or ids is required"
         parameters: 
           - 
@@ -440,7 +458,9 @@
             description: "listing ids by ',' "
             required: true
             type: "string"
-       
+        tags: 
+          - "Listing data"  
+          - "Application"           
         responses: 
           200: 
             description: "Units by listing ID"
@@ -462,7 +482,8 @@
             type: string
         description: "This returns the Listing information and its summary information."
         tags: 
-          - "Short form Application"
+          - "Shortform data"  
+          - "Application data"    
         responses: 
           "404":
             description: Short form not found
@@ -488,7 +509,8 @@
             type: string
         description: "This returns the Listing information and its summary information."
         tags: 
-          - "Short form Application"
+          - "Shortform data"  
+          - "Application data"    
         responses: 
           "404":
             description: Short form not found
@@ -511,7 +533,8 @@
           schema:
             $ref: "#/definitions/ShortForm"
         tags: 
-        - "Short form Application"
+          - "Shortform data"  
+          - "Application data"    
         responses: 
           "404":
             description: Short form not found
@@ -533,6 +556,9 @@
           description: ID shortForm To Delete
           type: string
           required: true
+        tags: 
+          - "Shortform data"  
+          - "Application data"    
         responses:
           200:
             description: OK
@@ -548,6 +574,10 @@
           description: ID of contact to delete
           type: string
           required: true
+          
+        tags: 
+          - "Shortform data"  
+          - "Application data"    
         responses:
           200:
             description: OK    
