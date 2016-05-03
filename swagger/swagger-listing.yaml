@@ -510,8 +510,7 @@
             type: string
         description: "This returns the Listing information and its summary information."
         tags: 
-          - "Shortform data"  
-          - "Application data"    
+          - "Shortform Application"  
         responses: 
           "404":
             description: Short form not found
