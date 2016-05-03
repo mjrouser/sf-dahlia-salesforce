@@ -187,7 +187,7 @@
             required: false
             type: "string"
         tags: 
-          - "Products"
+          - "Listing"    
         responses: 
           200: 
             description: "An array of listing details"
@@ -224,7 +224,7 @@
             required: false
             type: "string"
         tags: 
-          - "listing"
+          - "Listing"    
         responses: 
           200: 
             description: "An array of listingdetails queried by criteria <this end point doesn't exist it is proposed>"
@@ -243,7 +243,7 @@
             required: true
             type: "string"
         tags: 
-          - "listing"
+          - "Listing"    
         responses: 
           200: 
             description: "Units by listing ID"
@@ -262,7 +262,7 @@
             required: true
             type: "string"
         tags: 
-          - "listing"    
+          - "Listing"    
         responses: 
           200: 
             description: "Units by listing ID"
@@ -281,7 +281,8 @@
             required: true
             type: "string"
         tags: 
-          - "reference data" 
+          - "Listing" 
+          - "Shortform Application"   
         responses: 
           200: 
             description: "Units by listing ID"
@@ -308,8 +309,8 @@
             type: "string"
        
         tags: 
-          - "reference data"    
-       
+          - "Listing" 
+          - "Shortform Application"     
         responses: 
           200: 
             description: "Units by listing ID"
@@ -329,7 +330,7 @@
             required: true
             type: "string"
         tags: 
-          - "listing"       
+          - "Listing"       
         responses: 
           200: 
             description: "Units by listing ID"
@@ -348,7 +349,9 @@
             required: true
             type: "string"
         tags: 
-          - "listing"      
+          - "Listing" 
+
+
         responses: 
           200: 
             description: "Units by listing ID"
@@ -379,7 +382,7 @@
             required: false
             type: "number"
         tags: 
-          - "reference data"    
+          - "AMI"    
         responses: 
           200: 
             description: "AMI entry"
@@ -405,9 +408,7 @@
             required: true
             type: "number"
         tags: 
-          - "reference data"  
-          - "service calculator"  
-
+          - "AMI"  
         responses: 
           200: 
             description: "AMI entry"
@@ -428,8 +429,8 @@
             required: true
             type: "string"
         tags: 
-          - "Listing data"  
-          - "Application"     
+          - "Listing"  
+          - "Shortform Application"  
         responses: 
           200: 
             description: "Units by listing ID"
@@ -459,8 +460,8 @@
             required: true
             type: "string"
         tags: 
-          - "Listing data"  
-          - "Application"           
+          - "Listing"  
+          - "Shortform Application"  
         responses: 
           200: 
             description: "Units by listing ID"
@@ -482,8 +483,8 @@
             type: string
         description: "This returns the Listing information and its summary information."
         tags: 
-          - "Shortform data"  
-          - "Application data"    
+          - "Shortform Application"  
+  
         responses: 
           "404":
             description: Short form not found
@@ -533,8 +534,8 @@
           schema:
             $ref: "#/definitions/ShortForm"
         tags: 
-          - "Shortform data"  
-          - "Application data"    
+          - "Shortform Application"  
+
         responses: 
           "404":
             description: Short form not found
@@ -557,8 +558,7 @@
           type: string
           required: true
         tags: 
-          - "Shortform data"  
-          - "Application data"    
+           - "Shortform Application"  
         responses:
           200:
             description: OK
@@ -576,8 +576,7 @@
           required: true
           
         tags: 
-          - "Shortform data"  
-          - "Application data"    
+          - "Shortform Application"  
         responses:
           200:
             description: OK    
