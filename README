@@ -52,16 +52,38 @@ Service layer classes are as they sound, providing a service.  All operations su
 
 Workspace setup 
 
-to run the code
+The project is setup to work either strictly with ant or with an IDE.  It assumes the following:
+1. you have accessDahlia environment.  
+2. you have git installed www.github.com
+3. You've installed the sfdc migration toolkit + ant.  This is the ant plugin for salesforce and used to move metadata and code between SFDC orgs.
 
-Under "Swagger"
-To see the rest documentation open up the following url
-http://editor.swagger.io/ 
-load the swagger.json files included to see the appropriate api.
+Steps for workspace setup
+1. Checkout the project with git. 
+	1. athis point the following should take place
+	2. you should see a src folder and under it will be the metadata including your package.xml
+	3. Under a seprate folder called swagger will be the documentation for this project.
 
+Using Ant for deploy - 	 
+2. rename build.sample.properties build.properties and fill in your credentials
+3. run the ant command - ant retrieveCode.
+4. At this point you should have the latest code base from the org you're connected to.  It should be similar or the same as what you checked out.
+5. From here you can optionally checkout your IDE into the same folder Structure as this project.  (Due to my issues with Eclipse and other IDES, I prefer to build in a folder separate from the repo and just use ant to keep the repo in sync)
+6. Make changes to files and push them via the command "ant deployCode"
+7. Happy Hacking
+
+Using swagger.
+
+1. Under the "Swagger" folder
+2. To see the rest documentation open up the following url
+3. http://editor.swagger.io/ 
+4. load the swagger.json files included to see the appropriate api.
+5. These files are publically hosted on heroku at 
+	https://stark-inlet-37064.herokuapp.com
+	https://git.heroku.com/stark-inlet-37064.git
+
+Testing the api
 In order to test the api.  We recommend using the rest explorer
+You can use any rest exploration tool including salesforces:
+1. https://workbench.developerforce.com/restExplorer.php 
+2. apigee or any other salesforce compatible rest explorer https://enterprise.apigee.com/platform/lukelim/
 
-https://workbench.developerforce.com/restExplorer.php 
-Or apigee or any other salesforce compatible rest explorer
-
-https://enterprise.apigee.com/platform/lukelim/
