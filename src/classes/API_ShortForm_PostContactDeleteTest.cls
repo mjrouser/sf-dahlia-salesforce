@@ -24,5 +24,52 @@ private without sharing class API_ShortForm_PostContactDeleteTest {
         
         System.assertEquals(c, null);
     }
+    
+    static testMethod void failAPI_ShortForm_PostContactDeleteTest() {
+        Account a = new Account(Name = 'Household');
+        insert a;
+
+        Contact c = new Contact(LastName = 'LastName', AccountId = a.Id);
+        insert c;
+        Id contactId = c.Id;
+
+        Test.startTest();
+        	RestRequest req = new RestRequest();
+            RestResponse res = new RestResponse();
+            req.requestURI = URL.getSalesforceBaseUrl().toExternalForm() + '/services/apexrest/shortForm/contact/delete';
+            req.httpMethod = 'POST';
+            RestContext.request = req;
+            RestContext.response = res;
+
+            API_ShortForm_PostContactDelete.doPost(null);
+
+			c = API_ApplicationService.getContactById(contactId);
+        Test.stopTest();
+        
+        System.assertEquals(res.StatusCode, 400);
+    }
+    
+    static testMethod void failInvalidId() {
+        Account a = new Account(Name = 'Household');
+        insert a;
+
+        Contact c = new Contact(LastName = 'LastName', AccountId = a.Id);
+        insert c;
+        Id contactId = c.Id;
+
+        Test.startTest();
+        	RestRequest req = new RestRequest();
+            RestResponse res = new RestResponse();
+            req.requestURI = URL.getSalesforceBaseUrl().toExternalForm() + '/services/apexrest/shortForm/contact/delete';
+            req.httpMethod = 'POST';
+            RestContext.request = req;
+            RestContext.response = res;
+
+            API_ShortForm_PostContactDelete.doPost(a.Id);
+
+		Test.stopTest();
+        
+        System.assertEquals(res.StatusCode, 404);
+    }
 
 }

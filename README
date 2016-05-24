@@ -1,7 +1,13 @@
-This is the housing portal api code - 
-This code provides the rest api against the Housing portal
+
+SF DAHLIA SalesForce
 
 
+INTRO:
+DAHLIA is the affordable housing portal for the City and County of San Francisco. It was created by the Mayor's Office of Housing and Community Development (MOHCD). This application streamlines the process of searching and applying for affordable housing, making it easier to rent, buy and stay in our City.
+
+DAHLIA is constructed using SalesForce. The SalesForce application is used by several audiences. MOHCD uses it internally to manage housing programs and to run electronic lotteries. Public leasing agents submit new listings. Developers at large use the API to get access to public data. 
+
+DAHLIA also has a web application that is use by the public and housing counselors to view affordable housing listings and to apply for  various housing lotteries. All data for the web application is stored in SalesForce. Repo for DAHLIA web application: https://github.com/Exygy/sf-dahlia-web-production.
 
 BUILD/Deploy
 The assets are under the /src/classes folder
@@ -12,7 +18,42 @@ If you want to deploy this to your org, simply put your SFDC credentials includi
 
 
 
-Documentation  -
+
+Overview
+
+This is the codebase which supports the dahlia project. As a brief overview on how we put the classes together
+there are 2 main types of classes.  
+
+
+
+Types of Classes:
+1. Service Level classes
+2. Endpoint rest Service Classes
+
+
+
+Endpoint classes - 
+Salesforce ties a specific URL pattern to a specific class.  We created classes for all these "endpoints".  The endpoint classes are responsible exposing the url and handling the url parameters for the call.  They are also responsible for building the request into the service layer.
+
+All these classes are named as following.
+
+<prefix>_<API Grouping><Post/Get><Name>
+Api_ShortForm_GetContactByID - is an example - 
+
+In the Listing entries - 
+Listing is the prefix
+Listing+<Group>+Api was how we named our endpoint classes.  In the future we may rename the Listing api, but for now we are it is what it is.
+
+Service layer classes
+
+Service layer classes are as they sound, providing a service.  All operations surrounding a specific aspect such as "listing" are named as "service" classes.  They perform dml operations.  Some of them, such as the short form takes a specific View Model as a parameter.  They are in this application exposed for the endpoint classes but they could be exposed for controllers or any other apex class.
+
+
+
+Workspace setup 
+
+to run the code
+
 Under "Swagger"
 To see the rest documentation open up the following url
 http://editor.swagger.io/ 
@@ -21,6 +62,6 @@ load the swagger.json files included to see the appropriate api.
 In order to test the api.  We recommend using the rest explorer
 
 https://workbench.developerforce.com/restExplorer.php 
-Or apogee or any other salesforce compatible rest explorer
+Or apigee or any other salesforce compatible rest explorer
 
 https://enterprise.apigee.com/platform/lukelim/

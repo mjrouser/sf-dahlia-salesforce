@@ -73,8 +73,10 @@ public class LOT_RandomDrawReq extends LOT_RandomBaseRequest{
 	{
  		return null;
  	}
-	public override void readResponse(String response) {
-		
+ 	public DrawingResult drawResult;
+	public override void readResponse(String json) {
+		drawResult = (DrawingResult) System.JSON.deserialize(json, DrawingResult.class);
+		system.debug(drawResult);
 	}
 	  	
 	  	 /*

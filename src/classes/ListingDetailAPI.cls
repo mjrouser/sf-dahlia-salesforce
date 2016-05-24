@@ -12,7 +12,7 @@ global with sharing class ListingDetailAPI {
         RestResponse res = RestContext.response;
         
         List<String> tokens =  req.requestURI.split('/');
-        
+        system.debug('tokens:::' + tokens);
         //sample uri = /listings/<sfdcid>
         if (tokens.size()>2) {
             return ListingService.getListingDetailByID(tokens[2]); 

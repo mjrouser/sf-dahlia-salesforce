@@ -20,6 +20,10 @@ private without sharing class API_ApplicationServiceTest {
 		System.assertNotEquals(sf.primaryApplicant.id, null);
 		System.assertNotEquals(sf.secondaryContact.id, null);
 		System.assertEquals(sf.householdMembers.size(), 2);
+        
+        List<Application__c> appList = API_ApplicationService.getApplicationsByPrimaryApplicantId(null);
+        API_Application.Person person = API_ApplicationService.getPersonById(sc.Id);
+        System.assertEquals(person, null);
 	}
 
 }

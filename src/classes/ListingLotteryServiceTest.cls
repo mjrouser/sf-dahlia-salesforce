@@ -1,15 +1,14 @@
 @isTest
-public with sharing class ListingLotteryPrefApiTest {
-     
+private class ListingLotteryServiceTest {
+
     private static List<Properties__c> lProperties;
     private static Account acc;
     private static Contact con;
     private static User usr;
     private static AMI__c ami;
-    static  ID lotteryId ;
-    static List<Id> listlotteryId;
+    static  ID lotteryId , listingID ;
+    static List<Id> listlotteryId, listListingId;
     static String preferenceName ;
-    // --test--//
     
     static void setupTestData() {
         Id rtId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Household').getRecordTypeId();
@@ -35,6 +34,9 @@ public with sharing class ListingLotteryPrefApiTest {
         listing.Status__c = 'Active';
         listing.Does_Match__c = true;
         insert listing;
+        listingID = listing.ID;
+        listListingId = new List<Id>();
+        listListingId.add(listingID);
         
         Lottery_Preference__c lp = new Lottery_Preference__c();
         lp.Name = 'Test Lottery Preference';
@@ -47,15 +49,16 @@ public with sharing class ListingLotteryPrefApiTest {
         lp1.Status__c = 'New';
         insert lp1;
         
-        Lottery_Preference__c lp2 = new Lottery_Preference__c();
-        lp2.Name = 'Test2 Lottery Preference';
-        lp2.Status__c = 'New';
-        insert lp2;
-        
         Listing_Lottery_Preference__c llp = new Listing_Lottery_Preference__c();
         llp.Listing__c = listing.Id;
         llp.Lottery_Preference__c = lp.Id;
         insert llp;
+        
+        Lottery_Member__c lm = new Lottery_Member__c();
+        lm.Listing__c = listing.Id;
+        lm.Status__c = 'Winner';
+        lm.Lottery_Number__c = 1234;
+        insert lm;
         
         Unit__c unit = new Unit__c();
         unit.property__c  = build.id;
@@ -80,49 +83,50 @@ public with sharing class ListingLotteryPrefApiTest {
         //select id, amount__c, Num_of_HouseHold__c, Percent_of_Median__c from AMI__c]
     }
     
-    static testMethod void testGetAll() {
-         setupTestData();
-        RestRequest reqContext = new RestRequest();
-
-        reqContext.requestURI = '/LotteryPreference/' + lotteryId;
-        System.RestContext.request =reqContext; 
-        List<Lottery_Preference__c> testLP = new List<Lottery_Preference__c>();
-        testLP = ListingLotteryPrefApi.doGet();
-        //verify the returned Id is the right one 
-        system.assert(testLP[0].Id == lotteryId);
-        
-        reqContext.requestURI = '/LotteryPreference';
-        System.RestContext.request =reqContext;
-        //return all Lottery Preference (3 records)
-        system.assert(ListingLotteryPrefApi.doGet().size() == 3);
-        
-    }
-    static testMethod void testGetByID() {
+    static testMethod void testGetLotteryPreferenceByID() {
         setupTestData();
-        RestRequest reqContext = new RestRequest();
-
-        reqContext.requestURI = '/LotteryPreference';
-        reqContext.addParameter('id', lotteryId);
-        System.RestContext.request =reqContext; 
-        List<Lottery_Preference__c> testLP = new List<Lottery_Preference__c>();
-        testLP = ListingLotteryPrefApi.doGet();
+        
+        List<Lottery_Preference__c> testLp = new List<Lottery_Preference__c>();
+        testLp = ListingLotteryService.getLotteryPreferenceByID(lotteryId);
         //verify the returned Id is the right one 
-        system.assert(testLP[0].Id == lotteryId);
-        
-        
+        system.assert(testLp[0].Id == lotteryId);
     }
-     static testMethod void testGetByIDs() {
+    static testMethod void testGetLotteryPreferenceByIDs() {
         setupTestData();
-        RestRequest reqContext = new RestRequest();
-
-        reqContext.requestURI = '/LotteryPreference';
-        reqContext.addParameter('ids', lotteryId);
-        System.RestContext.request =reqContext; 
-        List<Lottery_Preference__c> testLP = new List<Lottery_Preference__c>();
-        testLP = ListingLotteryPrefApi.doGet();
+        
+        List<Lottery_Preference__c> testLp = new List<Lottery_Preference__c>();
+       
+        List<Lottery_Preference__c> testLp1 = new List<Lottery_Preference__c>();
+        testLp1 = ListingLotteryService.getLotteryPreferenceByIDs(listlotteryId);
         //verify the returned Id is the right one 
-        system.assert(testLP[0].Id == lotteryId);
+        system.assert(testLp1[0].Id == lotteryId);
+     }
+    static testMethod void testGetAllLotteryPreference() {
+        setupTestData();
         
+        List<Lottery_Preference__c> testLp = new List<Lottery_Preference__c>();
+       
+        testLp = ListingLotteryService.getAllLotteryPreference();
+        system.assert(testLp.size() == 2);
+    }
+    static testMethod void testGetLotteryMembersByListingID() {
+        setupTestData();
         
+        List<Lottery_Preference__c> testLp = new List<Lottery_Preference__c>();
+        
+        List<Lottery_Member__c> testLm = new List<Lottery_Member__c>();
+        testLm = ListingLotteryService.getLotteryMembersByListingID(listingId);
+        //verify the returned Id is the right one 
+        system.assert(testLm[0].Listing__c == listingId);
+     }
+    static testMethod void testGetLotteryMembersByListingIDs() {
+        setupTestData();
+        
+        List<Lottery_Preference__c> testLp = new List<Lottery_Preference__c>();
+       
+        List<Lottery_Member__c> testLm = new List<Lottery_Member__c>();
+        testLm = ListingLotteryService.getLotteryMembersByListingIDs(listListingId);
+        //verify the returned Id is the right one 
+        system.assert(testLm[0].Listing__c == listingId);
     }
 }

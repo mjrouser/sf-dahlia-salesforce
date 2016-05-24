@@ -97,9 +97,8 @@ public abstract class LOT_RandomBaseRequest {
         
         httpResp= http.send(request);
      
-        return readResponse(httpResp.getBody());
+        return 
         */
-      
         boolean success = false;
       
         try {
@@ -107,6 +106,7 @@ public abstract class LOT_RandomBaseRequest {
       		            system.debug('httpResp ' + httpResp);
       		            system.debug('httpResp body' + httpResp.getBody());
       	
+      		      readResponse(httpResp.getBody());
       		
       	} 
       	catch(Exception e){

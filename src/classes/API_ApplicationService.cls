@@ -10,7 +10,7 @@ public with sharing class API_ApplicationService {
         ' Prior_Tax_Year_Total_Income_Amount__c'; //, incomeType
 
     private static final String SHORTFORM_FIELDLIST =
-        'Id, Applicant_Household__c, ' +
+        'Id, Applicant_Household__c, Listing__c,' +
         prefixQuery('Primary_Applicant__r.', CONTACT_FIELDLIST) +
         ', ' +
         prefixQuery('Secondary_Contact__r.', CONTACT_FIELDLIST) +
@@ -83,7 +83,7 @@ public with sharing class API_ApplicationService {
             ' WHERE Id = :shortformId'
         );
 
-        if (apps.size() != 1) {
+        if (apps != null && apps.size() != 1) {
             return null;
         } else {
             return apps[0];
@@ -216,8 +216,8 @@ public with sharing class API_ApplicationService {
         }
         upsert app;
 
-        // application members
-        List<Application_Member__c> applicationMembers =
+        // old application members
+        /*List<Application_Member__c> applicationMembers =
             [
                 SELECT Id, Application__c, Household_Member__c
                 FROM Application_Member__c
@@ -234,6 +234,30 @@ public with sharing class API_ApplicationService {
         for (Id householdMemberId : householdMemberIds) {
             if (!existingHouseholdMembers.contains(householdMemberId)) {
                 newApplicationMembers.add(new Application_Member__c(Application__c = app.Id, Household_Member__c = householdMemberId));
+            }
+        }
+        if (newApplicationMembers.size() > 0) {
+            insert newApplicationMembers;
+        }*/
+        
+        // new application members
+        List<Application_Household__c> applicationMembers =
+            [
+                SELECT Id, Application__c, Contact__c
+                FROM Application_Household__c
+                WHERE Application__c = :app.Id
+                AND Contact__c IN :householdMemberIds
+            ];
+
+        Set<Id> existingHouseholdMembers = new Set<Id>();
+        for (Application_Household__c applicationMember : applicationMembers) {
+            existingHouseholdMembers.add(applicationMember.Contact__c);
+        }
+
+        List<Application_Household__c> newApplicationMembers = new List<Application_Household__c>();
+        for (Id householdMemberId : householdMemberIds) {
+            if (!existingHouseholdMembers.contains(householdMemberId)) {
+                newApplicationMembers.add(new Application_Household__c(Application__c = app.Id, Contact__c = householdMemberId));
             }
         }
         if (newApplicationMembers.size() > 0) {

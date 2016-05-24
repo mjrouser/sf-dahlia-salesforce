@@ -57,5 +57,29 @@ private without sharing class API_ShortFormTest {
         System.assertEquals(app.Works_In_SF__c, true);
         System.assertEquals(app.Primary_Applicant__r.Work_State__c, 'CO');
     }
+    
+    static testMethod void failAPI_ShortForm_GetTest() {
+        Account a = new Account(Name = 'Household');
+        insert a;
 
+        Contact c = new Contact(LastName = 'LastName', AccountId = a.Id);
+        insert c;
+
+        Application__c app = new Application__c(Primary_Applicant__c = c.Id, Applicant_Household__c = a.Id);
+        insert app;
+        
+        Test.startTest();
+            RestRequest req = new RestRequest();
+            RestResponse res = new RestResponse();
+            req.requestURI = '/shortForm/fail/' + app.Id;
+            req.httpMethod = 'GET';
+            RestContext.request = req;
+            RestContext.response = res;
+
+            API_Application.ShortForm sf = API_ShortForm.doGet();
+        Test.stopTest();
+        
+        System.assertEquals(res.statusCode, 400);
+    }
+    
 }

@@ -56,7 +56,8 @@ global class ListingAMIApi {
         RestResponse res = RestContext.response;
         
         List<String> tokens =  req.requestURI.split('/');
-   
+   		system.debug('tokens:::' + tokens);
+        system.debug('req.params:::' + req.params);
        	AMI filter = new AMI();
         if (req.params.containsKey('percent')) {
         	filter.percent=  Decimal.Valueof((req.params.get('percent')));
@@ -93,7 +94,7 @@ global class ListingAMIApi {
 		}
 		AMI returnAMI = new AMI();
 						system.debug(query);
-	
+		system.debug('filterString::' + filterString);
 		AMI__c ami = Database.query(query);
 		
 			system.debug(ami);

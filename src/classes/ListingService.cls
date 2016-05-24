@@ -56,10 +56,10 @@ global  class ListingService {
             queryFilter += filter; 
         }
         query += (queryFilter.length()>0)? ' where ' + queryFilter: '';
-        system.debug(query) ;
+        system.debug('query:::' + query) ;
         List<Listing__c> listings = (List<Listing__c>) Database.Query(query);
   //     Map<ID,Listing__c> listingMap = new Map<ID,Listing__c> (listings);
-       
+       system.debug('listings:::' + listings) ;
         return listings;
     } 
     
@@ -92,6 +92,7 @@ global  class ListingService {
         for (Listing__c listing: listings){ // can and probably should move this to listing detail
             listingMap.put(listing.Id,listing);
             listing.Does_Match__c = (ids.contains(listing.id))? true:false;
+            system.debug('listing.Does_Match__c ::' + listing.Does_Match__c );
             if(crit.PreferenceName != null && crit.PreferenceName != '' && listing.Does_Match__c){
                 boolean prefFound = false;
                 for(Listing_Lottery_Preference__c llp : listing.Listing_Lottery_Preferences__r){
@@ -184,9 +185,10 @@ global  class ListingService {
         Integer minHouseHold = houseHoldSize;
            
         for (Unit__c unit : [select id, BMR_Minimum_Annual_Income_Needed__c, of_AMI_for_Pricing_Unit__c, Listing__c, Maximum_Household_Size__c  from Unit__c  where Maximum_Household_Size__c>= :maxHouseHold and Min_Occupancy__c<=:minHouseHold]) {
-           system.debug(unit);
+           system.debug('unit:::'+ unit + ' ' + houseHoldSize );
             Decimal amiAmount =  getAMI(houseHoldSize, unit.of_AMI_for_Pricing_Unit__c );
            // Decimal amiAmount =  getAMI(unit.Maximum_Household_Size__c, unit.of_AMI_for_Pricing_Unit__c );
+           system.debug('unit.BMR_Minimum_Annual_Income_Needed__c::' + unit.BMR_Minimum_Annual_Income_Needed__c + '  ' + Income + '  ' + amiAmount);
             if ((unit.BMR_Minimum_Annual_Income_Needed__c  < Income) && (Income < amiAmount )) {
                 system.debug('amiAmount: ' + amiAmount +  ' income: ' + Income + ' unit '  + unit.BMR_Minimum_Annual_Income_Needed__c + ' unit.id ' + unit.id );
                 relevantUnits.add(unit);
