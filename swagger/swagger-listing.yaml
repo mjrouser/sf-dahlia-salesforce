@@ -126,6 +126,28 @@
               items: 
                 $ref: "#/definitions/Listing__c"
      
+     
+           
+    /GetLotteryResults: 
+      get: 
+        description: "This returns the LotteryResult"
+        parameters: 
+          - 
+            name: "id"
+            in: "query"
+            description: "sfdc listing id"
+            required: false
+            type: "string"
+        
+     
+        tags: 
+          - "Listing"
+        responses: 
+          200: 
+            description: "An array of listing"
+            schema: 
+              $ref: "#/definitions/ListingResult"
+     
     /ListingDetails/{sfdcid}: 
       get: 
         description: "This returns the Listing information and its summary information."
@@ -520,6 +542,23 @@
               $ref: "#/definitions/ShortForm"
           "400":
             description: Invalid ID supplied
+      /shortForm/file/:
+      post:
+        security:
+          - restrictedAccess: 
+            - ShortForm
+        description: deletes specified application
+        parameters:
+        - App: id
+          in: query
+          description: ID shortForm To Delete
+          type: string
+          required: true
+        tags: 
+           - "Shortform Application"  
+        responses:
+          200:
+            description: OK
     /shortForm/: 
       post: 
         security:
@@ -561,6 +600,8 @@
         responses:
           200:
             description: OK
+            
+      
     /shortForm/contact/delete:
       post:
         security:
@@ -891,36 +932,105 @@
           type: "string"
           description: "Sfdc ID"
         Primary Applicant:  
-          $ref: '#/definitions/Contact'
+          $ref: '#/definitions/Person'
 
-        Secondary Contact:  
-          $ref: '#/definitions/Contact'
+        Alternate Contact:  
+          $ref: '#/definitions/Person'
 
         Household Members:  
           type: array
           items:
-              $ref: '#/definitions/Contact'
+              $ref: '#/definitions/Person'
+              
         Works in San Francisco: 
           type: "boolean"
           description: "currently works In SF"
         Current Status: 
           type: "string"
           description: "homeless, renting, home owner?"
+      
         Years Homeless: 
           type: "integer"
           description: "number of years homeless"
         isResident: 
           type: "boolean"
           description: "is a resident of SF"
+    
+        live_in_sf: 
+          type: "string"
+          description: "tempkey can be provided on insert, or sfdcID"
+        work_in_sf: 
+          type: "string"
+          description: "tempkey can be provided on insert, or sfdcID"
+        displaced: 
+          type: "string"
+          description: "tempkey can be provided on insert, or sfdcID"
+        
+        live_in_sf_household_member: 
+          type: "string"
+          description: "tempkey can be provided on insert, or sfdcID"
+        live_in_sf_proof_option: 
+          type: "string"
+          description: "tempkey can be provided on insert, or sfdcID"
+        live_in_sf_proof_file: 
+          type: "string"
+          description: "tempkey can be provided on insert, or sfdcID"
        
-     
-    Contact: 
+       
+    ListingResult: 
       type: "object"
-      description: "Applicant Contact"
+      description: "lottery result"
       properties: 
         ID: 
           type: "string"
-          description: "sfdc ID"
+          description: "ApplicationID ID"
+        AppResult:  
+          type: array
+          items:
+              $ref: '#/definitions/ApplicationResult'
+        URL: 
+          type: "string"
+          description: "randome.org url"
+        rawRank: 
+          type: "integer"
+          description: "raw rank"
+   
+       
+    ApplicationResult: 
+      type: "object"
+      description: "ApplicationResult"
+      properties: 
+        ID: 
+          type: "string"
+          description: "ApplicationID ID"
+        URL: 
+          type: "string"
+          description: "randome.org url"
+        preference1: 
+          type: "boolean"
+          description: "preference1"
+        preference1_calculated: 
+          type: "boolean"
+          description: "true/false"
+        rawRank: 
+          type: "integer"
+          description: "raw rankg"
+          
+   
+
+    Person: 
+      type: "object"
+      description: "Applicant Contact"
+      properties: 
+        TempKey: 
+          type: "string"
+          description: "artificial key to link household members, pre db save"
+        AppMemberID: 
+          type: "string"
+          description: "App Member ID"
+        ContactID: 
+          type: "string"
+          description: "sfdc contact ID - null for everyone but primary applicant"
         firstName: 
           type: "string"
           description: "first name"
@@ -975,12 +1085,6 @@
         gender: 
           type: "string"
           description: "gender"
-        holdsCOP: 
-          type: "boolean"
-          description: "has a certificate of preference"
-        holdsDTP: 
-          type: "boolean"
-          description: "has displaced tenant preference"
         relationship: 
           type: "string"
           description: "relationship to primary applicant"
@@ -990,5 +1094,3 @@
         incomeType: 
           type: "string"
           description: "displaced tenant pref"
-   
-  
