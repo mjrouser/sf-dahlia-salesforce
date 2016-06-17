@@ -254,6 +254,41 @@
               type: "array"
               items: 
                 $ref: "#/definitions/ListingDetails"
+    /Listing/EligibilityCheck: 
+      get: 
+        description: "This returns the Listing Id and eligibility information."
+        parameters: 
+          - 
+            name: "id"
+            in: "query"
+            description: "sfdc listing id"
+            required: true
+            type: "string"
+          - 
+            name: "householdsize"
+            in: "query"
+            description: "household size"
+            required: true
+            type: "string"
+          - 
+            name: "incomelevel"
+            in: "query"
+            description: "income level"
+            required: false
+            type: "string"
+          - 
+            name: "childrenUnder6"
+            in: "query"
+            description: "number of children under 6"
+            required: false
+            type: "string"
+        tags: 
+          - "Listing"    
+        responses: 
+          "200": 
+            description: "Listing eligibility details"
+            schema: 
+              $ref: "#/definitions/Eligibility"
     /Listing/Units/{id}': 
       get: 
         description: "returns Units for listing based on Listing ID"
@@ -542,23 +577,6 @@
               $ref: "#/definitions/ShortForm"
           "400":
             description: Invalid ID supplied
-      /shortForm/file/:
-      post:
-        security:
-          - restrictedAccess: 
-            - ShortForm
-        description: deletes specified application
-        parameters:
-        - App: id
-          in: query
-          description: ID shortForm To Delete
-          type: string
-          required: true
-        tags: 
-           - "Shortform Application"  
-        responses:
-          200:
-            description: OK
     /shortForm/: 
       post: 
         security:
@@ -996,28 +1014,57 @@
           description: "raw rank"
    
        
+    Eligibility: 
+      type: "object"
+      description: "eligibility information per listing"
+      properties: 
+        listing ID: 
+          type: "string"
+          description: "the listing id"
+        householdEligibilityResult: 
+          type: "string"
+          description: "the household eligibility result.  (Match, Too Big, Too Small)"
+        incomeEligibilityResult: 
+          type: "integer"
+          description: "the household eligibility result. (Match, Too High, Too Low)"
+        householdMatch: 
+          type: "boolean"
+          description: "does household match passed criteria"
+        incomeMatch: 
+          type: "boolean"
+          description: "does income match passed criteria"
+          
     ApplicationResult: 
       type: "object"
       description: "ApplicationResult"
       properties: 
-        ID: 
+        applicationID: 
           type: "string"
           description: "ApplicationID ID"
         URL: 
           type: "string"
           description: "randome.org url"
         preference1: 
-          type: "boolean"
+          type: "string"
           description: "preference1"
         preference1_calculated: 
           type: "boolean"
           description: "true/false"
         rawRank: 
           type: "integer"
-          description: "raw rankg"
+          description: "raw rank"
+        lotteryNumber: 
+          type: "number"
+          format: "double"
+          description: "the lottery number"
+        lotteryRank: 
+          type: "number"
+          format: "double"
+          description: "lottery rank"
+        lotteryStatus: 
+          type: "string"
+          description: "lottery status"
           
-   
-
     Person: 
       type: "object"
       description: "Applicant Contact"
