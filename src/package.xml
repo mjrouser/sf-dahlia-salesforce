@@ -25,10 +25,13 @@
         <members>ListingDetailAPI</members>
         <members>ListingDetailAPITest</members>
         <members>ListingEligibilityCheckAPI</members>
+        <members>ListingEligibilityCheckAPITest</members>
         <members>ListingLotteryMemberApi</members>
         <members>ListingLotteryMemberApiTest</members>
         <members>ListingLotteryPrefApi</members>
         <members>ListingLotteryPrefApiTest</members>
+        <members>ListingLotteryResultApi</members>
+        <members>ListingLotteryResultApiTest</members>
         <members>ListingLotteryService</members>
         <members>ListingLotteryServiceTest</members>
         <members>ListingService</members>

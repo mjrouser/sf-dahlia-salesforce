@@ -1,5 +1,5 @@
 //services/apexrest/EligibilityCheck
-@RestResource(urlMapping='/EligibilityCheck/*')
+@RestResource(urlMapping='/Listing/EligibilityCheck/*')
 global class ListingEligibilityCheckAPI {
 	public class InvalidParamsException extends Exception {}
 	public class NoRecordMatchException extends Exception {}
@@ -11,10 +11,10 @@ global class ListingEligibilityCheckAPI {
 		
 		List<String> tokens =  req.requestURI.split('/');
 		system.debug('tokens:::' + tokens);
-		//sample uri = /EligibilityCheck/<sfdcid>
+		//sample uri = /Listing/EligibilityCheck/<sfdcid>
 		String id;
-		if (tokens.size() > 2) {
-			id = tokens[2]; 
+		if (tokens.size() > 3) {
+			id = tokens[3]; 
 		} 
 		if (req.params.containsKey('id')) {
 			id = req.params.get('id');
