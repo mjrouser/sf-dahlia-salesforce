@@ -24,6 +24,7 @@
         <members>ListingApiTest</members>
         <members>ListingDetailAPI</members>
         <members>ListingDetailAPITest</members>
+        <members>ListingEligibilityCheckAPI</members>
         <members>ListingLotteryMemberApi</members>
         <members>ListingLotteryMemberApiTest</members>
         <members>ListingLotteryPrefApi</members>
