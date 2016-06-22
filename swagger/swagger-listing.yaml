@@ -1126,7 +1126,7 @@
       type: "object"
       description: "Applicant Contact"
       properties:
-        TempKey:
+        tempKey:
           type: "string"
           description: "artificial key to link household members, pre db save"
         AppMemberID:
