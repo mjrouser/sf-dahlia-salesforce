@@ -618,7 +618,42 @@
         responses:
           200:
             description: OK
-
+    /shortForm/file/{shortFormId}:
+      post:
+        security:
+          - restrictedAccess:
+            - ShortForm
+        description: deletes specified application
+        parameters:
+        - in: path
+          name: shortFormId
+          description: ID of shortform to attach file too
+          required: true
+          type: string
+        - name: BinaryData
+          in: body
+          required: true
+          schema: 
+            type: string
+            format: byte 
+        - name: Name
+          in: header
+          description: ID shortForm To Delete
+          type: string
+          required: true
+        - name: ContentType
+          in: header
+          description: ID shortForm To Delete  
+          type: string
+          required: true
+        tags:
+           - "Shortform Application"
+        responses:
+          200:
+            description: OK
+            schema:
+              type: string
+              description: sfdc id for file
 
     /shortForm/contact/delete:
       post:
