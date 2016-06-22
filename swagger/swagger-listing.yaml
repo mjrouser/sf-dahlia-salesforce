@@ -734,6 +734,9 @@
       type: "object"
       description: ""
       properties:
+        NeighborHoodPreferenceUrl__c:
+          type: "string"
+          description: "neightborhood Preference URL"
         Building_Name__c:
           type: "string"
           description: ""
@@ -1021,24 +1024,38 @@
 
         liveInSfPreference:
           type: "string"
-          description: "tempkey can be provided on insert, or sfdcID. (0 is primary applicant)"
+          description: "implicit -(first,lastname,DOB) can be provided on insert, or sfdcID. (0 is primary applicant)"
+        liveInSfPreferenceID:
+          type: "string"
+          description: "sfdc household_member__c which holds preference"
 
-        workInSfPreference:
+        workInSfPreferenceNatKey:
           type: "string"
           description: "tempkey can be provided on insert, or sfdcID. (0 is primary applicant)"
+       
+        worksInSfPreferenceID:
+          type: "string"
+          description: "sfdc household_member__c which holds preference"
 
-        displacedPreference:
+        displacedPreferenceNatKey:
           type: "string"
           description: "tempkey can be provided on insert, or sfdcID. (0 is primary applicant)"
-
-        certOfPreference:
+        displacedPreferenceID:
+          type: "string"
+          description: "sfdc household_member__c which holds preference"
+        certOfPreferenceNatKey:
           type: "string"
           description: "tempkey can be provided on insert, or sfdcID. (0 is primary applicant)"
-
-        neighborhoodPreference:
+        certOfPreferenceID:
+          type: "string"
+          description: "sfdc household_member__c which holds preference"
+        neighborhoodPreferenceNatKey:
           type: "string"
           description: "tempkey can be provided on insert, or sfdcID. (0 is primary applicant)"
-
+        neighborhoodPreferenceID:
+          type: "string"
+          description: "sfdc household_member__c which holds preference"
+       
         liveInSfPreferenceProof:
           type: "string"
           description: "picklist (telephone bill, electric bill etc)"
@@ -1126,9 +1143,6 @@
       type: "object"
       description: "Applicant Contact"
       properties:
-        tempKey:
-          type: "string"
-          description: "artificial key to link household members, pre db save"
         AppMemberID:
           type: "string"
           description: "App Member ID"
