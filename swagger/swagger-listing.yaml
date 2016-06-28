@@ -1204,7 +1204,7 @@
           description: "sfdc household_member__c which holds preference"
         liveInSfPreferenceRank:
           type: "number"
-          description: "raw rank for this preference"
+          description: "caluculated rank for this preference"
      
         worksInSfPreferenceID:
           type: "string"
@@ -1214,7 +1214,7 @@
           description: "true/false"
         worksInSfPreferenceRank:
           type: "number"
-          description: "raw rank for this preference"
+          description: "calculated rank for this preference"
 
         displacedPreferenceID:
           type: "string"
@@ -1224,7 +1224,7 @@
           description: "true/false"
         displacedPreferenceRank:
           type: "number"
-          description: "raw rank for this preference"
+          description: "calculated rank for this preference"
         certOfPreferenceID:
           type: "string"
           description: "sfdc household_member__c which holds preference"
@@ -1233,7 +1233,7 @@
           description: "true/false"
         certOfPreferenceRank:
           type: "number"
-          description: "raw rank for this preference"
+          description: "calculated rank for this preference"
         neighborhoodPreferenceID:
           type: "string"
           description: "sfdc household_member__c which holds preference"
@@ -1242,7 +1242,7 @@
           description: "true/false"
         neighborhoodPreferenceRank:
           type: "number"
-          description: "raw rank for this preference"
+          description: "calculated rank for this preference"
       
         lotteryNumber:
           type: "number"
@@ -1252,9 +1252,7 @@
           type: "integer"
           format: "int32"
           description: "raw lottery rank returned form drawing"
-        lotteryStatus:
-          type: "string"
-          description: "lottery status"
+  
 
     Person:
       type: "object"
