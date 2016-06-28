@@ -127,16 +127,15 @@
                 $ref: "#/definitions/Listing__c"
 
 
-
-    /GetLotteryResults:
+    /Listing/LotteryResult/Summary/{listingID}:
       get:
         description: "This returns the LotteryResult"
         parameters:
           -
-            name: "id"
-            in: "query"
-            description: "sfdc listing id"
-            required: false
+            name: "listingID"
+            in: "path"
+            description: "this returns the application lottery results, bucket results are empty"
+            required: true
             type: "string"
 
 
@@ -147,6 +146,45 @@
             description: "An array of listing"
             schema:
               $ref: "#/definitions/ListingResult"
+    /Listing/LotteryResult/Bucket/{listingID}:
+      get:
+        description: "this returns the bucket of lottery results, application results are empty
+            the bucket of results is a list of applicaition results by preference - we may need to add additional filter parameters to define result set size - default is to return top 100"
+        parameters:
+          -
+            name: "listingID"
+            in: "path"
+            description: "listingID for the application"
+            required: true
+            type: "string"
+
+
+        tags:
+          - "Listing"
+        responses:
+          200:
+            description: "An array of listing"
+            schema:
+              $ref: "#/definitions/ListingResult"
+    /Listing/LotteryResult/{lotteryNumber}:
+      get:
+        description: "This returns the LotteryResult"
+        parameters:
+          -
+            name: "lotteryNumber"
+            in: "path"
+            description: "lottery number to look up"
+            required: true
+            type: "string"
+
+
+        tags:
+          - "Listing"
+        responses:
+          200:
+            description: "An array of listing"
+            schema:
+              $ref: "#/definitions/ApplicationResult"
 
     /ListingDetails/{sfdcid}:
       get:
@@ -679,7 +717,7 @@
       type: "object"
       description: "summary statistics of a given unit type per listing"
       properties:
-        listing ID:
+        listingID:
           type: "string"
           description: "the listing id"
         unitType:
@@ -734,9 +772,7 @@
       type: "object"
       description: ""
       properties:
-        NeighborHoodPreferenceUrl__c:
-          type: "string"
-          description: "neightborhood Preference URL"
+
         Building_Name__c:
           type: "string"
           description: ""
@@ -857,6 +893,10 @@
           type: "number"
           format: "double"
           description: "Rollup sumary with Count of people who have been selected as winning lottery and therefore, the status of their lottery member = Winner."
+             
+        NeighborHoodPreferenceUrl__c:
+          type: "string"
+          description: "neightborhood Preference URL"
         Office_Open__c:
           type: "string"
           description: ""
@@ -980,6 +1020,7 @@
         Status__c:
           type: string
           description: Status of the Lottery Member for the given Lottery
+          
     ShortForm:
       type: "object"
       description: "ShortForm for housing"
@@ -987,6 +1028,10 @@
         ID:
           type: "string"
           description: "Sfdc ID"
+       
+        listingID:
+          type: "string"
+          description: "listing ID for SFDC"
         PrimaryApplicant:
           $ref: '#/definitions/Person'
 
@@ -1022,7 +1067,7 @@
           type: "number"
           description: "either annual or monthly needs to be specified"
 
-        liveInSfPreference:
+        liveInSfPreferenceNatKey:
           type: "string"
           description: "implicit -(first,lastname,DOB) can be provided on insert, or sfdcID. (0 is primary applicant)"
         liveInSfPreferenceID:
@@ -1031,27 +1076,27 @@
 
         workInSfPreferenceNatKey:
           type: "string"
-          description: "tempkey can be provided on insert, or sfdcID. (0 is primary applicant)"
+          description: "naturalkey  = lastName,FirstName,DOB(MM.DD.YYYY) can be provided on insert as an alternate to sfdcID"
        
         worksInSfPreferenceID:
           type: "string"
-          description: "sfdc household_member__c which holds preference"
+          description: "sfdc household_member__r.id which holds preference"
 
         displacedPreferenceNatKey:
           type: "string"
-          description: "tempkey can be provided on insert, or sfdcID. (0 is primary applicant)"
+          description:  "naturalkey  = lastName,FirstName,DOB(MM.DD.YYYY) can be provided on insert as an alternate to sfdcID"
         displacedPreferenceID:
           type: "string"
           description: "sfdc household_member__c which holds preference"
         certOfPreferenceNatKey:
           type: "string"
-          description: "tempkey can be provided on insert, or sfdcID. (0 is primary applicant)"
+          description:  "naturalkey  = lastName,FirstName,DOB(MM.DD.YYYY) can be provided on insert as an alternate to sfdcID"
         certOfPreferenceID:
           type: "string"
           description: "sfdc household_member__c which holds preference"
         neighborhoodPreferenceNatKey:
           type: "string"
-          description: "tempkey can be provided on insert, or sfdcID. (0 is primary applicant)"
+          description:  "naturalkey  = lastName,FirstName,DOB(MM.DD.YYYY) can be provided on insert as an alternate to sfdcID"
         neighborhoodPreferenceID:
           type: "string"
           description: "sfdc household_member__c which holds preference"
@@ -1066,26 +1111,47 @@
 
         neighborhoodPreferenceProof:
           type: "string"
-          description: "S3 url file"
+          description: "picklist (telephone bill, electric bill etc)"
 
 
     ListingResult:
       type: "object"
       description: "lottery result"
       properties:
-        ID:
+        listingID:
           type: "string"
-          description: "ApplicationID ID"
-        AppResult:
+          description: "listing ID"
+     
+        bucketResults:
+          type: array
+          items:
+              $ref: '#/definitions/PreferenceResult'
+        applicationResults:
           type: array
           items:
               $ref: '#/definitions/ApplicationResult'
         URL:
           type: "string"
           description: "randome.org url"
-        rawRank:
-          type: "integer"
-          description: "raw rank"
+        
+        lotteryCity:
+          type: "string"
+          description: "listing lottery City"
+        lotteryDate:
+          type: "string"
+          format: "date"
+          description: "lottery date "
+        lotteryEndTime:
+          type: "string"
+          format: "date"
+          description: "lottery date "
+        lotteryPreferences:
+          type: "string"
+          description: "preferences" 
+          
+        lotteryResults:
+          type: "boolean"
+          description: "lotteryResults"  
 
 
     Eligibility:
@@ -1107,7 +1173,17 @@
         incomeMatch:
           type: "boolean"
           description: "does income match passed criteria"
-
+    PreferenceResult:
+      type: "object"
+      description: "list of application results by preference"
+      properties:
+        PreferenceName:
+          type: "string"
+          description: "Preference name"
+        applicationResults:
+          type: array
+          items:
+              $ref: '#/definitions/ApplicationResult'
     ApplicationResult:
       type: "object"
       description: "ApplicationResult"
@@ -1118,23 +1194,64 @@
         URL:
           type: "string"
           description: "randome.org url"
-        preference1:
-          type: "string"
-          description: "preference1"
-        preference1_calculated:
+          
+        
+        liveInSfPreference:
           type: "boolean"
           description: "true/false"
-        rawRank:
-          type: "integer"
-          description: "raw rank"
+        liveInSfPreferenceID:
+          type: "string"
+          description: "sfdc household_member__c which holds preference"
+        liveInSfPreferenceRank:
+          type: "number"
+          description: "raw rank for this preference"
+     
+        worksInSfPreferenceID:
+          type: "string"
+          description: "sfdc household_member__r.id which holds preference"
+        worksInSfPreference:
+          type: "boolean"
+          description: "true/false"
+        worksInSfPreferenceRank:
+          type: "number"
+          description: "raw rank for this preference"
+
+        displacedPreferenceID:
+          type: "string"
+          description: "sfdc household_member__c which holds preference"
+        displacedPreference:
+          type: "boolean"
+          description: "true/false"
+        displacedPreferenceRank:
+          type: "number"
+          description: "raw rank for this preference"
+        certOfPreferenceID:
+          type: "string"
+          description: "sfdc household_member__c which holds preference"
+        certOfPreference:
+          type: "boolean"
+          description: "true/false"
+        certOfPreferenceRank:
+          type: "number"
+          description: "raw rank for this preference"
+        neighborhoodPreferenceID:
+          type: "string"
+          description: "sfdc household_member__c which holds preference"
+        neighborhoodPreference:
+          type: "boolean"
+          description: "true/false"
+        neighborhoodPreferenceRank:
+          type: "number"
+          description: "raw rank for this preference"
+      
         lotteryNumber:
           type: "number"
           format: "double"
-          description: "the lottery number"
+          description: "the lottery number  "
         lotteryRank:
-          type: "number"
-          format: "double"
-          description: "lottery rank"
+          type: "integer"
+          format: "int32"
+          description: "raw lottery rank returned form drawing"
         lotteryStatus:
           type: "string"
           description: "lottery status"
@@ -1157,6 +1274,7 @@
           description: "the listing id"
         DOB:
           type: "string"
+          format: "date"
           description: "date of Birth"
         email:
           type: "string"
