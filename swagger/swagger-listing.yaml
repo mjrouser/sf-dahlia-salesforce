@@ -168,7 +168,7 @@
               $ref: "#/definitions/ListingResult"
     /Listing/LotteryResult/{listingID}/{lotteryNumber}:
       get:
-        description: "This returns the LotteryResult"
+        description: "This returns the Listing result - with 1 applicationResult inside this is the Application with the appropriate lottery number.  If no lotteryNumber fits, applicationsResult will be empty.  If listing isIncorrect it will error."
         parameters:
           -
             name: "listingID"
@@ -190,7 +190,7 @@
           200:
             description: "An array of listing"
             schema:
-              $ref: "#/definitions/ApplicationResult"
+              $ref: "#/definitions/ListingResult"
 
     /ListingDetails/{sfdcid}:
       get:
@@ -1140,6 +1140,32 @@
           type: "string"
           description: "randome.org url"
         
+  
+        
+        totalLiveWorkApps:
+          type: "number"
+          description: "total applications for preference"
+        totalLiveWorkUnits:
+          type: "number"
+          description: "total slots for preference"
+        totalCopApps:
+          type: "number"
+          description: "total applications for preference"
+        totalCopUnits:
+          type: "number"
+          description: "total slots for preference"
+        totalDTHPApps:
+          type: "number"
+          description: "total applications for preference"
+        totalDTHPUnits:
+          type: "number"
+          description: "total applications for preference"
+        totalNeighborhoodApps:
+          type: "number"
+          description: "total applications for preference"
+        totalNeighborhoodUnits:
+          type: "number"
+          description: "total applications for preference"
         lotteryCity:
           type: "string"
           description: "listing lottery City"
