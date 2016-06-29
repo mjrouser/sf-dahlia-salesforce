@@ -166,17 +166,23 @@
             description: "An array of listing"
             schema:
               $ref: "#/definitions/ListingResult"
-    /Listing/LotteryResult/{lotteryNumber}:
+    /Listing/LotteryResult/{listingID}/{lotteryNumber}:
       get:
         description: "This returns the LotteryResult"
         parameters:
+          -
+            name: "listingID"
+            in: "path"
+            description: "listingID for lottery"
+            required: true
+            type: "string"
           -
             name: "lotteryNumber"
             in: "path"
             description: "lottery number to look up"
             required: true
             type: "string"
-
+         
 
         tags:
           - "Listing"
@@ -1125,7 +1131,7 @@
         bucketResults:
           type: array
           items:
-              $ref: '#/definitions/PreferenceResult'
+              $ref: '#/definitions/PreferenceBucket'
         applicationResults:
           type: array
           items:
@@ -1173,17 +1179,38 @@
         incomeMatch:
           type: "boolean"
           description: "does income match passed criteria"
-    PreferenceResult:
+    PreferenceBucket:
       type: "object"
       description: "list of application results by preference"
       properties:
         PreferenceName:
           type: "string"
-          description: "Preference name"
-        applicationResults:
+          description: "Preference name, (liveWork,COP,DCP,Neighborhood)"
+        bucketResults:
           type: array
           items:
-              $ref: '#/definitions/ApplicationResult'
+              $ref: '#/definitions/BucketResult'
+  
+    BucketResult:
+      type: "object"
+      description: "ApplicationResult"
+      properties:
+        applicationID:
+          type: "string"
+          description: "ApplicationID ID"
+        lotteryNumber:
+          type: "number"
+          format: "double"
+          description: "the lottery number  "
+        preferenceRank:
+          type: "number"
+          description: "raw rank for this live work - which are treated as one preference"
+    
+        lotteryRank:
+          type: "integer"
+          format: "int32"
+          description: "raw lottery rank returned form drawing"
+       
     ApplicationResult:
       type: "object"
       description: "ApplicationResult"
@@ -1191,58 +1218,32 @@
         applicationID:
           type: "string"
           description: "ApplicationID ID"
-        URL:
-          type: "string"
-          description: "randome.org url"
-          
-        
-        liveInSfPreference:
-          type: "boolean"
-          description: "true/false"
-        liveInSfPreferenceID:
-          type: "string"
-          description: "sfdc household_member__c which holds preference"
-        liveInSfPreferenceRank:
+
+        liveWorkPreferenceRank:
           type: "number"
-          description: "caluculated rank for this preference"
-     
-        worksInSfPreferenceID:
-          type: "string"
-          description: "sfdc household_member__r.id which holds preference"
-        worksInSfPreference:
-          type: "boolean"
-          description: "true/false"
+          description: "raw rank for this live work - which are treated as one preference"
         worksInSfPreferenceRank:
           type: "number"
-          description: "calculated rank for this preference"
-
-        displacedPreferenceID:
-          type: "string"
-          description: "sfdc household_member__c which holds preference"
+          description: "raw rank for this preference"
         displacedPreference:
           type: "boolean"
           description: "true/false"
         displacedPreferenceRank:
           type: "number"
-          description: "calculated rank for this preference"
-        certOfPreferenceID:
-          type: "string"
-          description: "sfdc household_member__c which holds preference"
+          description: "raw rank for this preference"
         certOfPreference:
           type: "boolean"
           description: "true/false"
         certOfPreferenceRank:
           type: "number"
-          description: "calculated rank for this preference"
-        neighborhoodPreferenceID:
-          type: "string"
-          description: "sfdc household_member__c which holds preference"
+          description: "raw rank for this preference"
+   
         neighborhoodPreference:
           type: "boolean"
           description: "true/false"
         neighborhoodPreferenceRank:
           type: "number"
-          description: "calculated rank for this preference"
+          description: "raw rank for this preference"
       
         lotteryNumber:
           type: "number"
@@ -1252,7 +1253,7 @@
           type: "integer"
           format: "int32"
           description: "raw lottery rank returned form drawing"
-  
+   
 
     Person:
       type: "object"
