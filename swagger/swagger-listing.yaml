@@ -34,6 +34,8 @@
         UnitSummary: summary information on particular unit types for a listing
         ShortForm: the shortform application for a particular person for a particular listing this includes contact/household information for a person
         LotteryMember: current lottery memebers for a given listing
+        
+        Person: primary applicant/person who will have applications connected to them.  
 
         ami: ami calculation
     public:
@@ -48,12 +50,15 @@
       - LotteryMember
       - UnitSummary
       - ShortForm
+      - Person
       - ami
 
     - public: []
 
 
   paths:
+   
+    
     /Listing/{sfdcid}:
       get:
 
@@ -570,6 +575,51 @@
               type: "array"
               items:
                 $ref: "#/definitions/Lottery_Member__c"
+
+    /Person/{sfdcid}:
+      get:
+
+        description: "This returns a Perons account data.  This is their contact information"
+        parameters:
+          -
+            name: "sfdcid"
+            in: "path"
+            description: "sfdc contact id put into the path"
+            required: true
+            type: "string"
+        tags:
+          - "Person"
+        responses:
+          200:
+            description: "An array of listings"
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/Person"
+    /Person/:
+      post:
+        security:
+          - restrictedAccess:
+            - Person
+        parameters:
+        - in: body
+          name: body
+          description: Person that wants to update their "account" data.  This is the contact data only and doesn't update the application data that has already been entered.
+          required: false
+          schema:
+            $ref: "#/definitions/Person"
+        tags:
+          - "Person/Account Management"
+
+        responses:
+          "404":
+            description: Short form not found
+          "200":
+            description: Success
+            schema:
+              $ref: "#/definitions/Person"
+          "400":
+            description: Invalid ID supplied
 
     /shortForm/list/{ContactID}:
       get:
@@ -1297,6 +1347,9 @@
         lastName:
           type: "string"
           description: "the listing id"
+        middleName:
+          type: "string"
+          description: "middle name"
         DOB:
           type: "string"
           format: "date"
@@ -1346,6 +1399,12 @@
         gender:
           type: "string"
           description: "gender, can have multiple options. e.g.'male,transgendered-male'"
+        lgbt:
+          type: "boolean"
+          description: "lgbt"
+        hiv:
+          type: "boolean"
+          description: "hiv"
         ethnicity:
           type: "string"
           description: "ethnicity"
