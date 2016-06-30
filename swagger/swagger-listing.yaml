@@ -1142,28 +1142,28 @@
         
   
         
-        totalLiveWorkApps:
+        LiveWorkAppTotal:
           type: "number"
           description: "total applications for preference"
-        totalLiveWorkUnits:
+        LiveWorkUnitsAvailable:
           type: "number"
           description: "total slots for preference"
-        totalCopApps:
+        CopAppTotal:
           type: "number"
           description: "total applications for preference"
-        totalCopUnits:
+        CopUnitsAvailable:
           type: "number"
           description: "total slots for preference"
-        totalDTHPApps:
+        DTHPAppTotal:
           type: "number"
           description: "total applications for preference"
-        totalDTHPUnits:
+        DTHPUnitsAvailable:
           type: "number"
           description: "total applications for preference"
-        totalNeighborhoodApps:
+        NeighborhoodAppTotal:
           type: "number"
           description: "total applications for preference"
-        totalNeighborhoodUnits:
+        NeighborhoodUnitsAvailable:
           type: "number"
           description: "total applications for preference"
         lotteryCity:
