@@ -1084,60 +1084,47 @@
         ID:
           type: "string"
           description: "Sfdc ID"
-       
         listingID:
           type: "string"
           description: "listing ID for SFDC"
-        PrimaryApplicant:
+        primaryApplicant:
           $ref: '#/definitions/Person'
-
-        AlternateContact:
+        alternateContact:
           $ref: '#/definitions/Person'
-
-        Household Members:
+        householdMembers:
           type: array
           items:
               $ref: '#/definitions/Person'
-
-        Works in San Francisco:
+        worksInSanFrancisco:
           type: "boolean"
           description: "currently works In SF"
-
         referral:
           type: "string"
           description: "how applicant found out about the program (multiselect)"
-
         agreeToTerms:
           type: "boolean"
           description: "applicant agrees to terms of application"
-
         householdVouchersSubsidies:
           type: "boolean"
           description: "household has vouchers or subsidies"
-
         annualIncome:
           type: "number"
           description: "either annual or monthly needs to be specified"
-
         monthlyIncome:
           type: "number"
           description: "either annual or monthly needs to be specified"
-
         liveInSfPreferenceNatKey:
           type: "string"
           description: "implicit -(first,lastname,DOB) can be provided on insert, or sfdcID. (0 is primary applicant)"
         liveInSfPreferenceID:
           type: "string"
           description: "sfdc household_member__c which holds preference"
-
         workInSfPreferenceNatKey:
           type: "string"
-          description: "naturalkey  = lastName,FirstName,DOB(MM.DD.YYYY) can be provided on insert as an alternate to sfdcID"
-       
+          description: "naturalkey  = lastName,FirstName,DOB(YYYY-MM-DD) can be provided on insert as an alternate to sfdcID"
         worksInSfPreferenceID:
           type: "string"
           description: "sfdc household_member__r.id which holds preference"
-
         displacedPreferenceNatKey:
           type: "string"
           description:  "naturalkey  = lastName,FirstName,DOB(MM.DD.YYYY) can be provided on insert as an alternate to sfdcID"
@@ -1156,19 +1143,19 @@
         neighborhoodPreferenceID:
           type: "string"
           description: "sfdc household_member__c which holds preference"
-       
         liveInSfPreferenceProof:
           type: "string"
           description: "picklist (telephone bill, electric bill etc)"
-
         workInSfPreferenceProof:
           type: "string"
           description: "picklist (telephone bill, electric bill etc)"
-
         neighborhoodPreferenceProof:
           type: "string"
           description: "picklist (telephone bill, electric bill etc)"
-
+        status:
+          type: "string"
+          description: "application status"
+        
 
     ListingResult:
       type: "object"
@@ -1177,7 +1164,6 @@
         listingID:
           type: "string"
           description: "listing ID"
-     
         bucketResults:
           type: array
           items:
@@ -1189,9 +1175,9 @@
         URL:
           type: "string"
           description: "randome.org url"
-        
-  
-        
+        LotteryResultsURL:
+          type: "string"
+          description: "link to a file"
         LiveWorkAppTotal:
           type: "number"
           description: "total applications for preference"
@@ -1230,11 +1216,12 @@
         lotteryPreferences:
           type: "string"
           description: "preferences" 
-          
         lotteryResults:
           type: "boolean"
-          description: "lotteryResults"  
-
+          description: "lotteryResults"
+        officeHours:
+          type: "string"
+          description: "office hours"
 
     Eligibility:
       type: "object"
@@ -1255,6 +1242,7 @@
         incomeMatch:
           type: "boolean"
           description: "does income match passed criteria"
+          
     PreferenceBucket:
       type: "object"
       description: "list of application results by preference"
@@ -1281,7 +1269,6 @@
         preferenceRank:
           type: "number"
           description: "raw rank for this live work - which are treated as one preference"
-    
         lotteryRank:
           type: "integer"
           format: "int32"
@@ -1294,13 +1281,12 @@
         applicationID:
           type: "string"
           description: "ApplicationID ID"
-
+        liveWorkPreference:
+          type: "boolean"
+          description: "true/false"
         liveWorkPreferenceRank:
           type: "number"
           description: "raw rank for this live work - which are treated as one preference"
-        worksInSfPreferenceRank:
-          type: "number"
-          description: "raw rank for this preference"
         displacedPreference:
           type: "boolean"
           description: "true/false"
@@ -1313,14 +1299,12 @@
         certOfPreferenceRank:
           type: "number"
           description: "raw rank for this preference"
-   
         neighborhoodPreference:
           type: "boolean"
           description: "true/false"
         neighborhoodPreferenceRank:
           type: "number"
           description: "raw rank for this preference"
-      
         lotteryNumber:
           type: "number"
           format: "double"
@@ -1432,6 +1416,5 @@
         hasSameAddressAsApplicant:
           type: "boolean"
           description: "only for household members to indicate separate address"
-
 
 
