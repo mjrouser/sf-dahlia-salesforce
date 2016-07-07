@@ -1269,8 +1269,7 @@
           type: "string"
           description: "ApplicationID ID"
         lotteryNumber:
-          type: "number"
-          format: "double"
+          type: "string"
           description: "the lottery number  "
         preferenceRank:
           type: "number"
@@ -1312,8 +1311,7 @@
           type: "number"
           description: "raw rank for this preference"
         lotteryNumber:
-          type: "number"
-          format: "double"
+          type: "string"
           description: "the lottery number  "
         lotteryRank:
           type: "integer"
