@@ -807,7 +807,6 @@
           type: "number"
           description: "highest minimum required income at this type for this listing"
 
-
     ListingDetails:
       type: "object"
       description: "summary statistics of a given unit type per listing"
@@ -824,11 +823,11 @@
           description: "does listing match passed criteria"
         listing:
             $ref: '#/definitions/Listing__c'
+    
     Listing__c:
       type: "object"
       description: ""
       properties:
-
         Building_Name__c:
           type: "string"
           description: ""
@@ -949,7 +948,6 @@
           type: "number"
           format: "double"
           description: "Rollup sumary with Count of people who have been selected as winning lottery and therefore, the status of their lottery member = Winner."
-             
         NeighborHoodPreferenceUrl__c:
           type: "string"
           description: "neightborhood Preference URL"
@@ -1084,6 +1082,9 @@
         ID:
           type: "string"
           description: "Sfdc ID"
+        name:
+          type: "string"
+          description: "name"
         listingID:
           type: "string"
           description: "listing ID for SFDC"
@@ -1155,6 +1156,9 @@
         status:
           type: "string"
           description: "application status"
+        applicationLanguage:
+          type: "string"
+          description: "application language"
         
 
     ListingResult:
@@ -1313,16 +1317,15 @@
           type: "integer"
           format: "int32"
           description: "raw lottery rank returned form drawing"
-   
 
     Person:
       type: "object"
       description: "Applicant Contact"
       properties:
-        AppMemberID:
+        appMemberID:
           type: "string"
           description: "App Member ID"
-        ContactID:
+        contactID:
           type: "string"
           description: "sfdc contact ID - null for everyone but primary applicant"
         firstName:
@@ -1383,9 +1386,9 @@
         gender:
           type: "string"
           description: "gender, can have multiple options. e.g.'male,transgendered-male'"
-        lgbt:
-          type: "boolean"
-          description: "lgbt"
+        sexualOrientation:
+          type: "string"
+          description: "sexual orientation"
         hiv:
           type: "boolean"
           description: "hiv"
@@ -1416,5 +1419,3 @@
         hasSameAddressAsApplicant:
           type: "boolean"
           description: "only for household members to indicate separate address"
-
-
