@@ -1159,8 +1159,10 @@
         applicationLanguage:
           type: "string"
           description: "application language"
-        
-
+        applicationSubmissionType:
+          type: "string"
+          description: "application submission type"
+    
     ListingResult:
       type: "object"
       description: "lottery result"
