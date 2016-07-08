@@ -1389,6 +1389,9 @@
         sexualOrientation:
           type: "string"
           description: "sexual orientation"
+        sexualOrientationOther:
+          type: "string"
+          description: "other sexual orientation"
         hiv:
           type: "boolean"
           description: "hiv"
