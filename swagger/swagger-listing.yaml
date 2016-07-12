@@ -746,8 +746,7 @@
           200:
             description: OK
             schema:
-              type: string
-              description: sfdc id for file
+              $ref: "#/definitions/File"
 
     /shortForm/contact/delete:
       post:
@@ -1425,3 +1424,23 @@
         hasSameAddressAsApplicant:
           type: "boolean"
           description: "only for household members to indicate separate address"
+
+    File:
+      type: "object"
+      description: "Applicant Contact"
+      properties:
+        ID:
+          type: "string"
+          description: "AttachmentID"
+        ApplicationID:
+          type: "string"
+          description: "first name"
+        Name:
+          type: "string"
+          description: "the preference Name"
+        ContentType:
+          type: "string"
+          description: "the content type"
+        Body:
+          type: "string"
+          description: "url to the download : /services/data/v36.0/sobjects/Attachment/<AttachmenID>/Body "
