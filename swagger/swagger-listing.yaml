@@ -1162,6 +1162,9 @@
         applicationSubmissionType:
           type: "string"
           description: "application submission type"
+        lotteryNumber:
+          type: "string"
+          description: "lottery number"
     
     ListingResult:
       type: "object"
