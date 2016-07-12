@@ -1162,6 +1162,10 @@
         applicationSubmissionType:
           type: "string"
           description: "application submission type"
+        applicationSubmittedDate:
+          type: "string"
+          format: "date"
+          description: "application submission type"
         lotteryNumber:
           type: "string"
           description: "lottery number"
