@@ -717,7 +717,7 @@
         security:
           - restrictedAccess:
             - ShortForm
-        description: deletes specified application
+        description: upload attachment to shortform.
         parameters:
         - in: path
           name: shortFormId
@@ -746,7 +746,7 @@
           200:
             description: OK
             schema:
-              $ref: "#/definitions/File"
+              $ref: "#/definitions/Attachment__C"
 
     /shortForm/contact/delete:
       post:
@@ -1425,22 +1425,29 @@
           type: "boolean"
           description: "only for household members to indicate separate address"
 
-    File:
+    Attachment__C:
       type: "object"
       description: "Applicant Contact"
       properties:
         ID:
           type: "string"
-          description: "AttachmentID"
-        ApplicationID:
+          description: "Salesforce AttachmentID"
+        ParentId:
           type: "string"
-          description: "first name"
+          description: "the application id"
         Name:
           type: "string"
           description: "the preference Name"
         ContentType:
           type: "string"
           description: "the content type"
+        BodyLength:
+          type: "number"
+          description: "the length in bytes"
         Body:
           type: "string"
           description: "url to the download : /services/data/v36.0/sobjects/Attachment/<AttachmenID>/Body "
+        Description:
+          type: "string"
+          description: "the description of the file"
+         
