@@ -1161,10 +1161,6 @@
         applicationSubmissionType:
           type: "string"
           description: "application submission type"
-        applicationSubmittedDate:
-          type: "string"
-          format: "date"
-          description: "application submission date"
         lotteryNumber:
           type: "string"
           description: "lottery number"
@@ -1187,31 +1183,31 @@
         URL:
           type: "string"
           description: "randome.org url"
-        LotteryResultsURL:
+        lotteryResultsURL:
           type: "string"
           description: "link to a file"
-        LiveWorkAppTotal:
+        liveWorkPreferenceAppTotal:
           type: "number"
           description: "total applications for preference"
-        LiveWorkUnitsAvailable:
+        liveWorkPreferenceUnitsAvailable:
           type: "number"
           description: "total slots for preference"
-        CopAppTotal:
+        certOfPreferenceAppTotal:
           type: "number"
           description: "total applications for preference"
-        CopUnitsAvailable:
+        certOfPreferenceUnitsAvailable:
           type: "number"
           description: "total slots for preference"
-        DTHPAppTotal:
+        displacedPreferenceAppTotal:
           type: "number"
           description: "total applications for preference"
-        DTHPUnitsAvailable:
+        displacedPreferenceUnitsAvailable:
           type: "number"
           description: "total applications for preference"
-        NeighborhoodAppTotal:
+        neighborhoodPreferenceAppTotal:
           type: "number"
           description: "total applications for preference"
-        NeighborhoodUnitsAvailable:
+        neighborhoodPreferenceUnitsAvailable:
           type: "number"
           description: "total applications for preference"
         lotteryCity:
