@@ -1210,7 +1210,7 @@
         neighborhoodPreferenceUnitsAvailable:
           type: "number"
           description: "total applications for preference"
-        generalLotteryAppTotal:
+        generalPreferenceAppTotal:
           type: "number"
           description: "total applications for general lottery"
         lotteryCity:
@@ -1315,7 +1315,7 @@
         neighborhoodPreferenceRank:
           type: "number"
           description: "raw rank for this preference"
-        generalLotteryRank:
+        generalPreferenceRank:
           type: "number"
           description: "raw rank for general lottery"
         lotteryNumber:
