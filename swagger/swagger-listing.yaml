@@ -1161,6 +1161,10 @@
         applicationSubmissionType:
           type: "string"
           description: "application submission type"
+        applicationSubmissionDate:
+          type: "string"
+          format: "date"
+          description: "application submission date"
         lotteryNumber:
           type: "string"
           description: "lottery number"
@@ -1210,7 +1214,7 @@
         neighborhoodPreferenceUnitsAvailable:
           type: "number"
           description: "total applications for preference"
-        generalPreferenceAppTotal:
+        generalLotteryAppTotal:
           type: "number"
           description: "total applications for general lottery"
         lotteryCity:
@@ -1315,7 +1319,7 @@
         neighborhoodPreferenceRank:
           type: "number"
           description: "raw rank for this preference"
-        generalPreferenceRank:
+        generalLotteryRank:
           type: "number"
           description: "raw rank for general lottery"
         lotteryNumber:
