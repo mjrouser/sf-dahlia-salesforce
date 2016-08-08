@@ -1113,6 +1113,9 @@
         monthlyIncome:
           type: "number"
           description: "either annual or monthly needs to be specified"
+        liveInSfPreferenceManual:
+          type: "boolean"
+          description: "manual override for livework preference"
         liveInSfPreferenceNatKey:
           type: "string"
           description: "implicit -(first,lastname,DOB) can be provided on insert, or sfdcID. (0 is primary applicant)"
@@ -1334,6 +1337,12 @@
       type: "object"
       description: "Applicant Contact"
       properties:
+        externalID:
+          type: "string"
+          description: "3rd party external that api consumers can set ID - shoud be unique per source and ID"
+        externalIDSource:
+          type: "string"
+          description: "3rd Party App setting the ID"
         appMemberID:
           type: "string"
           description: "App Member ID"
