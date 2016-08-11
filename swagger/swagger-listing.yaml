@@ -1407,6 +1407,9 @@
         gender:
           type: "string"
           description: "gender, can have multiple options. e.g.'male,transgendered-male'"
+        genderOther:
+          type: "string"
+          description: "other gender"
         sexualOrientation:
           type: "string"
           description: "sexual orientation"
