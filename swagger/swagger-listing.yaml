@@ -1337,12 +1337,10 @@
       type: "object"
       description: "Applicant Contact"
       properties:
-        externalID:
+        webAppID:
           type: "string"
-          description: "3rd party external that api consumers can set ID - shoud be unique per source and ID"
-        externalIDSource:
-          type: "string"
-          description: "3rd Party App setting the ID"
+          description: "3rd party webAppID that api consumers can set ID - shoud be unique per source and ID"
+       
         appMemberID:
           type: "string"
           description: "App Member ID"
