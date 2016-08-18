@@ -1,3 +1,13 @@
+// *****************************************************************************
+// CLASS: ListingDetailAPITest
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: Test class for ListingDetailAPI.cls and ListingService.cls
+//
+// *
+
 @isTest
 private class ListingDetailAPITest {
 	
@@ -6,7 +16,7 @@ private class ListingDetailAPITest {
     private static Contact con;
     private static User usr;
     private static AMI__c ami;
-    static  ID listingID, listing1ID ;
+    static  ID listingID, listing1ID;
     static List<Id> listListingId;
     static String preferenceName ;
     
@@ -97,9 +107,11 @@ private class ListingDetailAPITest {
         req.httpMethod = 'GET';
         RestContext.request = req;
         RestContext.response = res;
-        //this should return  record with the specific id
-        system.assert(ListingDetailAPI.doGet().size() == 1);
-        //ListingDetailAPI.doGet();
+        
+        List<ListingService.ListingDetail> listingList = new List<ListingService.ListingDetail>();
+        listingList = ListingDetailAPI.doGet();
+        //verify the returned listing matches the id was passed as param 
+        system.assert(listingList[0].listingID == listingID);
     }
     static testMethod void doGetByIdParam() {
         setupTestData();
@@ -110,10 +122,11 @@ private class ListingDetailAPITest {
         req.httpMethod = 'GET';
         RestContext.request = req;
         RestContext.response = res;
-        //this should return  record with the specific id
-        system.assert(ListingDetailAPI.doGet().size() == 1);
         
-
+        List<ListingService.ListingDetail> listingList = new List<ListingService.ListingDetail>();
+        listingList = ListingDetailAPI.doGet();
+        //verify the returned listing matches the id was passed as param 
+        system.assert(listingList[0].listingID == listingID);	
         
     }
      static testMethod void doGetByIds() {
@@ -125,9 +138,13 @@ private class ListingDetailAPITest {
          req.httpMethod = 'GET';
          RestContext.request = req;
          RestContext.response = res;
-		 //this should return  record with the specific ids 
-         system.assert(ListingDetailAPI.doGet().size() == 2);
          
+		 List<ListingService.ListingDetail> listingList = new List<ListingService.ListingDetail>();
+         listingList = ListingDetailAPI.doGet();
+         //verify the returned listing match the idd were passed as params
+         for (ListingService.ListingDetail listing : listingList) {
+         	system.assert(listing.listingID == listingID || listing.listingID == listing1ID);
+         }
      }
     
      static testMethod void doGetByCriteria() {
@@ -135,7 +152,6 @@ private class ListingDetailAPITest {
          RestRequest req = new RestRequest(); 
          RestResponse res = new RestResponse();
          req.requestURI = '/listings';  
-         //req.addParameter('ids', listingID);
          req.addParameter('incomelevel', '20');
          req.addParameter('householdsize', '4');
          req.addParameter('childrenUnder6', '2');
@@ -143,7 +159,8 @@ private class ListingDetailAPITest {
          req.httpMethod = 'GET';
          RestContext.request = req;
          RestContext.response = res;
-         //this should return all record that met this criteria
+         
+         //return all records that met criteria
          system.assert(ListingDetailAPI.doGet().size() == 2);
          
      }

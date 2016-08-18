@@ -1,3 +1,13 @@
+// *****************************************************************************
+// CLASS: ListingApiTest
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: Test class for ListingApi.cls and ListingService.cls
+//
+// *
+
 @isTest
 private class ListingApiTest {
      
@@ -6,6 +16,7 @@ private class ListingApiTest {
     private static Contact con;
     private static User usr;
     static  ID listingID ;
+    static  ID listingID2 ;
     static String preferenceName;
     
     static void setupTestData() {
@@ -29,26 +40,28 @@ private class ListingApiTest {
         build.Developer__c = acc.Id;
        	insert build;
         
+        List<Listing__c> listingList = new List<Listing__c>();
         Listing__c listing = new Listing__c();
         listing.name='somelisting';
         listing.Building__c  = build.id;
         listing.Account__c = acc.Id;
         listing.Status__c= 'Active';
-        insert listing;
+        listingList.add(listing);
         
         Listing__c listing1 = new Listing__c();
         listing1.name='somelisting';
         listing1.Building__c  = build.id;
         listing1.Account__c = acc.Id;
         listing1.Status__c= 'Active';
-        insert listing1;
+        listingList.add(listing1);
         
         Listing__c listing2 = new Listing__c();
         listing2.name='somelisting';
         listing2.Building__c  = build.id;
         listing2.Account__c = acc.Id;
         listing2.Status__c= 'Active';
-        insert listing2;
+        listingList.add(listing2);
+        insert listingList;
         
         Lottery_Preference__c lp = new Lottery_Preference__c();
         lp.Name = 'Test Lottery Preference';
@@ -70,6 +83,7 @@ private class ListingApiTest {
         unit.Maximum_Household_Size__c  =2;
         insert unit;
         listingID = listing.id;
+        listingID2 = listing2.id;
         
         AMI__c ami = new AMI__c();
         ami.name='asdf';
@@ -77,17 +91,16 @@ private class ListingApiTest {
         ami.Num_of_HouseHold__c=2;
         ami.Percent_of_Median__c=55;
         insert ami;
-        //select id, amount__c, Num_of_HouseHold__c, Percent_of_Median__c from AMI__c]
     }
+    
     static testMethod void testGetAll() {
          setupTestData();
         RestRequest reqContext = new RestRequest();
 
         reqContext.requestURI = '/Listings/';
-        //reqContext.params.put('preference','test preference');
         System.RestContext.request =reqContext; 
         
-        
+        //get all listings if no params are passed
         system.assert(ListingApi.doGet().size() == 3);
         
         
@@ -99,31 +112,29 @@ private class ListingApiTest {
         reqContext.requestURI = '/Listings/' + listingID;
         System.RestContext.request =reqContext; 
         
-        List<Listing__c> testL = new List<Listing__c>();
-        testL = ListingApi.doGet();
-        //verify the returned Id is the right one 
-        system.assert(testL[0].Id == listingID);
-
-        //ListingApi.doGet();
+        List<Listing__c> listingList = new List<Listing__c>();
+        listingList = ListingApi.doGet();
         
-        
+        //verify the returned listing is the right one 
+        system.assert(listingList[0].Id == listingID);
     }
+    
      static testMethod void testGetByIDs() {
         setupTestData();
         RestRequest reqContext = new RestRequest();
-        reqContext.params.put('ids', listingID);
+        String listingIds = listingID + ',' + listingID2;
+        reqContext.params.put('ids', listingIds);
 
         reqContext.requestURI = '/Listings/';
         System.RestContext.request =reqContext; 
         
-        List<Listing__c> testL = new List<Listing__c>();
-        testL = ListingApi.doGet();
-        //verify the returned Id is the right one 
-        system.assert(testL[0].Id == listingID);
-
-         //ListingApi.doGet();
+        List<Listing__c> listingList = new List<Listing__c>();
+        listingList = ListingApi.doGet();
         
-        
+        //verify the returned listings are the right ones
+        for (Listing__c listing : listingList) {
+        	system.assert(listing.Id == listingID || listing.Id == listingID2);
+        }
     }
     static testMethod void testGetByIDParam() {
         setupTestData();
@@ -133,14 +144,10 @@ private class ListingApiTest {
         reqContext.requestURI = '/Listings/';
         System.RestContext.request =reqContext; 
         
-        List<Listing__c> testL = new List<Listing__c>();
-        testL = ListingApi.doGet();
-        //verify the returned Id is the right one 
-        system.assert(testL[0].Id == listingID);
-
-        //ListingApi.doGet();
-        
-        
+        List<Listing__c> listingList = new List<Listing__c>();
+        listingList = ListingApi.doGet();
+        //verify the returned listing is the right one 
+        system.assert(listingList[0].Id == listingID);
     }
     
     static testMethod void testParamListing() {
@@ -152,12 +159,10 @@ private class ListingApiTest {
         reqContext.requestURI = '/Listings/';
         System.RestContext.request =reqContext;
         
-        List<Listing__c> testL = new List<Listing__c>();
-        testL = ListingApi.doGet();
-        //verify the returned Id is the right one 
-        system.assert(testL[0].Id == listingID);
-        
-       	//ListingApi.doGet();
+        List<Listing__c> listingList = new List<Listing__c>();
+        listingList = ListingApi.doGet();
+        //verify the returned listing is the right one 
+        system.assert(listingList[0].Id == listingID);
     }
 
     static testMethod void getActiveListingsByPreference() {
@@ -168,11 +173,9 @@ private class ListingApiTest {
         reqContext.params.put('preference', preferenceName);
         System.RestContext.request =reqContext; 
         
-        List<Listing__c> testL = new List<Listing__c>();
-        testL = ListingApi.doGet();
-        //verify the returned Id is the right one 
-        system.assert(testL[0].Id == listingID);
-        
-        //system.assert(ListingApi.doGet().size() == 3);
+        List<Listing__c> listingList = new List<Listing__c>();
+        listingList = ListingApi.doGet();
+        //verify the returned listing is the right one
+        system.assert(listingList[0].Id == listingID);
     }
 }

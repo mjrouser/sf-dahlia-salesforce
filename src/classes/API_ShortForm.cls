@@ -1,9 +1,23 @@
+// *****************************************************************************
+// CLASS: API_ShortForm
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: Contains logic for Shortform API service calls
+//				GET: /services/apexrest/shortForm/{shortFormId}
+//				POST: /services/apexrest/shortForm/
+//
+// *
+
 @RestResource(urlMapping='/shortForm/*')
 global class API_ShortForm {
 	
+	private static final String ELECTRONIC_SUBMISSION_TYPE = 'Electronic';
+	
 	@HttpGet
     global static API_Application.ShortForm doGet() {
-        /*  /services/apexrest/shortForm/{shortFormId}  */
+        
 
         RestRequest req = RestContext.request;
         RestResponse res = RestContext.response;
@@ -27,13 +41,13 @@ global class API_ShortForm {
 
     @HttpPost
     global static API_Application.ShortForm doPost() {
-        /*  /services/apexrest/shortForm  */
-
+        
         RestRequest req = RestContext.request;
         RestResponse res = RestContext.response;
 
         API_Application.ShortForm sf = (API_Application.ShortForm)JSON.deserialize(req.requestBody.toString(), API_Application.ShortForm.class);
-
+		sf.applicationSubmissionType = ELECTRONIC_SUBMISSION_TYPE;
+		
         if (sf.id != null) {
         	Boolean invalidId = false;
         	try {

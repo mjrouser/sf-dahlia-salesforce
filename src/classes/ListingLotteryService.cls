@@ -1,3 +1,12 @@
+// *****************************************************************************
+// CLASS: ListingLotteryService
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: class that stores all logic for APIs service calls - classes starting with "ListingLottery"
+// *
+
 global class ListingLotteryService {
     
     
@@ -10,9 +19,9 @@ global class ListingLotteryService {
     // Lottery Preference
     //*************************************
     
-    global static List<Lottery_Preference__c> getLotteryPreferenceByID(Id lpid){
+    global static List<Lottery_Preference__c> getLotteryPreferenceByID(Id lotteryPrefId){
     	List<Lottery_Preference__c> lps = new List<Lottery_Preference__c>();
-    	string lquery = ListingLotteryService.LOTTERY_PREFERENCE_QUERY + ' WHERE Id = \'' + lpid + '\'';
+    	string lquery = ListingLotteryService.LOTTERY_PREFERENCE_QUERY + ' WHERE Id = \'' + lotteryPrefId + '\'';
     	try{
     		lps = database.query(lquery);
     	} catch (Exception e){
@@ -21,9 +30,9 @@ global class ListingLotteryService {
     	return lps;
     }
     
-    global static List<Lottery_Preference__c> getLotteryPreferenceByIDs(List<string> lpids){
+    global static List<Lottery_Preference__c> getLotteryPreferenceByIDs(List<string> lotteryPrefIds){
     	List<Lottery_Preference__c> lps = new List<Lottery_Preference__c>();
-    	string lquery = ListingLotteryService.LOTTERY_PREFERENCE_QUERY + ' WHERE Id in: lpids';
+    	string lquery = ListingLotteryService.LOTTERY_PREFERENCE_QUERY + ' WHERE Id in: lotteryPrefIds';
     	try{
     		lps = database.query(lquery);
     	} catch (Exception e){
@@ -48,9 +57,9 @@ global class ListingLotteryService {
     // Lottery Member
     //*************************************
     
-    global static List<Lottery_Member__c> getLotteryMembersByListingID(Id lpid){
+    global static List<Lottery_Member__c> getLotteryMembersByListingID(Id lotteryPrefId){
     	List<Lottery_Member__c> lms = new List<Lottery_Member__c>();
-    	string lquery = ListingLotteryService.LOTTERY_MEMBER_QUERY + ' AND Listing__c = \'' + lpid + '\'';
+    	string lquery = ListingLotteryService.LOTTERY_MEMBER_QUERY + ' AND Listing__c = \'' + lotteryPrefId + '\'';
     	try{
     		lms = database.query(lquery);
     	} catch (Exception e){
@@ -59,9 +68,9 @@ global class ListingLotteryService {
     	return lms;
     }
     
-    global static List<Lottery_Member__c> getLotteryMembersByListingIDs(List<string> lpids){
+    global static List<Lottery_Member__c> getLotteryMembersByListingIDs(List<string> lotteryPrefIds){
     	List<Lottery_Member__c> lms = new List<Lottery_Member__c>();
-    	string lquery = ListingLotteryService.LOTTERY_MEMBER_QUERY + ' AND Listing__c in: lpids ';
+    	string lquery = ListingLotteryService.LOTTERY_MEMBER_QUERY + ' AND Listing__c in: lotteryPrefIds ';
     	try{
     		lms = database.query(lquery);
     	} catch (Exception e){

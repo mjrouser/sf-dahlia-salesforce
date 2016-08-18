@@ -1,4 +1,13 @@
-//services/apexrest/Listing/Units
+// *****************************************************************************
+// CLASS: ListingUnitApi
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: API used to return the list of Units for a given listing
+//				GET: /services/apexrest/Listing/Units/{listingId}
+// *
+
 @RestResource(urlMapping='/Listing/Units/*')
 global with sharing class ListingUnitApi {
 
@@ -24,15 +33,4 @@ global with sharing class ListingUnitApi {
      	throw new NoRecordMatchException();
        
     }
-   
-    
-    /*
-    global static List<Unit__c> getByListingID(String listingID)
-    { 
-       
-        return [SELECT Unit_Type__c, BMR_Rent_Monthly__c, BMR_Rental_Minimum_Monthly_Income_Needed__c, Unit_Square_Footage__c,  Unit_Number__c, Unit_Floor__c, Other_Accessibility_Information__c,Number_of_Bathrooms__c FROM Unit__c where Listing__c = :listingID  ORDER BY Unit_Type__c ];
-    } 
-    */
-  
-   
 }

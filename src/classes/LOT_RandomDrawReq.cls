@@ -20,7 +20,8 @@ public class LOT_RandomDrawReq extends LOT_RandomBaseRequest{
 	  
 	}
   */
-  
+  	
+
      public class Credentials {
 	  	 public String login;
 	  	 public String password;
@@ -28,10 +29,13 @@ public class LOT_RandomDrawReq extends LOT_RandomBaseRequest{
 	 } 
 	 public class DrawingParams {
 	 	public Credentials credentials {
+	 		
 	  		get{
+	  			External_Connections__c extConnection = External_Connections__c.getValues('random.org');
 		  		Credentials credentials=  new Credentials();
-		  		credentials.login = 'luke@vertiba.com';
-		  		credentials.password = 'asdf1234';
+		  		credentials.login = extConnection.User_Name__c; //'luke@vertiba.com';
+		  		credentials.password = extConnection.Password__c; //'asdf1234';
+		  		system.debug('credentials: ' + credentials);
 		  		return credentials;
 	  		}
 	  		

@@ -1,4 +1,13 @@
-//services/apexrest/LotteryResult
+// *****************************************************************************
+// CLASS: ListingLotteryResultApi
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: API used to return the Lottery results
+//				GET: /services/apexrest/Listing/LotteryResult/{listingID}/{lotteryNumber}
+// *
+
 @RestResource(urlMapping='/Listing/LotteryResult/*')
 global class ListingLotteryResultApi {
 	public class InvalidParamsException extends Exception {}
@@ -10,7 +19,6 @@ global class ListingLotteryResultApi {
 		RestResponse res = RestContext.response;
 		
 		List<String> tokens =  req.requestURI.split('/');
-		system.debug('tokens:::' + tokens);
 		//sample uri = /Listing/LotteryResult/<sfdcid>
 		String id;
 		if (tokens.size() > 3) {
@@ -19,9 +27,15 @@ global class ListingLotteryResultApi {
 		if (id == null) {
 			throw new InvalidParamsException('"id" parameter is required');
 		}
-		system.debug('id:::' + id);
+		String lotteryNumber;
+		if (tokens.size() > 4) {
+			lotteryNumber = tokens[4]; 
+		} 
+		if (lotteryNumber == null) {
+			throw new InvalidParamsException('"lotteryNumber" parameter is required');
+		}
 		
-		return ListingService.getListingResultsListingID(id);
+		return ListingService.getListingResultsByListingIDAndLotteryNumber(id, lotteryNumber);
 		
 	}
 }

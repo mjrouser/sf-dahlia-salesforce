@@ -1,0 +1,101 @@
+.THIS .margin-bottom-10 {
+    margin-bottom: 10px;
+}
+.THIS .font-size-085 {
+    font-size: 0.85em;
+}
+.THIS .slds-button {
+    cursor: pointer;
+}
+.THIS .slds-button.slds-button--neutral.previous {
+    margin-right: 0.25rem;
+}
+.THIS .slds-button.slds-button--neutral.next {
+    margin-left: 0.25rem;
+}
+.THIS .slds-button.previous.disabled,
+.THIS .slds-button.next.disabled {
+    display: none;
+}
+.THIS .width-auto {
+    width: auto !important;
+}
+.THIS table.dataTable thead {
+    text-align: left;
+}
+.THIS .pointer-events-none {
+    pointer-events: none;
+}
+.THIS .scrollable-x {
+    max-width: 100%;
+    overflow: hidden;
+    overflow-x: auto;
+}
+.THIS .dataTables_wrapper .dataTables_processing {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 10px;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    margin-top: 0;
+    background: white;
+    min-height: 75px;
+    z-index: 1;
+}
+.THIS .dataTables_wrapper .dataTables_processing .pleaseWaitWrapper {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.THIS .errorMessageWrapper {
+    position: relative;
+}
+.THIS .errorMessageWrapper .errorMessage {
+    background-color: #f2dede;
+    padding: 15px;
+    margin: 0;
+}
+.THIS .errorMessageWrapper .errorMessageClose {
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: .2;
+    position: absolute;
+    top: 0;
+    right: 4px;
+}
+.THIS div.dataTables_wrapper div.dt-buttons {
+    float: none;
+    display: inline-block;
+}
+.THIS div.dataTables_wrapper div.dataTables_info {
+    clear: left;
+}
+.THIS div.dataTables_wrapper div.dataTables_paginate {
+    line-height: 0px;
+}
+.THIS div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    margin: 0px;
+}
+.THIS div.dt-bottom-row {
+    text-align: center;
+}
+.THIS div.dt-bottom-row:after {
+    clear: both;
+    content: " ";
+    display: table;
+}

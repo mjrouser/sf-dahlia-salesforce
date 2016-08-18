@@ -1,3 +1,13 @@
+// *****************************************************************************
+// CLASS: ListingLotteryMemberApiTest
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: Test class for ListingLotteryMemberApi.cls and ListingLotteryService.cls
+//
+// *
+
 @isTest
 public with sharing class ListingLotteryMemberApiTest {
     private static List<Properties__c> lProperties;
@@ -5,7 +15,8 @@ public with sharing class ListingLotteryMemberApiTest {
         private static Contact con;
         private static User usr;
         private static AMI__c ami;
-        static  ID listingID ;
+        static  ID listingID;
+        static  ID listingID2;
         static List<Id> listListingId;
         static String preferenceName ;
         
@@ -32,7 +43,14 @@ public with sharing class ListingLotteryMemberApiTest {
             listing.Account__c = acc.Id;
             listing.Status__c = 'Active';
             listing.Does_Match__c = true;
-            insert listing;
+                        
+            Listing__c listing2 = new Listing__c();
+            listing2.name='somelisting';
+            listing2.Building__c  = build.id;
+            listing2.Account__c = acc.Id;
+            listing2.Status__c = 'Active';
+            listing2.Does_Match__c = true;
+            insert new List<Listing__c>{listing,listing2};
             
             Lottery_Preference__c lp = new Lottery_Preference__c();
             lp.Name = 'Test Lottery Preference';
@@ -49,7 +67,13 @@ public with sharing class ListingLotteryMemberApiTest {
             lm.Listing__c = listing.Id;
             lm.Status__c = 'Winner';
             lm.Lottery_Number__c = 1234;
-            insert lm;
+            
+            Lottery_Member__c lm2 = new Lottery_Member__c();
+            lm2.Listing__c = listing2.Id;
+            lm2.Status__c = 'Winner';
+            lm2.Lottery_Number__c = 1234;
+            
+            insert new List<Lottery_Member__c>{lm,lm2};
             
             Unit__c unit = new Unit__c();
             unit.property__c  = build.id;
@@ -62,6 +86,7 @@ public with sharing class ListingLotteryMemberApiTest {
             insert unit;
             
             listingID = listing.id;
+            listingID2 = listing2.id;
             listListingId = new List<Id>();
             listListingId.add(listingID);
             
@@ -74,6 +99,9 @@ public with sharing class ListingLotteryMemberApiTest {
             //select id, amount__c, Num_of_HouseHold__c, Percent_of_Median__c from AMI__c]
     }
     
+    /*
+     * test get lottery member by id
+     */
     static testMethod void testGetByID() {
         setupTestData();
         RestRequest reqContext = new RestRequest();
@@ -82,13 +110,15 @@ public with sharing class ListingLotteryMemberApiTest {
         System.RestContext.request =reqContext; 
         List<Lottery_Member__c> testLm = new List<Lottery_Member__c>();
         testLm = ListingLotteryMemberApi.doGet();
-        //verify the returned Id is the right one 
+        
+        //verify the returned lottery member is the right one
         system.assert(testLm[0].Listing__c == listingID);
-        
-        //ListingLotteryMemberApi.doGet();
-        
-        
-    }
+        system.assert(testLm.size() == 1);
+   }
+    
+    /*
+     * test get lottery member by id 
+     */
      static testMethod void testGetByIdParam() {
         setupTestData();
         RestRequest req = new RestRequest(); 
@@ -96,38 +126,38 @@ public with sharing class ListingLotteryMemberApiTest {
         
         req.requestURI = '/ami';  
         req.addParameter('id', listingID);
-        req.addParameter('amount', '20000');
-        req.addParameter('householdsize', '2');
         req.httpMethod = 'GET';
         RestContext.request = req;
         RestContext.response = res;
          
         List<Lottery_Member__c> testLm = new List<Lottery_Member__c>();
         testLm = ListingLotteryMemberApi.doGet();
-        //verify the returned Id is the right one 
+        
+        //verify the returned lottery member is the right one
         system.assert(testLm[0].Listing__c == listingID);
-        //ListingLotteryMemberApi.doGet();
+        system.assert(testLm.size() == 1);
         
     }
     
+    /*
+     * test get lottery member by ids
+     */
     static testMethod void testGetByIDs() {
         setupTestData();
         RestRequest req = new RestRequest(); 
         RestResponse res = new RestResponse();
         
         req.requestURI = '/ami';  
-        req.addParameter('ids', listingID);
-        req.addParameter('amount', '20000');
-        req.addParameter('householdsize', '2');
+        req.addParameter('ids', listingID + ',' + listingID2);
         req.httpMethod = 'GET';
         RestContext.request = req;
         RestContext.response = res;
         
         List<Lottery_Member__c> testLm = new List<Lottery_Member__c>();
         testLm = ListingLotteryMemberApi.doGet();
-        //verify the returned Id is the right one 
-        system.assert(testLm[0].Listing__c == listingID);
-        //ListingLotteryMemberApi.doGet();
+        
+        //verify the number of lottery members returned is correct
+        system.assert(testLm.size() == 2);
         
     }
 }

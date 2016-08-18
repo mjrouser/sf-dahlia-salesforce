@@ -1,10 +1,6 @@
 public abstract class LOT_RandomBaseRequest {
 	public HttpResponse httpResp;
-	String apiKey =    '59431712-899c-44d0-9b78-b033f1469be8';
-	  //https://api.random.org/json-rpc/2/draws
-	String u = 'luke@vertiba.com';
-	String p  ='asdf1234';
-  
+  	public External_Connections__c extConnection { get; set; }
  
   /*
   sample request
@@ -48,7 +44,9 @@ public abstract class LOT_RandomBaseRequest {
     protected LOT_RandomBaseRequest () {
      
         method = 'POST'; //default is a post but can be overriden
-       
+
+        extConnection = External_Connections__c.getValues('random.org');
+
         getConfiguration();
         
     }
@@ -56,9 +54,10 @@ public abstract class LOT_RandomBaseRequest {
     
     //public quoteProcessFieldName {currency_pref,bs_id,buyer_company_name,currency_pref,data_type,document_name
     protected void getConfiguration() {
-	
+	     
       
     } 
+
     public boolean bypass=true;
    	protected abstract String getEndpoint();
    	public String method {get;set;} 
@@ -66,6 +65,7 @@ public abstract class LOT_RandomBaseRequest {
    	protected String actionName{get;set;}
    	
     public abstract String getJSON();
+
     public virtual boolean sendRequest() {
     	
     	HttpRequest request = new System.HttpRequest();
@@ -74,44 +74,21 @@ public abstract class LOT_RandomBaseRequest {
     	System.debug('json Request- '  + jsonRequest);
         request.setBody(json);
         request.setMethod('POST');
-        String endpoint = 'https://draws.random.org/api/json-rpc/2/invoke';
+        String endpoint = extConnection.End_Point__c; //'https://draws.random.org/api/json-rpc/2/invoke';
         request.setEndpoint(endpoint); 
-        /*
-        String username = paydiantCredentials.Username__c;
-       String password = paydiantCredentials.Password__c;
-        Blob headerValue = Blob.valueOf(username + ':' + password);
-       // system.debug('encoding:' + EncodingUtil.base64Encode(headerValue));
-       // String authorizationHeader = 'Basic ' + EncodingUtil.base64Encode(headerValue);
-        request.setHeader('Authorization', authorizationHeader);*/
-     //   request.setHeader('Content-Length', String.valueOf(json.length()));
-      //  request.setHeader('Content-Type', 'application/json; charset=utf-16');
+     
         Http http = new Http();
         httpResp= http.send(request);
-         
-          /*
-        if (Test.isRunningTest() && bypass) 
-        {             
-        	httpResp = createMockResponse();         
-        }
-        else  
-        
-        httpResp= http.send(request);
-     
-        return 
-        */
+       
         boolean success = false;
       
         try {
-      	
-      		            system.debug('httpResp ' + httpResp);
-      		            system.debug('httpResp body' + httpResp.getBody());
-      	
-      		      readResponse(httpResp.getBody());
+      		readResponse(httpResp.getBody());
       		
       	} 
       	catch(Exception e){
       		success = false;
-      		           	system.debug('exception hit' + e);
+      		system.debug('exception hit' + e);
       		
       	}
       	return success;

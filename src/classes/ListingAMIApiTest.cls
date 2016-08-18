@@ -1,3 +1,12 @@
+// *****************************************************************************
+// CLASS: ListingAMIApiTest
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: Test class for ListingAMIApi.cls
+//
+// *
 @isTest
 private class ListingAMIApiTest {
 
@@ -73,7 +82,6 @@ private class ListingAMIApiTest {
         ami.Num_of_HouseHold__c=1;
         ami.Percent_of_Median__c=90;
         insert ami;
-        //select id, amount__c, Num_of_HouseHold__c, Percent_of_Median__c from AMI__c]
     }
 
     static testMethod void testGetAPIValues() {
@@ -88,7 +96,6 @@ private class ListingAMIApiTest {
         req.httpMethod = 'GET';
         RestContext.request = req;
         RestContext.response = res;
-        //ListingAMIApi.doGet();
         
         system.assert(ListingAMIApi.doGet().size() == 1);
         
@@ -105,11 +112,8 @@ private class ListingAMIApiTest {
         req.httpMethod = 'GET';
         RestContext.request = req;
         RestContext.response = res;
-        //ListingAMIApi.doGet();
+        
         //verify if there are params set then should return 1 record
         system.assert(ListingAMIApi.doGet().size() == 1);
-        
-       
- 
     }
 }

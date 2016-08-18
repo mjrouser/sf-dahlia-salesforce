@@ -28,7 +28,7 @@ private class ListingServiceTest {
         Building__c build = new Building__c();
         build.Development__c = dev.Id;
         build.Developer__c = acc.Id;
-       	insert build;
+        insert build;
         
         Listing__c listing = new Listing__c();
         listing.name='somelisting';
@@ -50,7 +50,7 @@ private class ListingServiceTest {
         lp.Name = 'Test Lottery Preference';
         lp.Status__c = 'New';
         insert lp;
-       	preferenceName = lp.Name;
+        preferenceName = lp.Name;
         
         Listing_Lottery_Preference__c llp = new Listing_Lottery_Preference__c();
         llp.Listing__c = listing.Id;
@@ -143,7 +143,7 @@ private class ListingServiceTest {
     static testMethod void testGetListingDetailByIDs() {
         setupTestData();
         
-       	LIst<ListingService.ListingDetail> testLD = new LIst<ListingService.ListingDetail>();
+        LIst<ListingService.ListingDetail> testLD = new LIst<ListingService.ListingDetail>();
         testLD = ListingService.getListingDetailByIDs(listListingId);
         //number of expected result is met
         system.assert(testLd.size() == 1);
@@ -151,7 +151,7 @@ private class ListingServiceTest {
     static testMethod void testGetAllActiveListingDetails() {
         setupTestData();
         
-       	LIst<ListingService.ListingDetail> testLD = new LIst<ListingService.ListingDetail>();
+        LIst<ListingService.ListingDetail> testLD = new LIst<ListingService.ListingDetail>();
          testLD = ListingService.getAllActiveListingDetails();
         //number of expected result is met
         system.assert(testLd.size() == 2);
@@ -159,7 +159,7 @@ private class ListingServiceTest {
     static testMethod void testGetUnitsByListingID() {
         setupTestData();
         
-       	LIst<ListingService.ListingDetail> testLD = new LIst<ListingService.ListingDetail>();
+        LIst<ListingService.ListingDetail> testLD = new LIst<ListingService.ListingDetail>();
              
         List<Unit__c> testU = new List<Unit__c>();
         testU = ListingService.getUnitsByListingID(listingID);
@@ -169,7 +169,7 @@ private class ListingServiceTest {
     static testMethod void testGetUnitSummaryByListingID() {
         setupTestData();
         
-       	LIst<ListingService.ListingDetail> testLD = new LIst<ListingService.ListingDetail>();
+        LIst<ListingService.ListingDetail> testLD = new LIst<ListingService.ListingDetail>();
         
         //ListingService.getUnitsByListingID(listingId);
         List<ListingService.UnitSummary> testUS = new List<ListingService.UnitSummary>();
@@ -180,7 +180,7 @@ private class ListingServiceTest {
     static testMethod void testGetListingDetailAll() {
         setupTestData();
         
-       	LIst<ListingService.ListingDetail> testLD = new LIst<ListingService.ListingDetail>();
+        LIst<ListingService.ListingDetail> testLD = new LIst<ListingService.ListingDetail>();
         
         //ListingService.getUnitSummaryByListingID(listingId);
         ListingService.getListingDetailAll();

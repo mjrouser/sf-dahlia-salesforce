@@ -25,7 +25,7 @@ private class ListingLotteryServiceTest {
         Building__c build = new Building__c();
         build.Development__c = dev.Id;
         build.Developer__c = acc.Id;
-       	insert build;
+        insert build;
         
         Listing__c listing = new Listing__c();
         listing.name='somelisting';
@@ -42,7 +42,7 @@ private class ListingLotteryServiceTest {
         lp.Name = 'Test Lottery Preference';
         lp.Status__c = 'New';
         insert lp;
-       	preferenceName = lp.Name;
+        preferenceName = lp.Name;
         
         Lottery_Preference__c lp1 = new Lottery_Preference__c();
         lp1.Name = 'Test1 Lottery Preference';

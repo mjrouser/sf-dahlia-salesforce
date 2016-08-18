@@ -1,10 +1,20 @@
+// *****************************************************************************
+// CLASS: API_ShortForm_PostDelete
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: API used to delete the shortform based on shortform Id
+//				POST: /services/apexrest/shortForm/delete
+//
+// *
+
 @RestResource(urlMapping='/shortForm/delete')
 global class API_ShortForm_PostDelete {
     
     @HttpPost
     global static void doPost(Id shortformId) {
-        /*  /services/apexrest/shortForm/delete  */
-
+        
         RestRequest req = RestContext.request;
         RestResponse res = RestContext.response;
         

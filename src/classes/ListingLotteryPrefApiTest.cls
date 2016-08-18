@@ -1,3 +1,13 @@
+// *****************************************************************************
+// CLASS: ListingLotteryPrefApiTest
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: Test class for ListingLotteryPrefApi.cls and ListingLotteryService.cls
+//
+// *
+
 @isTest
 public with sharing class ListingLotteryPrefApiTest {
      
@@ -6,7 +16,8 @@ public with sharing class ListingLotteryPrefApiTest {
     private static Contact con;
     private static User usr;
     private static AMI__c ami;
-    static  ID lotteryId ;
+    static ID lotteryPrefId;
+    static ID lotteryPrefId2;
     static List<Id> listlotteryId;
     static String preferenceName ;
     // --test--//
@@ -36,26 +47,24 @@ public with sharing class ListingLotteryPrefApiTest {
         listing.Does_Match__c = true;
         insert listing;
         
-        Lottery_Preference__c lp = new Lottery_Preference__c();
-        lp.Name = 'Test Lottery Preference';
-        lp.Status__c = 'New';
-        insert lp;
-       	preferenceName = lp.Name;
+        Lottery_Preference__c lotteryPref = new Lottery_Preference__c();
+        lotteryPref.Name = 'Test Lottery Preference';
+        lotteryPref.Status__c = 'New';
+        preferenceName = lotteryPref.Name;
         
-        Lottery_Preference__c lp1 = new Lottery_Preference__c();
-        lp1.Name = 'Test1 Lottery Preference';
-        lp1.Status__c = 'New';
-        insert lp1;
+        Lottery_Preference__c lotteryPref1 = new Lottery_Preference__c();
+        lotteryPref1.Name = 'Test1 Lottery Preference';
+        lotteryPref1.Status__c = 'New';
         
-        Lottery_Preference__c lp2 = new Lottery_Preference__c();
-        lp2.Name = 'Test2 Lottery Preference';
-        lp2.Status__c = 'New';
-        insert lp2;
+        Lottery_Preference__c lotteryPref2 = new Lottery_Preference__c();
+        lotteryPref2.Name = 'Test2 Lottery Preference';
+        lotteryPref2.Status__c = 'New';
+        insert new List<Lottery_Preference__c>{lotteryPref, lotteryPref1, lotteryPref2};
         
-        Listing_Lottery_Preference__c llp = new Listing_Lottery_Preference__c();
-        llp.Listing__c = listing.Id;
-        llp.Lottery_Preference__c = lp.Id;
-        insert llp;
+        Listing_Lottery_Preference__c listingLotteryPref = new Listing_Lottery_Preference__c();
+        listingLotteryPref.Listing__c = listing.Id;
+        listingLotteryPref.Lottery_Preference__c = lotteryPref.Id;
+        insert listingLotteryPref;
         
         Unit__c unit = new Unit__c();
         unit.property__c  = build.id;
@@ -67,61 +76,72 @@ public with sharing class ListingLotteryPrefApiTest {
         unit.Number_of_Bedrooms__c = 3;
         insert unit;
         
-        lotteryId = lp.id;
+        lotteryPrefId = lotteryPref.id;
+        lotteryPrefId2 = lotteryPref2.id;
         listlotteryId = new List<Id>();
-        listlotteryId.add(lotteryId);
+        listlotteryId.add(lotteryPrefId);
         
-        ami = new AMI__c();
-        ami.name='asdf';
-        ami.amount__c = 40000;
-        ami.Num_of_HouseHold__c=2;
-        ami.Percent_of_Median__c=100;
-        insert ami;
-        //select id, amount__c, Num_of_HouseHold__c, Percent_of_Median__c from AMI__c]
     }
     
+    /*
+     * test get all lottery preferences and get lottery preference by id
+     */
     static testMethod void testGetAll() {
-         setupTestData();
+        setupTestData();
         RestRequest reqContext = new RestRequest();
 
-        reqContext.requestURI = '/LotteryPreference/' + lotteryId;
+        reqContext.requestURI = '/LotteryPreference/' + lotteryPrefId;
         System.RestContext.request =reqContext; 
-        List<Lottery_Preference__c> testLP = new List<Lottery_Preference__c>();
-        testLP = ListingLotteryPrefApi.doGet();
-        //verify the returned Id is the right one 
-        system.assert(testLP[0].Id == lotteryId);
+        List<Lottery_Preference__c> resultLotteryPrefs = new List<Lottery_Preference__c>();
+        resultLotteryPrefs = ListingLotteryPrefApi.doGet();
+        
+        //verify the returned lottery preference matches the lottery preference id passed as param
+        system.assert(resultLotteryPrefs[0].Id == lotteryPrefId);
+        system.assert(resultLotteryPrefs.size() == 1);
         
         reqContext.requestURI = '/LotteryPreference';
         System.RestContext.request =reqContext;
-        //return all Lottery Preference (3 records)
+        
+        //verify there are returned all Lottery Preference (3 records)
         system.assert(ListingLotteryPrefApi.doGet().size() == 3);
         
     }
+    
+    /*
+     * test get lottery preference by id
+     */
     static testMethod void testGetByID() {
         setupTestData();
         RestRequest reqContext = new RestRequest();
 
         reqContext.requestURI = '/LotteryPreference';
-        reqContext.addParameter('id', lotteryId);
+        reqContext.addParameter('id', lotteryPrefId);
         System.RestContext.request =reqContext; 
-        List<Lottery_Preference__c> testLP = new List<Lottery_Preference__c>();
-        testLP = ListingLotteryPrefApi.doGet();
-        //verify the returned Id is the right one 
-        system.assert(testLP[0].Id == lotteryId);
+        List<Lottery_Preference__c> resultLotteryPrefs = new List<Lottery_Preference__c>();
+        resultLotteryPrefs = ListingLotteryPrefApi.doGet();
+        
+        //verify the returned lottery preference matches lottery preference id passed as param
+        system.assert(resultLotteryPrefs[0].Id == lotteryPrefId);
+        system.assert(resultLotteryPrefs.size() == 1);
         
         
     }
-     static testMethod void testGetByIDs() {
+    
+    /*
+     * test get lottery preference by ids
+     */
+    static testMethod void testGetByIDs() {
         setupTestData();
         RestRequest reqContext = new RestRequest();
 
         reqContext.requestURI = '/LotteryPreference';
-        reqContext.addParameter('ids', lotteryId);
+        reqContext.addParameter('ids', lotteryPrefId + ',' + lotteryPrefId2);
         System.RestContext.request =reqContext; 
-        List<Lottery_Preference__c> testLP = new List<Lottery_Preference__c>();
-        testLP = ListingLotteryPrefApi.doGet();
-        //verify the returned Id is the right one 
-        system.assert(testLP[0].Id == lotteryId);
+        List<Lottery_Preference__c> resultLotteryPrefs = new List<Lottery_Preference__c>();
+        resultLotteryPrefs = ListingLotteryPrefApi.doGet();
+        
+         //verify the returned lottery preferences 
+        system.assert(resultLotteryPrefs.size() == 2);
         
         
     }

@@ -1,8 +1,24 @@
-//services/apexrest/EligibilityCheck
+// *****************************************************************************
+// CLASS: ListingEligibilityCheckAPI
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: API used to return the eligibility info for a given listing that matches criteria
+//				GET: /services/apexrest/Listing/EligibilityCheck/<sfdcid>
+//				params: -householdsize
+//						-incomelevel
+//						-childrenUnder6
+// *
+
 @RestResource(urlMapping='/Listing/EligibilityCheck/*')
 global class ListingEligibilityCheckAPI {
 	public class InvalidParamsException extends Exception {}
 	public class NoRecordMatchException extends Exception {}
+	
+	private static final String HOUSEHOLD_SIZE = 'householdsize';
+	private static final String INCOME_LEVEL = 'incomelevel';
+	private static final String CHILDREN_UNDER_6 = 'childrenUnder6';
 	
 	@HttpGet
 	global static ListingService.Eligibility doGet () {
@@ -10,7 +26,6 @@ global class ListingEligibilityCheckAPI {
 		RestResponse res = RestContext.response;
 		
 		List<String> tokens =  req.requestURI.split('/');
-		system.debug('tokens:::' + tokens);
 		//sample uri = /Listing/EligibilityCheck/<sfdcid>
 		String id;
 		if (tokens.size() > 3) {
@@ -24,12 +39,12 @@ global class ListingEligibilityCheckAPI {
 			throw new InvalidParamsException('"id" parameter is required');
 		}
 			
-		if (req.params.containsKey('householdsize')) {
-			String childrenUnder6 = req.params.get('childrenUnder6');
-			String houseHoldSize = req.params.get('householdsize');
-			String incomelevel = req.params.get('incomelevel'); 
+		if (req.params.containsKey(HOUSEHOLD_SIZE)) {
+			String childrenUnder6 = req.params.get(CHILDREN_UNDER_6);
+			String houseHoldSize = req.params.get(HOUSEHOLD_SIZE);
+			String incomelevel = req.params.get(INCOME_LEVEL); 
 			if (houseHoldSize == null) {
-				throw new InvalidParamsException('"householdsize" parameter is required');
+				throw new InvalidParamsException('"' + HOUSEHOLD_SIZE + '" parameter is required');
 			}
 			ListingService.Criteria crit = new ListingService.Criteria();
 			try { 
@@ -39,8 +54,8 @@ global class ListingEligibilityCheckAPI {
 			}
 			catch (Exception e) {
 				
-				throw new InvalidParamsException('Invalid Parameter input: Integer required for "householdsize", was passed value : ' + houseHoldSize + '  and Decimal required for "incomelevel", was passed value:' +  incomelevel +' Integer required for "childrenUnder6", was passed value : '  + childrenUnder6); // put friendly message here
-				
+			    throw new InvalidParamsException('Invalid Parameter input: Integer required for "' + HOUSEHOLD_SIZE + '", was passed value : ' + houseHoldSize + '  and Decimal required for "'+ INCOME_LEVEL + '", was passed value:' +  incomelevel +' Integer required for "' + CHILDREN_UNDER_6 + '", was passed value : '  + childrenUnder6);
+            	
 			}
 			return ListingService.checkEligibility(crit,id);
 		

@@ -1,0 +1,793 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Accessible_Bathroom__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Is the Bathroom Accessible?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Is the Bathroom Accessible?</inlineHelpText>
+        <label>Accessible Bathroom?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Accessible_elevators__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Accessible elevators</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BMR_Minimum_Annual_Income_Needed__c</fullName>
+        <description>Minimum Annual Income Needed for BMR Rental</description>
+        <externalId>false</externalId>
+        <formula>BMR_Rental_Minimum_Monthly_Income_Needed__c * 12</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Minimum Annual Income Needed for BMR Rental</inlineHelpText>
+        <label>BMR Minimum Annual Income Needed</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>BMR_Rent_Monthly__c</fullName>
+        <description>Monthly Rent for BMR Unit</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Monthly Rent for BMR Unit</inlineHelpText>
+        <label>BMR Rent Monthly</label>
+        <precision>7</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>BMR_Rental_Minimum_Monthly_Income_Needed__c</fullName>
+        <externalId>false</externalId>
+        <formula>Rent_Multiple__c  *  BMR_Rent_Monthly__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>BMR Rental Minimum Monthly Income Needed</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>BMR_Rental_Parking_Price_per__c</fullName>
+        <description>Parking Price for BMR Rental</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Parking Price for BMR Rental</inlineHelpText>
+        <label>BMR Rental Parking Price</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>BMR_Rental_Required_Deposit__c</fullName>
+        <description>Required Deposit for a BMR Rental</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Required Deposit for a BMR Rental</inlineHelpText>
+        <label>BMR Rental Required Deposit</label>
+        <precision>7</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Does_the_Bathroom_have_Grab_Bars__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Does the Bathroom have Grab Bars?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Full_Kitchen__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Full Kitchen</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Grab_bars__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Grab bars</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Listing__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Listing</label>
+        <referenceTo>Listing__c</referenceTo>
+        <relationshipLabel>Units</relationshipLabel>
+        <relationshipName>Units</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Marketing_Plan__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Marketing Plan</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>$Source.Listing__c</field>
+                <operation>equals</operation>
+                <valueField>Marketing_Plan__c.Listing__c</valueField>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Marketing_Plan__c</referenceTo>
+        <relationshipLabel>Units</relationshipLabel>
+        <relationshipName>Units</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Maximum_Household_Size__c</fullName>
+        <description>Maximum members of a household that are allowed in a unit.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Maximum members of a household that are allowed in a unit.</inlineHelpText>
+        <label>Maximum Household Size</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Min_Occupancy__c</fullName>
+        <description>Field will ultimately be hidden from page layout and is automatically determined based on number of Bedrooms. Field is used to hold the minimum occupancy based on bedrooms.</description>
+        <externalId>false</externalId>
+        <formula>IF (Number_of_Bedrooms__c &gt;1, Number_of_Bedrooms__c, 1)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Field will ultimately be hidden from page layout and is automatically determined based on number of Bedrooms. Field is used to hold the minimum occupancy based on bedrooms.</inlineHelpText>
+        <label>Min Occupancy</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Bathrooms__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Bathrooms</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Bedrooms__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Bedrooms</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Parking_Spaces__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Parking Spaces</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Accessibility_Information__c</fullName>
+        <description>Other Accessibility Information</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Other Accessibility Information</inlineHelpText>
+        <label>Other Accessibility Information</label>
+        <length>750</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>8</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Other_Unit_Feature_1__c</fullName>
+        <description>Other Unit Feature</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Other Unit Feature</inlineHelpText>
+        <label>Other Unit Feature 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Unit_Feature_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Unit Feature 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Unit_Feature_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Unit Feature 3</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Unit_Feature_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Unit Feature 4</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Unit_Feature_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Unit Feature 5</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Unit_Feature_6__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Unit Feature 6</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Unit_Feature_7__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Unit Feature 7</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parking_Space_Numbers__c</fullName>
+        <externalId>false</externalId>
+        <label>Parking Space Numbers</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pet_Friendly__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Pet Friendly?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_Request__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Pricing Request</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>$Source.Listing__c</field>
+                <operation>equals</operation>
+                <valueField>Pricing_Request__c.Listing__c</valueField>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Pricing_Request__c</referenceTo>
+        <relationshipLabel>Units</relationshipLabel>
+        <relationshipName>Units</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Property_Type__c</fullName>
+        <description>Property Type (i.e. Condo, townhouse, single family, etc)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Property Type (i.e. Condo, townhouse, single family, etc)</inlineHelpText>
+        <label>Property Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Condo</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Townhouse</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Co-op</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Single Family</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Apartment</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Property__c</fullName>
+        <externalId>false</externalId>
+        <label>Property</label>
+        <referenceTo>Building__c</referenceTo>
+        <relationshipLabel>Units</relationshipLabel>
+        <relationshipName>Units</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Rent_Multiple__c</fullName>
+        <externalId>false</externalId>
+        <label>Rent Multiple</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Smoking__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Smoking</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Sq_Ft__c</fullName>
+        <externalId>false</externalId>
+        <label>Sq Ft</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>To be Built out, but is the unit currently occupied/available (includes in development). Will largely be a hidden field.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>To be Built out, but is the unit currently occupied/available (includes in development). Will largely be a hidden field.</inlineHelpText>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Available</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Occupied</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Unit_Floor__c</fullName>
+        <externalId>false</externalId>
+        <label>Unit Floor</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Unit_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Unit Number</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Unit_Square_Footage__c</fullName>
+        <description>Square Footage of the Unit.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Square Footage of the Unit.</inlineHelpText>
+        <label>Unit Square Footage</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Unit_Type__c</fullName>
+        <description>Description of units.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Description of units.</inlineHelpText>
+        <label>Unit Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>SRO</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Studio</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1 BR</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2 BR</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3 BR</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Washer_dryer_hook_ups__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Washer/dryer hook-ups?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Wheelchair_accessible__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Wheelchair accessible</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>of_AMI_for_Pricing_Unit__c</fullName>
+        <description>% of Area Median Income for Pricing Unit.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>% of Area Median Income for Pricing Unit.</inlineHelpText>
+        <label>% of AMI for Pricing Unit</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>old_Rental_Minimum_Monthly_Income_Needed__c</fullName>
+        <description>Minimum Monthly Income Needed for BMR Unit.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Minimum Monthly Income Needed for BMR Unit.</inlineHelpText>
+        <label>old Rental Minimum Monthly Income Needed</label>
+        <precision>7</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>sfxId__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <externalId>true</externalId>
+        <label>sfxId</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>Unit</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>Property__c</columns>
+        <columns>Unit_Square_Footage__c</columns>
+        <columns>NAME</columns>
+        <columns>Number_of_Bedrooms__c</columns>
+        <columns>Min_Occupancy__c</columns>
+        <columns>Maximum_Household_Size__c</columns>
+        <columns>Unit_Type__c</columns>
+        <columns>Sq_Ft__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Unit_Details</fullName>
+        <columns>NAME</columns>
+        <columns>Listing__c</columns>
+        <columns>Number_of_Bathrooms__c</columns>
+        <columns>Number_of_Bedrooms__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>Unit Details</label>
+    </listViews>
+    <nameField>
+        <label>Unit Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Units</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>BMR_Ownership</fullName>
+        <active>true</active>
+        <description>BMR Ownership</description>
+        <label>BMR Ownership</label>
+        <picklistValues>
+            <picklist>Property_Type__c</picklist>
+            <values>
+                <fullName>Apartment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Co-op</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Condo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Single Family</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Townhouse</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Available</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Occupied</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Unit_Type__c</picklist>
+            <values>
+                <fullName>1 BR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 BR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 BR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SRO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Studio</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>BMR_Rental</fullName>
+        <active>true</active>
+        <description>BMR Rental</description>
+        <label>BMR Rental</label>
+        <picklistValues>
+            <picklist>Property_Type__c</picklist>
+            <values>
+                <fullName>Apartment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Co-op</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Condo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Single Family</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Townhouse</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Available</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Occupied</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Unit_Type__c</picklist>
+            <values>
+                <fullName>1 BR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 BR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 BR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SRO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Studio</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

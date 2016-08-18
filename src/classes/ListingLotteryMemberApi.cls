@@ -1,4 +1,13 @@
-//services/apexrest/LotteryMember
+// *****************************************************************************
+// CLASS: ListingLotteryMemberApi
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: API used to return the list of Lottery Members
+//				GET: /services/apexrest/LotteryMember
+// *
+
 @RestResource(urlMapping='/LotteryMember/*')
 global class ListingLotteryMemberApi {
     public class InvalidParamsException extends Exception {}

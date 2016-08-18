@@ -1,4 +1,13 @@
-//services/apexrest/Listing/UnitStats
+// *****************************************************************************
+// CLASS: ListingUnitSummaryApi
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: API used to return the list of Units summary for a given listing
+//				GET: /services/apexrest/Listing/UnitSummary/{listingId}
+// *
+
 @RestResource(urlMapping='/Listing/UnitSummary/*')
 global with sharing class ListingUnitSummaryApi {
  
@@ -21,9 +30,7 @@ global with sharing class ListingUnitSummaryApi {
             return ListingService.getUnitSummaryByListingID(req.params.get('id'));
         }
         
-         //return getAll(req.params.get('id'));
-       
-     throw new NoRecordMatchException(); 
+        throw new NoRecordMatchException(); 
        
     } 
    

@@ -1,3 +1,12 @@
+// *****************************************************************************
+// CLASS: API_ShortForm_PostContactDeleteTest
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: Test class for API_ShortForm_PostContactDelete.cls and API_ApplicationService.cls
+//
+// *
 @isTest
 private without sharing class API_ShortForm_PostContactDeleteTest {
 	
@@ -22,17 +31,11 @@ private without sharing class API_ShortForm_PostContactDeleteTest {
 			c = API_ApplicationService.getContactById(contactId);
         Test.stopTest();
         
+        //check if contact was deleted
         System.assertEquals(c, null);
     }
     
     static testMethod void failAPI_ShortForm_PostContactDeleteTest() {
-        Account a = new Account(Name = 'Household');
-        insert a;
-
-        Contact c = new Contact(LastName = 'LastName', AccountId = a.Id);
-        insert c;
-        Id contactId = c.Id;
-
         Test.startTest();
         	RestRequest req = new RestRequest();
             RestResponse res = new RestResponse();
@@ -43,8 +46,7 @@ private without sharing class API_ShortForm_PostContactDeleteTest {
 
             API_ShortForm_PostContactDelete.doPost(null);
 
-			c = API_ApplicationService.getContactById(contactId);
-        Test.stopTest();
+		Test.stopTest();
         
         System.assertEquals(res.StatusCode, 400);
     }
@@ -52,10 +54,6 @@ private without sharing class API_ShortForm_PostContactDeleteTest {
     static testMethod void failInvalidId() {
         Account a = new Account(Name = 'Household');
         insert a;
-
-        Contact c = new Contact(LastName = 'LastName', AccountId = a.Id);
-        insert c;
-        Id contactId = c.Id;
 
         Test.startTest();
         	RestRequest req = new RestRequest();

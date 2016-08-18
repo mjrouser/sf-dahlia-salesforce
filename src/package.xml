@@ -42,5 +42,103 @@
         <members>ListingUnitSummaryApiTest</members>
         <name>ApexClass</name>
     </types>
-    <version>35.0</version>
+    <types>
+        <members>HOP_Header</members>
+        <name>ApexComponent</name>
+    </types>
+    <types>
+        <members>HOP_ApplicationForm</members>
+        <members>HOP_ApplicationReview</members>
+        <members>HOP_ApplicationView</members>
+        <members>HOP_Applications</members>
+        <members>HOP_DuplicateApplications</members>
+        <members>HOP_FlaggedApplications</members>
+        <members>HOP_Listing</members>
+        <members>HOP_Listings</members>
+        <members>HOP_Template</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>DuplicateRecordItemTrigger</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>SalesforceDataTables</members>
+        <members>SalesforceDataTablesApp</members>
+        <members>SalesforceDataTablesEvent</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>AMI__c</members>
+        <members>Application_Member__c</members>
+        <members>Application__c</members>
+        <members>Application__c</members>
+        <members>Development__c</members>
+        <members>Flagged_Application__c</members>
+        <members>Flagged_Record_Set__c</members>
+        <members>Leasing_Settings__c</members>
+        <members>Listing_Image__c</members>
+        <members>Listing_Lottery_Preference__c</members>
+        <members>Listing__c</members>
+        <members>Unit__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Flow</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Group</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>HomePageComponent</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>MatchingRule</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>PermissionSet</name>
+    </types>
+    <types>
+        <members>Admin</members>
+        <members>MOHCD - Household</members>
+        <members>MOHCD - Leasing Agent</members>
+        <members>MOHCD - Leasing Agent Clerk</members>
+        <members>MOHCD - Lender</members>
+        <members>MOHCD - Property Agent</members>
+        <members>MOHCD - Staff</members>
+        <name>Profile</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>RecordType</name>
+    </types>
+    <types>
+        <members>Cell_handsontable_full_min_css</members>
+        <members>Cell_handsontable_full_min_js</members>
+        <members>Cell_moment_js</members>
+        <members>Cell_pikaday_css</members>
+        <members>Cell_pikaday_js</members>
+        <members>Cell_pure_min_css</members>
+        <members>DataTablesEditor</members>
+        <members>HOP</members>
+        <name>StaticResource</name>
+    </types>
+    <version>37.0</version>
 </Package>

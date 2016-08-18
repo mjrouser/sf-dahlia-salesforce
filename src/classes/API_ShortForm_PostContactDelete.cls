@@ -1,10 +1,20 @@
+// *****************************************************************************
+// CLASS: API_ShortForm_PostContactDelete
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: API used to delete the primary application contact
+//				POST: /services/apexrest/shortForm/contact/delete
+//
+// *
+
 @RestResource(urlMapping='/shortForm/contact/delete')
 global class API_ShortForm_PostContactDelete {
     
     @HttpPost
     global static void doPost(Id contactId) {
-        /*  /services/apexrest/shortForm/contact/delete  */
-
+        
         RestRequest req = RestContext.request;
         RestResponse res = RestContext.response;
         

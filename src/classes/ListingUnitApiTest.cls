@@ -1,15 +1,20 @@
+// *****************************************************************************
+// CLASS: ListingUnitApiTest
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: Test class for ListingUnitApi.cls and ListingService.cls
+//
+// *
 @isTest
 private class ListingUnitApiTest {
 
     private static List<Properties__c> lProperties;
     private static Account acc;
     private static Contact con;
-    private static User usr;
-    private static AMI__c ami;
     static  ID listingId ;
-    static List<Id> listListingId;
-    static String preferenceName ;
-    
+        
     static void setupTestData() {
         Id rtId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Household').getRecordTypeId();
         acc = new Account();
@@ -35,17 +40,6 @@ private class ListingUnitApiTest {
         listing.Does_Match__c = true;
         insert listing;
         
-        Lottery_Preference__c lp = new Lottery_Preference__c();
-        lp.Name = 'Test Lottery Preference';
-        lp.Status__c = 'New';
-        insert lp;
-       	preferenceName = lp.Name;
-        
-        Listing_Lottery_Preference__c llp = new Listing_Lottery_Preference__c();
-        llp.Listing__c = listing.Id;
-        llp.Lottery_Preference__c = lp.Id;
-        insert llp;
-        
         Unit__c unit = new Unit__c();
         unit.property__c  = build.id;
         unit.BMR_Rent_Monthly__c = 400;
@@ -57,16 +51,6 @@ private class ListingUnitApiTest {
         insert unit;
         
         listingID = listing.id;
-        listListingId = new List<Id>();
-        listListingId.add(listingID);
-        
-        ami = new AMI__c();
-        ami.name='asdf';
-        ami.amount__c = 40000;
-        ami.Num_of_HouseHold__c=2;
-        ami.Percent_of_Median__c=100;
-        insert ami;
-        //select id, amount__c, Num_of_HouseHold__c, Percent_of_Median__c from AMI__c]
     }
 
     static testMethod void testGetUnitsByListingID() {
@@ -79,11 +63,12 @@ private class ListingUnitApiTest {
         RestContext.request = req;
         RestContext.response = res;
         
-        List<Unit__c> testU = new List<Unit__c>();
-        testU = ListingUnitApi.doGet();
-        Unit__c un = [SELECT ID FROM Unit__c WHERE Listing__c = :listingID];
-        //verify the returned Id is the right one
-        system.assert(testU[0].ID == un.Id);
+        List<Unit__c> unitList = new List<Unit__c>();
+        unitList = ListingUnitApi.doGet();
+        Unit__c unit = [SELECT ID FROM Unit__c WHERE Listing__c = :listingID];
+        
+        //verify the returned unit is the right one
+        system.assert(unitList[0].ID == unit.Id);
         
     }
     
@@ -98,11 +83,12 @@ private class ListingUnitApiTest {
         RestContext.request = req;
         RestContext.response = res;
         
-        List<Unit__c> testU = new List<Unit__c>();
-        testU = ListingUnitApi.doGet();
-        Unit__c un = [SELECT ID FROM Unit__c WHERE Listing__c = :listingID];
-        //verify the returned Id is the right one 
-        system.assert(testU[0].ID == un.Id);
+        List<Unit__c> unitList = new List<Unit__c>();
+        unitList = ListingUnitApi.doGet();
+        Unit__c unit = [SELECT ID FROM Unit__c WHERE Listing__c = :listingID];
+        
+        //verify the returned unit is the right one 
+        system.assert(unitList[0].ID == unit.Id);
         
     }
     

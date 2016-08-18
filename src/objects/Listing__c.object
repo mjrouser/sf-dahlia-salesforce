@@ -1,0 +1,1426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>AMI_Percentage__c</fullName>
+        <externalId>false</externalId>
+        <label>AMI Percentage</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Accessibility__c</fullName>
+        <externalId>false</externalId>
+        <label>Accessibility</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>8</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Listings</relationshipLabel>
+        <relationshipName>Listings</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Amenities__c</fullName>
+        <externalId>false</externalId>
+        <label>Amenities</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>12</visibleLines>
+    </fields>
+    <fields>
+        <fullName>ApplicablePreferences__c</fullName>
+        <description>We are strictly enforcing this.  Based off this value the API chooses which buckets to return in the preference buckets</description>
+        <externalId>false</externalId>
+        <label>ApplicablePreferences</label>
+        <picklist>
+            <picklistValues>
+                <fullName>LiveWork</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>COP</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DTHP</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Neighborhood</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Application_City__c</fullName>
+        <externalId>false</externalId>
+        <label>Application City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Application_Due_Date__c</fullName>
+        <description>Due Date for Applications for the lottery for this listing.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Due Date for Applications for the lottery for this listing.</inlineHelpText>
+        <label>Application Due Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Application_Organization__c</fullName>
+        <externalId>false</externalId>
+        <label>Application Organization</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Application_Phone__c</fullName>
+        <externalId>false</externalId>
+        <label>Application Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Application_Postal_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Application Postal Code</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Application_State__c</fullName>
+        <defaultValue>&quot;CA&quot;</defaultValue>
+        <externalId>false</externalId>
+        <label>Application State</label>
+        <length>2</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Application_Street_Address__c</fullName>
+        <externalId>false</externalId>
+        <label>Application Street Address</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Building_City__c</fullName>
+        <externalId>false</externalId>
+        <formula>Building__r.Building_City__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Building City</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Building_Listing_Category__c</fullName>
+        <description>What is the category - New Rental/Rerental?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What is the category - New Rental/Rerental?</inlineHelpText>
+        <label>Building Listing Category</label>
+        <picklist>
+            <picklistValues>
+                <fullName>New Rental</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rerental</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Building_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Building__r.Property_Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Building Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Building_Selection_Criteria__c</fullName>
+        <externalId>false</externalId>
+        <label>Building Selection Criteria</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Building_State__c</fullName>
+        <externalId>false</externalId>
+        <formula>Building__r.Building_State__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Building State</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Building_Street_Address__c</fullName>
+        <externalId>false</externalId>
+        <formula>Building__r.Building_Street_Address__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Building Street Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Building_URL__c</fullName>
+        <externalId>false</externalId>
+        <formula>Building__r.Photo_URL__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Photo URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Building_Zip_Code__c</fullName>
+        <externalId>false</externalId>
+        <formula>Building__r.Building_Zip_Code__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Building Zip Code</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Building__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Building</label>
+        <referenceTo>Building__c</referenceTo>
+        <relationshipLabel>Listings</relationshipLabel>
+        <relationshipName>Listings</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>COPUnitsAvailable__c</fullName>
+        <description>Total units available for COP preference</description>
+        <externalId>false</externalId>
+        <label>COP Units Available</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COP_App_Total__c</fullName>
+        <description>Total applications with COP preference</description>
+        <externalId>false</externalId>
+        <label>COP App Total</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Child_Age_Threshold__c</fullName>
+        <description>Field will ultimately be hidden and come from either property or unit. Refers to the threshold below which children don&apos;t count towards occupancy.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Field will ultimately be hidden and come from either property or unit. Refers to the threshold below which children don&apos;t count towards occupancy.</inlineHelpText>
+        <label>Child Age Threshold</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Confirmed_Duplicate_Applications__c</fullName>
+        <externalId>false</externalId>
+        <label>Confirmed Duplicate Applications</label>
+        <summaryFilterItems>
+            <field>Application__c.of_Reviewed_Flagged_Applications__c</field>
+            <operation>greaterThan</operation>
+            <value>0</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Application__c.Listing__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Contact_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact_Phone__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Contact_Title__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Title</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Costs_Not_Included__c</fullName>
+        <description>Detailed Information about other costs not included with rent. Converted to text field from currency.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Detailed Information about other costs not included with rent.</inlineHelpText>
+        <label>Costs Not Included</label>
+        <length>1550</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Credit_Rating__c</fullName>
+        <externalId>false</externalId>
+        <label>Credit History</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Criminal_History__c</fullName>
+        <externalId>false</externalId>
+        <label>Criminal Background</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>DTHPUnitsAvailable__c</fullName>
+        <description>Total units available for DTHP preference</description>
+        <externalId>false</externalId>
+        <label>DTHP Units Available</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DTHP_App_Total__c</fullName>
+        <description>Total applications with DTHP preference</description>
+        <externalId>false</externalId>
+        <label>DTHP App Total</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DateTime__c</fullName>
+        <externalId>false</externalId>
+        <label>DateTime</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Deposit_Max__c</fullName>
+        <externalId>false</externalId>
+        <label>Deposit Max</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Deposit_Min__c</fullName>
+        <externalId>false</externalId>
+        <label>Deposit Min</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <description>Description of the Listing</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Description of the Listing</inlineHelpText>
+        <label>Description</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>8</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Developer__c</fullName>
+        <description>Name of the Developer for the Building.</description>
+        <externalId>false</externalId>
+        <formula>Building__r.Developer__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Name of the Developer for the Building.</inlineHelpText>
+        <label>Developer</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Does_Match__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>UNUSED hidden field which we use for service level translation</description>
+        <externalId>false</externalId>
+        <label>Does Match</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Download_URL__c</fullName>
+        <externalId>false</externalId>
+        <label>Download URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Draw_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Draw ID</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Eviction_History__c</fullName>
+        <externalId>false</externalId>
+        <label>Rental History</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Expected_Lease_Date_for_BMR_Units__c</fullName>
+        <description>Date on which you expect BMR units to be leased</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date on which you expect BMR units to be leased</inlineHelpText>
+        <label>Expected Lease Date for BMR Units</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Fee__c</fullName>
+        <externalId>false</externalId>
+        <label>Application Fee</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Flagged_Applications__c</fullName>
+        <description>The number of applications that have been flagged by the application flagging process (dupe rules).</description>
+        <externalId>false</externalId>
+        <label>Flagged Applications</label>
+        <summaryFilterItems>
+            <field>Application__c.Number_of_Flags__c</field>
+            <operation>greaterThan</operation>
+            <value>0</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Application__c.Listing__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>General_App_Total__c</fullName>
+        <externalId>false</externalId>
+        <label>General App Total</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>In_Lottery__c</fullName>
+        <description>The number of applications that will be included in the lottery.</description>
+        <externalId>false</externalId>
+        <formula>Submitted_Applications__c -  Removed_from_Lottery__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Applications In Lottery</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Leasing_Agent_Email__c</fullName>
+        <externalId>false</externalId>
+        <formula>Building__r.Leasing_Agent__r.Email</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Leasing Agent Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Leasing_Agent_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Building__r.Leasing_Agent__r.FirstName  &amp; &quot; &quot; &amp; Building__r.Leasing_Agent__r.FirstName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Leasing Agent Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Leasing_Agent_Phone__c</fullName>
+        <externalId>false</externalId>
+        <formula>Building__r.Leasing_Agent__r.Phone</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Leasing Agent Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Leasing_Agent_Title__c</fullName>
+        <externalId>false</externalId>
+        <formula>Building__r.Leasing_Agent__r.Title</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Leasing Agent Title</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Legal_Disclaimers__c</fullName>
+        <externalId>false</externalId>
+        <label>Building Selection Criteria</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>12</visibleLines>
+    </fields>
+    <fields>
+        <fullName>LiveWorkUnitsAvailable__c</fullName>
+        <description>Total units available for Live/Work preference</description>
+        <externalId>false</externalId>
+        <label>Live/ Work Units Available</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Live_Work_App_Total__c</fullName>
+        <description>Total applications with Live/Work preference</description>
+        <externalId>false</externalId>
+        <label>Live Work App Total</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LotteryResultsURL__c</fullName>
+        <externalId>false</externalId>
+        <label>Lottery Results PDF URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Lottery_City__c</fullName>
+        <defaultValue>&quot;San Francisco&quot;</defaultValue>
+        <externalId>false</externalId>
+        <label>Lottery City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lottery_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Lottery Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Lottery_End_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Lottery End Time</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lottery_End__c</fullName>
+        <description>End of the Lottery - DateTime</description>
+        <externalId>false</externalId>
+        <inlineHelpText>End of the Lottery - DateTime</inlineHelpText>
+        <label>Lottery End</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Lottery_Preferences__c</fullName>
+        <externalId>false</externalId>
+        <label>Lottery Preferences</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Certificate of Preference</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ellis Act</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Live\Work</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Lottery_Results_Date__c</fullName>
+        <description>Date Lottery Results are posted</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date Lottery Results are posted</inlineHelpText>
+        <label>Lottery Results Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lottery_Results__c</fullName>
+        <description>Indicates there is at least one lottery winner</description>
+        <externalId>false</externalId>
+        <formula>Lottery_Winners__c  &gt; 0</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Indicates there is at least one lottery winner</inlineHelpText>
+        <label>XLottery Results?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Lottery_Start_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Lottery Start Time</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lottery_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Lottery Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Not Yet Run</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lottery Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Lottery_Street_Address__c</fullName>
+        <externalId>false</externalId>
+        <label>Lottery Street Address</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lottery_Summary__c</fullName>
+        <description>Summary of the Lottery Results.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Summary of the Lottery Results.</inlineHelpText>
+        <label>Lottery Summary</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lottery_URL__c</fullName>
+        <externalId>false</externalId>
+        <label>Lottery URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Lottery_Venue__c</fullName>
+        <externalId>false</externalId>
+        <label>Lottery Venue</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lottery_Winners__c</fullName>
+        <description>Rollup sumary with Count of people who have been selected as winning lottery and therefore, the status of their lottery member = Winner.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Rollup sumary with Count of people who have been selected as winning lottery and therefore, the status of their lottery member = Winner.</inlineHelpText>
+        <label>XLottery Winners</label>
+        <summaryFilterItems>
+            <field>Lottery_Member__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Winner</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Lottery_Member__c.Listing__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Max_BR__c</fullName>
+        <externalId>false</externalId>
+        <label>Max BR</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Max_Income__c</fullName>
+        <externalId>false</externalId>
+        <label>Max Income</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Max_Occupancy__c</fullName>
+        <description>Field will ultimately be hidden from page layout and is based on max occupancy of max from all units in a given listing. Field is used to hold the maximum occupancy.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Field will ultimately be hidden from page layout and is based on max occupancy of max from all units in a given listing. Field is used to hold the maximum occupancy.</inlineHelpText>
+        <label>Max Occupancy</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Min_BR__c</fullName>
+        <externalId>false</externalId>
+        <label>Min BR</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Min_Income__c</fullName>
+        <externalId>false</externalId>
+        <label>Min Income</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Min_Occupancy__c</fullName>
+        <description>Field will ultimately be hidden from page layout and is automatically determined based on number of Bedrooms. Field is used to hold the minimum occupancy based on bedrooms.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Field will ultimately be hidden from page layout and is automatically determined based on number of Bedrooms. Field is used to hold the minimum occupancy based on bedrooms.</inlineHelpText>
+        <label>Min Occupancy</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NeighborHoodPreferenceUrl__c</fullName>
+        <description>Temporary location store for uploaded PDF that captures the neighborhood preference list</description>
+        <externalId>false</externalId>
+        <label>Neighborhood Preference PDF URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>NeighborhoodUnitsAvailable__c</fullName>
+        <description>Total units available for Neighborhood preference</description>
+        <externalId>false</externalId>
+        <label>Neighborhood Units Available</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Neighborhood_App_Total__c</fullName>
+        <description>Total applications with Neighborhood preference</description>
+        <externalId>false</externalId>
+        <label>Neighborhood App Total</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Neighborhood__c</fullName>
+        <description>Neighborhood for the listing.</description>
+        <externalId>false</externalId>
+        <formula>TEXT( Building__r.Neighborhood__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Neighborhood for the listing. Pulled automatically from property</inlineHelpText>
+        <label>Neighborhood</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Applications__c</fullName>
+        <description>Displays how many Applications have been submitted for this particular listing.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Displays how many Applications have been submitted for this particular listing.</inlineHelpText>
+        <label>Number of Applications</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Office_Closed__c</fullName>
+        <externalId>false</externalId>
+        <label>Office Closed</label>
+        <picklist>
+            <picklistValues>
+                <fullName>2:00 PM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3:00 PM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4:00 PM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5:00 PM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6:00 PM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7:00 PM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Office_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>Office Hours</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Office_Open__c</fullName>
+        <externalId>false</externalId>
+        <label>Office Open</label>
+        <picklist>
+            <picklistValues>
+                <fullName>8:00 AM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>9:00 AM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>10:00 AM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Organization_URL__c</fullName>
+        <externalId>false</externalId>
+        <formula>Building__r.Development__r.Property_Manager__r.Website</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Organization URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pet_Policy__c</fullName>
+        <externalId>false</externalId>
+        <label>Pet Policy</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>8</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Preference_Detail__c</fullName>
+        <externalId>false</externalId>
+        <label>Preference Detail</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>12</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Project_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>Building__r.Development__r.Project_ID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Project ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property_Listing_Category__c</fullName>
+        <description>What is the category - New Rental/Rerental?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What is the category - New Rental/Rerental?</inlineHelpText>
+        <label>Property Listing Category</label>
+        <picklist>
+            <picklistValues>
+                <fullName>New Rental</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rerental</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Property_Selection_Criteria__c</fullName>
+        <externalId>false</externalId>
+        <label>Property Selection Criteria</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Removed_from_Lottery__c</fullName>
+        <description>The number of applications where the status is &quot;Removed&quot; as being a confirmed duplicate.</description>
+        <externalId>false</externalId>
+        <label>Removed from Lottery</label>
+        <summaryFilterItems>
+            <field>Application__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Removed</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Application__c.Listing__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Rental_Assistance__c</fullName>
+        <description>To be further built but placeholder for rental assistance</description>
+        <externalId>false</externalId>
+        <inlineHelpText>To be further built but placeholder for rental assistance</inlineHelpText>
+        <label>Rental Assistance</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Subsidies and Vouchers</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Required_Documents__c</fullName>
+        <externalId>false</externalId>
+        <label>Required Documents</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Smoking_Policy__c</fullName>
+        <description>Will be set via code from Property.</description>
+        <externalId>false</externalId>
+        <label>Smoking Policy</label>
+        <length>1300</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>New</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pricing Request Approved</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Marketing Plan Approved</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Submitted_Applications__c</fullName>
+        <description>The number of applications where the status is &quot;Submitted&quot;</description>
+        <externalId>false</externalId>
+        <label>Submitted Applications</label>
+        <summaryFilterItems>
+            <field>Application__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted, Removed</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Application__c.Listing__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Applications__c</fullName>
+        <description>The total number of applications (regardless of status) for the listing.</description>
+        <externalId>false</externalId>
+        <label>Total Applications</label>
+        <summaryForeignKey>Application__c.Listing__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Units_in_the_Bldg_including_BMR__c</fullName>
+        <externalId>false</externalId>
+        <formula>Building__r.Total_Units_in_the_Bldg_including_BMR__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total # Units in the Bldg- including BMR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Year_Built_Display__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Year_Built__c)</formula>
+        <label>Year Built</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Year_Built__c</fullName>
+        <externalId>false</externalId>
+        <formula>Building__r.Year_Built__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Year Built</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>of_BR_Range_for_listing__c</fullName>
+        <description>Range of BR in the listing</description>
+        <externalId>false</externalId>
+        <formula>TEXT(Min_BR__c)  &amp; &quot;-&quot; &amp; Text( Max_BR__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Range of BR in the listing</inlineHelpText>
+        <label># of BR Range for listing</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>sfxId__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <externalId>true</externalId>
+        <label>sfxId</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>Listing</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Status__c</columns>
+        <columns>Application_Due_Date__c</columns>
+        <columns>Lottery_Date__c</columns>
+        <columns>Lottery_Results_Date__c</columns>
+        <columns>Submitted_Applications__c</columns>
+        <columns>Flagged_Applications__c</columns>
+        <columns>Removed_from_Lottery__c</columns>
+        <columns>Total_Applications__c</columns>
+        <columns>Lottery_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Listing Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Listings</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Application_Due_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Lottery_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Lottery_Results_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Number_of_Applications__c</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <webLinks>
+        <fullName>Lottery_Random</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Run Lottery</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/33.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/33.0/apex.js&quot;)} 
+
+var lotteryStatus = &apos;{!Listing__c.Lottery_Status__c}&apos;;
+if( lotteryStatus== &quot;Lottery Complete&quot; || lotteryStatus == &quot;In Progress&quot;){
+ alert(&quot;Lottery has already been run&quot;);
+} else {
+
+message = sforce.apex.execute(&quot;LOT_RandomDrawService&quot;, &quot;testBulk&quot;, {listingID:&quot;{!Listing__c.Id}&quot;}); 
+if (message != &apos;&apos;) 
+{ 
+alert(message); 
+} else {
+//alert(&apos;ok&apos;);
+navigateToUrl(&apos;/{!Listing__c.Id}&apos;);
+}
+}</url>
+    </webLinks>
+</CustomObject>

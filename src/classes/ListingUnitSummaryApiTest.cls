@@ -1,14 +1,18 @@
+// *****************************************************************************
+// CLASS: ListingUnitSummaryApiTest
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: Test class for ListingUnitSummaryApi.cls and ListingService.cls
+//
+// *
 @isTest
 private class ListingUnitSummaryApiTest {
 
-    private static List<Properties__c> lProperties;
     private static Account acc;
     private static Contact con;
-    private static User usr;
-    private static AMI__c ami;
-    static  ID listingId ;
-    static List<Id> listListingId;
-    static String preferenceName ;
+    private static ID listingId;
     
     static void setupTestData() {
         Id rtId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Household').getRecordTypeId();
@@ -35,40 +39,33 @@ private class ListingUnitSummaryApiTest {
         listing.Does_Match__c = true;
         insert listing;
         
-        Lottery_Preference__c lp = new Lottery_Preference__c();
-        lp.Name = 'Test Lottery Preference';
-        lp.Status__c = 'New';
-        insert lp;
-       	preferenceName = lp.Name;
-        
-        Listing_Lottery_Preference__c llp = new Listing_Lottery_Preference__c();
-        llp.Listing__c = listing.Id;
-        llp.Lottery_Preference__c = lp.Id;
-        insert llp;
-        
         Unit__c unit = new Unit__c();
         unit.property__c  = build.id;
-        unit.BMR_Rent_Monthly__c = 400;
+        unit.BMR_Rent_Monthly__c = 200;
         unit.Rent_Multiple__c=3;
         unit.of_AMI_for_Pricing_Unit__c=55;
         unit.Listing__c = listing.id;
-        unit.Maximum_Household_Size__c  = 8;
-        unit.Number_of_Bedrooms__c = 3;
-        insert unit;
+        unit.Maximum_Household_Size__c  = 1;
+        unit.Number_of_Bedrooms__c = 1;
+        unit.Unit_Square_Footage__c = 10;
+        
+        Unit__c unit2 = new Unit__c();
+        unit2.property__c = build.id;
+        unit2.BMR_Rent_Monthly__c = 400;
+        unit2.Rent_Multiple__c=3;
+        unit2.of_AMI_for_Pricing_Unit__c=55;
+        unit2.Listing__c = listing.id;
+        unit2.Maximum_Household_Size__c = 2;
+        unit2.Number_of_Bedrooms__c = 2;
+        unit2.Unit_Square_Footage__c = 20;
+        insert new List<Unit__c>{unit, unit2};
         
         listingID = listing.id;
-        listListingId = new List<Id>();
-        listListingId.add(listingID);
-        
-        ami = new AMI__c();
-        ami.name='asdf';
-        ami.amount__c = 40000;
-        ami.Num_of_HouseHold__c=2;
-        ami.Percent_of_Median__c=100;
-        insert ami;
-        //select id, amount__c, Num_of_HouseHold__c, Percent_of_Median__c from AMI__c]
     }
-
+	
+    /*
+     * get unit summary by listing id
+     */
     static testMethod void testGetUnitSummaryByListingID() {
         setupTestData();
         RestRequest req = new RestRequest(); 
@@ -79,10 +76,25 @@ private class ListingUnitSummaryApiTest {
         RestContext.request = req;
         RestContext.response = res;
         
+        List<ListingService.UnitSummary> unitSummary = ListingUnitSummaryApi.doGet();
         
-        system.assert(ListingUnitSummaryApi.doGet().size() == 1);
+        //check if returned values are correct
+        system.assert(unitSummary[0].listingID == listingId);
+        system.assert(unitSummary[0].totalUnits == 2);
+        system.assert(unitSummary[0].minOccupancy == 1);
+        system.assert(unitSummary[0].maxOccupancy == 2);
+        system.assert(unitSummary[0].minSquareFt == 10);
+        system.assert(unitSummary[0].maxSquareFt == 20);
+        system.assert(unitSummary[0].minMonthlyRent == 200);
+        system.assert(unitSummary[0].maxMonthlyRent == 400);
+        system.assert(unitSummary[0].minRentalMinIncome == 600);
+        system.assert(unitSummary[0].maxRentalMinIncome == 1200);
+        
     }
     
+    /*
+     * get unit summary by listing id
+     */
     static testMethod void testGetUnitSummaryByListingIDParam() {
         setupTestData();
         RestRequest req = new RestRequest(); 
@@ -94,6 +106,18 @@ private class ListingUnitSummaryApiTest {
         RestContext.request = req;
         RestContext.response = res;
         
-        system.assert(ListingUnitSummaryApi.doGet().size() == 1);
+        List<ListingService.UnitSummary> unitSummary = ListingUnitSummaryApi.doGet();
+        
+        //check if returned values are correct
+        system.assert(unitSummary[0].listingID == listingId);
+        system.assert(unitSummary[0].totalUnits == 2);
+        system.assert(unitSummary[0].minOccupancy == 1);
+        system.assert(unitSummary[0].maxOccupancy == 2);
+        system.assert(unitSummary[0].minSquareFt == 10);
+        system.assert(unitSummary[0].maxSquareFt == 20);
+        system.assert(unitSummary[0].minMonthlyRent == 200);
+        system.assert(unitSummary[0].maxMonthlyRent == 400);
+        system.assert(unitSummary[0].minRentalMinIncome == 600);
+        system.assert(unitSummary[0].maxRentalMinIncome == 1200);
     }
 }

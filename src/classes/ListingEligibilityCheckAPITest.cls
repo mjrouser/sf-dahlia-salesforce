@@ -1,3 +1,13 @@
+// *****************************************************************************
+// CLASS: ListingEligibilityCheckAPITest
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: Test class for ListingEligibilityCheckAPI.cls and ListingService.cls
+//
+// *
+
 @isTest
 private class ListingEligibilityCheckAPITest {
 	
@@ -52,20 +62,20 @@ private class ListingEligibilityCheckAPITest {
         unit.property__c  = build.id;
         unit.BMR_Rent_Monthly__c = 400;
         unit.Rent_Multiple__c=3;
-        unit.of_AMI_for_Pricing_Unit__c=55;
+        unit.of_AMI_for_Pricing_Unit__c=50;
         unit.Listing__c = listing.id;
-        unit.Maximum_Household_Size__c  = 8;
-        unit.Number_of_Bedrooms__c = 3;
+        unit.Maximum_Household_Size__c  = 2;
+        unit.Number_of_Bedrooms__c = 1;
         insert unit;
         
         Unit__c unit1 = new Unit__c();
         unit1.property__c  = build.id;
         unit1.BMR_Rent_Monthly__c = 400;
         unit1.Rent_Multiple__c=3;
-        unit1.of_AMI_for_Pricing_Unit__c=55;
+        unit1.of_AMI_for_Pricing_Unit__c=50;
         unit1.Listing__c = listing1.id;
-        unit1.Maximum_Household_Size__c  = 8;
-        unit1.Number_of_Bedrooms__c = 3;
+        unit1.Maximum_Household_Size__c  = 3;
+        unit1.Number_of_Bedrooms__c = 1;
         insert unit1;
         
         Lottery_Preference__c lp = new Lottery_Preference__c();
@@ -81,9 +91,9 @@ private class ListingEligibilityCheckAPITest {
         
         ami = new AMI__c();
         ami.name='Test Lottery Preference';
-        ami.amount__c = 40000;
-        ami.Num_of_HouseHold__c=2;
-        ami.Percent_of_Median__c=100;
+        ami.amount__c = 53850;
+        ami.Num_of_HouseHold__c=4;
+        ami.Percent_of_Median__c=50;
         insert ami;
         
     }
@@ -114,19 +124,81 @@ private class ListingEligibilityCheckAPITest {
         system.assert(ListingEligibilityCheckAPI.doGet().ListingId == listingID);
     }
     
-    static testMethod void doGetByCriteria() {
+    /*
+     * check if listing matches criteria
+     */
+    static testMethod void doGetByCriteriaMatch() {
          setupTestData();
          RestRequest req = new RestRequest(); 
          RestResponse res = new RestResponse();
          req.requestURI = '/Listing/EligibilityCheck';  
          req.addParameter('id', listingID);
-         req.addParameter('incomelevel', '20');
+         req.addParameter('incomelevel', '53850');
          req.addParameter('householdsize', '4');
          req.addParameter('childrenUnder6', '2');
          req.httpMethod = 'GET';
          RestContext.request = req;
          RestContext.response = res;
-         system.assert(ListingEligibilityCheckAPI.doGet().ListingId == listingID);
+         ListingService.Eligibility listingEligibility = ListingEligibilityCheckAPI.doGet();
          
+         //verify if eligibility matches
+         system.assert(listingEligibility.ListingId == listingID);
+		 system.assert(listingEligibility.householdEligibilityResult == 'Match');
+		 system.assert(listingEligibility.incomeEligibilityResult == 'Match');
+		 system.assert(listingEligibility.householdMatch == true);
+         system.assert(listingEligibility.incomeMatch == true);
+        
+     }
+    
+    /*
+     * check if eligibility returns too big
+     */
+    static testMethod void doGetByCriteriaTooBig() {
+         setupTestData();
+         RestRequest req = new RestRequest(); 
+         RestResponse res = new RestResponse();
+         req.requestURI = '/Listing/EligibilityCheck';  
+         req.addParameter('id', listingID);
+         req.addParameter('incomelevel', '53851');
+         req.addParameter('householdsize', '6');
+         req.addParameter('childrenUnder6', '2');
+         req.httpMethod = 'GET';
+         RestContext.request = req;
+         RestContext.response = res;
+         ListingService.Eligibility listingEligibility = ListingEligibilityCheckAPI.doGet();
+         
+         //verify if eligibility returns too big
+         system.assert(listingEligibility.ListingId == listingID);
+		 system.assert(listingEligibility.householdEligibilityResult == 'Too Big');
+		 system.assert(listingEligibility.incomeEligibilityResult == 'Too High');
+		 system.assert(listingEligibility.householdMatch == false);
+         system.assert(listingEligibility.incomeMatch == false);
+        
+     }
+    
+    /*
+     * check if eligibility return too small
+     */
+    static testMethod void doGetByCriteriaToSmall() {
+         setupTestData();
+         RestRequest req = new RestRequest(); 
+         RestResponse res = new RestResponse();
+         req.requestURI = '/Listing/EligibilityCheck';  
+         req.addParameter('id', listingID);
+         req.addParameter('incomelevel', '10000');
+         req.addParameter('householdsize', '0');
+         req.addParameter('childrenUnder6', '2');
+         req.httpMethod = 'GET';
+         RestContext.request = req;
+         RestContext.response = res;
+         ListingService.Eligibility listingEligibility = ListingEligibilityCheckAPI.doGet();
+         
+         //verify if eligibility returns too small 
+         system.assert(listingEligibility.ListingId == listingID);
+		 system.assert(listingEligibility.householdEligibilityResult == 'Too Small');
+		 system.assert(listingEligibility.incomeEligibilityResult == 'Too Low');
+		 system.assert(listingEligibility.householdMatch == false);
+         system.assert(listingEligibility.incomeMatch == false);
+        
      }
 }

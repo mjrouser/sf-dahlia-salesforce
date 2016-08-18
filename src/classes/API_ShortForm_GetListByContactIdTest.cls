@@ -1,15 +1,30 @@
+// *****************************************************************************
+// CLASS: API_ShortForm_GetListByContactIdTest
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: Test class for API_ShortForm_GetListByContactId.cls
+//
+// *
 @isTest
 private without sharing class API_ShortForm_GetListByContactIdTest {
 	
 	static testMethod void API_ShortForm_GetListByContactIdTest() {
 		Account a = new Account(Name = 'Household');
         insert a;
-
-        Contact c = new Contact(LastName = 'LastName', AccountId = a.Id);
+        
+        Contact c = new Contact(FirstName = 'FirstName', LastName = 'LastName', Work_State__c = 'CO', Birthdate = date.today());
         insert c;
-
-        Application__c app = new Application__c(Primary_Applicant__c = c.Id, Applicant_Household__c = a.Id);
+        
+        Listing__c listing = new Listing__c();
+        insert listing;
+        
+        Application__c app = new Application__c(Listing__c = listing.Id, Primary_Applicant__c = c.Id, Applicant_Household__c = a.Id);
         insert app;
+        
+        Application_Member__c appM = new Application_Member__c(Application__c = app.Id, Contact__c = c.Id, Work_in_SF__c = True);
+        insert appM;
         
         Test.startTest();
         	RestRequest req = new RestRequest();
@@ -23,20 +38,10 @@ private without sharing class API_ShortForm_GetListByContactIdTest {
         Test.stopTest();
         
         System.assertEquals(sfs.size(), 1);
-        System.assertEquals(sfs[0].primaryApplicant.id, c.Id);
-	}
+    }
     
     static testMethod void failAPI_ShortForm_GetListByContactIdTest() {
-		Account a = new Account(Name = 'Household');
-        insert a;
-
-        Contact c = new Contact(LastName = 'LastName', AccountId = a.Id);
-        insert c;
-
-        Application__c app = new Application__c(Primary_Applicant__c = c.Id, Applicant_Household__c = a.Id);
-        insert app;
-        
-        Test.startTest();
+		Test.startTest();
         	RestRequest req = new RestRequest();
             RestResponse res = new RestResponse();
             req.requestURI = '/shortForm/list/';
