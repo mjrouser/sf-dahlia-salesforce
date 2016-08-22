@@ -37,7 +37,7 @@ private class ListingLotteryServiceTest {
         listingID = listing.ID;
         listListingId = new List<Id>();
         listListingId.add(listingID);
-        
+        /*
         Lottery_Preference__c lp = new Lottery_Preference__c();
         lp.Name = 'Test Lottery Preference';
         lp.Status__c = 'New';
@@ -53,7 +53,7 @@ private class ListingLotteryServiceTest {
         llp.Listing__c = listing.Id;
         llp.Lottery_Preference__c = lp.Id;
         insert llp;
-        
+        */
         Lottery_Member__c lm = new Lottery_Member__c();
         lm.Listing__c = listing.Id;
         lm.Status__c = 'Winner';
@@ -69,11 +69,11 @@ private class ListingLotteryServiceTest {
         unit.Maximum_Household_Size__c  = 8;
         unit.Number_of_Bedrooms__c = 3;
         insert unit;
-        
+     /*   
         lotteryId = lp.id;
         listlotteryId = new List<Id>();
         listlotteryId.add(lotteryId);
-        
+        */
         ami = new AMI__c();
         ami.name='asdf';
         ami.amount__c = 40000;
@@ -82,7 +82,7 @@ private class ListingLotteryServiceTest {
         insert ami;
         //select id, amount__c, Num_of_HouseHold__c, Percent_of_Median__c from AMI__c]
     }
-    
+    /*
     static testMethod void testGetLotteryPreferenceByID() {
         setupTestData();
         
@@ -91,6 +91,7 @@ private class ListingLotteryServiceTest {
         //verify the returned Id is the right one 
         system.assert(testLp[0].Id == lotteryId);
     }
+    
     static testMethod void testGetLotteryPreferenceByIDs() {
         setupTestData();
         
@@ -108,7 +109,7 @@ private class ListingLotteryServiceTest {
        
         testLp = ListingLotteryService.getAllLotteryPreference();
         system.assert(testLp.size() == 2);
-    }
+    }*/
     static testMethod void testGetLotteryMembersByListingID() {
         setupTestData();
         

@@ -22,7 +22,7 @@ global without sharing class ListingApi {
 	private static final String HOUSEHOLD_SIZE = 'householdsize';
 	private static final String INCOME_LEVEL = 'incomelevel';
 	private static final String CHILDREN_UNDER_6 = 'childrenUnder6';
-	private static final String PREFERENCE = 'preference';
+//	private static final String PREFERENCE = 'preference';
 	
     @HttpGet
     global static List<Listing__c> doGet () {
@@ -50,7 +50,7 @@ global without sharing class ListingApi {
             String childrenUnder6 = req.params.get(CHILDREN_UNDER_6) ;
             String houseHoldSize = req.params.get(HOUSEHOLD_SIZE);
             String incomelevel = req.params.get(INCOME_LEVEL); 
-            string preferenceName = req.params.get(PREFERENCE);
+       //     string preferenceName = req.params.get(PREFERENCE);
             
             if (incomelevel== null || houseHoldSize == null) {
                 throw new InvalidParamsException('Both parameters "' + HOUSEHOLD_SIZE + '" and "'+ INCOME_LEVEL + '" required');
@@ -60,7 +60,7 @@ global without sharing class ListingApi {
                 crit.householdSize = Integer.valueof(houseHoldSize);
                 crit.incomelevel =Decimal.valueof( incomelevel);
                 crit.childrenUnder6  = (childrenUnder6!=null) ? Integer.Valueof(childrenUnder6) : 0;
-                crit.preferenceName = (preferenceName != null) ? preferenceName : '';
+           //     crit.preferenceName = (preferenceName != null) ? preferenceName : '';
             }
             catch (Exception e) {
                 
@@ -69,13 +69,15 @@ global without sharing class ListingApi {
             }
             return ListingService.getListingByCriteria(crit);
         
-        } else if(req.params.containsKey(PREFERENCE) ){
+        } 
+        /*
+        else if(req.params.containsKey(PREFERENCE) ){
         	string preferenceName = req.params.get(PREFERENCE);
     		if(preferenceName != null && preferenceName != ''){
             	return ListingService.getActiveListingsByPreference(preferenceName);
     		}
         }
-        
+        */
         return ListingService.getAllActiveListings();
     }
    

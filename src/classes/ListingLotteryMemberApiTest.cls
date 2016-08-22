@@ -51,7 +51,7 @@ public with sharing class ListingLotteryMemberApiTest {
             listing2.Status__c = 'Active';
             listing2.Does_Match__c = true;
             insert new List<Listing__c>{listing,listing2};
-            
+            /*
             Lottery_Preference__c lp = new Lottery_Preference__c();
             lp.Name = 'Test Lottery Preference';
             lp.Status__c = 'New';
@@ -62,7 +62,7 @@ public with sharing class ListingLotteryMemberApiTest {
             llp.Listing__c = listing.Id;
             llp.Lottery_Preference__c = lp.Id;
             insert llp;
-            
+            */
             Lottery_Member__c lm = new Lottery_Member__c();
             lm.Listing__c = listing.Id;
             lm.Status__c = 'Winner';

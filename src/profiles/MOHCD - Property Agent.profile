@@ -1,85 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata">
-    <applicationVisibilities>
-        <application>Dahlia_Alpha</application>
-        <default>false</default>
-        <visible>false</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>Dahlia_Development_and_Testing</application>
-        <default>false</default>
-        <visible>true</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>Lender_Management</application>
-        <default>false</default>
-        <visible>false</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>MOHCD_Staff</application>
-        <default>false</default>
-        <visible>true</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>Property_Management</application>
-        <default>false</default>
-        <visible>false</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>Public_Household_Management</application>
-        <default>false</default>
-        <visible>false</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>SF_DAHLIA_Management</application>
-        <default>false</default>
-        <visible>false</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>standard__AppLauncher</application>
-        <default>false</default>
-        <visible>false</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>standard__Chatter</application>
-        <default>false</default>
-        <visible>false</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>standard__Community</application>
-        <default>false</default>
-        <visible>false</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>standard__DataAssessment</application>
-        <default>false</default>
-        <visible>true</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>standard__Marketing</application>
-        <default>false</default>
-        <visible>false</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>standard__Platform</application>
-        <default>false</default>
-        <visible>false</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>standard__Sales</application>
-        <default>false</default>
-        <visible>false</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>standard__Service</application>
-        <default>false</default>
-        <visible>false</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>standard__ServiceConsole</application>
-        <default>false</default>
-        <visible>false</visible>
-    </applicationVisibilities>
     <classAccesses>
         <apexClass>API_Application</apexClass>
         <enabled>false</enabled>
@@ -125,6 +45,90 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>HOP_ApplicationFormController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_ApplicationFormControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_ApplicationReviewController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_ApplicationReviewControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_ApplicationViewController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_ApplicationViewControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_ApplicationsController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_ApplicationsControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_Constants</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_ControllerBase</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_ControllerBaseTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_DuplicateApplicationsController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_DuplicateApplicationsControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_FlaggedApplicationsController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_FlaggedApplicationsControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_ListingController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_ListingControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_ListingsController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_ListingsControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_TemplateController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_TemplateControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>LOT_RandomBaseRequest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -165,19 +169,15 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>ListingFlaggedApplicationAction</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ListingLotteryMemberApi</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>ListingLotteryMemberApiTest</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>ListingLotteryPrefApi</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>ListingLotteryPrefApiTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -220,6 +220,18 @@
         <apexClass>ListingUnitSummaryApiTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
+    <classAccesses>
+        <apexClass>SalesforceDataTables</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SalesforceDataTablesInterface</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TriggerAction</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
     <custom>true</custom>
     <fieldPermissions>
         <editable>true</editable>
@@ -245,6 +257,11 @@
         <editable>true</editable>
         <field>Application_Member__c.City__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Application_Member__c.Contact_WebappID__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -622,6 +639,56 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Application__c.L_Alice_Griffith__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Application__c.L_Applicant_Full_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Application__c.L_COP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Application__c.L_DTHP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Application__c.L_Date_of_Birth__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Application__c.L_Listing_Specific__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Application__c.L_LiveWork__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Application__c.L_Lottery_Number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Application__c.L_NRHP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Application__c.L_RB_AH__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Application__c.Last_Name__c</field>
         <readable>true</readable>
@@ -827,6 +894,632 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.AccountId</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Address_Line_2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Age__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Any_years_last_3_yrs_Tax_Filing_not_req__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Apt_Unit__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.AssistantName</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.AssistantPhone</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.BMR_Certification_Expiration_Date__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.BMR_Certified__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Best_Way_to_Reach_You__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Birthdate</field>
+        <readable>true</readable>
+    </fieldPermissions>
+
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Certificate_of_Preference_Holder__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Certificate_of_Preference__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.City__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Company_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Contact_Mailing_Address__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Copy_Household_Current_Address__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Current_Address__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.DALP_Certified__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.DALP_MCC_Certification_Expiration_Date__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Department</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Description</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Displaced_Tenant_Preference__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.DoNotCall</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Does_this_appear_on_another_title__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.EAHP_Cert_Exp_Date_Existing_Dev__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.EAHP_Cert_Exp_Date_New_Dev__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.EAHP_Certificate_Holder__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.EAHP_Certificate_Issue_Date__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Email</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Ethnicity__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Fax</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Filed_Federal_Tax_Return_for_prior_year__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Full_Contact_Name__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Full_Time_Student__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Gender__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.HasOptedOutOfEmail</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.HasOptedOutOfFax</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Has_an_Extension_of_Time_been_filed__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Has_owned_a_unit_last_3_yrs__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Head_of_Household2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Head_of_Household__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.HomePhone</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Identify_as_Lesbian_Gay_Bisexual__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.If_yes_which_years__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.In_School__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_1_Deduction_Type_Used__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_1_Filing_Status__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_1_Return_AGI__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_1_Return_Gross_Income__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_1_Return_Wages__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_1_Return_Year__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_1_W2_s_Add_Up__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_2_Deduction_Type_Used__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_2_Filing_Status__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_2_Return_AGI__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_2_Return_Gross_Income__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_2_Return_Wages__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_2_Return_Year__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_2_W2_s_Add_Up__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_3_Deduction_Type_Used__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_3_Filing_Status__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_3_Return_AGI__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_3_Return_Gross_Income__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_3_Return_Wages__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_3_Return_Year__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Income_Tax_3_W2_s_Add_Up__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Is_Developer__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Is_Property_Manager__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Is_Real_Estate_Agent__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Is_Rental_Sales_Agent__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Jigsaw</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.LeadSource</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Lender_Certification_Status__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Lender_Mortgage_Broker_Company_Name__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Live_in_SF__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Live_or_Work_in_San_Francisco__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Living_with_disabling_HIVAIDS__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.MCC_Certified__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.MailingAddress</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Mailing_Address_same_as_Current_Address__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Married_or_Domestic_Partnered__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Middle_Name__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.MobilePhone</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.NMLS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Name_Suffix__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Not_Req_d_to_File_Tax_Return_Explanation__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Number_of_Head_of_Households__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Occupation__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.OtherAddress</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.OtherPhone</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.PO_Box_Address__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Phone</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Phone_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Primary_Household_Member__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Primary_Language__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Prior_Tax_Year_Total_Income_Amount__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Race_Ethnicity_Other_details__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Race_Ethnicity_optional__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Race__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Real_Estate_License__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Registration_Code__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Relationship_to_Head_of_HH_if_Other__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Relationship_to_Head_of_Household__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.ReportsToId</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Second_Phone_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Served_in_the_US_Military__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Sexual_Orientation_Other__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Sexual_Orientation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Social_Security_Number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.State__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Street_Name__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Street_Number__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Street_Type__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Title</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Webapp_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Work_City__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Work_Phone__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Work_Postal_Code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Work_State__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Work_Street__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Work_in_SF__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Zip_Code__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.isHousehold__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.sfxId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Development__c.City_Planner__c</field>
         <readable>true</readable>
@@ -884,6 +1577,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Development__c.sfxId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DuplicateRecordSet.Rule_Name__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -969,16 +1667,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Listing_Image__c.Image_URL__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Listing_Lottery_Preference__c.Number_of_Units__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Listing_Lottery_Preference__c.Percentage_of_Units__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1701,559 +2389,15 @@
         <field>Unit__c.sfxId__c</field>
         <readable>false</readable>
     </fieldPermissions>
-    <layoutAssignments>
-        <layout>Account-Account Layout - Households</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Account-Account Layout - Households</layout>
-        <recordType>Account.Household</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Account-Account Layout - Households</layout>
-        <recordType>Account.SFMOHCD_Inclusionary_Programs</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Account-Account Layout - Lenders</layout>
-        <recordType>Account.Lender</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Account-Account Layout - Property Management</layout>
-        <recordType>Account.Property_Management</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Account-CCSF and Partners</layout>
-        <recordType>Account.City_and_Partners</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Application_Asset__c-Asset Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Application_Asset__c-Asset Layout</layout>
-        <recordType>Application_Asset__c.Non_Retirement_Liquid_Assets</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Application_Asset__c-Asset Layout</layout>
-        <recordType>Application_Asset__c.Retirement</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Application_Employment__c-Employment Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Application_Income1__c-Income Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Application_Member__c-Application Member Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Application__c-Application Layout - BMR Rental Long-Form</layout>
-        <recordType>Application__c.BMR_Rental_Long_Form</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Application__c-Application Layout - BMR Rental Short-Form</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Application__c-Application Layout - BMR Rental Short-Form</layout>
-        <recordType>Application__c.Multi_Family_Rental_Short_Form</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Application__c-Community Application Layout - BMR Rental Short-Form</layout>
-        <recordType>Application__c.BMR_Rental_Short_Form</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Approved_Certificate__c-Approved Certificate Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Approved_Certificate__c-Approved Certificate Layout</layout>
-        <recordType>Approved_Certificate__c.Certificate_of_Preference</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Approved_Certificate__c-Approved Certificate Layout</layout>
-        <recordType>Approved_Certificate__c.Ellis_Act_Housing_Preference</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Asset-Asset Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Building__c-Building Data Entry</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Campaign-Campaign Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>CampaignMember-Campaign Member Page Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Case-Case Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>CaseClose-Close Case Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Certificate_Program__c-Certificate Application - COP Layout</layout>
-        <recordType>Certificate_Program__c.COP</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Certificate_Program__c-Certificate Application - EAHP Layout</layout>
-        <recordType>Certificate_Program__c.EAHP</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Certificate_Program__c-Certificate Program Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>CollaborationGroup-Group Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Compliance__c-Compliance Layout - Ownership Verification</layout>
-        <recordType>Compliance__c.Lender_Certification</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Compliance__c-Compliance Layout - Ownership Verification</layout>
-        <recordType>Compliance__c.Ownership_Verification</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Compliance__c-Compliance Layout - Rental Initial Certification</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Compliance__c-Compliance Layout - Rental Initial Certification</layout>
-        <recordType>Compliance__c.Property_Agent_Tenancy_Certification</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Compliance__c-Compliance Layout - Rental Initial Certification</layout>
-        <recordType>Compliance__c.Rental_Initial_Certification</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Compliance__c-Compliance Layout - Rental Re-Certification</layout>
-        <recordType>Compliance__c.Rental_Re_Certification</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Contact-Contact Layout - Applicant</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Contact-Contact Layout - Applicant</layout>
-        <recordType>Contact.Applicant</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Contact-Contact Layout - Applicant</layout>
-        <recordType>Contact.Head_of_Household</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Contact-Contact Layout - Applicant</layout>
-        <recordType>Contact.Household</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Contact-Contact Layout - City and Partners</layout>
-        <recordType>Contact.City_and_Partners</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Contact-Contact Layout - Lending Agent</layout>
-        <recordType>Contact.Lending_Agent</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Contact-Contact Layout - Property Agent</layout>
-        <recordType>Contact.Property_Agent</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Contact_Preference__c-Contact Preference Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Contract-Contract Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Custom_Attachment__c-Financial Attachment Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>DALP_Request__c-DALP Request Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Default_Community_Account_Owner__mdt-Default Community Account Owner Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Development__c-Development Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Drop_Box__c-Drop Box Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>DuplicateRecordItem-Duplicate Record Item Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>DuplicateRecordSet-Duplicate Record Set Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Event-Event Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>FeedItem-Feed Item Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application_Asset__c-Financial Application Asset Layout - Assets with Account</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application_Asset__c-Financial Application Asset Layout - Assets with Account</layout>
-        <recordType>Financial_Application_Asset__c.Assets_with_an_Account</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application_Asset__c-Financial Application Asset Layout - Business Ownership</layout>
-        <recordType>Financial_Application_Asset__c.Business_Ownership</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application_Asset__c-Financial Application Asset Layout - Cash without an Account</layout>
-        <recordType>Financial_Application_Asset__c.Cash_without_an_Account</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application_Asset__c-Financial Application Asset Layout - Gifts</layout>
-        <recordType>Financial_Application_Asset__c.Gifts</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application_Asset__c-Financial Application Asset Layout - Land Ownership</layout>
-        <recordType>Financial_Application_Asset__c.Land_Ownership</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application_Asset__c-Financial Application Asset Layout - No Assets</layout>
-        <recordType>Financial_Application_Asset__c.No_Assets</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application_Income__c-Financial Application Income Layout - Employed</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application_Income__c-Financial Application Income Layout - Employed</layout>
-        <recordType>Financial_Application_Income__c.Employment_Income</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application_Income__c-Financial Application Income Layout - Other Incomes</layout>
-        <recordType>Financial_Application_Income__c.Other_Income</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application_Income__c-Financial Application Income Layout - Self Employed</layout>
-        <recordType>Financial_Application_Income__c.Self_Employment_Income</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application_Income__c-Financial Application Income Layout - Unemployed</layout>
-        <recordType>Financial_Application_Income__c.Unemployed</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application_Member__c-Financial Application Member Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application_Member__c-Financial Application Member Layout</layout>
-        <recordType>Financial_Application_Member__c.Household_Member</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application__c-Financial Application Layout - BMR Only</layout>
-        <recordType>Financial_Application__c.BMR_Only</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application__c-Financial Application Layout - BMR-DALP</layout>
-        <recordType>Financial_Application__c.BMR_DALP</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application__c-Financial Application Layout - BMR-DALP Plus</layout>
-        <recordType>Financial_Application__c.BMR_DALP_Plus</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application__c-Financial Application Layout - CSLP</layout>
-        <recordType>Financial_Application__c.CSLP</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application__c-Financial Application Layout - DALP</layout>
-        <recordType>Financial_Application__c.DALP</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application__c-Financial Application Layout - FRDALP</layout>
-        <recordType>Financial_Application__c.FRDALP</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application__c-Financial Application Layout - MCC</layout>
-        <recordType>Financial_Application__c.MCC_Only</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application__c-Financial Application Layout - Master</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application__c-Financial Application Layout - PIC</layout>
-        <recordType>Financial_Application__c.PIC</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application__c-Financial Application Layout - RMCC</layout>
-        <recordType>Financial_Application__c.RMCC</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Application__c-Financial Application Layout - TND</layout>
-        <recordType>Financial_Application__c.TND</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Financial_Note__c-Financial Note Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Flagged_Application__c-Community Conflicting Application Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Flagged_Record_Set__c-Conflict Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Global-Global Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Housing_Application_Asset__c-Housing Application - Business Ownership</layout>
-        <recordType>Housing_Application_Asset__c.Business_Ownership</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Housing_Application_Asset__c-Housing Application - Land Ownership</layout>
-        <recordType>Housing_Application_Asset__c.Land_Ownership</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Housing_Application_Asset__c-Housing Application Asset Layout - Assets with Account</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Housing_Application_Asset__c-Housing Application Asset Layout - Assets with Account</layout>
-        <recordType>Housing_Application_Asset__c.Assets_with_an_Account</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Housing_Application_Asset__c-Housing Application Asset Layout - Cash without an Account</layout>
-        <recordType>Housing_Application_Asset__c.Cash_without_an_Account</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Housing_Application_Asset__c-Housing Application Asset Layout - Gifts</layout>
-        <recordType>Housing_Application_Asset__c.Gifts</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Housing_Application_Asset__c-Housing Application Asset Layout - No Assets</layout>
-        <recordType>Housing_Application_Asset__c.No_Assets</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Housing_Application_Attachment__c-Housing Application Attachment Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Housing_Application_Income__c-Housing Application Income Layout - Employed</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Housing_Application_Income__c-Housing Application Income Layout - Employed</layout>
-        <recordType>Housing_Application_Income__c.Employment_Income</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Housing_Application_Income__c-Housing Application Income Layout - Other Incomes</layout>
-        <recordType>Housing_Application_Income__c.Other_Income</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Housing_Application_Income__c-Housing Application Income Layout - Self Employed</layout>
-        <recordType>Housing_Application_Income__c.Self_Employment_Income</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Housing_Application_Income__c-Housing Application Income Layout - Unemployed</layout>
-        <recordType>Housing_Application_Income__c.Unemployed</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Housing_Application_Member__c-Housing Application Member Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Housing_Application_Member__c-Housing Application Member Layout</layout>
-        <recordType>Housing_Application_Member__c.Household_Member</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Housing_Application_Note__c-Housing Application Note Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Housing_Application__c-Housing Application Layout - BMR Ownership</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Housing_Application__c-Housing Application Layout - BMR Ownership</layout>
-        <recordType>Housing_Application__c.BMR_Ownership</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Housing_Application__c-Housing Application Layout - BMR Rental</layout>
-        <recordType>Housing_Application__c.BMR_Rental</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Idea-Idea Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Information_Session__c-Information Session Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Lead-Lead Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Listing_Image__c-Listing Image Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Listing_Lottery_Preference__c-Listing Preference Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Listing_Unit__c-Listing Unit Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Listing__c-Community Listing Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Loan_Activity__c-Capital Improvements</layout>
-        <recordType>Loan_Activity__c.Capital_Improvements</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Loan_Activity__c-HOA Special Assessments</layout>
-        <recordType>Loan_Activity__c.HOA_Special_Assessments</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Loan_Activity__c-Loan Activity Layout - Initial Loan</layout>
-        <recordType>Loan_Activity__c.Initial_Loan</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Loan_Activity__c-Loan Activity Layout - Loan Mod</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Loan_Activity__c-Loan Activity Layout - Loan Mod</layout>
-        <recordType>Loan_Activity__c.Loan_Modification</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Loan_Activity__c-Loan Activity Layout - Payoff%2FReconveyance</layout>
-        <recordType>Loan_Activity__c.Payoff_Reconveyance</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Loan_Activity__c-Loan Activity Layout - Refi%2FSubordination</layout>
-        <recordType>Loan_Activity__c.Refinance_Subordination</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Lottery_Member__c-Lottery Member Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Lottery_Preference__c-Preference Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Macro-Macro Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Marketing_Plan__c-Marketing Plan Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Members__c-Member Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Members__c-Member Layout</layout>
-        <recordType>Members__c.Household_Member</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Open_Houses__c-Community Open House Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Opportunity-Opportunity Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>OpportunityLineItem-Opportunity Product Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Personal_Asset__c-Personal Asset Layout - Assets with Account</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Personal_Asset__c-Personal Asset Layout - Assets with Account</layout>
-        <recordType>Personal_Asset__c.Assets_with_an_Account</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Personal_Asset__c-Personal Asset Layout - Business Ownership</layout>
-        <recordType>Personal_Asset__c.Business_Ownership</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Personal_Asset__c-Personal Asset Layout - Cash without an Account</layout>
-        <recordType>Personal_Asset__c.Cash_without_an_Account</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Personal_Asset__c-Personal Asset Layout - Gifts</layout>
-        <recordType>Personal_Asset__c.Gifts</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Personal_Asset__c-Personal Asset Layout - Land Ownership</layout>
-        <recordType>Personal_Asset__c.Land_Ownership</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Personal_Asset__c-Personal Asset Layout - No Assets</layout>
-        <recordType>Personal_Asset__c.No_Assets</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Personal_Income__c-Income Layout - Employed</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Personal_Income__c-Income Layout - Employed</layout>
-        <recordType>Personal_Income__c.Employment_Income</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Personal_Income__c-Income Layout - Other Incomes</layout>
-        <recordType>Personal_Income__c.Other_Income</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Personal_Income__c-Income Layout - Self Employed</layout>
-        <recordType>Personal_Income__c.Self_Employment_Income</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Personal_Income__c-Income Layout - Unemployed</layout>
-        <recordType>Personal_Income__c.Unemployed</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Pricebook2-Price Book Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>PricebookEntry-Price Book Entry Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Pricing_Request__c-Pricing Request Community</layout>
-        <recordType>Pricing_Request__c.BMR_Rental</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Pricing_Request__c-Pricing Request Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Product2-Product Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Program__c-Program Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Properties__c-Development Layout</layout>
-        <recordType>Properties__c.Development</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Properties__c-Property Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Properties__c-Property Layout</layout>
-        <recordType>Properties__c.Property</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Properties__c-Unit Layout</layout>
-        <recordType>Properties__c.Unit</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Property_Owner_Requests__c-Property Owner Requests Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Registrant_Setup_Request__c-Registrant Setup Request Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>SocialPersona-Social Persona Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>SocialPost-Social Post Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Solution-Solution Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Task-Task Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Unit__c-BMR Ownership</layout>
-        <recordType>Unit__c.BMR_Ownership</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Unit__c-BMR Rental Unit Layout</layout>
-        <recordType>Unit__c.BMR_Rental</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Unit__c-Unit Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>User-User Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>UserAlt-User Profile Layout</layout>
-    </layoutAssignments>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Contact</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
     <pageAccesses>
         <apexPage>HOP_ApplicationForm</apexPage>
         <enabled>false</enabled>
@@ -2291,41 +2435,6 @@
         <enabled>false</enabled>
     </pageAccesses>
     <recordTypeVisibilities>
-        <default>true</default>
-        <recordType>Account.City_and_Partners</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Account.Household</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Account.Lender</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Account.Property_Management</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Account.SFMOHCD_Inclusionary_Programs</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Application_Asset__c.Non_Retirement_Liquid_Assets</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>true</default>
-        <recordType>Application_Asset__c.Retirement</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
         <default>false</default>
         <recordType>Application__c.BMR_Rental_Long_Form</recordType>
         <visible>true</visible>
@@ -2339,41 +2448,6 @@
         <default>false</default>
         <recordType>Application__c.Multi_Family_Rental_Short_Form</recordType>
         <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Approved_Certificate__c.Certificate_of_Preference</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Approved_Certificate__c.Ellis_Act_Housing_Preference</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Certificate_Program__c.COP</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Certificate_Program__c.EAHP</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Compliance__c.Ownership_Verification</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Compliance__c.Rental_Initial_Certification</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Compliance__c.Rental_Re_Certification</recordType>
-        <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
@@ -2397,276 +2471,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>Financial_Application_Asset__c.Assets_with_an_Account</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Financial_Application_Asset__c.Business_Ownership</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Financial_Application_Asset__c.Cash_without_an_Account</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Financial_Application_Asset__c.Gifts</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Financial_Application_Asset__c.Land_Ownership</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Financial_Application_Asset__c.No_Assets</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Financial_Application_Income__c.Employment_Income</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Financial_Application_Income__c.Other_Income</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Financial_Application_Income__c.Self_Employment_Income</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Financial_Application_Income__c.Unemployed</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Financial_Application_Member__c.Household_Member</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Financial_Application__c.BMR_DALP</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Financial_Application__c.BMR_DALP_Plus</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Financial_Application__c.BMR_Only</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Financial_Application__c.CSLP</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Financial_Application__c.DALP</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Financial_Application__c.FRDALP</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Financial_Application__c.MCC_Only</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Financial_Application__c.PIC</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Financial_Application__c.TND</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Housing_Application_Asset__c.Assets_with_an_Account</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Housing_Application_Asset__c.Business_Ownership</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Housing_Application_Asset__c.Cash_without_an_Account</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Housing_Application_Asset__c.Gifts</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Housing_Application_Asset__c.Land_Ownership</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Housing_Application_Asset__c.No_Assets</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Housing_Application_Income__c.Employment_Income</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Housing_Application_Income__c.Other_Income</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Housing_Application_Income__c.Self_Employment_Income</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Housing_Application_Income__c.Unemployed</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Housing_Application_Member__c.Household_Member</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Housing_Application__c.BMR_Ownership</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Housing_Application__c.BMR_Rental</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Loan_Activity__c.Capital_Improvements</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Loan_Activity__c.HOA_Special_Assessments</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Loan_Activity__c.Initial_Loan</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Loan_Activity__c.Loan_Modification</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Loan_Activity__c.Payoff_Reconveyance</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Loan_Activity__c.Refinance_Subordination</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Members__c.Household_Member</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Personal_Asset__c.Assets_with_an_Account</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Personal_Asset__c.Business_Ownership</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Personal_Asset__c.Cash_without_an_Account</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Personal_Asset__c.Gifts</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Personal_Asset__c.Land_Ownership</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Personal_Asset__c.No_Assets</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Personal_Income__c.Employment_Income</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Personal_Income__c.Other_Income</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Personal_Income__c.Self_Employment_Income</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Personal_Income__c.Unemployed</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>true</default>
-        <recordType>Pricing_Request__c.BMR_Rental</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Properties__c.Development</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Properties__c.Property</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Properties__c.Unit</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
         <recordType>Unit__c.BMR_Ownership</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -2676,140 +2480,8 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <tabVisibilities>
-        <tab>Application_Member__c</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Application__c</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Building__c</tab>
+        <tab>standard-Contact</tab>
         <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Cert_App</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Certificate_Program__c</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Compliance__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>DALP_Request__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Development__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Drop_Box__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Financial_Application__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Flagged_Application__c</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Flagged_Record_Set__c</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Flow</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Housing_Application_Asset__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Housing_Application_Income__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Housing_Application_Member__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Housing_Application__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Housing_Applications_Prototype</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Listing__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Loan_Activity__c</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Lottery_Member__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Lottery_Preference__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Marketing_Plan__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Members__c</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Personal_Asset__c</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Personal_Income__c</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Pricing_Request__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Program__c</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Properties__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Property_Owner_Requests__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Register</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Registrant_Setup_Request__c</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Search_Properties</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Unit__c</tab>
-        <visibility>DefaultOff</visibility>
     </tabVisibilities>
     <userLicense>Customer Community Login</userLicense>
     <userPermissions>

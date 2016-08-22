@@ -16,28 +16,6 @@
         <members>API_ShortForm_PostContactDeleteTest</members>
         <members>API_ShortForm_PostDelete</members>
         <members>API_ShortForm_PostDeleteTest</members>
-        <members>HOP_ApplicationFormController</members>
-        <members>HOP_ApplicationFormControllerTest</members>
-        <members>HOP_ApplicationReviewController</members>
-        <members>HOP_ApplicationReviewControllerTest</members>
-        <members>HOP_ApplicationViewController</members>
-        <members>HOP_ApplicationViewControllerTest</members>
-        <members>HOP_ApplicationsController</members>
-        <members>HOP_ApplicationsControllerTest</members>
-        <members>HOP_Constants</members>
-        <members>HOP_ControllerBase</members>
-        <members>HOP_ControllerBaseTest</members>
-        <members>HOP_DuplicateApplicationsController</members>
-        <members>HOP_DuplicateApplicationsControllerTest</members>
-        <members>HOP_FlaggedApplicationsController</members>
-        <members>HOP_FlaggedApplicationsControllerTest</members>
-        <members>HOP_ListingController</members>
-        <members>HOP_ListingControllerTest</members>
-        <members>HOP_ListingsController</members>
-        <members>HOP_ListingsControllerTest</members>
-        <members>HOP_TemplateController</members>
-        <members>HOP_TemplateController</members>
-        <members>HOP_TemplateControllerTest</members>
         <members>LOT_RandomBaseRequest</members>
         <members>LOT_RandomDrawReq</members>
         <members>ListingAMIApi</members>
@@ -48,9 +26,15 @@
         <members>ListingDetailAPITest</members>
         <members>ListingEligibilityCheckAPI</members>
         <members>ListingEligibilityCheckAPITest</members>
-        <members>ListingFlaggedApplicationAction</members>
         <members>ListingLotteryMemberApi</members>
         <members>ListingLotteryMemberApiTest</members>
+        <members>HOP_TemplateController</members>
+
+                <members>ListingFlaggedApplicationAction</members>
+
+        <!--
+        <members>ListingLotteryPrefApi</members>
+        <members>ListingLotteryPrefApiTest</members>-->
         <members>ListingLotteryResultApi</members>
         <members>ListingLotteryResultApiTest</members>
         <members>ListingLotteryService</members>
@@ -61,9 +45,30 @@
         <members>ListingUnitApiTest</members>
         <members>ListingUnitSummaryApi</members>
         <members>ListingUnitSummaryApiTest</members>
-        <members>SalesforceDataTables</members>
-        <members>SalesforceDataTablesInterface</members>
-        <members>TriggerAction</members>
+
+        <members>HOP_Application</members>
+<members>HOP_ApplicationController</members>
+<members>HOP_ApplicationFormController</members>
+<members>HOP_ApplicationFormControllerTest</members>
+<members>HOP_ApplicationReviewController</members>
+<members>HOP_ApplicationReviewControllerTest</members>
+<members>HOP_ApplicationsController</members>
+<members>HOP_ApplicationsControllerTest</members>
+<members>HOP_ApplicationViewController</members>
+<members>HOP_ApplicationViewControllerTest</members>
+<members>HOP_Constants</members>
+<members>HOP_ControllerBase</members>
+<members>HOP_ControllerBaseTest</members>
+<members>HOP_DuplicateApplicationsController</members>
+<members>HOP_DuplicateApplicationsControllerTest</members>
+<members>HOP_FlaggedApplicationsController</members>
+<members>HOP_FlaggedApplicationsControllerTest</members>
+<members>HOP_ListingController</members>
+<members>HOP_ListingControllerTest</members>
+<members>HOP_ListingsController</members>
+<members>HOP_ListingsControllerTest</members>
+<members>HOP_TemplateController</members>
+<members>HOP_TemplateControllerTest</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -92,6 +97,7 @@
         <members>SalesforceDataTablesEvent</members>
         <name>AuraDefinitionBundle</name>
     </types>
+ 
     <types>
         <members>AMI__c</members>
         <members>Application_Member__c</members>
@@ -99,24 +105,28 @@
         <members>Application__c</members>
         <members>Contact</members>
         <members>Development__c</members>
-        <members>DuplicateRecordSet</members>
-        <members>External_Connections__c</members>
         <members>Flagged_Application__c</members>
         <members>Flagged_Record_Set__c</members>
         <members>Leasing_Settings__c</members>
         <members>Listing_Image__c</members>
+        <members>Listing_Lottery_Preference__c</members>
         <members>Listing__c</members>
         <members>Unit__c</members>
         <name>CustomObject</name>
     </types>
+   
     <types>
         <members>*</members>
         <name>Flow</name>
     </types>
+   
     <types>
         <members>*</members>
         <name>MatchingRule</name>
     </types>
+    <types>
+       <members>Application_Asset__c.Non_Retirement_Liquid_Assets</members>
+        <name>RecordType</name>
     <types>
         <members>*</members>
         <name>PermissionSet</name>
@@ -132,6 +142,12 @@
         <name>Profile</name>
     </types>
     <types>
+        <members>*</members>
+        <name>RecordType</name>
+    </types>
+    <types>
+        <members>SalesforceDataTables</members>
+
         <members>Cell_handsontable_full_min_css</members>
         <members>Cell_handsontable_full_min_js</members>
         <members>Cell_moment_js</members>
@@ -140,8 +156,7 @@
         <members>Cell_pure_min_css</members>
         <members>DataTablesEditor</members>
         <members>HOP</members>
-        <members>SalesforceDataTables</members>
         <name>StaticResource</name>
     </types>
-    <version>36.0</version>
+    <version>37.0</version>
 </Package>

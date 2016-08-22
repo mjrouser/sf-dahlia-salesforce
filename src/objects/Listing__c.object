@@ -689,7 +689,7 @@
     <fields>
         <fullName>Legal_Disclaimers__c</fullName>
         <externalId>false</externalId>
-        <label>Building Selection Criteria</label>
+        <label>Important Program Rules</label>
         <length>10000</length>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1422,5 +1422,17 @@ alert(message);
 navigateToUrl(&apos;/{!Listing__c.Id}&apos;);
 }
 }</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Lottery_Report</fullName>
+        <availability>online</availability>
+        <description>Link that navigates users to the &quot;Listing with Applications Report&quot;; passes the id of the Listing as the pv0 filter parameter.</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Lottery Report</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>https://sfhousing--qa.cs16.my.salesforce.com/00Of0000000eG68?pv0={!Listing__c.Id}</url>
     </webLinks>
 </CustomObject>

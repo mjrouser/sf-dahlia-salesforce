@@ -148,6 +148,18 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Contact_WebappID__c</fullName>
+        <externalId>false</externalId>
+        <formula>Contact__r.Webapp_Id__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Contact_WebappID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Contact__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
@@ -204,9 +216,8 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Decline to State</fullName>
+                <fullName>Decline to state</fullName>
                 <default>false</default>
-                <isActive>false</isActive>
             </picklistValues>
             <restrictedPicklist>true</restrictedPicklist>
             <sorted>false</sorted>
@@ -594,6 +605,10 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
             </picklistValues>
             <picklistValues>
                 <fullName>Other/Multiracial</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Decline to state</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>

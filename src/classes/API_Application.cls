@@ -11,7 +11,9 @@
 global without sharing class API_Application {
     public static final String PRIMARY_APPLICANT = 'Primary Applicant';
 	public static final String ALTERANTE_CONTACT = 'Alternate Contact';
-	
+	private static boolean isNullorBlank(String value) {
+    	return (value==null || value.length()==0) ?  true: false;
+    }
     global class ShortForm {
         global String id;
         global String name;
@@ -107,7 +109,22 @@ global without sharing class API_Application {
             app.Application_Submitted_Date__c = this.applicationSubmittedDate;
             return app;
         }
+        
+        global void validate() {
+        	if (primaryApplicant == null) {
+        		throw new IncompleteApplicationException ();
+        	}
+        	this.primaryApplicant.validate();
+        	if (householdMembers!=null) {
+	        	for (Person householdMember: householdMembers) {
+	        		householdMember.validate();
+	        	}
+        	}
+        }
     }
+  
+    global class IncompleteApplicationException extends Exception {}
+    
 
     global class Person {
     	global String webAppID;
@@ -157,6 +174,12 @@ global without sharing class API_Application {
             return '';
         }
 
+        global void validate() {
+      		 if (isNullorBlank(this.firstName) || isNullorBlank(this.firstName) || (DOB == null) ) {
+      		 	throw new IncompleteApplicationException();
+      		 }
+ 
+        }
         global String getKey() {
             return this.firstName.toLowerCase() + ',' + this.lastName.toLowerCase() + ',' + this.parseDate(this.dob);
         }
@@ -230,6 +253,8 @@ global without sharing class API_Application {
             this.agency = am.Agency_Name__c;
             this.alternateContactTypeOther = am.Alternate_Contact_Type_Other__c;
             this.hasSameAddressAsApplicant = am.Same_Address_as_Applicant__c;
+            this.webappID = am.Contact_WebappID__c;
+            
         }
 
         global Contact toContact() {
@@ -303,6 +328,7 @@ global without sharing class API_Application {
             am.Same_Address_as_Applicant__c = (this.hasSameAddressAsApplicant == null ? false : this.hasSameAddressAsApplicant);
             return am;
         }
+        
     }
     
 }

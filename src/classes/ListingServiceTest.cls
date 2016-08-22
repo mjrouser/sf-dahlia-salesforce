@@ -45,7 +45,7 @@ private class ListingServiceTest {
         listing1.Status__c = 'Active';
         listing1.Does_Match__c = true;
         insert listing1;
-        
+        /*
         Lottery_Preference__c lp = new Lottery_Preference__c();
         lp.Name = 'Test Lottery Preference';
         lp.Status__c = 'New';
@@ -56,7 +56,7 @@ private class ListingServiceTest {
         llp.Listing__c = listing.Id;
         llp.Lottery_Preference__c = lp.Id;
         insert llp;
-        
+        */
         Unit__c unit = new Unit__c();
         unit.property__c  = build.id;
         unit.BMR_Rent_Monthly__c = 400;
@@ -104,6 +104,7 @@ private class ListingServiceTest {
         //verify the returned Id is the right one 
         system.assert(testL[0].Id == listingId);
     }
+    /* removed for now  -LL until we do new preference model 
     static testMethod void testGetActiveListingsByPreference() {
         setupTestData();
         
@@ -111,9 +112,9 @@ private class ListingServiceTest {
     
         testL = ListingService.getActiveListingsByPreference(preferenceName);
         //verify the returned Id is the right one 
-        system.assert(testL[0].Id == listingId);
+        system.assert(testL[0].Id == listingId); 
     }
-    
+    */
     static testMethod void testGetAllActiveListings() {
         setupTestData();
         

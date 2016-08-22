@@ -62,7 +62,7 @@ private class ListingApiTest {
         listing2.Status__c= 'Active';
         listingList.add(listing2);
         insert listingList;
-        
+       /* 
         Lottery_Preference__c lp = new Lottery_Preference__c();
         lp.Name = 'Test Lottery Preference';
         lp.Status__c = 'New';
@@ -73,7 +73,7 @@ private class ListingApiTest {
         llp.Listing__c = listing.Id;
         llp.Lottery_Preference__c = lp.Id;
         insert llp;
-        
+        */
         Unit__c unit = new Unit__c();
         unit.property__c  = build.id;
         unit.BMR_Rent_Monthly__c = 400;
@@ -164,7 +164,7 @@ private class ListingApiTest {
         //verify the returned listing is the right one 
         system.assert(listingList[0].Id == listingID);
     }
-
+/*
     static testMethod void getActiveListingsByPreference() {
          setupTestData();
         RestRequest reqContext = new RestRequest();
@@ -178,4 +178,5 @@ private class ListingApiTest {
         //verify the returned listing is the right one
         system.assert(listingList[0].Id == listingID);
     }
+    */
 }

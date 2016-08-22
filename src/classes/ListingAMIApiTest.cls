@@ -43,7 +43,7 @@ private class ListingAMIApiTest {
         listing.Status__c = 'Active';
         listing.Does_Match__c = true;
         insert listing;
-        
+        /*
         Lottery_Preference__c lp = new Lottery_Preference__c();
         lp.Name = 'Test Lottery Preference';
         lp.Status__c = 'New';
@@ -54,7 +54,7 @@ private class ListingAMIApiTest {
         llp.Listing__c = listing.Id;
         llp.Lottery_Preference__c = lp.Id;
         insert llp;
-        
+        */
         Unit__c unit = new Unit__c();
         unit.property__c  = build.id;
         unit.BMR_Rent_Monthly__c = 400;

@@ -19,6 +19,9 @@ global class ListingLotteryService {
     // Lottery Preference
     //*************************************
     
+    /*
+    original preference design - 
+    
     global static List<Lottery_Preference__c> getLotteryPreferenceByID(Id lotteryPrefId){
     	List<Lottery_Preference__c> lps = new List<Lottery_Preference__c>();
     	string lquery = ListingLotteryService.LOTTERY_PREFERENCE_QUERY + ' WHERE Id = \'' + lotteryPrefId + '\'';
@@ -52,7 +55,7 @@ global class ListingLotteryService {
     	
     	return lps;
     }
-    
+    */
     //*************************************
     // Lottery Member
     //*************************************

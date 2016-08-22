@@ -77,7 +77,7 @@ private class ListingEligibilityCheckAPITest {
         unit1.Maximum_Household_Size__c  = 3;
         unit1.Number_of_Bedrooms__c = 1;
         insert unit1;
-        
+        /*
         Lottery_Preference__c lp = new Lottery_Preference__c();
         lp.Name = 'Test Lottery Preference';
         lp.Status__c = 'New';
@@ -88,7 +88,7 @@ private class ListingEligibilityCheckAPITest {
         llp.Listing__c = listing.Id;
         llp.Lottery_Preference__c = lp.Id;
         insert llp;
-        
+        */
         ami = new AMI__c();
         ami.name='Test Lottery Preference';
         ami.amount__c = 53850;

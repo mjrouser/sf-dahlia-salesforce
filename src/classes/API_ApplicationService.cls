@@ -33,7 +33,7 @@ public without sharing class API_ApplicationService {
 	private static final String APPLICATION_MEMBER_FIELDLIST =
 		'Id, Contact__c, First_Name__c, Middle_Name__c, Last_Name__c, Date_of_Birth__c, Email__c,' +
 		' Phone__c, Phone_Type__c, Second_Phone__c, Second_Phone_Type__c,' +
-		' Street__c, City__c, State__c, Zip_Code__c, Application__c, Application__r.Status__c,' +
+		' Street__c, City__c, State__c, Zip_Code__c, Application__c, Application__r.Status__c, Contact_WebappID__c,' +
 		' Mailing_Street__c, Mailing_City__c, Mailing_State__c, Mailing_Zip_Code__c,' +
 		' Work_in_SF__c, Relationship_to_Applicant__c, Living_with_HIV_AIDS__c, Sexual_Orientation__c, Sexual_Orientation_Other__c,' + 
 		' Gender__c, Gender_Other__c, Ethnicity__c, Race__c, Type__c, Primary_Language__c, Other_Language__c,' + 
@@ -415,6 +415,9 @@ public without sharing class API_ApplicationService {
 
 	public static API_Application.ShortForm upsertShortform(API_Application.ShortForm sf) {
 		if (sf == null) return null;
+		if (sf.status!='Draft') {
+			sf.validate();
+		}
 		
 		API_Application.ShortForm existingSf;
 		//set with existing Application Member Ids used to compare them with Application Members from current JSON

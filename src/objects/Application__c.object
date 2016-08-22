@@ -210,7 +210,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
@@ -254,19 +254,19 @@
         <label>COP Preference Manual</label>
         <picklist>
             <picklistValues>
-                <fullName>Needs confirmation</fullName>
+                <fullName>Unconfirmed</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Confirmed</fullName>
+                <fullName>Valid</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Denied</fullName>
+                <fullName>Invalid</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Confirmed - Added</fullName>
+                <fullName>Valid - Added</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -310,9 +310,9 @@
 IF(
   OR(
     AND(NOT(ISBLANK(COP_Preference_Member__c)), ISPICKVAL(COP_Preference_Manual__c, &apos;&apos;)),
-    AND(NOT(ISBLANK(COP_Preference_Member__c)), ISPICKVAL(COP_Preference_Manual__c, &apos;Needs confirmation&apos;)), 
-    AND(NOT(ISBLANK(COP_Preference_Member__c)), ISPICKVAL(COP_Preference_Manual__c, &apos;Confirmed&apos;)),
-    ISPICKVAL(COP_Preference_Manual__c, &apos;Confirmed - Added&apos;)
+    AND(NOT(ISBLANK(COP_Preference_Member__c)), ISPICKVAL(COP_Preference_Manual__c, &apos;Unconfirmed&apos;)), 
+    AND(NOT(ISBLANK(COP_Preference_Member__c)), ISPICKVAL(COP_Preference_Manual__c, &apos;Valid&apos;)),
+    ISPICKVAL(COP_Preference_Manual__c, &apos;Valid - Added&apos;)
     ), true, false)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>COP Preference</label>
@@ -343,19 +343,19 @@ IF(
         <label>DTHP Preference Manual</label>
         <picklist>
             <picklistValues>
-                <fullName>Needs confirmation</fullName>
+                <fullName>Unconfirmed</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Confirmed</fullName>
+                <fullName>Valid</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Confirmed - Added</fullName>
+                <fullName>Valid - Added</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Denied</fullName>
+                <fullName>Invalid</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -398,9 +398,9 @@ IF(
 IF(
   OR(
     AND(NOT(ISBLANK(DTHP_Preference_Member__c)), ISPICKVAL(DTHP_Preference_Manual__c, &apos;&apos;)),
-    AND(NOT(ISBLANK(DTHP_Preference_Member__c)), ISPICKVAL(DTHP_Preference_Manual__c, &apos;Needs confirmation&apos;)), 
-    AND(NOT(ISBLANK(DTHP_Preference_Member__c)), ISPICKVAL(DTHP_Preference_Manual__c, &apos;Confirmed&apos;)),
-    ISPICKVAL(DTHP_Preference_Manual__c, &apos;Confirmed - Added&apos;)
+    AND(NOT(ISBLANK(DTHP_Preference_Member__c)), ISPICKVAL(DTHP_Preference_Manual__c, &apos;Unconfirmed&apos;)), 
+    AND(NOT(ISBLANK(DTHP_Preference_Member__c)), ISPICKVAL(DTHP_Preference_Manual__c, &apos;Valid&apos;)),
+    ISPICKVAL(DTHP_Preference_Manual__c, &apos;Valid - Added&apos;)
     ), true, false)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>DTHP Preference</label>
@@ -463,7 +463,7 @@ IF(
 IF(ISPICKVAL( Applicant__r.Gender__c , &quot;Female&quot;), &quot;Female&quot;,
 IF(ISPICKVAL( Applicant__r.Gender__c , &quot;Trans Male&quot;), &quot;Trans Male&quot;,
 IF(ISPICKVAL( Applicant__r.Gender__c , &quot;Trans Female&quot;), &quot;Trans Female&quot;,
-IF(ISPICKVAL( Applicant__r.Gender__c , &quot;Not Listed (Please Specify)&quot;), &quot;Not Listed (Please Specify)&quot;,
+IF(ISPICKVAL( Applicant__r.Gender__c , &quot;Not Listed&quot;), Applicant__r.Gender_Other__c,
 IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decline to State&quot;, NULL))))))</formula>
         <label>Gender</label>
         <required>false</required>
@@ -518,6 +518,100 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <label>Is Resident</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>L_Alice_Griffith__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>L-Alice Griffith</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>L_Applicant_Full_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>L-Applicant Full Name</label>
+        <length>96</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>L_COP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>L-COP</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>L_DTHP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>L-DTHP</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>L_Date_of_Birth__c</fullName>
+        <externalId>false</externalId>
+        <label>L-Date of Birth</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>L_Listing_Specific__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>L-Listing Specific</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>L_LiveWork__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>L-LiveWork</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>L_Lottery_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>L-Lottery Number</label>
+        <length>12</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>L_NRHP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>L-NRHP</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>L_RB_AH__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>L-RB/AH</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -769,19 +863,19 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
         <label>Neighborhood Preference Manual</label>
         <picklist>
             <picklistValues>
-                <fullName>Needs confirmation</fullName>
+                <fullName>Unconfirmed</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Confirmed</fullName>
+                <fullName>Valid Address</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Denied</fullName>
+                <fullName>Invalid Address</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Confirmed - Added</fullName>
+                <fullName>Valid Address - Added</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -871,9 +965,9 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
 IF(
   OR(
     AND(NOT(ISBLANK(Neighborhood_Preference_Member__c)), ISPICKVAL(Neighborhood_Preference_Manual__c, &apos;&apos;)),
-    AND(NOT(ISBLANK(Neighborhood_Preference_Member__c)), ISPICKVAL(Neighborhood_Preference_Manual__c, &apos;Needs confirmation&apos;)), 
-    AND(NOT(ISBLANK(Neighborhood_Preference_Member__c)), ISPICKVAL(Neighborhood_Preference_Manual__c, &apos;Confirmed&apos;)),
-    ISPICKVAL(Neighborhood_Preference_Manual__c, &apos;Confirmed - Added&apos;)
+    AND(NOT(ISBLANK(Neighborhood_Preference_Member__c)), ISPICKVAL(Neighborhood_Preference_Manual__c, &apos;Unconfirmed&apos;)), 
+    AND(NOT(ISBLANK(Neighborhood_Preference_Member__c)), ISPICKVAL(Neighborhood_Preference_Manual__c, &apos;Valid Address&apos;)),
+    ISPICKVAL(Neighborhood_Preference_Manual__c, &apos;Valid Address - Added&apos;)
     ), true, false)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Neighborhood Preference</label>
@@ -1305,39 +1399,39 @@ IF(
         <picklistValues>
             <picklist>COP_Preference_Manual__c</picklist>
             <values>
-                <fullName>Confirmed</fullName>
+                <fullName>Invalid</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Confirmed - Added</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Denied</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Needs confirmation</fullName>
+                <fullName>Unconfirmed</fullName>
                 <default>true</default>
+            </values>
+            <values>
+                <fullName>Valid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Valid - Added</fullName>
+                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
             <picklist>DTHP_Preference_Manual__c</picklist>
             <values>
-                <fullName>Confirmed</fullName>
+                <fullName>Invalid</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Confirmed - Added</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Denied</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Needs confirmation</fullName>
+                <fullName>Unconfirmed</fullName>
                 <default>true</default>
+            </values>
+            <values>
+                <fullName>Valid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Valid - Added</fullName>
+                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -1397,20 +1491,20 @@ IF(
         <picklistValues>
             <picklist>Neighborhood_Preference_Manual__c</picklist>
             <values>
-                <fullName>Confirmed</fullName>
+                <fullName>Invalid Address</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Confirmed - Added</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Denied</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Needs confirmation</fullName>
+                <fullName>Unconfirmed</fullName>
                 <default>true</default>
+            </values>
+            <values>
+                <fullName>Valid Address</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Valid Address - Added</fullName>
+                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -1580,38 +1674,38 @@ IF(
         <picklistValues>
             <picklist>COP_Preference_Manual__c</picklist>
             <values>
-                <fullName>Confirmed</fullName>
+                <fullName>Invalid</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Confirmed - Added</fullName>
+                <fullName>Unconfirmed</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Denied</fullName>
+                <fullName>Valid</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Needs confirmation</fullName>
+                <fullName>Valid - Added</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
             <picklist>DTHP_Preference_Manual__c</picklist>
             <values>
-                <fullName>Confirmed</fullName>
+                <fullName>Invalid</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Confirmed - Added</fullName>
+                <fullName>Unconfirmed</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Denied</fullName>
+                <fullName>Valid</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Needs confirmation</fullName>
+                <fullName>Valid - Added</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1672,19 +1766,19 @@ IF(
         <picklistValues>
             <picklist>Neighborhood_Preference_Manual__c</picklist>
             <values>
-                <fullName>Confirmed</fullName>
+                <fullName>Invalid Address</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Confirmed - Added</fullName>
+                <fullName>Unconfirmed</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Denied</fullName>
+                <fullName>Valid Address</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Needs confirmation</fullName>
+                <fullName>Valid Address - Added</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1855,39 +1949,39 @@ IF(
         <picklistValues>
             <picklist>COP_Preference_Manual__c</picklist>
             <values>
-                <fullName>Confirmed</fullName>
+                <fullName>Invalid</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Confirmed - Added</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Denied</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Needs confirmation</fullName>
+                <fullName>Unconfirmed</fullName>
                 <default>true</default>
+            </values>
+            <values>
+                <fullName>Valid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Valid - Added</fullName>
+                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
             <picklist>DTHP_Preference_Manual__c</picklist>
             <values>
-                <fullName>Confirmed</fullName>
+                <fullName>Invalid</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Confirmed - Added</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Denied</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Needs confirmation</fullName>
+                <fullName>Unconfirmed</fullName>
                 <default>true</default>
+            </values>
+            <values>
+                <fullName>Valid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Valid - Added</fullName>
+                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -1947,20 +2041,20 @@ IF(
         <picklistValues>
             <picklist>Neighborhood_Preference_Manual__c</picklist>
             <values>
-                <fullName>Confirmed</fullName>
+                <fullName>Invalid Address</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Confirmed - Added</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Denied</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Needs confirmation</fullName>
+                <fullName>Unconfirmed</fullName>
                 <default>true</default>
+            </values>
+            <values>
+                <fullName>Valid Address</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Valid Address - Added</fullName>
+                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
