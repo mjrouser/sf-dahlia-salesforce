@@ -39,7 +39,9 @@
         <members>HOP_TemplateController</members>
         <members>HOP_TemplateControllerTest</members>
         <members>LOT_RandomBaseRequest</members>
+        <members>LOT_RandomDrawBatch</members>
         <members>LOT_RandomDrawReq</members>
+        <members>LOT_RandomDrawService</members>
         <members>ListingAMIApi</members>
         <members>ListingAMIApiTest</members>
         <members>ListingApi</members>

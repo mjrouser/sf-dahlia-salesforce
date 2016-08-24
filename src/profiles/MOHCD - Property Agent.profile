@@ -133,7 +133,15 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>LOT_RandomDrawBatch</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>LOT_RandomDrawReq</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>LOT_RandomDrawService</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -1648,6 +1656,11 @@
         <editable>false</editable>
         <field>Flagged_Record_Set__c.Rule_Name__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Flagged_Record_Set__c.Total_Number_of_Appealed__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
