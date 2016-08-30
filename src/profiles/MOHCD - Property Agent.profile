@@ -129,6 +129,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>LOT_PreferenceRankBatch</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>LOT_RandomBaseRequest</apexClass>
         <enabled>false</enabled>
     </classAccesses>

@@ -38,6 +38,7 @@
         <members>HOP_TemplateController</members>
         <members>HOP_TemplateController</members>
         <members>HOP_TemplateControllerTest</members>
+        <members>LOT_PreferenceRankBatch</members>
         <members>LOT_RandomBaseRequest</members>
         <members>LOT_RandomDrawBatch</members>
         <members>LOT_RandomDrawReq</members>
@@ -109,6 +110,9 @@
         <members>Listing_Image__c</members>
         <members>Listing__c</members>
         <members>Unit__c</members>
+        <members>Open_House__c</members>
+        <members>Information_Session__c</members>
+
         <name>CustomObject</name>
     </types>
     <types>

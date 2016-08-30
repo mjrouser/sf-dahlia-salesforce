@@ -830,7 +830,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
     <startsWith>Vowel</startsWith>
     <validationRules>
         <fullName>DOB_Required</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>Date of birth is required</description>
         <errorConditionFormula>IF(
   AND(ISBLANK(Date_of_Birth__c), NOT(ISPICKVAL(Type__c, &apos;Alternate Contact&apos;)))
@@ -840,7 +840,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
     </validationRules>
     <validationRules>
         <fullName>First_Name_Required</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>First name is required for all application members</description>
         <errorConditionFormula>IF(ISBLANK(First_Name__c),true,false)</errorConditionFormula>
         <errorDisplayField>First_Name__c</errorDisplayField>
@@ -848,7 +848,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
     </validationRules>
     <validationRules>
         <fullName>Last_Name_Required</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>Last name is required</description>
         <errorConditionFormula>IF(ISBLANK(Last_Name__c), true, false)</errorConditionFormula>
         <errorDisplayField>Last_Name__c</errorDisplayField>
