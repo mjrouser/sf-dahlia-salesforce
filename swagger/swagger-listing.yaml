@@ -695,15 +695,15 @@
               $ref: "#/definitions/ShortForm"
           "400":
             description: Invalid ID supplied
-    /shortForm/delete/:
-      post:
+    /shortForm/delete/{shortFormId}:
+      delete:
         security:
           - restrictedAccess:
             - ShortForm
         description: deletes specified application
         parameters:
-        - name: id
-          in: query
+        - name: shortFormId
+          in: path
           description: ID shortForm To Delete
           type: string
           required: true
@@ -997,6 +997,9 @@
           description: "Will be set via code from Property."
         Pet_Policy__c:
           type: "string"
+          description: ""
+        Accepting_Online_Applications__c:
+          type: "boolean"
           description: ""
 
     Unit__c:
@@ -1444,6 +1447,9 @@
         hasSameAddressAsApplicant:
           type: "boolean"
           description: "only for household members to indicate separate address"
+        neighborhoodPreferenceMatch:
+          type: "string"
+          description: "the front end can validate that the neighborhood preference matches- Value {match, unmatched, <blank>}  "
 
     Attachment__C:
       type: "object"
