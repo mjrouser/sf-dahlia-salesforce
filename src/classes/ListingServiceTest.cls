@@ -8,6 +8,8 @@ private class ListingServiceTest {
     static  ID listingID ;
     static List<Id> listListingId;
     static String preferenceName ;
+    static AMI__c ami;
+    static Application__c app;
     
     static void setupTestData() {
         Id rtId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Household').getRecordTypeId();
@@ -36,6 +38,7 @@ private class ListingServiceTest {
         listing.Account__c = acc.Id;
         listing.Status__c = 'Active';
         listing.Does_Match__c = true;
+        listing.Min_Occupancy__c = 3;
         insert listing;
         
         Listing__c listing1 = new Listing__c();
@@ -45,6 +48,12 @@ private class ListingServiceTest {
         listing1.Status__c = 'Active';
         listing1.Does_Match__c = true;
         insert listing1;
+        
+        app = new Application__c();
+        app.listing__c = listing.Id;
+        app.Lottery_Number_Manual__c  = '1234';
+        app.Lottery_Rank__c = 1;
+        insert app;
         /*
         Lottery_Preference__c lp = new Lottery_Preference__c();
         lp.Name = 'Test Lottery Preference';
@@ -67,11 +76,21 @@ private class ListingServiceTest {
         unit.Number_of_Bedrooms__c = 3;
         insert unit;
         
+        Unit__c unit1 = new Unit__c();
+        unit1.property__c  = build.id;
+        unit1.BMR_Rent_Monthly__c = 400;
+        unit1.Rent_Multiple__c=2;
+        unit1.of_AMI_for_Pricing_Unit__c=55;
+        unit1.Listing__c = listing1.id;
+        unit1.Maximum_Household_Size__c  = 8;
+        unit1.Number_of_Bedrooms__c = 3;
+        insert unit1;
+        
         listingID = listing.id;
         listListingId = new List<Id>();
         listListingId.add(listingID);
         
-        AMI__c ami = new AMI__c();
+        ami = new AMI__c();
         ami.name='Test Lottery Preference';
         ami.amount__c = 40000;
         ami.Num_of_HouseHold__c=2;
@@ -184,7 +203,29 @@ private class ListingServiceTest {
         LIst<ListingService.ListingDetail> testLD = new LIst<ListingService.ListingDetail>();
         
         //ListingService.getUnitSummaryByListingID(listingId);
-        ListingService.getListingDetailAll();
+        System.assertEquals(ListingService.getListingDetailAll().size(), 2);
         //Map<Decimal,  Map<Decimal,Decimal>> x = ListingService.AMIMap;
+       	
     } 
+    
+      static testMethod void getListingResults() {
+          setupTestData();
+          System.assertEquals(ListingService.checkEligibility(crit, listingID).incomeEligibilityResult, 'Too High');
+          System.assertEquals(ListingService.getListingResults(listingID, '1234', true).listingId, listingID);
+          System.assertEquals(ListingService.getListingResults(listingID, '1234', false).listingId, listingID);
+      }
+    
+    static testMethod void getUnits() {
+          setupTestData();
+          System.assertEquals(ListingService.getAll(listingID).size(), 2);
+          System.assertEquals(ListingService.getUnitByListingId(listingID).size(), 1);
+    }
+    
+    static testMethod void getAMI() {
+          setupTestData();
+          ListingService.Ami filter = new ListingService.Ami();
+          System.assertEquals(ListingService.getByFilter(filter).size(), 1);
+          filter.amount = 100;
+          System.assertEquals(ListingService.Calc(filter).size(), 1);
+    }
 }

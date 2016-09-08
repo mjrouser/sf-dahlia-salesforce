@@ -106,13 +106,12 @@
         <members>External_Connections__c</members>
         <members>Flagged_Application__c</members>
         <members>Flagged_Record_Set__c</members>
+        <members>Information_Session__c</members>
         <members>Leasing_Settings__c</members>
         <members>Listing_Image__c</members>
         <members>Listing__c</members>
+        <members>Open_Houses__c</members>
         <members>Unit__c</members>
-        <members>Open_House__c</members>
-        <members>Information_Session__c</members>
-
         <name>CustomObject</name>
     </types>
     <types>

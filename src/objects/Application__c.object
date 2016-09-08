@@ -777,7 +777,7 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
         <fullName>Lottery_Rank__c</fullName>
         <description>Returned lottery number rank</description>
         <externalId>false</externalId>
-        <label>Lottery Rank</label>
+        <label>Lottery Rank (Unsorted)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -1342,9 +1342,12 @@ IF(
     <listViews>
         <fullName>All_BMR_Rental_Short_Form_Applications</fullName>
         <columns>NAME</columns>
-        <columns>Application_Submitted_Date__c</columns>
-        <columns>DTHP_Preference_Manual__c</columns>
         <columns>COP_Preference_Manual__c</columns>
+        <columns>COP_Preference_Member__c</columns>
+        <columns>COP_Preference__c</columns>
+        <columns>DTHP_Preference_Manual__c</columns>
+        <columns>DTHP_Preference_Member__c</columns>
+        <columns>DTHP_Preference__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>RECORDTYPE</field>

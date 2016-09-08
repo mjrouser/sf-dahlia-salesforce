@@ -10,23 +10,25 @@
 
 @isTest
 private without sharing class API_ShortForm_PostDeleteTest {
+	private static Application__c app;
 	
-	static testMethod void API_ShortForm_PostDeleteTest() {
-        Account a = new Account(Name = 'Household');
+	private static void init() {
+		Account a = new Account(Name = 'Household');
         insert a;
         
         Contact c = new Contact(FirstName = 'FirstName', LastName = 'LastName', Work_State__c = 'CO', Birthdate = date.today());
-        insert c;
+        //insert c;
         
         Listing__c listing = new Listing__c();
         insert listing;
         
-        Application__c app = new Application__c(Listing__c = listing.Id, Primary_Applicant__c = c.Id, Applicant_Household__c = a.Id);
+        app = new Application__c(Listing__c = listing.Id, Primary_Applicant__c = c.Id, Applicant_Household__c = a.Id);
         insert app;
         
-        Application_Member__c appM = new Application_Member__c(Application__c = app.Id, Contact__c = c.Id, Work_in_SF__c = True);
-        insert appM;
-        
+	}
+	
+	static testMethod void API_ShortForm_PostDeleteTest() {
+        init();
         Id shortformId = app.Id;
 
         Test.startTest();
@@ -79,6 +81,27 @@ private without sharing class API_ShortForm_PostDeleteTest {
 		Test.stopTest();
         
         System.assertEquals(res.statusCode, 404);
+    }
+    
+    static testMethod void API_ShortForm_doDeleteTest() {
+        init();
+        Id shortformId = app.Id;
+
+        Test.startTest();
+        	RestRequest req = new RestRequest();
+            RestResponse res = new RestResponse();
+            req.requestURI = 'services/apexrest/shortForm/' + shortformId;
+            req.httpMethod = 'DELETE';
+            RestContext.request = req;
+            RestContext.response = res;
+
+            API_ShortForm_PostDelete.doDelete();
+			system.debug('shortformId::' + shortformId);
+			app = API_ApplicationService.getApplicationById(shortformId);
+        Test.stopTest();
+        
+        //check if shortform was deleted
+        System.assertEquals(app, null);
     }
 
 }

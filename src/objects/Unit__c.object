@@ -648,6 +648,7 @@
         <fullName>Unit_Details</fullName>
         <columns>NAME</columns>
         <columns>Listing__c</columns>
+        <columns>Property__c</columns>
         <columns>Number_of_Bathrooms__c</columns>
         <columns>Number_of_Bedrooms__c</columns>
         <columns>CREATEDBY_USER</columns>

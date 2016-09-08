@@ -73,16 +73,15 @@ global class API_ShortForm_PostDelete {
         RestRequest req = RestContext.request;
         RestResponse res = RestContext.response;
         
-     
-        
         List<String> tokens = req.requestURI.split('/');
+        system.debug(LoggingLevel.INFO, 'tokens:::' + tokens);
         if (tokens.size() != 4) {
             res.statusCode = 400;
             return ;
         }
-        String shortFromID = tokens[3];
-         
-        performDelete(shortFromID,res);
+        String shortFormID = tokens[3];
+        system.debug(LoggingLevel.INFO, 'shortFormID:::' + shortFormID);
+        performDelete(shortFormID,res);
 
     }
 }

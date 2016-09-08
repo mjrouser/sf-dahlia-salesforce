@@ -94,7 +94,7 @@ private class ListingApiTest {
     }
     
     static testMethod void testGetAll() {
-         setupTestData();
+        setupTestData();
         RestRequest reqContext = new RestRequest();
 
         reqContext.requestURI = '/Listings/';
@@ -117,6 +117,7 @@ private class ListingApiTest {
         
         //verify the returned listing is the right one 
         system.assert(listingList[0].Id == listingID);
+        system.assert(listingList[0].Accepting_Online_Applications__c == true);
     }
     
      static testMethod void testGetByIDs() {

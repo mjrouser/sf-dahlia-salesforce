@@ -31,6 +31,9 @@
     overflow: hidden;
     overflow-x: auto;
 }
+.THIS .dataTables_wrapper{
+    position: relative;
+}
 .THIS .dataTables_wrapper .dataTables_processing {
     position: absolute;
     top: 0;
@@ -50,7 +53,7 @@
 }
 .THIS .dataTables_wrapper .dataTables_processing .pleaseWaitWrapper {
     position: relative;
-    top: 50%;
+    top: 50px;
     transform: translateY(-50%);
 }
 .THIS .errorMessageWrapper {

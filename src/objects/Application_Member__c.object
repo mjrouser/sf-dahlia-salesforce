@@ -413,6 +413,26 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Neighborhood_Preference_Match__c</fullName>
+        <description>Field to determine if neighborhood address was matched by GIS service.</description>
+        <externalId>false</externalId>
+        <label>Neighborhood Preference Match</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Matched</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not Matched</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>Neighborhood_Preference__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
@@ -815,6 +835,10 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
     <label>Application Member</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_Birth__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

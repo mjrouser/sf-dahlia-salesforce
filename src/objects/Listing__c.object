@@ -68,6 +68,16 @@
         <type>Percent</type>
     </fields>
     <fields>
+        <fullName>Accepting_Online_Applications__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Field to determine if a Listing is currently accepting applications online.</description>
+        <externalId>false</externalId>
+        <label>Accepting Online Applications</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Accessibility__c</fullName>
         <externalId>false</externalId>
         <label>Accessibility</label>
@@ -812,10 +822,10 @@
         <fullName>Lottery_Results__c</fullName>
         <description>Indicates there is at least one lottery winner</description>
         <externalId>false</externalId>
-        <formula>Lottery_Winners__c  &gt; 0</formula>
+        <formula>true</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <inlineHelpText>Indicates there is at least one lottery winner</inlineHelpText>
-        <label>XLottery Results?</label>
+        <label>Lottery Results?</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -903,7 +913,7 @@
         <description>Rollup sumary with Count of people who have been selected as winning lottery and therefore, the status of their lottery member = Winner.</description>
         <externalId>false</externalId>
         <inlineHelpText>Rollup sumary with Count of people who have been selected as winning lottery and therefore, the status of their lottery member = Winner.</inlineHelpText>
-        <label>XLottery Winners</label>
+        <label>Lottery Winners</label>
         <summaryFilterItems>
             <field>Lottery_Member__c.Status__c</field>
             <operation>equals</operation>
@@ -1379,7 +1389,6 @@
         <columns>Submitted_Applications__c</columns>
         <columns>Flagged_Applications__c</columns>
         <columns>Removed_from_Lottery__c</columns>
-        <columns>Total_Applications__c</columns>
         <columns>Lottery_Status__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>

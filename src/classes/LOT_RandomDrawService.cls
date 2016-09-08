@@ -4,8 +4,9 @@ global with sharing class LOT_RandomDrawService {
         Listing__c listing = [SELECT Id, Name, Lottery_Status__c FROM Listing__c WHERE Id = : listingID];
         if(listing.Lottery_Status__c == null || listing.Lottery_Status__c == 'Not Yet Run'){
             
-            
-            Map<String,ID> entities = LOT_RandomDrawReqTest.getEntities(listingID) ;
+           //             Map<String,ID> entities = LOT_RandomDrawReqTest.getEntities(listingID) ;
+           
+            Map<String,ID> entities = getEntities(listingID) ;
             LOT_RandomDrawReq.Drawing drawing = new LOT_RandomDrawReq.Drawing();
             LOT_RandomDrawReq.DrawingParams params = new LOT_RandomDrawReq.DrawingParams();
             params.title= 'drawing 4';
@@ -44,4 +45,15 @@ global with sharing class LOT_RandomDrawService {
         }
     }
     
+    private static Map<String,ID>  getEntities(String listingID) {
+        
+        Map<String,ID> entities = new Map<String,ID>();
+        List<Application__c> theApps = [select id, name from Application__c where status__c = 'Submitted' AND listing__c = :listingID ];
+        
+        for( Application__c app  :theApps){
+            entities.put(app.name, app.id);
+        }
+        
+        return entities;
+    }
 }

@@ -241,7 +241,7 @@
         });
     },
 
-    generateColumns : function(cmp, fields, hideFields, style, fieldArray, labelArray) {
+    generateColumns : function(cmp, fields, hideFields, style, fieldArray, labelArray, booleansExist) {
         var helper = this;
         var removeLookupHyperlinks = cmp.get('v.removeLookupHyperlinks');
 
@@ -252,6 +252,7 @@
                 data: e.name,
                 title: labelArray[fieldArray.indexOf(e.name)] || e.label,
                 defaultContent: '',
+                orderDataType: booleansExist && e.dataType === 'Boolean' ? "dom-checkbox" : undefined,
                 render: function(data, type, row, meta) {
                     if (e.dataType === 'Date') {
                         return '<span class="ro">' +
@@ -269,7 +270,7 @@
                                '</span>';
                     }
                     if (e.dataType === 'Boolean') {
-                        return '<span class="ro">' +
+                        return '<span class="ro' + (data === true ? ' checked' : '') + '">' +
                                    (style == 'SLDS'
                                        ? '<label class="slds-checkbox">' +
                                              '<input type="checkbox" class="pointer-events-none" readonly ' +
@@ -769,16 +770,27 @@
             oTable.buttons().container().appendTo($(oTable.table().container()).find('.dt-bottom-row'));
 
             if (selectableButtons.length) {
-                oTable.on('select', function() {
-                    var selectedRows = oTable.rows( { selected: true } ).count();
-                    oTable.buttons('.selectableButton').enable(selectedRows === 1);
-                } ).on('deselect', function() {
-                    var selectedRows = oTable.rows( { selected: true } ).count();
-                    oTable.buttons('.selectableButton').enable(selectedRows === 1);
+                oTable.on('select', function( e, dt, type, indexes ) {
+                    helper.onRowSelectToggle(cmp, oTable, indexes, true);
+                } ).on('deselect', function( e, dt, type, indexes ) {
+                    helper.onRowSelectToggle(cmp, oTable, indexes, false);
                 } );
             }
         } else {
             //$('<div/>').addClass('dt-buttons')/*.css('height', '40px')*/.appendTo($(oTable.table().container()).find('.dt-bottom-row'));
+        }
+    },
+
+    onRowSelectToggle : function(cmp, oTable, indexes, selected) {
+        var selectedRows = oTable.rows( { selected: true } ).count();
+        oTable.buttons('.selectableButton').enable(selectedRows === 1);
+        if (cmp.onRowSelectToggle) {
+            var row = oTable.rows(indexes).data();
+            row.selected = selected;
+            cmp.onRowSelectToggle({
+                'row': row,
+                'buttons': oTable.buttons().nodes()
+            });
         }
     },
 
@@ -892,7 +904,7 @@
                         var fields = fieldInfo.fields;
                         objectName = fieldInfo.objectName;
 
-                        for (var i = 0, columns = []; i < fields.length; i++) {
+                        for (var i = 0, columns = [], booleansExist = false; i < fields.length; i++) {
                             if (fields[i].dataType == 'Address') {
                                 helper.displayError(cmp, fields[i].name + ' is an Address field.' +
                                                          ' Address fields are currently not supported.' +
@@ -905,27 +917,42 @@
                                                          ' Please remove it from your query and try again.');
                                 return;
                             }
+                            if (!booleansExist && fields[i].dataType == 'Boolean') {
+                                booleansExist = true;
+                            }
 
                             columns.push({
                                 'data': fields[i].name
                             });
                         }
 
-                        var allKeys, order, search, recordsTotal, recordsFiltered;
+                        if (booleansExist) {
+                            $.fn.dataTableExt.order['dom-checkbox'] = function(settings, col) {
+                                return this.api().column(col, {order:'index'}).nodes().map(function(td, i) {
+                                    return $('.ro.checked', td).length ? '1' : '0';
+                                });
+                            }
+                        }
+
+                        var allKeys, order, search, gsearch, recordsTotal, recordsFiltered;
 
                         $.extend(dataTableOptions, {
                             'rowCallback': function(row, data, index) {
                                 row.id = data[fieldInfo.keyField];
                             },
-                            'columns': helper.generateColumns(cmp, fieldInfo.fields, hideFields, style, fieldArray, labelArray),
+                            'columns': helper.generateColumns(cmp, fieldInfo.fields, hideFields, style, fieldArray, labelArray, booleansExist),
                             'serverSide': true,
                             'ajax': function (data, callback, settings) {
-                                var cOrder = data.order, cSearch = data.columns.map(function(e) { return e.search });
+                                var cOrder = data.order, cSearch = data.columns.map(function(e) { return e.search }), cGsearch = data.search.value;
 
                                 var keys = [];
-                                if (JSON.stringify(cOrder) !== JSON.stringify(order) || JSON.stringify(cSearch) !== JSON.stringify(search)) {
+                                if (JSON.stringify(cOrder) !== JSON.stringify(order) ||
+                                    JSON.stringify(cSearch) !== JSON.stringify(search) ||
+                                    JSON.stringify(cGsearch) !== JSON.stringify(gsearch))
+                                {
                                     order = cOrder;
                                     search = cSearch;
+                                    gsearch = cGsearch;
                                 } else {
                                     keys = allKeys.slice(data.start, data.start + data.length);
                                 }
@@ -980,7 +1007,7 @@
                                 'order': helper.generateOrders(fieldInfo.fields, hideFields, orders)
                             });
                         }
-                        
+                        console.log(dataTableOptions);
                         helper.generateDataTable(cmp, dataTableOptions, fieldInfo, fieldArray, labelArray);
                     })();
                 } else if (state === "ERROR") {
@@ -1017,11 +1044,26 @@
                         }
                         var fieldInfo = result.fieldInfo;
 
+                        for (var i = 0, booleansExist = false; i < fieldInfo.fields.length; i++) {
+                            if (fieldInfo.fields[i].dataType == 'Boolean') {
+                                booleansExist = true;
+                                break;
+                            }
+                        }
+
+                        if (booleansExist) {
+                            $.fn.dataTableExt.order['dom-checkbox'] = function(settings, col) {
+                                return this.api().column(col, {order:'index'}).nodes().map(function(td, i) {
+                                    return $('.ro.checked', td).length ? '1' : '0';
+                                });
+                            }
+                        }
+
                         $.extend(dataTableOptions, {
                             'rowCallback': function(row, data, index) {
                                 row.id = data[fieldInfo.keyField];
                             },
-                            'columns': helper.generateColumns(cmp, fieldInfo.fields, hideFields, style, fieldArray, labelArray),
+                            'columns': helper.generateColumns(cmp, fieldInfo.fields, hideFields, style, fieldArray, labelArray, booleansExist),
                             'data': result.records
                         });
 

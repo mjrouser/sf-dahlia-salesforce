@@ -2,30 +2,91 @@
 private without sharing class API_ShortFormTest {
    	
     private static Leasing_Settings__c leasingSettings;
+    private static Account a;
+    private static Contact c;
+    private static Listing__c listing;
+    private static Application__c app;
+    private static Application_Member__c appM;
+    private static Application_Member__c appM1;
+    private static Application_Member__c appM2;
     
     private static void init() {
+    }
+    
+    private static void initTestClass() {
         leasingSettings = new Leasing_Settings__c(SetupOwnerId=UserInfo.getOrganizationId(), Default_Owner__c=UserInfo.getUserId());
         insert leasingSettings;
+    
+        a = new Account(Name = 'Household');
+        insert a;
+
+        c = new Contact(FirstName = 'FirstName', LastName = 'LastName', AccountId = a.Id, Work_State__c = 'CO', Birthdate = date.today().addYears(-30));
+        insert c;
+
+		listing = new Listing__c();
+        insert listing;
     }
+    
+    private static void initGetShortform() {
+        initTestClass();
+        
+        app = new Application__c(Applicant_Household__c = a.Id, Listing__c = listing.Id);
+        insert app;
+        
+        appM = new Application_Member__c(Application__c = app.Id, Contact__c = c.Id, First_Name__c = 'Test', Last_Name__c = 'lastName', Date_of_Birth__c = date.today().addYears(-20), Neighborhood_Preference_Match__c = 'Matches');
+        insert appM;
+    }
+    
+    private static void initPost_SetNaturalKeys() {
+        initTestClass();
+        
+        app = new Application__c(Primary_Applicant__c = c.Id, Applicant_Household__c = a.Id);
+        
+        appM = new Application_Member__c(Application__c = app.Id, Work_in_SF__c = True, First_Name__c = 'Name', Last_Name__c = 'LastName', Date_of_Birth__c = date.today());
+    }
+    
+    private static void initUpdateHouseholdMembers() {
+        leasingSettings = new Leasing_Settings__c(SetupOwnerId=UserInfo.getOrganizationId(), Default_Owner__c=UserInfo.getUserId());
+        insert leasingSettings;
+    
+        a = new Account(Name = 'Household');
+        
+        c = new Contact(FirstName = 'FirstName', LastName = 'LastName', Work_State__c = 'CO', Birthdate = date.today().addYears(-30));
+        
+		listing = new Listing__c();
+        insert listing;
+        
+        app = new Application__c(Primary_Applicant__c = c.Id, Applicant_Household__c = a.Id);
+        
+        appM = new Application_Member__c(Application__c = app.Id, Work_in_SF__c = True, First_Name__c = 'Name', Last_Name__c = 'LastName', Date_of_Birth__c = date.today());
+        appM2 = new Application_Member__c(Application__c = app.Id, Work_in_SF__c = True, First_Name__c = 'Name1', Last_Name__c = 'LastName1', Date_of_Birth__c = date.today());
+    }
+    
+    private static void initDeleteApplicationMembers() {
+        initTestClass();
+        
+        app = new Application__c(Listing__c = listing.Id);
+        insert app;
+        
+        List<Application_Member__c> appMList = new List<Application_Member__c>();
+        appM = new Application_Member__c(Application__c = app.Id, Work_in_SF__c = True, First_Name__c = 'firstName', Last_Name__c = 'lastName', Date_of_Birth__c = date.today().addYears(-20));
+        appMList.add(appM);
+            
+        appM1 = new Application_Member__c(Application__c = app.Id, Work_in_SF__c = True, First_Name__c = 'firstName1', Last_Name__c = 'lastName1', Date_of_Birth__c = date.today().addYears(-20));
+        appMList.add(appM1);
+        
+        appM2 = new Application_Member__c(Application__c = app.Id, Work_in_SF__c = True, First_Name__c = 'firstName2', Last_Name__c = 'lastName2', Date_of_Birth__c = date.today().addYears(-20));
+        appMList.add(appM2);
+        
+        insert appMList;
+        
+   }
 	
     /*
      * get shortform
     */
 	static testMethod void API_ShortForm_GetTest() {
-        Account a = new Account(Name = 'Household');
-        insert a;
-
-        Contact c = new Contact(LastName = 'LastName', AccountId = a.Id, Work_State__c = 'CO');
-        insert c;
-
-		Listing__c listing = new Listing__c();
-        insert listing;
-        
-        Application__c app = new Application__c( Applicant_Household__c = a.Id, Listing__c = listing.Id);
-        insert app;
-        
-        Application_Member__c appM = new Application_Member__c(Application__c = app.Id, Contact__c = c.Id, First_Name__c = 'Test');
-        insert appM;
+        initGetShortform();
             
         Test.startTest();
             RestRequest req = new RestRequest();
@@ -39,6 +100,7 @@ private without sharing class API_ShortFormTest {
         Test.stopTest();
         
         System.assertEquals(sf.id, app.Id);
+        System.assertEquals(sf.householdMembers[0].neighborhoodPreferenceMatch,'Matches');
     }
     
     /*
@@ -62,23 +124,11 @@ private without sharing class API_ShortFormTest {
     * method used to check if new household Contact and Account record types are set, household members are updated
     */
     static testMethod void API_ShortForm_Post_updateHouseholdMembers() {
-        init();
-        
-        Account a = new Account(Name = 'Household');
-        
-        Contact c = new Contact(FirstName = 'FirstName', LastName = 'LastName', Work_State__c = 'CO', Birthdate = date.today());
-        
-        Application__c app = new Application__c(Primary_Applicant__c = c.Id, Applicant_Household__c = a.Id);
-        
-        Application_Member__c appM = new Application_Member__c(Application__c = app.Id, Work_in_SF__c = True, First_Name__c = 'Name', Last_Name__c = 'LastName', Date_of_Birth__c = date.today());
-        Application_Member__c alternateContact = new Application_Member__c(Application__c = app.Id, Work_in_SF__c = True, First_Name__c = 'Name1', Last_Name__c = 'LastName1', Date_of_Birth__c = date.today());
-        
-        Listing__c listing = new Listing__c();
-        insert listing;
+        initUpdateHouseholdMembers();
         
         API_Application.ShortForm sf = new API_Application.ShortForm(app, new List<Application_Member__c>{appM});
         sf.primaryApplicant = new API_Application.Person(c);
-        sf.alternateContact = new API_Application.Person(alternateContact);
+        sf.alternateContact = new API_Application.Person(appM2);
         sf.worksInSanFrancisco = true;
         sf.listingID = listing.Id;
         
@@ -129,24 +179,10 @@ private without sharing class API_ShortFormTest {
     * method used to check household members that are not in the request are deleted and the existing are updated
     */
     static testMethod void API_ShortForm_Post_DeleteApplicationMembers() {
-        init();
-        
-        Listing__c listing = new Listing__c();
-        insert listing;
-        
-        Application__c app = new Application__c(Listing__c = listing.Id);
-        insert app;
-        
-        List<Application_Member__c> appMList = new List<Application_Member__c>();
-        Application_Member__c appM = new Application_Member__c(Application__c = app.Id, Work_in_SF__c = True);
-        appMList.add(appM);
-        
-            
-        Application_Member__c appM1 = new Application_Member__c(Application__c = app.Id, Work_in_SF__c = True);
-        appMList.add(appM1);
-        insert appMList;
+        initDeleteApplicationMembers();
         
         API_Application.ShortForm sf = new API_Application.ShortForm(app, new List<Application_Member__c>{appM, appM1});
+        sf.primaryApplicant = new API_Application.Person(appM2);
         sf.worksInSanFrancisco = true;
         sf.listingID = listing.Id;
         
@@ -164,7 +200,9 @@ private without sharing class API_ShortFormTest {
             
             appM.First_Name__c = 'Test';
             sf = new API_Application.ShortForm(app, new List<Application_Member__c>{appM});
-			
+        	appM2 = new Application_Member__c(Application__c = app.Id, Work_in_SF__c = True, First_Name__c = 'firstName2', Last_Name__c = 'lastName2', Date_of_Birth__c = date.today().addYears(-20));
+			sf.primaryApplicant = new API_Application.Person(appM2);
+        	
 			req = new RestRequest();
             res = new RestResponse();
             req.requestURI = '/shortForm';
@@ -185,18 +223,7 @@ private without sharing class API_ShortFormTest {
     * method used to check if natural keys are set
     */
     static testMethod void API_ShortForm_Post_SetNaturalKeys() {
-        init();
-        
-        Account a = new Account(Name = 'Household');
-        
-        Contact c = new Contact(FirstName = 'FirstName', LastName = 'LastName', Work_State__c = 'CO', Birthdate = date.today());
-        
-        Application__c app = new Application__c(Primary_Applicant__c = c.Id, Applicant_Household__c = a.Id);
-        
-        Application_Member__c appM = new Application_Member__c(Application__c = app.Id, Work_in_SF__c = True);
-        
-        Listing__c listing = new Listing__c();
-        insert listing;
+        initPost_SetNaturalKeys();
         
         API_Application.ShortForm sf = new API_Application.ShortForm(app, new List<Application_Member__c>{appM});
         sf.primaryApplicant = new API_Application.Person(c);
@@ -235,15 +262,13 @@ private without sharing class API_ShortFormTest {
     * method used to check if shortform is created
     */
     static testMethod void API_ShortForm_Post_insertAndUpdateShortform() {
-        init();
+        initTestClass();
         
-        Application__c app = new Application__c();
-        
-        Listing__c listing = new Listing__c();
-        insert listing;
+        app = new Application__c();
         
         API_Application.ShortForm sf = new API_Application.ShortForm(app, new List<Application_Member__c>());
-        sf.listingID = listing.Id;
+        sf.primaryApplicant = new API_Application.Person(c);
+		sf.listingID = listing.Id;
         
         Test.startTest();
         	RestRequest req = new RestRequest();
@@ -281,8 +306,6 @@ private without sharing class API_ShortFormTest {
         	system.assert(resSf.alternateContact.appMemberId != null);
         	system.assert(resSf.householdMembers[0].appMemberId != null);
         	
-        	Contact c = [SELECT Id, Account.OwnerId from Contact WHERE Id = :resSf.primaryApplicant.contactId];
-        	
-		Test.stopTest();
+        Test.stopTest();
     }
 }

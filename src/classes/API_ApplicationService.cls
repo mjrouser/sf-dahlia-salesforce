@@ -37,7 +37,7 @@ public without sharing class API_ApplicationService {
 		' Mailing_Street__c, Mailing_City__c, Mailing_State__c, Mailing_Zip_Code__c,' +
 		' Work_in_SF__c, Relationship_to_Applicant__c, Living_with_HIV_AIDS__c, Sexual_Orientation__c, Sexual_Orientation_Other__c,' + 
 		' Gender__c, Gender_Other__c, Ethnicity__c, Race__c, Type__c, Primary_Language__c, Other_Language__c,' + 
-		' Alternate_Contact_Type__c, Alternate_Contact_Type_Other__c, Agency_Name__c, Same_Address_as_Applicant__c';
+		' Alternate_Contact_Type__c, Alternate_Contact_Type_Other__c, Agency_Name__c, Same_Address_as_Applicant__c, Neighborhood_Preference_Match__c';
 
 	private static final String SHORTFORM_FIELDLIST =
 		'Id, Applicant_Household__c, Listing__c,' +
@@ -210,8 +210,8 @@ public without sharing class API_ApplicationService {
 	}
 	
 	public static API_Application.Person getPersonByApplicationMemberId(Id amId) {
-		Application_Member__c am = getApplicationMembersById(amId);
-
+        Application_Member__c am = getApplicationMembersById(amId);
+		
 		if (am == null) {
 			return null;
 		} else {
@@ -500,6 +500,7 @@ public without sharing class API_ApplicationService {
 			}
 			if (sf.id == null) {
 				app.Applicant_Household__c = household.Id;
+                system.debug('app;;;;;;' + app);
 				upsert app;
 			}
 			//create contact for primary applicant if it's not created
