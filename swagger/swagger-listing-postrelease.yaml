@@ -1198,7 +1198,7 @@
         bucketResults:
           type: array
           items:
-              $ref: '#/definitions/PreferenceBucket'
+              $ref: '#/definitions/LotteryBucket'
        
         URL:
           type: "string"
@@ -1207,9 +1207,9 @@
           type: "string"
           description: "link to a file"
  
-        eneralLotteryAppTotal:
+        lotteryAppTotal:
           type: "number"
-          description: "total applications for general lottery"
+          description: "total applications for  lottery"
         lotteryCity:
           type: "string"
           description: "listing lottery City"
@@ -1377,7 +1377,7 @@
           type: "boolean"
           description: "does income match passed criteria"
           
-    PreferenceBucket:
+    LotteryBucket:
       type: "object"
       description: "list of application results by preference"
       properties:
@@ -1393,10 +1393,20 @@
         bucketResults:
           type: array
           items:
-              $ref: '#/definitions/BucketResult'
+              $ref: '#/definitions/ApplicationResult'
   
-  
-    BucketResult:
+    PreferenceBucket:
+      type: "object"
+      description: "list of application results by preference"
+      properties:
+        PreferenceName:
+          type: "string"
+          description: "Preference name, (liveWork,COP,DCP,Neighborhood)"
+        bucketResults:
+          type: array
+          items:
+              $ref: '#/definitions/ApplicationResult'
+    ApplicationResult:
       type: "object"
       description: "ApplicationResult"
       properties:
@@ -1414,7 +1424,7 @@
           format: "int32"
           description: "raw lottery rank returned form drawing"
        
-    ApplicationResult:
+    xApplicationResult:
       type: "object"
       description: "ApplicationResult - deprecated"
       properties:
