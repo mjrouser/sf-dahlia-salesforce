@@ -1308,6 +1308,9 @@
         lotteryNumber:
           type: "string"
           description: "lottery number"
+        formMetadata:
+          type: "string"
+          description: "additional metadata that can be saved on the form - non user input data"
     
     ListingResult:
       type: "object"
@@ -1614,6 +1617,16 @@
         neighborhoodPreferenceMatch:
           type: "string"
           description: "the front end can validate that the neighborhood preference matches- Value {match, unmatched, <blank>}  "
+        
+        noPhone:
+          type: "string"
+          description: "the front validates if user has phone- Value {true, false, <blank>}  "
+        noAddress:
+          type: "string"
+          description: "the front validates if user has an address- Value {true, false, <blank>}  "  
+        hasAddress:
+          type: "string"
+          description: "the front validates if user has an alternative mailing address- Value {true, false, <blank>}  "  
 
     Attachment__C:
       type: "object"
