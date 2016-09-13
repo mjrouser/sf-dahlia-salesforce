@@ -1239,11 +1239,11 @@
           type: "string"
           description: "how applicant found out about the program (multiselect)"
         agreeToTerms:
-          type: "boolean"
-          description: "applicant agrees to terms of application"
+          type: "string"
+          description: "applicant agrees to terms of application - Value {Yes, No, <blank>}"
         householdVouchersSubsidies:
-          type: "boolean"
-          description: "household has vouchers or subsidies"
+          type: "string"
+          description: "household has vouchers or subsidies - Value {Yes, No, <blank>}"
         annualIncome:
           type: "number"
           description: "either annual or monthly needs to be specified"
@@ -1570,8 +1570,8 @@
           type: "string"
           description: "Mailing zip"
         workInSf:
-          type: "boolean"
-          description: "Member works in SF"
+          type: "string"
+          description: "Member works in SF - Value {Yes, No, <blank>}"
         gender:
           type: "string"
           description: "gender, can have multiple options. e.g.'male,transgendered-male'"
@@ -1612,8 +1612,8 @@
           type: "string"
           description: "only if alternateContactType is other"
         hasSameAddressAsApplicant:
-          type: "boolean"
-          description: "only for household members to indicate separate address"
+          type: "string"
+          description: "only for household members to indicate separate address - Value {Yes, No, <blank>}"
         neighborhoodPreferenceMatch:
           type: "string"
           description: "the front end can validate that the neighborhood preference matches- Value {match, unmatched, <blank>}  "
