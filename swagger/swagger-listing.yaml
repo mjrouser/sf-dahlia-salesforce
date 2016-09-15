@@ -1631,14 +1631,17 @@
           description: "the front end can validate that the neighborhood preference matches- Value {match, unmatched, <blank>}  "
         
         noPhone:
-          type: "string"
-          description: "the front validates if user has phone- Value {true, false, <blank>}  "
+          type: "boolean"
+          description: "the front end validates if user has phone"
+        noEmail:
+          type: "boolean"
+          description: "the front end validates if user has an email"
         noAddress:
-          type: "string"
-          description: "the front validates if user has an address- Value {true, false, <blank>}  "  
-        hasAddress:
-          type: "string"
-          description: "the front validates if user has an alternative mailing address- Value {true, false, <blank>}  "  
+          type: "boolean"
+          description: "the front end validates if user has an address"
+        hasAltMailingAddress:
+          type: "boolean"
+          description: "the front end validates if user has an alternative mailing address"
 
     Attachment__C:
       type: "object"
