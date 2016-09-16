@@ -1200,8 +1200,8 @@
           type: "string"
           description: "how applicant found out about the program (multiselect)"
         agreeToTerms:
-          type: "string"
-          description: "applicant agrees to terms of application - Value {true, false, <blank>}"
+          type: "boolean"
+          description: "applicant agrees to terms of application"
         householdVouchersSubsidies:
           type: "string"
           description: "household has vouchers or subsidies - Value {true, false, <blank>}"
