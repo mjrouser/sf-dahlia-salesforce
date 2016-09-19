@@ -1007,7 +1007,6 @@
                                 'order': helper.generateOrders(fieldInfo.fields, hideFields, orders)
                             });
                         }
-                        console.log(dataTableOptions);
                         helper.generateDataTable(cmp, dataTableOptions, fieldInfo, fieldArray, labelArray);
                     })();
                 } else if (state === "ERROR") {

@@ -566,6 +566,16 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Application__c.COP_Preference_Member_DOB__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Application__c.COP_Preference_Member_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Application__c.COP_Preference_Member__c</field>
         <readable>true</readable>
@@ -588,6 +598,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Application__c.DTHP_Preference_Manual__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Application__c.DTHP_Preference_Member_DOB__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Application__c.DTHP_Preference_Member_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1968,6 +1988,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Listing__c.Leasing_Agent_City__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Listing__c.Leasing_Agent_Email__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1983,7 +2008,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Listing__c.Leasing_Agent_State__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing__c.Leasing_Agent_Street__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Listing__c.Leasing_Agent_Title__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing__c.Leasing_Agent_Zip__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2461,6 +2501,80 @@
         <field>Unit__c.sfxId__c</field>
         <readable>false</readable>
     </fieldPermissions>
+    <layoutAssignments>
+        <layout>Application_Member__c-Application Member Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Application__c-Application Layout - BMR Rental Short-Form</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Application__c-Application Layout - BMR Rental Short-Form</layout>
+        <recordType>Application__c.Multi_Family_Rental_Short_Form</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Application__c-Community Application Layout - BMR Rental Short-Form</layout>
+        <recordType>Application__c.BMR_Rental_Short_Form</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Building__c-Building Data Entry</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-Contact Layout - Applicant</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-Contact Layout - Applicant</layout>
+        <recordType>Contact.Applicant</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-Contact Layout - Applicant</layout>
+        <recordType>Contact.Head_of_Household</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-Contact Layout - Applicant</layout>
+        <recordType>Contact.Household</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-Contact Layout - City and Partners</layout>
+        <recordType>Contact.City_and_Partners</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-Contact Layout - Lending Agent</layout>
+        <recordType>Contact.Lending_Agent</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-Contact Layout - Property Agent</layout>
+        <recordType>Contact.Property_Agent</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Development__c-Development Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>DuplicateRecordItem-Duplicate Record Item Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>DuplicateRecordSet-Duplicate Record Set Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Flagged_Application__c-Community Conflicting Application Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Flagged_Record_Set__c-Conflict Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Housing_Application__c-Housing Application Layout - BMR Ownership</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Information_Session__c-Information Session Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Listing_Image__c-Listing Image Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Listing__c-Community Listing Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Open_Houses__c-Community Open House Layout</layout>
+    </layoutAssignments>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>true</allowDelete>

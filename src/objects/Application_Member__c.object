@@ -662,12 +662,23 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
     </fields>
     <fields>
         <fullName>Same_Address_as_Applicant__c</fullName>
-        <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <label>Same Address as Applicant</label>
+        <picklist>
+            <picklistValues>
+                <fullName>true</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>false</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
+        <type>Picklist</type>
     </fields>
     <fields>
         <fullName>Second_Phone_Type__c</fullName>
@@ -814,12 +825,23 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
     </fields>
     <fields>
         <fullName>Work_in_SF__c</fullName>
-        <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <label>Work in SF</label>
+        <picklist>
+            <picklistValues>
+                <fullName>true</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>false</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
+        <type>Picklist</type>
     </fields>
     <fields>
         <fullName>Zip_Code__c</fullName>

@@ -566,6 +566,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Application__c.COP_Preference_Member_DOB__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Application__c.COP_Preference_Member_Name__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Application__c.COP_Preference_Member__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -587,6 +597,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Application__c.DTHP_Preference_Manual__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Application__c.DTHP_Preference_Member_DOB__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Application__c.DTHP_Preference_Member_Name__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1966,6 +1986,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Listing__c.Leasing_Agent_City__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Listing__c.Leasing_Agent_Email__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -1981,7 +2006,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Listing__c.Leasing_Agent_State__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing__c.Leasing_Agent_Street__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Listing__c.Leasing_Agent_Title__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing__c.Leasing_Agent_Zip__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2534,10 +2574,6 @@
     </recordTypeVisibilities>
     <tabSettings>
         <tab>standard-Contact</tab>
-        <visibility>None</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>standard-DuplicateRecordSet</tab>
         <visibility>None</visibility>
     </tabSettings>
     <userLicense>Salesforce</userLicense>

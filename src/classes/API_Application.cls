@@ -25,7 +25,7 @@ global without sharing class API_Application {
 		global Boolean worksInSanFrancisco;
 		global String referral;
 		global Boolean agreeToTerms;
-		global Boolean householdVouchersSubsidies;
+		global String householdVouchersSubsidies;
 		global Decimal annualIncome;
 		global Decimal monthlyIncome;
 		global Boolean liveInSfPreferencePaper;
@@ -92,7 +92,7 @@ global without sharing class API_Application {
 			app.Alternate_Contact__c = this.alternateContact == null ? null : this.alternateContact.appMemberId;
 			app.Referral_Source__c = this.referral;
 			app.Terms_Acknowledged__c = (this.agreeToTerms == null ? false : this.agreeToTerms);
-			app.Housing_Voucher_or_Subsidy__c = (this.householdVouchersSubsidies == null ? false : this.householdVouchersSubsidies);
+			app.Housing_Voucher_or_Subsidy__c = this.householdVouchersSubsidies;// == null ? false : this.householdVouchersSubsidies);
 			app.Annual_Income__c = this.annualIncome;
 			app.Monthly_Income__c = this.monthlyIncome;
 			app.Live_Work_Preference_Paper__c = (this.liveInSfPreferencePaper == null ? false : this.liveInSfPreferencePaper);
@@ -149,7 +149,7 @@ global without sharing class API_Application {
 		global String mailingCity;
 		global String mailingState;
 		global String mailingZip;
-		global Boolean workInSf;
+		global String workInSf;
 		global String gender;
 		global String genderOther;
 		global String sexualOrientation;
@@ -163,7 +163,7 @@ global without sharing class API_Application {
 		global String alternateContactType;
 		global String agency;
 		global String alternateContactTypeOther;
-		global Boolean hasSameAddressAsApplicant;
+		global String hasSameAddressAsApplicant;
 		global String neighborhoodPreferenceMatch;
 		
 		private String parseDate(Date inputDate) {
@@ -218,7 +218,7 @@ global without sharing class API_Application {
 			this.race = c.Race__c;
 			this.language = c.Primary_Language__c;
 			this.hasSameAddressAsApplicant = false;*/
-	  }
+		}
 		
 		global Person(Application_Member__c am) {
 			this.appMemberId = am.Id;
@@ -314,7 +314,7 @@ global without sharing class API_Application {
 			am.Mailing_City__c = this.mailingCity;
 			am.Mailing_State__c = this.mailingState;
 			am.Mailing_Zip_Code__c   = this.mailingZip;
-			am.Work_in_SF__c = (this.workInSf == null ? false : this.workInSf);
+			am.Work_in_SF__c = this.workInSf;// == null ? false : this.workInSf);
 			am.Gender__c = this.gender;
 			am.Gender_Other__c = this.genderOther;
 			am.Sexual_Orientation__c = this.sexualOrientation;
@@ -328,7 +328,7 @@ global without sharing class API_Application {
 			am.Alternate_Contact_Type__c = this.alternateContactType;
 			am.Agency_Name__c = this.agency;
 			am.Alternate_Contact_Type_Other__c = this.alternateContactTypeOther;
-			am.Same_Address_as_Applicant__c = (this.hasSameAddressAsApplicant == null ? false : this.hasSameAddressAsApplicant);
+			am.Same_Address_as_Applicant__c = this.hasSameAddressAsApplicant;// == null ? false : this.hasSameAddressAsApplicant);
 			am.Neighborhood_Preference_Match__c = this.neighborhoodPreferenceMatch;
 			
 			return am;

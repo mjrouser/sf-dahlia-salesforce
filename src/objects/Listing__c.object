@@ -649,6 +649,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Leasing_Agent_City__c</fullName>
+        <externalId>false</externalId>
+        <formula>Building__r.Leasing_Agent__r.MailingCity</formula>
+        <label>Leasing Agent City</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Leasing_Agent_Email__c</fullName>
         <externalId>false</externalId>
         <formula>Building__r.Leasing_Agent__r.Email</formula>
@@ -685,11 +696,44 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Leasing_Agent_State__c</fullName>
+        <externalId>false</externalId>
+        <formula>Building__r.Leasing_Agent__r.MailingState</formula>
+        <label>Leasing Agent State</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Leasing_Agent_Street__c</fullName>
+        <externalId>false</externalId>
+        <formula>Building__r.Leasing_Agent__r.MailingStreet</formula>
+        <label>Leasing Agent Street</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Leasing_Agent_Title__c</fullName>
         <externalId>false</externalId>
         <formula>Building__r.Leasing_Agent__r.Title</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Leasing Agent Title</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Leasing_Agent_Zip__c</fullName>
+        <externalId>false</externalId>
+        <formula>Building__r.Leasing_Agent__r.MailingPostalCode</formula>
+        <label>Leasing Agent Zip</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -822,7 +866,7 @@
         <fullName>Lottery_Results__c</fullName>
         <description>Indicates there is at least one lottery winner</description>
         <externalId>false</externalId>
-        <formula>true</formula>
+        <formula>IF(ISPICKVAL(Lottery_Status__c, &apos;Lottery Complete&apos;), true, false)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <inlineHelpText>Indicates there is at least one lottery winner</inlineHelpText>
         <label>Lottery Results?</label>

@@ -276,6 +276,27 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>COP_Preference_Member_DOB__c</fullName>
+        <externalId>false</externalId>
+        <formula>COP_Preference_Member__r.Date_of_Birth__c</formula>
+        <label>COP Preference Member DOB</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>COP_Preference_Member_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>COP_Preference_Member__r.First_Name__c + &apos; &apos; + COP_Preference_Member__r.Last_Name__c</formula>
+        <label>COP Preference Member Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>COP_Preference_Member__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <description>An related application member that holds a COP preference</description>
@@ -363,6 +384,27 @@ IF(
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>DTHP_Preference_Member_DOB__c</fullName>
+        <externalId>false</externalId>
+        <formula>DTHP_Preference_Member__r.Date_of_Birth__c</formula>
+        <label>DTHP Preference Member DOB</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>DTHP_Preference_Member_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>DTHP_Preference_Member__r.First_Name__c + &apos; &apos; + DTHP_Preference_Member__r.Last_Name__c</formula>
+        <label>DTHP Preference Member Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>DTHP_Preference_Member__c</fullName>
@@ -496,12 +538,23 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
     </fields>
     <fields>
         <fullName>Housing_Voucher_or_Subsidy__c</fullName>
-        <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <label>Housing Voucher or Subsidy</label>
+        <picklist>
+            <picklistValues>
+                <fullName>true</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>false</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
+        <type>Picklist</type>
     </fields>
     <fields>
         <fullName>Is_Lottery_Complete__c</fullName>
@@ -1222,7 +1275,7 @@ IF(
         <summaryFilterItems>
             <field>Application_Member__c.Work_in_SF__c</field>
             <operation>equals</operation>
-            <value>True</value>
+            <value>Yes</value>
         </summaryFilterItems>
         <summaryForeignKey>Application_Member__c.Application__c</summaryForeignKey>
         <summaryOperation>count</summaryOperation>
@@ -1336,6 +1389,7 @@ IF(
         <columns>Listing__c</columns>
         <columns>CREATED_DATE</columns>
         <columns>Status__c</columns>
+        <columns>Email__c</columns>
         <filterScope>Everything</filterScope>
         <label>All Applications</label>
     </listViews>
@@ -1355,6 +1409,48 @@ IF(
             <value>Application__c.BMR_Rental_Short_Form</value>
         </filters>
         <label>All BMR Rental Short-Form Applications</label>
+    </listViews>
+    <listViews>
+        <fullName>COP_Unconfirmed_Applications</fullName>
+        <columns>NAME</columns>
+        <columns>COP_Preference_Manual__c</columns>
+        <columns>COP_Preference_Member_Name__c</columns>
+        <columns>COP_Preference_Member_DOB__c</columns>
+        <columns>COP_Preference_Member__c</columns>
+        <columns>Listing__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Application__c.BMR_Rental_Short_Form</value>
+        </filters>
+        <filters>
+            <field>COP_Preference_Manual__c</field>
+            <operation>equals</operation>
+            <value>Unconfirmed</value>
+        </filters>
+        <label>COP Unconfirmed Applications</label>
+    </listViews>
+    <listViews>
+        <fullName>DTHP_Unconfirmed_Applications</fullName>
+        <columns>NAME</columns>
+        <columns>DTHP_Preference_Manual__c</columns>
+        <columns>DTHP_Preference_Member_Name__c</columns>
+        <columns>DTHP_Preference_Member_DOB__c</columns>
+        <columns>DTHP_Preference_Member__c</columns>
+        <columns>Listing__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Application__c.BMR_Rental_Short_Form</value>
+        </filters>
+        <filters>
+            <field>DTHP_Preference_Manual__c</field>
+            <operation>equals</operation>
+            <value>Unconfirmed</value>
+        </filters>
+        <label>DTHP Unconfirmed Applications</label>
     </listViews>
     <nameField>
         <displayFormat>APP-{00000000}</displayFormat>
@@ -1434,6 +1530,17 @@ IF(
             </values>
             <values>
                 <fullName>Valid - Added</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Housing_Voucher_or_Subsidy__c</picklist>
+            <values>
+                <fullName>false</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>true</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1713,6 +1820,17 @@ IF(
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Housing_Voucher_or_Subsidy__c</picklist>
+            <values>
+                <fullName>false</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>true</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Live_in_SF_Preference_Proof__c</picklist>
             <values>
                 <fullName>Cable and internet bill</fullName>
@@ -1984,6 +2102,17 @@ IF(
             </values>
             <values>
                 <fullName>Valid - Added</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Housing_Voucher_or_Subsidy__c</picklist>
+            <values>
+                <fullName>false</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>true</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

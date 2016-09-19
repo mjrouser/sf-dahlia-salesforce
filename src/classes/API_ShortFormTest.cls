@@ -42,7 +42,7 @@ private without sharing class API_ShortFormTest {
         
         app = new Application__c(Primary_Applicant__c = c.Id, Applicant_Household__c = a.Id);
         
-        appM = new Application_Member__c(Application__c = app.Id, Work_in_SF__c = True, First_Name__c = 'Name', Last_Name__c = 'LastName', Date_of_Birth__c = date.today());
+        appM = new Application_Member__c(Application__c = app.Id, First_Name__c = 'Name', Last_Name__c = 'LastName', Date_of_Birth__c = date.today());
     }
     
     private static void initUpdateHouseholdMembers() {
@@ -58,8 +58,8 @@ private without sharing class API_ShortFormTest {
         
         app = new Application__c(Primary_Applicant__c = c.Id, Applicant_Household__c = a.Id);
         
-        appM = new Application_Member__c(Application__c = app.Id, Work_in_SF__c = True, First_Name__c = 'Name', Last_Name__c = 'LastName', Date_of_Birth__c = date.today());
-        appM2 = new Application_Member__c(Application__c = app.Id, Work_in_SF__c = True, First_Name__c = 'Name1', Last_Name__c = 'LastName1', Date_of_Birth__c = date.today());
+        appM = new Application_Member__c(Application__c = app.Id, First_Name__c = 'Name', Last_Name__c = 'LastName', Date_of_Birth__c = date.today());
+        appM2 = new Application_Member__c(Application__c = app.Id, First_Name__c = 'Name1', Last_Name__c = 'LastName1', Date_of_Birth__c = date.today());
     }
     
     private static void initDeleteApplicationMembers() {
@@ -69,13 +69,13 @@ private without sharing class API_ShortFormTest {
         insert app;
         
         List<Application_Member__c> appMList = new List<Application_Member__c>();
-        appM = new Application_Member__c(Application__c = app.Id, Work_in_SF__c = True, First_Name__c = 'firstName', Last_Name__c = 'lastName', Date_of_Birth__c = date.today().addYears(-20));
+        appM = new Application_Member__c(Application__c = app.Id, First_Name__c = 'firstName', Last_Name__c = 'lastName', Date_of_Birth__c = date.today().addYears(-20));
         appMList.add(appM);
             
-        appM1 = new Application_Member__c(Application__c = app.Id, Work_in_SF__c = True, First_Name__c = 'firstName1', Last_Name__c = 'lastName1', Date_of_Birth__c = date.today().addYears(-20));
+        appM1 = new Application_Member__c(Application__c = app.Id, First_Name__c = 'firstName1', Last_Name__c = 'lastName1', Date_of_Birth__c = date.today().addYears(-20));
         appMList.add(appM1);
         
-        appM2 = new Application_Member__c(Application__c = app.Id, Work_in_SF__c = True, First_Name__c = 'firstName2', Last_Name__c = 'lastName2', Date_of_Birth__c = date.today().addYears(-20));
+        appM2 = new Application_Member__c(Application__c = app.Id, First_Name__c = 'firstName2', Last_Name__c = 'lastName2', Date_of_Birth__c = date.today().addYears(-20));
         appMList.add(appM2);
         
         insert appMList;
@@ -200,7 +200,7 @@ private without sharing class API_ShortFormTest {
             
             appM.First_Name__c = 'Test';
             sf = new API_Application.ShortForm(app, new List<Application_Member__c>{appM});
-        	appM2 = new Application_Member__c(Application__c = app.Id, Work_in_SF__c = True, First_Name__c = 'firstName2', Last_Name__c = 'lastName2', Date_of_Birth__c = date.today().addYears(-20));
+        	appM2 = new Application_Member__c(Application__c = app.Id, First_Name__c = 'firstName2', Last_Name__c = 'lastName2', Date_of_Birth__c = date.today().addYears(-20));
 			sf.primaryApplicant = new API_Application.Person(appM2);
         	
 			req = new RestRequest();
@@ -283,9 +283,9 @@ private without sharing class API_ShortFormTest {
         	//check is shortform is created
 			system.assert(resSf.Id != null);
         
-        	Application_Member__c primaryApplicant = new Application_Member__c(Work_in_SF__c = True, First_Name__c = 'Name', Last_Name__c = 'LastName', Date_of_Birth__c = date.today());
-            Application_Member__c alternateContact = new Application_Member__c(Work_in_SF__c = True, First_Name__c = 'Name1', Last_Name__c = 'LastName1', Date_of_Birth__c = date.today());
-            Application_Member__c appMember = new Application_Member__c(Work_in_SF__c = True, First_Name__c = 'Name2', Last_Name__c = 'LastName2', Date_of_Birth__c = date.today());
+        	Application_Member__c primaryApplicant = new Application_Member__c(First_Name__c = 'Name', Last_Name__c = 'LastName', Date_of_Birth__c = date.today());
+            Application_Member__c alternateContact = new Application_Member__c(First_Name__c = 'Name1', Last_Name__c = 'LastName1', Date_of_Birth__c = date.today());
+            Application_Member__c appMember = new Application_Member__c(First_Name__c = 'Name2', Last_Name__c = 'LastName2', Date_of_Birth__c = date.today());
         	
         	resSf.primaryApplicant = new API_Application.Person(primaryApplicant);
         	resSf.alternateContact = new API_Application.Person(alternateContact);
