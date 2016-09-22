@@ -5,8 +5,10 @@
 /src/triggers/*
 !/src/classes/Listing*
 !/src/classes/API*
+!/src/classes/API*
 !/src/classes/LOT*
-
+!/src/classes/HOP_*
+!/src/pages/HOP_*
 .project
 salesforce.schema
 build.properties
