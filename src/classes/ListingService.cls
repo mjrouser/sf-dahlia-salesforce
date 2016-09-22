@@ -545,8 +545,10 @@ global  class ListingService {
 			if (lotteryNumber != null) {
 				appQuery += ' AND Lottery_Number__c = \'' + lotteryNumber + '\'';
 			}
+			system.debug('appQuery:::' + appQuery);
 			List<Application__c> appResultList = database.query(appQuery);
 			
+			system.debug('appResultList:::' + appResultList);
 			//get listing results on each bucket
 			if (isBucket) {
 				Map<String,List<BucketResult>> bucketResultMap = new Map<String,List<BucketResult>>();

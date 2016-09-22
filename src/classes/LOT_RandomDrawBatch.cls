@@ -49,6 +49,8 @@ global class LOT_RandomDrawBatch implements Database.Batchable<String>, Database
     
     public void calculateRank(List<String> winnerList){
 		List<Application__c> appRankList= new List<Application__c> ();
+		system.debug('entities:::2::' + entities);
+		system.debug('winnerList:::2::' + winnerList);
 		for (String winnerName : winnerList) {
 			ID theID = entities.get(winnerName);
 			Application__c app = new Application__c();
@@ -60,6 +62,7 @@ global class LOT_RandomDrawBatch implements Database.Batchable<String>, Database
 			appRankList.add(app);
 			
 		}
+		system.debug('appRankList:::2::' + appRankList);
 		update  appRankList;
     }
 }

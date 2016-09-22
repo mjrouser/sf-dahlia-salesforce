@@ -26,7 +26,8 @@ global class LOT_PreferenceRankBatch implements Database.Batchable<sObject>, Dat
 	}
 
    	global void execute(Database.BatchableContext BC, List<Application__c> scope) {
-		calculateRank(scope);
+		system.debug('scope:::' + scope);
+        calculateRank(scope);
 	}
 	
 	global void finish(Database.BatchableContext BC) {

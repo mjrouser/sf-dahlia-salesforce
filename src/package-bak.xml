@@ -2,20 +2,21 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>API_Application</members>
-        <members>API_Application</members>
-        <members>API_ApplicationService</members>
         <members>API_ApplicationService</members>
         <members>API_ApplicationServiceTest</members>
-        <members>API_ApplicationServiceTest</members>
+        <members>API_Person</members>
+        <members>API_PersonTest</members>
         <members>API_ShortForm</members>
         <members>API_ShortFormTest</members>
-        <members>API_ShortForm_GetListByContactId</members>
         <members>API_ShortForm_GetListByContactId</members>
         <members>API_ShortForm_GetListByContactIdTest</members>
         <members>API_ShortForm_PostContactDelete</members>
         <members>API_ShortForm_PostContactDeleteTest</members>
         <members>API_ShortForm_PostDelete</members>
         <members>API_ShortForm_PostDeleteTest</members>
+        <members>API_ShortForm_UploadFile</members>
+        <members>API_ShortForm_UploadFileTest</members>
+        <members>HOP_ApplicationController</members>
         <members>HOP_ApplicationFormController</members>
         <members>HOP_ApplicationFormControllerTest</members>
         <members>HOP_ApplicationReviewController</members>
@@ -36,13 +37,19 @@
         <members>HOP_ListingsController</members>
         <members>HOP_ListingsControllerTest</members>
         <members>HOP_TemplateController</members>
-        <members>HOP_TemplateController</members>
         <members>HOP_TemplateControllerTest</members>
+        <members>HttpCalloutMockGeneratorTest</members>
+        <members>LOT_Lottery</members>
         <members>LOT_PreferenceRankBatch</members>
+        <members>LOT_PreferenceRankBatchTest</members>
         <members>LOT_RandomBaseRequest</members>
         <members>LOT_RandomDrawBatch</members>
+        <members>LOT_RandomDrawBatchTest</members>
         <members>LOT_RandomDrawReq</members>
+        <members>LOT_RandomDrawReqTest</members>
+        <members>LOT_RandomDrawReqTest_Test</members>
         <members>LOT_RandomDrawService</members>
+        <members>LOT_RandomDrawServiceTest</members>
         <members>ListingAMIApi</members>
         <members>ListingAMIApiTest</members>
         <members>ListingApi</members>
@@ -52,10 +59,17 @@
         <members>ListingEligibilityCheckAPI</members>
         <members>ListingEligibilityCheckAPITest</members>
         <members>ListingFlaggedApplicationAction</members>
+        <members>ListingFlaggedApplicationActionTest</members>
         <members>ListingLotteryMemberApi</members>
         <members>ListingLotteryMemberApiTest</members>
+        <members>ListingLotteryPrefApi</members>
+        <members>ListingLotteryPrefApiTest</members>
         <members>ListingLotteryResultApi</members>
         <members>ListingLotteryResultApiTest</members>
+        <members>ListingLotteryResultBucketAPI</members>
+        <members>ListingLotteryResultBucketAPITest</members>
+        <members>ListingLotteryResultSummaryAPI</members>
+        <members>ListingLotteryResultSummaryAPITest</members>
         <members>ListingLotteryService</members>
         <members>ListingLotteryServiceTest</members>
         <members>ListingService</members>
@@ -96,13 +110,16 @@
         <name>AuraDefinitionBundle</name>
     </types>
     <types>
+        <members>DuplicateRecordSet.Rule_Name__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
         <members>AMI__c</members>
         <members>Application_Member__c</members>
         <members>Application__c</members>
         <members>Application__c</members>
         <members>Contact</members>
         <members>Development__c</members>
-        <members></members>
         <members>External_Connections__c</members>
         <members>Flagged_Application__c</members>
         <members>Flagged_Record_Set__c</members>
@@ -115,28 +132,16 @@
         <name>CustomObject</name>
     </types>
     <types>
-        <members>DuplicateRecordSet.Rule_Name__c</members>
-        <name>CustomField</name>
-    </types>
-    <types>
         <members>*</members>
         <name>Flow</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>Layout</name>
     </types>
     <types>
         <members>Account-Account Layout - Lenders</members>
         <members>Account-Account Layout - Property Management</members>
         <members>Account-CCSF and Partners</members>
         <members>Account-Property Management - Community</members>
-        <members>Application_Asset__c-Asset Layout</members>
-        <members>Application_Employment__c-Employment Layout</members>
-        <members>Application_Income1__c-Income Layout</members>
         <members>Application_Member__c-Application Member Community Layout</members>
         <members>Application_Member__c-Application Member Layout</members>
-        <members>Application__c-Application Layout - BMR Rental Long-Form</members>
         <members>Application__c-Application Layout - BMR Rental Short-Form</members>
         <members>Application__c-Community Application Layout - BMR Rental Short-Form</members>
         <members>Building__c-Building Data Entry</members>
@@ -160,21 +165,10 @@
         <members>Information_Session__c-Community Information Session Layout</members>
         <members>Information_Session__c-Information Session Layout</members>
         <members>Listing_Image__c-Listing Image Layout</members>
-        <members>Listing_Lottery_Preference__c-Listing Preference Layout</members>
-        <members>Listing_Unit__c-Listing Unit Layout</members>
         <members>Listing__c-Community Listing Layout</members>
-        <members>Listing__c-Listing Layout</members>
-        <members>Lottery_Member__c-Lottery Member Layout</members>
         <members>Lottery_Preference__c-Lottery Prefference Layout</members>
-        <members>Lottery_Preference__c-Preference Layout</members>
         <members>Open_Houses__c-Community Open House Layout</members>
         <members>Open_Houses__c-Open House Layout</members>
-        <members>Task-Task Layout</members>
-        <members>Unit__c-BMR Ownership</members>
-        <members>Unit__c-BMR Rental Unit Layout</members>
-        <members>Unit__c-Unit Layout</members>
-        <members>User-User Layout</members>
-        <members>UserAlt-User Profile Layout</members>
         <name>Layout</name>
     </types>
     <types>

@@ -13,6 +13,14 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>API_Person</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>API_PersonTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>API_ShortForm</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -42,6 +50,18 @@
     </classAccesses>
     <classAccesses>
         <apexClass>API_ShortForm_PostDeleteTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>API_ShortForm_UploadFile</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>API_ShortForm_UploadFileTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOP_ApplicationController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -129,7 +149,19 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>HttpCalloutMockGeneratorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>LOT_Lottery</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>LOT_PreferenceRankBatch</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>LOT_PreferenceRankBatchTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -141,11 +173,27 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>LOT_RandomDrawBatchTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>LOT_RandomDrawReq</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>LOT_RandomDrawReqTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>LOT_RandomDrawReqTest_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>LOT_RandomDrawService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>LOT_RandomDrawServiceTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -185,6 +233,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>ListingFlaggedApplicationActionTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ListingLotteryMemberApi</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -193,11 +245,31 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>ListingLotteryPrefApi</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ListingLotteryResultApi</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>ListingLotteryResultApiTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ListingLotteryResultBucketAPI</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ListingLotteryResultBucketAPITest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ListingLotteryResultSummaryAPI</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ListingLotteryResultSummaryAPITest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -313,6 +385,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Application_Member__c.Gender__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Application_Member__c.Has_Alt_Mailing_Address__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -643,6 +720,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Application__c.First_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Application__c.Form_Metadata__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -985,7 +1067,6 @@
         <field>Contact.Birthdate</field>
         <readable>true</readable>
     </fieldPermissions>
-  
     <fieldPermissions>
         <editable>true</editable>
         <field>Contact.Certificate_of_Preference_Holder__c</field>
@@ -2353,6 +2434,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Unit__c.Maximum_Household_Income_Allowed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Unit__c.Maximum_Household_Size__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2570,6 +2656,9 @@
         <layout>Listing_Image__c-Listing Image Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Lottery_Preference__c-Lottery Prefference Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Open_Houses__c-Open House Layout</layout>
     </layoutAssignments>
     <objectPermissions>
@@ -2731,6 +2820,11 @@
         <default>false</default>
         <recordType>Contact.City_and_Partners</recordType>
         <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>Contact.Household</recordType>
+        <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
@@ -3189,6 +3283,7 @@
         <enabled>true</enabled>
         <name>ShareInternalArticles</name>
     </userPermissions>
+   
     <userPermissions>
         <enabled>true</enabled>
         <name>SolutionImport</name>

@@ -9,14 +9,15 @@ global with sharing class LOT_RandomDrawService {
             Map<String,ID> entities = getEntities(listingID) ;
             LOT_RandomDrawReq.Drawing drawing = new LOT_RandomDrawReq.Drawing();
             LOT_RandomDrawReq.DrawingParams params = new LOT_RandomDrawReq.DrawingParams();
-            params.title= 'drawing 4';
-            params.recordType= 'test'; //'public';
-            params.entries= new List<String>(entities.keySet()); //our map is reversed-  
-            params.winnerCount=(entities.size() < 50000) ? entities.size() : 500000;
-            drawing.params= params;
+            params.title = 'drawing 4';
+            params.recordType = 'test'; //'public';
+            params.entries = new List<String>(entities.keySet()); //our map is reversed-  
+            params.winnerCount = (entities.size() < 50000) ? entities.size() : 500000;
+            drawing.params = params;
             LOT_RandomDrawReq req = new LOT_RandomDrawReq(drawing);
             system.debug(req.getJSON());
             req.sendRequest();
+            system.debug(req.getJSON());
             LOT_RandomDrawReq.DrawingResult drawResult = req.drawResult;
             
             //update listing to in progress
@@ -39,7 +40,8 @@ global with sharing class LOT_RandomDrawService {
                     
                 }
                 update  appRankList;*/
-                
+                system.debug('entities:::1::' + entities);
+                system.debug('winners:::1::' + drawResult.result.winners);
                 Database.executeBatch(new LOT_RandomDrawBatch(drawResult.result.winners, entities, listingID));
             }
         }

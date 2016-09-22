@@ -47,6 +47,7 @@ global without sharing class API_Application {
 		global String applicationSubmissionType;
 		global Date applicationSubmittedDate;
 		global String lotteryNumber;
+		global String formMetadata;
 		
 		global ShortForm() {} 
 
@@ -83,6 +84,7 @@ global without sharing class API_Application {
 			this.applicationSubmissionType = app.Application_Submission_Type__c;
 			this.applicationSubmittedDate = app.Application_Submitted_Date__c;
 			this.lotteryNumber = app.Lottery_Number__c;
+			this.formMetadata = app.Form_Metadata__c;
 		}
 
 		global Application__c toApplication() {
@@ -108,6 +110,7 @@ global without sharing class API_Application {
 			app.Application_Language__c = this.applicationLanguage;
 			app.Application_Submission_Type__c = this.applicationSubmissionType;
 			app.Application_Submitted_Date__c = this.applicationSubmittedDate;
+			app.Form_Metadata__c = this.formMetadata;
 			return app;
 		}
 		
@@ -165,6 +168,10 @@ global without sharing class API_Application {
 		global String alternateContactTypeOther;
 		global String hasSameAddressAsApplicant;
 		global String neighborhoodPreferenceMatch;
+		global Boolean noPhone;
+		global Boolean noEmail;
+		global Boolean noAddress;
+		global Boolean hasAltMailingAddress;
 		
 		private String parseDate(Date inputDate) {
 			if (inputDate != null) {
@@ -257,7 +264,10 @@ global without sharing class API_Application {
 			this.hasSameAddressAsApplicant = am.Same_Address_as_Applicant__c;
 			this.neighborhoodPreferenceMatch = am.Neighborhood_Preference_Match__c;
 			this.webappID = am.Contact_WebappID__c;
-			
+			this.noPhone = am.No_Phone__c;
+			this.noEmail = am.No_Email__c;
+			this.noAddress = am.No_Address__c;
+			this.hasAltMailingAddress = am.Has_Alt_Mailing_Address__c;
 		}
 
 		global Contact toContact() {
@@ -330,7 +340,10 @@ global without sharing class API_Application {
 			am.Alternate_Contact_Type_Other__c = this.alternateContactTypeOther;
 			am.Same_Address_as_Applicant__c = this.hasSameAddressAsApplicant;// == null ? false : this.hasSameAddressAsApplicant);
 			am.Neighborhood_Preference_Match__c = this.neighborhoodPreferenceMatch;
-			
+			am.No_Phone__c = this.noPhone == null ? false : this.noPhone;
+			am.No_Email__c = this.noEmail == null ? false : this.noEmail;
+			am.No_Address__c = this.noAddress == null ? false : this.noAddress;
+			am.Has_Alt_Mailing_Address__c = this.hasAltMailingAddress == null ? false : this.hasAltMailingAddress;
 			return am;
 		}
 		

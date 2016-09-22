@@ -37,6 +37,7 @@ public without sharing class API_ApplicationService {
 		' Mailing_Street__c, Mailing_City__c, Mailing_State__c, Mailing_Zip_Code__c,' +
 		' Work_in_SF__c, Relationship_to_Applicant__c, Living_with_HIV_AIDS__c, Sexual_Orientation__c, Sexual_Orientation_Other__c,' + 
 		' Gender__c, Gender_Other__c, Ethnicity__c, Race__c, Type__c, Primary_Language__c, Other_Language__c,' + 
+		' No_Phone__c, No_Email__c, No_Address__c, Has_Alt_Mailing_Address__c,' + 
 		' Alternate_Contact_Type__c, Alternate_Contact_Type_Other__c, Agency_Name__c, Same_Address_as_Applicant__c, Neighborhood_Preference_Match__c';
 
 	private static final String SHORTFORM_FIELDLIST =
@@ -46,7 +47,7 @@ public without sharing class API_ApplicationService {
 		prefixQuery('Alternate_Contact__r.', APPLICATION_MEMBER_FIELDLIST) +
 		', Work_in_SF_Preference__c, Status__c, Is_Resident__c, Referral_Source__c, Housing_Voucher_or_Subsidy__c ' +
 		', Terms_Acknowledged__c, Name, Application_Submission_Type__c, Primary_Applicant__c, Live_Work_Preference_Paper__c ' + 
-		', COP_Preference_Member__c, DTHP_Preference_Member__c, Neighborhood_Preference_Member__c, Lottery_Number__c' +
+		', COP_Preference_Member__c, DTHP_Preference_Member__c, Neighborhood_Preference_Member__c, Lottery_Number__c, Form_Metadata__c' +
 		', Work_in_SF_Preference_Member__c, Live_in_SF_Preference_Member__c, Total_Household_Gross_Income__c, Application_Language__c, Application_Submitted_Date__c ' + 
 		', Live_in_SF_Preference_Proof__c, Neighborhood_Preference_Proof__c, Work_in_SF_Preference_Proof__c, Annual_Income__c, Monthly_Income__c';
 
@@ -56,7 +57,7 @@ public without sharing class API_ApplicationService {
 		', ' +
 		prefixQuery('Alternate_Contact__r.Contact__r.', CONTACT_FIELDLIST) +
 		', Work_in_SF_Preference__c, Status__c, Is_Resident__c, Referral_Source__c, Housing_Voucher_or_Subsidy__c , Application_Submitted_Date__c' +
-		', Terms_Acknowledged__c, Total_Household_Gross_Income__c, Application_Language__c, Application_Submission_Type__c, Lottery_Number__c ' +
+		', Terms_Acknowledged__c, Total_Household_Gross_Income__c, Application_Language__c, Application_Submission_Type__c, Lottery_Number__c, Form_Metadata__c' +
 		', Annual_Income__c, Monthly_Income__c, Primary_Applicant__c, Live_Work_Preference_Paper__c';
 
 	private static String prefixQuery(String prefix, String query) {
