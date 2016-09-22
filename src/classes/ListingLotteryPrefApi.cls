@@ -1,4 +1,14 @@
-//services/apexrest/LotteryPreference
+// *****************************************************************************
+// CLASS: ListingLotteryPrefApi
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: API used to return the list of Lottery Preference
+//				GET: /services/apexrest/LotteryPreference
+// *deprecated api
+
+
 @RestResource(urlMapping='/LotteryPreference/*')
 global with sharing class ListingLotteryPrefApi {
 	

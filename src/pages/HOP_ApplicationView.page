@@ -1,0 +1,645 @@
+<apex:page applyBodyTag="false" applyHtmlTag="false" id="HOP_ApplicationView" controller="HOP_ApplicationViewController"
+           docType="HTML-5.0" showChat="false" showHeader="false" sidebar="false" standardStylesheets="false">
+    <apex:composition template="HOP_Template">
+        <apex:define name="title">View Application</apex:define>
+
+        <apex:define name="styles">
+            <style type="text/css">
+                ul.fileList {
+                    display: inline-block;
+                    padding-left: 15px;
+                    margin-bottom: 0;
+                }
+                ul.fileList li {
+                    border-bottom: 1px solid #ddd;
+                    padding: 5px;
+                }
+                ul.fileList li:last-child {
+                    border-bottom: none;
+                }
+            </style>
+        </apex:define>
+
+        <apex:define name="error">
+            <div class="top-general-alert alert alert-danger slide down" role="alert" aria-hidden="true" aria-label="Page Alerts">
+                <apex:messages styleClass="errorArea" id="errorMessages" />
+            </div>
+        </apex:define>
+
+        <apex:define name="body">
+            <apex:form styleClass="form-horizontal" rendered="{! !hasErrors }" id="myForm">
+                <apex:outputPanel layout="block" rendered="{! !ISBLANK(retUrl) }">
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <a href="{!retUrl}">Back to previous page</a>
+                        </div>
+                    </div>
+                </apex:outputPanel>
+                <div class="form-group">
+                    <div class="col-xs-12 sectionHeader">
+                        <h4>{! 'Application ' + app.Name }</h4>
+                        <apex:outputPanel layout="none" rendered="{!app.Application_Submission_Type__c == PAPER_APPLICATION && !app.Is_Lottery_Complete__c}">
+                            <button type="button" class="btn btn-default" onclick="window.location = '/apex/HOP_ApplicationForm?id={!app.Id}';">
+                                Edit
+                            </button>
+                        </apex:outputPanel>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 sectionHeader">
+                        <h5>Application Data</h5>
+                    </div>
+                </div>
+                <div class="section form-group-section">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Listing</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <a href="/apex/HOP_Listing?id={!app.Listing__c}">{!app.Listing__r.Name}</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Total Household Size</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.Total_Household_Size__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Submission Type</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.Application_Submission_Type__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Status</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.Status__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Submission Date</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.Application_Submitted_Date__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Created By</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.CreatedBy.Name}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Language of Application</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputText value="{!app.Application_Language__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Referral Source</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputText value="{!app.Referral_Source__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 sectionHeader">
+                        <h5>Primary Applicant</h5>
+                    </div>
+                </div>
+                <div class="section {!IF(primaryApplicant == null, 'none-section', 'form-group-section')}">
+                    <apex:outputPanel layout="none" rendered="{!primaryApplicant == null}">
+                        <span style="vertical-align: middle; line-height: 35px;">None</span>
+                    </apex:outputPanel>
+                    <apex:outputPanel layout="none" rendered="{!primaryApplicant != null}">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-6 control-label">Name</label>
+                                    <div class="col-sm-6">
+                                        <p class="form-control-static">
+                                            <apex:outputField value="{!primaryApplicant.Name__c}" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-6 control-label">Date of Birth</label>
+                                    <div class="col-sm-6">
+                                        <p class="form-control-static">
+                                            <apex:outputField value="{!primaryApplicant.Date_of_Birth__c}" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <p class="form-control-static text-right">
+                                            <strong>
+                                                Phone(<apex:outputField value="{!primaryApplicant.Phone_Type__c}" />)
+                                            </strong>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="form-control-static">
+                                            <apex:outputField value="{!primaryApplicant.Phone__c}" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <p class="form-control-static text-right">
+                                            <strong>
+                                                Second Phone(<apex:outputField value="{!primaryApplicant.Second_Phone_Type__c}" />)
+                                            </strong>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="form-control-static">
+                                            <apex:outputField value="{!primaryApplicant.Second_Phone__c}" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-6 control-label">Email</label>
+                                    <div class="col-sm-6">
+                                        <p class="form-control-static ellipsis">
+                                            <apex:outputField value="{!primaryApplicant.Email__c}" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-6 control-label">Primary Language</label>
+                                    <div class="col-sm-6">
+                                        <p class="form-control-static">
+                                            <apex:outputField value="{!primaryApplicant.Primary_Language__c}" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-6 control-label">Residence Address</label>
+                                    <div class="col-sm-6">
+                                        <p class="form-control-static">
+                                            <apex:outputField value="{!primaryApplicant.Residence_Address__c}" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-6 control-label">Mailing Address</label>
+                                    <div class="col-sm-6">
+                                        <p class="form-control-static">
+                                            <apex:outputField value="{!primaryApplicant.Mailing_Address__c}" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </apex:outputPanel>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 sectionHeader">
+                        <h5>Alternate Contact</h5>
+                    </div>
+                </div>
+                <div class="section {!IF(alternateContact == null, 'none-section', 'form-group-section')}">
+                    <apex:outputPanel layout="none" rendered="{!alternateContact == null}">
+                        <span style="vertical-align: middle; line-height: 35px;">None</span>
+                    </apex:outputPanel>
+                    <apex:outputPanel layout="none" rendered="{!alternateContact != null}">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-6 control-label">Name</label>
+                                    <div class="col-sm-6">
+                                        <p class="form-control-static">
+                                            <apex:outputField value="{!alternateContact.Name__c}" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-6 control-label">Phone</label>
+                                    <div class="col-sm-6">
+                                        <p class="form-control-static">
+                                            <apex:outputField value="{!alternateContact.Phone__c}" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-6 control-label">Primary Language</label>
+                                    <div class="col-sm-6">
+                                        <p class="form-control-static">
+                                            <apex:outputField value="{!alternateContact.Primary_Language__c}" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-6 control-label">Agency Name</label>
+                                    <div class="col-sm-6">
+                                        <p class="form-control-static">
+                                            <apex:outputField value="{!alternateContact.Agency_Name__c}" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-6 control-label">Email Address</label>
+                                    <div class="col-sm-6">
+                                        <p class="form-control-static ellipsis">
+                                            <apex:outputField value="{!alternateContact.Email__c}" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-6 control-label">Relationship</label>
+                                    <div class="col-sm-6">
+                                        <p class="form-control-static">
+                                            <apex:outputField value="{!alternateContact.Alternate_Contact_Type__c}" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-6 control-label">Relationship - Other</label>
+                                    <div class="col-sm-6">
+                                        <p class="form-control-static">
+                                            <apex:outputField value="{!alternateContact.Alternate_Contact_Type_Other__c}" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </apex:outputPanel>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 sectionHeader">
+                        <h5>Household Members</h5>
+                    </div>
+                </div>
+                <div id="SFDT_HouseholdMembers" class="section"></div>
+                <div class="form-group">
+                    <div class="col-xs-12 sectionHeader">
+                        <h5>Preferences</h5>
+                    </div>
+                </div>
+                <div class="section form-group-section">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Has DTHP</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.DTHP_Preference__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Who Claimed DTHP</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.DTHP_Preference_Member__r.Name__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">DTHP Verification</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.DTHP_Preference_Manual__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Has COP</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.COP_Preference__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Who Claimed COP</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.COP_Preference_Member__r.Name__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">COP Verification</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.COP_Preference_Manual__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Has Neighborhood</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.Neighborhood_Preference__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Who Claimed Neighborhood</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.Neighborhood_Preference_Member__r.Name__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Neighborhood Address Check</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.Neighborhood_Preference_Manual__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Claimed Neighborhood Address</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.Neighborhood_Preference_Address__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Has Live/Work</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.Live_Work_Preference__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Who Claimed Live in SF</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.Live_in_SF_Preference_Member__r.Name__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Who Claimed Work in SF</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.Work_in_SF_Preference_Member__r.Name__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 sectionHeader">
+                        <h5>Declared Income</h5>
+                    </div>
+                </div>
+                <div class="section form-group-section">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Annual Income</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.Annual_Income__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Housing Voucher / Subsidy</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.Housing_Voucher_or_Subsidy__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Monthly Income</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static">
+                                        <apex:outputField value="{!app.Monthly_Income__c}" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 sectionHeader">
+                        <h5>Flagged Applications</h5>
+                    </div>
+                </div>
+                <div id="SFDT_FlaggedApplications" class="section"></div>
+                <div class="form-group">
+                    <div class="col-xs-12 sectionHeader">
+                        <h5>Attachments</h5>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <div class="section {!IF(attachments.size == 0, 'none-section', '')}">
+                            <apex:outputPanel layout="none" rendered="{!attachments.size = 0}">
+                                <span style="vertical-align: middle; line-height: 35px;">None</span>
+                            </apex:outputPanel>
+                            <apex:outputPanel layout="none" rendered="{!attachments.size > 0}">
+                                <ul class="fileList" style="min-height: 34px;">
+                                    <apex:repeat value="{!attachments}" var="att">
+                                        <li>
+                                            <apex:outputLink target="_blank" title="Download" value="/servlet/servlet.FileDownload?file={!att.Id}">
+                                                {!att.Name} ({!att.BodyLength} bytes)
+                                            </apex:outputLink>
+                                        </li>
+                                    </apex:repeat>
+                                </ul>
+                            </apex:outputPanel>
+                        </div>
+                    </div>
+                </div>
+            </apex:form>
+        </apex:define>
+
+        <apex:define name="scripts">
+            <apex:includeLightning />
+
+            <script>
+                function onSFDTEventReceive(event) {
+                    if (event) {
+                        if (event.getParam('message') == 'View') {
+                            var row = event.getParam('data');
+                            window.location = '/apex/HOP_ApplicationReview?id=' + row.Id +
+                                              '&retUrl=' + encodeURIComponent(window.location.pathname + window.location.search);
+                        }
+                    }
+                }
+
+                function tryLoadSFDT() {
+                    if ({!app.Id != null}) {
+                        $Lightning.use("c:SalesforceDataTablesApp", function() {
+                            $Lightning.createComponent(
+                                "c:SalesforceDataTables",
+                                {
+                                    style: "bootstrap",
+                                    objectName: "Application_Member__c",
+                                    fieldList: "Name__c, Relationship_to_Applicant__c, Date_of_Birth__c, Street__c, City__c, State__c, Zip_Code__c",
+                                    whereClause: "Application__c = '{!app.Id}' AND Id != '{!app.Applicant__c}' AND Id != '{!app.Alternate_Contact__c}'"
+                                },
+                                "SFDT_HouseholdMembers",
+                                function(cmp) {}
+                            );
+
+                            $Lightning.createComponent(
+                                "c:SalesforceDataTables",
+                                {
+                                    style: "bootstrap",
+                                    //objectName: "Flagged_Application__c",
+                                    objectName: "Flagged_Record_Set__c",
+                                    //fieldList: "Primary_Application_Applicant_Name__c, Comments__c, Review_Status__c",
+                                    fieldList: "Rule_Name__c, Total_Number_of_Pending_Review__c",
+                                    //whereClause: "Flagged_Record_Set__c IN ({!flaggedRecordSetString})"
+                                    whereClause: "Id IN ({!flaggedRecordSetString})",
+                                    labels: "Flagged Fields, Applications Pending Review",
+                                    eventButtons: [
+                                        {
+                                            "label": "View",
+                                            "select": true,
+                                            "send": "row"
+                                        }
+                                    ]
+                                },
+                                "SFDT_FlaggedApplications",
+                                function(cmp) {
+                                    $A.eventService.addHandler({
+                                        "event": "c:SalesforceDataTablesEvent",
+                                        "handler" : onSFDTEventReceive
+                                    });
+                                }
+                            );
+                        });
+                    }
+                }
+
+                $(document).ready(function() {
+                    tryLoadSFDT();
+                });
+            </script>
+        </apex:define>
+    </apex:composition>
+</apex:page>

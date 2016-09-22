@@ -1,0 +1,109 @@
+<apex:page applyBodyTag="false" applyHtmlTag="false" id="HOP_ApplicationReview" controller="HOP_ApplicationReviewController"
+           docType="HTML-5.0" showChat="false" showHeader="false" sidebar="false" standardStylesheets="false">
+
+    <apex:composition template="HOP_Template">
+        <apex:define name="title">Flagged/Duplicate Applications Review</apex:define>
+
+        <apex:define name="styles">
+            <style type="text/css">
+                form.form-horizontal {
+                    padding: 15px 0;
+                }
+            </style>
+        </apex:define>
+
+        <apex:define name="error">
+            <div class="top-general-alert alert alert-danger slide down" role="alert" aria-hidden="true" aria-label="Page Alerts">
+                <apex:messages styleClass="errorArea" id="errorMessages" />
+            </div>
+        </apex:define>
+
+        <apex:define name="body">
+            <apex:form styleClass="form-horizontal">
+                <apex:outputPanel layout="block" rendered="{! !ISBLANK(retUrl) }">
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <a href="{!retUrl}">Back to previous page</a>
+                        </div>
+                    </div>
+                </apex:outputPanel>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <h5><strong>{!flaggedRecordSet.Listing__r.Name} - {!flaggedRecordSet.Rule_Name__c}</strong></h5>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <p>Lottery Status: {!flaggedRecordSet.Listing__r.Lottery_Status__c}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <p>The applications below have been flagged by the system as potentially having duplicate household members who appear on both applications. Please review each of them before the lottery date to decide whether they represent a genuine duplicate household member. If you mark them as duplicates, you'll need to notify the applicant, as both applications will be removed from the lottery.</p>
+                    </div>
+                </div>
+                <div class="section" id="SFDT_ApplicationsToReview"></div>
+            </apex:form>
+        </apex:define>
+
+        <apex:define name="scripts">
+            <apex:includeLightning />
+            <script>
+                function onSFDTEventReceive(event) {
+                    if (event) {
+                        if (event.getParam('message') == 'View Application') {
+                            var row = event.getParam('data');
+                            window.open('/apex/HOP_ApplicationView?id=' + row.Application__c);
+                        }
+                    }
+                }
+
+                function loadSFDT() {
+                    if ({!flaggedRecordSet.Id != null}) {
+                        var lotteryStatus = '{!flaggedRecordSet.Listing__r.Lottery_Status__c}';
+                        var disabled = (lotteryStatus == 'In Progress' || lotteryStatus == 'Lottery Complete');
+
+                        $Lightning.use("c:SalesforceDataTablesApp", function() {
+                            $Lightning.createComponent(
+                                "c:SalesforceDataTables",
+                                {
+                                    style: "bootstrap",
+                                    objectName: "Flagged_Application__c",
+                                    fieldList: "Application__c, Primary_Application_Applicant_Name__c, Review_Status__c, Comments__c",
+                                    whereClause: "Flagged_Record_Set__c = '{!flaggedRecordSet.Id}'",
+                                    canEdit: !disabled,
+                                    standardButtonsLabels: {
+                                        "edit": "Review"
+                                    },
+                                    eventButtons: [
+                                        {
+                                            "label": "View Application",
+                                            "select": true,
+                                            "send": "row"
+                                        }
+                                    ],
+                                    removeLookupHyperlinks: true
+                                },
+                                "SFDT_ApplicationsToReview",
+                                function(cmp) {
+                                    $A.eventService.addHandler({
+                                        "event": "c:SalesforceDataTablesEvent",
+                                        "handler" : onSFDTEventReceive
+                                    });
+                                    /*cmp.onRowSelectToggle = function(obj) {
+                                        var lotteryStatus = obj.row[0].Application__r.Listing__r.Lottery_Status__c;
+                                        obj.buttons.filter('.buttons-edit').toggleClass('disabled', obj.row.selected == false || lotteryStatus == 'In Progress' || lotteryStatus == 'Lottery Complete');
+                                    }*/
+                                }
+                            );
+                        });
+                    }
+                }
+
+                $(document).ready(function() {
+                    loadSFDT();
+                });
+            </script>
+        </apex:define>
+    </apex:composition>
+</apex:page>

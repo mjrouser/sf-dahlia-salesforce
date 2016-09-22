@@ -1,0 +1,87 @@
+<apex:page applyBodyTag="false" applyHtmlTag="false" id="HOP_Listings" controller="HOP_ListingsController"
+           docType="HTML-5.0" showChat="false" showHeader="false" sidebar="false" standardStylesheets="false">
+    <apex:composition template="HOP_Template">
+        <apex:define name="title">Listings</apex:define>
+        <apex:define name="styles"></apex:define>
+        <apex:define name="error">
+            <div class="top-general-alert alert alert-danger slide down" role="alert" aria-hidden="true" aria-label="Page Alerts">
+                <apex:messages styleClass="errorArea" id="errorMessages" />
+            </div>
+        </apex:define>
+        <apex:define name="body">
+            <apex:form styleClass="form-horizontal">
+                <div class="form-group">
+                    <div class="col-xs-12 sectionHeader">
+                        <h4>Listings</h4>
+                    </div>
+                </div>
+		        <div class="section" id="SFDT_Listings"></div>
+            </apex:form>
+        </apex:define>
+        <apex:define name="scripts">
+            <apex:includeLightning />
+            <script>
+            	function onSFDTEventReceive(event) {
+            		if (event) {
+                        if (event.getParam('message') == 'View Listing') {
+                            var row = event.getParam('data');
+                            window.location = '/apex/HOP_Listing?id=' + row.Id +
+                                              '&retUrl=' + encodeURIComponent(window.location.pathname + window.location.search);
+                        }
+                        if (event.getParam('message') == 'Add Application') {
+                            var row = event.getParam('data');
+                            if (row.Lottery_Status__c == 'Lottery Complete') {
+                                alert('The Lottery is already Complete, you cannot Add any more Applications');
+                                return;
+                            }
+                            window.location = '/apex/HOP_ApplicationForm?listingId=' + row.Id +
+                                              '&retUrl=' + encodeURIComponent(window.location.pathname + window.location.search);
+                        }
+                    }
+            	}
+
+                function loadSFDT() {
+                    var whereClause = '{!myUser.Profile.UserLicense.Name}' == '{!COMMUNITY_LICENSE_NAME}'
+                                        ? "Account__c = '{!myUser.Contact.AccountId}'"
+                                        : undefined;
+
+                    $Lightning.use("c:SalesforceDataTablesApp", function() {
+                        $Lightning.createComponent(
+                            "c:SalesforceDataTables",
+                            {
+                                style: "bootstrap",
+                                objectName: "Listing__c",
+                                fieldList: "Name, Application_Due_Date__c, Lottery_Date__c, Lottery_Results_Date__c, Lottery_Status__c, Submitted_Applications__c, Flagged_Applications__c, Confirmed_Duplicate_Applications__c, In_Lottery__c",
+                                hideFields: "Lottery_Status__c",
+                                whereClause: whereClause,
+                                eventButtons: [
+                                    {
+                                    	"label": "View Listing",
+                                    	"select": true,
+                                    	"send": "row"
+                                    },
+                                    {
+                                        "label": "Add Application",
+                                        "select": true,
+                                        "send": "row"
+                                    }
+                                ]
+                            },
+                            "SFDT_Listings",
+                            function(cmp) {
+                            	$A.eventService.addHandler({
+                            		"event": "c:SalesforceDataTablesEvent",
+                            		"handler" : onSFDTEventReceive
+                            	});
+                            }
+                        );
+                    });
+                }
+
+                $(document).ready(function() {
+                    loadSFDT();
+                });
+            </script>
+        </apex:define>
+    </apex:composition>
+</apex:page>

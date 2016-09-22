@@ -1,0 +1,77 @@
+<apex:page applyBodyTag="false" applyHtmlTag="false" id="HOP_Applications" controller="HOP_ApplicationsController"
+           docType="HTML-5.0" showChat="false" showHeader="false" sidebar="false" standardStylesheets="false">
+    <apex:composition template="HOP_Template">
+        <apex:define name="title">Applications</apex:define>
+        <apex:define name="styles"></apex:define>
+        <apex:define name="error">
+            <div class="top-general-alert alert alert-danger slide down" role="alert" aria-hidden="true" aria-label="Page Alerts">
+                <apex:messages styleClass="errorArea" id="errorMessages" />
+            </div>
+        </apex:define>
+        <apex:define name="body">
+            <apex:form styleClass="form-horizontal">
+                <div class="form-group">
+                    <div class="col-xs-12 sectionHeader">
+                        <h4>Applications</h4>
+                    </div>
+                </div>
+		        <div id="SFDT_Applications" class="section"></div>
+            </apex:form>
+        </apex:define>
+        <apex:define name="scripts">
+            <apex:includeLightning />
+            <script>
+            	function onSFDTEventReceive(event) {
+            		if (event && event.getParam('message') == 'View') {
+						var row = event.getParam('data');
+						window.location = '/apex/HOP_ApplicationView?id=' + row.Id +
+                                          '&retUrl=' + encodeURIComponent(window.location.pathname + window.location.search);
+					}
+            	}
+
+                function loadSFDT() {
+                    var whereClause = '{!myUser.Profile.UserLicense.Name}' == '{!COMMUNITY_LICENSE_NAME}'
+                                        ? "Listing__r.Account__c = '{!myUser.Contact.AccountId}' AND Status__c != '{!DRAFT_APPLICATION}'"
+                                        : undefined;
+
+                    $Lightning.use("c:SalesforceDataTablesApp", function() {
+                        $Lightning.createComponent(
+                            "c:SalesforceDataTables",
+                            {
+                                style: "bootstrap",
+                                enhanced: true,
+                                objectName: "Application__c",
+                                fieldList: "Name, Listing__c, Last_Name__c, First_Name__c, Application_Submitted_Date__c, COP_Preference__c, DTHP_Preference__c, Neighborhood_Preference__c, Live_Work_Preference__c",
+                                whereClause: whereClause,
+                                orders: [
+                                    {
+                                        'col': 'Name',
+                                        'order': 'desc'
+                                    }
+                                ],
+                                removeLookupHyperlinks: true,
+                                pageLength: 100,
+                                eventButtons: [{
+                                    "label": "View",
+                                    "select": true,
+                                    "send": "row"
+                                }]
+                            },
+                            "SFDT_Applications",
+                            function(cmp) {
+                                $A.eventService.addHandler({
+                                    "event": "c:SalesforceDataTablesEvent",
+                                    "handler" : onSFDTEventReceive
+                                });
+                            }
+                        );
+                    });
+                }
+
+                $(document).ready(function() {
+                    loadSFDT();
+                });
+            </script>
+        </apex:define>
+    </apex:composition>
+</apex:page>

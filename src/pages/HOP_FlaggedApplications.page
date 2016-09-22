@@ -1,0 +1,89 @@
+<apex:page applyBodyTag="false" applyHtmlTag="false" id="HOP_FlaggedApplications" controller="HOP_FlaggedApplicationsController"
+           docType="HTML-5.0" showChat="false" showHeader="false" sidebar="false" standardStylesheets="false">
+    <apex:composition template="HOP_Template">
+        <apex:define name="title">Listings</apex:define>
+        <apex:define name="styles"></apex:define>
+        <apex:define name="error">
+            <div class="top-general-alert alert alert-danger slide down" role="alert" aria-hidden="true" aria-label="Page Alerts">
+                <apex:messages styleClass="errorArea" id="errorMessages" />
+            </div>
+        </apex:define>
+        <apex:define name="body">
+            <apex:form styleClass="form-horizontal">
+                <div class="form-group">
+                    <div class="col-xs-12 sectionHeader">
+                        <h4>Flagged Applications</h4>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <p>The applications below have been flagged by the system as potentially having duplicate household members who appear on both applications. Please review each of them before the lottery date to decide whether they represent a genuine duplicate household member. If you mark them as duplicates, you'll need to notify the applicant, as both applications will be removed from the lottery.</p>
+                    </div>
+                </div>
+		        <div class="section" id="HOP_FlaggedApplications"></div>
+            </apex:form>
+        </apex:define>
+        <apex:define name="scripts">
+            <apex:includeLightning />
+            <script>
+            	function onSFDTEventReceive(event) {
+            		if (event) {
+                        if (event.getParam('message') == 'View') {
+                            var row = event.getParam('data');
+                            window.location = '/apex/HOP_ApplicationReview?id=' + row.Id +
+                                              '&retUrl=' + encodeURIComponent(window.location.pathname + window.location.search);
+                        }
+                        if (event.getParam('message') == 'Go To Listing') {
+                            var row = event.getParam('data');
+                            window.location = '/apex/HOP_Listing?id=' + row.Listing__c +
+                                              '&retUrl=' + encodeURIComponent(window.location.pathname + window.location.search);
+                        }
+                    }
+            	}
+
+                function loadSFDT() {
+                    var whereClause = '{!myUser.Profile.UserLicense.Name}' == '{!COMMUNITY_LICENSE_NAME}'
+                                        ? " AND Listing__r.Account__c = '{!myUser.Contact.AccountId}'"
+                                        : '';
+
+                    $Lightning.use("c:SalesforceDataTablesApp", function() {
+                        $Lightning.createComponent(
+                            "c:SalesforceDataTables",
+                            {
+                                style: "bootstrap",
+                                objectName: "Flagged_Record_Set__c",
+                                fieldList: "Listing__c, Rule_Name__c, Total_Number_of_Pending_Review__c, Total_Number_of_Appealed__c",
+                                labels: "Listing, Flagged Field, Applications Pending Review, Appealed Applications",
+                                whereClause: "(Total_Number_of_Pending_Review__c > 0 OR Total_Number_of_Appealed__c > 0)" + whereClause,
+                                eventButtons: [
+                                    {
+                                    	"label": "View",
+                                    	"select": true,
+                                    	"send": "row"
+                                    },
+                                    {
+                                        "label": "Go To Listing",
+                                        "select": true,
+                                        "send": "row"
+                                    }
+                                ],
+                                removeLookupHyperlinks: true
+                            },
+                            "HOP_FlaggedApplications",
+                            function(cmp) {
+                            	$A.eventService.addHandler({
+                            		"event": "c:SalesforceDataTablesEvent",
+                            		"handler" : onSFDTEventReceive
+                            	});
+                            }
+                        );
+                    });
+                }
+
+                $(document).ready(function() {
+                    loadSFDT();
+                });
+            </script>
+        </apex:define>
+    </apex:composition>
+</apex:page>
