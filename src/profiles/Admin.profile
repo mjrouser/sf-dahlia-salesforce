@@ -394,11 +394,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Application_Member__c.Has_Mailing_Address__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Application_Member__c.Identify_as_Lesbian_Gay_Bisexual__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2434,11 +2429,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Unit__c.Maximum_Household_Income_Allowed__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Unit__c.Maximum_Household_Size__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2656,9 +2646,6 @@
         <layout>Listing_Image__c-Listing Image Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Lottery_Preference__c-Lottery Prefference Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
         <layout>Open_Houses__c-Open House Layout</layout>
     </layoutAssignments>
     <objectPermissions>
@@ -2820,6 +2807,11 @@
         <default>false</default>
         <recordType>Contact.City_and_Partners</recordType>
         <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>Contact.Head_of_Household</recordType>
+        <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
@@ -3283,7 +3275,6 @@
         <enabled>true</enabled>
         <name>ShareInternalArticles</name>
     </userPermissions>
-   
     <userPermissions>
         <enabled>true</enabled>
         <name>SolutionImport</name>

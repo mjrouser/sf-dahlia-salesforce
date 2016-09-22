@@ -394,11 +394,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Application_Member__c.Has_Mailing_Address__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Application_Member__c.Identify_as_Lesbian_Gay_Bisexual__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2434,11 +2429,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Unit__c.Maximum_Household_Income_Allowed__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Unit__c.Maximum_Household_Size__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2659,9 +2649,6 @@
         <layout>Listing__c-Community Listing Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Lottery_Preference__c-Lottery Prefference Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
         <layout>Open_Houses__c-Community Open House Layout</layout>
     </layoutAssignments>
     <objectPermissions>
@@ -2808,6 +2795,11 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
+        <recordType>Contact.Head_of_Household</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
         <recordType>Contact.Household</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
@@ -2852,5 +2844,4 @@
         <enabled>true</enabled>
         <name>SelectFilesFromSalesforce</name>
     </userPermissions>
-  
 </Profile>

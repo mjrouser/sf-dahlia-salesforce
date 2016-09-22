@@ -41,6 +41,10 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -129,7 +133,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -194,7 +197,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -311,7 +313,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -364,7 +365,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -385,7 +385,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -412,7 +411,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -446,7 +444,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -473,7 +470,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -491,7 +487,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -509,7 +504,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -555,7 +549,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -573,7 +566,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -603,7 +595,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -657,7 +648,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -675,7 +665,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -705,7 +694,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -759,7 +747,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -777,7 +764,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -807,7 +793,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -861,7 +846,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -975,7 +959,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1009,7 +992,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1053,7 +1035,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1111,7 +1092,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1186,7 +1166,6 @@
             <restrictedPicklist>true</restrictedPicklist>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1239,7 +1218,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1296,7 +1274,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1362,7 +1339,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1475,7 +1451,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1502,7 +1477,6 @@
             <restrictedPicklist>true</restrictedPicklist>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1557,7 +1531,6 @@
             <restrictedPicklist>true</restrictedPicklist>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1781,7 +1754,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1889,7 +1861,6 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -3873,7 +3844,7 @@
     </recordTypes>
     <recordTypes>
         <fullName>Head_of_Household</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>Person who submitted application</description>
         <label>Head of Household</label>
         <picklistValues>

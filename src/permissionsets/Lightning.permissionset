@@ -393,11 +393,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Application_Member__c.Has_Mailing_Address__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Application_Member__c.Identify_as_Lesbian_Gay_Bisexual__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -2433,11 +2428,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Unit__c.Maximum_Household_Income_Allowed__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Unit__c.Maximum_Household_Size__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -2641,6 +2631,10 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <recordType>Contact.City_and_Partners</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>Contact.Head_of_Household</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
