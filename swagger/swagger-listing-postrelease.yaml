@@ -1158,10 +1158,10 @@
           type: array
           items:
               $ref: '#/definitions/Person'
-        applicationPreferences:
+        shortFormPreferences:
           type: array
           items:
-              $ref: '#/definitions/ApplicationPreference'
+              $ref: '#/definitions/ShortFormPreference'
         worksInSanFrancisco:
           type: "boolean"
           description: "currently works In SF"
@@ -1277,7 +1277,7 @@
           type: "number"
           description: "total units available "
       
-    ApplicationPreference:
+    ShortFormPreference:
       type: "object"
       description: "Application preference"
       properties:
@@ -1437,47 +1437,7 @@
           format: "int32"
           description: "raw lottery rank returned form drawing"
        
-    xApplicationResult:
-      type: "object"
-      description: "ApplicationResult - deprecated"
-      properties:
-        applicationID:
-          type: "string"
-          description: "ApplicationID ID"
-        liveWorkPreference:
-          type: "boolean"
-          description: "true/false"
-        liveWorkPreferenceRank:
-          type: "number"
-          description: "raw rank for this live work - which are treated as one preference"
-        displacedPreference:
-          type: "boolean"
-          description: "true/false"
-        displacedPreferenceRank:
-          type: "number"
-          description: "raw rank for this preference"
-        certOfPreference:
-          type: "boolean"
-          description: "true/false"
-        certOfPreferenceRank:
-          type: "number"
-          description: "raw rank for this preference"
-        neighborhoodPreference:
-          type: "boolean"
-          description: "true/false"
-        neighborhoodPreferenceRank:
-          type: "number"
-          description: "raw rank for this preference"
-        generalLotteryRank:
-          type: "number"
-          description: "raw rank for general lottery"
-        lotteryNumber:
-          type: "string"
-          description: "the lottery number  "
-        lotteryRank:
-          type: "integer"
-          format: "int32"
-          description: "raw lottery rank returned form drawing"
+  
 
     Person:
       type: "object"
