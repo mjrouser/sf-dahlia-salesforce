@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+       
+        <name>ApexClass</name>
+    </types>
+   ponent</name>
+    </types>
+    <types>
+     
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
+      
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <types>
+        <name>CustomField</name>
+    </types>
+    <types>
+      
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <name>Flow</name>
+    </types>
+    <types>
+        <members>Account-Account Layout - Lenders</members>
+        <members>Account-Account Layout - Property Management</members>
+        <members>Account-CCSF and Partners</members>
+        <members>Account-Property Management - Community</members>
+        <members>Application_Member__c-Application Member Community Layout</members>
+        <members>Application_Member__c-Application Member Layout</members>
+        <members>Application__c-Application Layout - BMR Rental Short-Form</members>
+        <members>Application__c-Community Application Layout - BMR Rental Short-Form</members>
+        <members>Building__c-Building Data Entry</members>
+        <members>Building__c-Property Layout</members>
+        <members>Contact-CCSF and Partners</members>
+        <members>Contact-Contact Layout</members>
+        <members>Contact-Contact Layout - Applicant</members>
+        <members>Contact-Contact Layout - City and Partners</members>
+        <members>Contact-Contact Layout - Household</members>
+        <members>Contact-Contact Layout - Lending Agent</members>
+        <members>Contact-Contact Layout - Property Agent</members>
+        <members>Development__c-Development Layout</members>
+        <members>DuplicateRecordItem-Duplicate Record Item Layout</members>
+        <members>DuplicateRecordSet-Duplicate Record Set Layout</members>
+        <members>Flagged_Application__c-Community Conflicting Application Layout</members>
+        <members>Flagged_Application__c-Conflicting Application Layout</members>
+        <members>Flagged_Record_Set__c-Conflict Layout</members>
+        <members>Housing_Application__c-Housing Application Layout</members>
+        <members>Housing_Application__c-Housing Application Layout - BMR Ownership</members>
+        <members>Housing_Application__c-Housing Application Layout - BMR Rental</members>
+        <members>Information_Session__c-Community Information Session Layout</members>
+        <members>Information_Session__c-Information Session Layout</members>
+        <members>Listing_Image__c-Listing Image Layout</members>
+        <members>Listing__c-Community Listing Layout</members>
+        <members>Lottery_Preference__c-Lottery Prefference Layout</members>
+        <members>Open_Houses__c-Community Open House Layout</members>
+        <members>Open_Houses__c-Open House Layout</members>
+        <name>Layout</name>
+    </types>
+      <types>
+        <name>PermissionSet</name>
+    </types>
+    <types>
+        <members>Admin</members>
+        <members>MOHCD - Household</members>
+        <members>MOHCD - Leasing Agent</members>
+        <members>MOHCD - Leasing Agent Clerk</members>
+        <members>MOHCD - Lender</members>
+        <members>MOHCD - Property Agent</members>
+        <members>MOHCD - Staff</members>
+        <name>Profile</name>
+    </types>
+   
+    <version>36.0</version>
+</Package>
