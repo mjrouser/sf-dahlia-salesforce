@@ -1,13 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-       
+        <members>API_Application</members>
+        <members>API_ApplicationService</members>
+        <members>API_ApplicationServiceTest</members>
+        <members>API_Person</members>
+        <members>API_PersonTest</members>
+        <members>API_ShortForm</members>
+        <members>API_ShortFormTest</members>
+        <members>LOT_Lottery</members>
+        <members>LOT_PreferenceRankBatch</members>
+        <members>LOT_PreferenceRankBatchTest</members>
+        <members>LOT_RandomBaseRequest</members>
+        <members>LOT_RandomDrawBatch</members>
+        <members>LOT_RandomDrawBatchTest</members>
+        <members>LOT_RandomDrawReq</members>
+        <members>LOT_RandomDrawReqTest</members>
+        <members>LOT_RandomDrawReqTest_Test</members>
+        <members>LOT_RandomDrawService</members>
+        <members>LOT_RandomDrawServiceTest</members>
+        <members>LOT_QueueUpPreferenceBatches</members>
+        <members>HOP_ApplicationFormController</members>
+        <members>HOP_ApplicationViewController</members>
+        
         <name>ApexClass</name>
     </types>
    ponent</name>
     </types>
     <types>
-     
+        <members>HOP_ApplicationForm</members>
+        <members>HOP_ApplicationView</members>
+        
         <name>ApexPage</name>
     </types>
     <types>
