@@ -99,6 +99,19 @@
         <members>MOHCD - Staff</members>
         <name>Profile</name>
     </types>
+
+    <types>
+        <members>NRHP_Verified_Online_Added_to_Live_Work</members>
+        <name>Flow</name>
+    </types>
+
+    <types>
+        <members>Verification_Reports/NRHP_Verification_Unconfirmed</members>
+        <members>Verification_Reports/NRHP_Verification_Invalid_Address</members>
+        <members>Verification_Reports/NRHP_Verification_Valid_Address</members>
+        <members>Verification_Reports/Lottery_Preference_Re_Rank_Test</members>        
+        <name>Report</name>
+    </types>
    
     <version>36.0</version>
 </Package>
