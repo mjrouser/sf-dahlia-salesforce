@@ -3,11 +3,14 @@
     <types>
         <members>API_Application</members>
         <members>API_ApplicationService</members>
-        <members>API_ApplicationServiceTest</members>
         <members>API_Person</members>
         <members>API_PersonTest</members>
         <members>API_ShortForm</members>
         <members>API_ShortFormTest</members>
+        <members>HOP_ApplicationFormController</members>
+        <members>HOP_ApplicationViewController</members>
+        <members>ListingUnitSummaryAPI</members>
+        <members>ListingService</members>
         <members>LOT_Lottery</members>
         <members>LOT_PreferenceRankBatch</members>
         <members>LOT_PreferenceRankBatchTest</members>
@@ -20,8 +23,6 @@
         <members>LOT_RandomDrawService</members>
         <members>LOT_RandomDrawServiceTest</members>
         <members>LOT_QueueUpPreferenceBatches</members>
-        <members>HOP_ApplicationFormController</members>
-        <members>HOP_ApplicationViewController</members>
         
         <name>ApexClass</name>
     </types>
@@ -30,6 +31,8 @@
     <types>
         <members>HOP_ApplicationForm</members>
         <members>HOP_ApplicationView</members>
+        <members>HOP_Applications</members>
+        <members>HOP_Listing</members>
         
         <name>ApexPage</name>
     </types>
