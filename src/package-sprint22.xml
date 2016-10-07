@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <!-- Pivotal search for accepted stories (Package includes this) - "accepted:09/22/2016..10/06/2016" -->
     <types>
         <members>API_Application</members>
         <members>API_ApplicationService</members>
@@ -29,10 +30,10 @@
    ponent</name>
     </types>
     <types>
-        <members>HOP_ApplicationForm</members>
-        <members>HOP_ApplicationView</members>
-        <!--<members>HOP_Applications</members>
-        <members>HOP_Listing</members>-->
+        <members>HOP_ApplicationForm</members><!-- https://www.pivotaltracker.com/story/show/130765381 -->
+        <members>HOP_ApplicationView</members><!-- https://www.pivotaltracker.com/story/show/130695759, https://www.pivotaltracker.com/story/show/129147191 -->
+        <members>HOP_Applications</members><!-- https://www.pivotaltracker.com/story/show/126171075 -->
+        <members>HOP_Listing</members><!-- https://www.pivotaltracker.com/story/show/128118317 -->
         
         <name>ApexPage</name>
     </types>
@@ -104,17 +105,19 @@
     </types>
 
     <types>
-        <members>NRHP_Verified_Online_Added_to_Live_Work</members>
+        <members>NRHP_Verified_Online_Added_to_Live_Work</members><!-- https://www.pivotaltracker.com/story/show/130660273, https://www.pivotaltracker.com/story/show/130696845 -->
         <name>Flow</name>
     </types>
 
+    <!-- All report-related stories still outstanding
     <types>
-        <members>Verification_Reports/NRHP_Verification_Unconfirmed</members>
-        <members>Verification_Reports/NRHP_Verification_Invalid_Address</members>
-        <members>Verification_Reports/NRHP_Verification_Valid_Address</members>
-        <members>Verification_Reports/Lottery_Preference_Re_Rank_Test</members>        
+        <members>Verification_Reports/NRHP_Verification_Unconfirmed</members> https://www.pivotaltracker.com/story/show/128985485, https://www.pivotaltracker.com/story/show/131105487
+        <members>Verification_Reports/NRHP_Verification_Invalid_Address</members> https://www.pivotaltracker.com/story/show/128985485, https://www.pivotaltracker.com/story/show/131105487
+        <members>Verification_Reports/NRHP_Verification_Valid_Address</members> https://www.pivotaltracker.com/story/show/128985485, https://www.pivotaltracker.com/story/show/131105487
+        <members>Verification_Reports/Lottery_Preference_Re_Rank_Test</members> https://www.pivotaltracker.com/story/show/129945399 - Used for testing Build       
         <name>Report</name>
     </types>
+    -->
    
     <version>36.0</version>
 </Package>
