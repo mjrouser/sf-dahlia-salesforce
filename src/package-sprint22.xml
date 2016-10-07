@@ -12,7 +12,7 @@
         <members>HOP_ApplicationViewController</members>
         <members>ListingUnitSummaryAPI</members>
         <members>ListingService</members>
-        <members>LOT_Lottery</members>
+        <!--<members>LOT_Lottery</members>
         <members>LOT_PreferenceRankBatch</members>
         <members>LOT_PreferenceRankBatchTest</members>
         <members>LOT_RandomBaseRequest</members>
@@ -23,7 +23,7 @@
         <members>LOT_RandomDrawReqTest_Test</members>
         <members>LOT_RandomDrawService</members>
         <members>LOT_RandomDrawServiceTest</members>
-        <members>LOT_QueueUpPreferenceBatches</members>
+        <members>LOT_QueueUpPreferenceBatches</members>-->
         
         <name>ApexClass</name>
     </types>
