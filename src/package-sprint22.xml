@@ -31,8 +31,8 @@
     <types>
         <members>HOP_ApplicationForm</members>
         <members>HOP_ApplicationView</members>
-        <members>HOP_Applications</members>
-        <members>HOP_Listing</members>
+        <!--<members>HOP_Applications</members>
+        <members>HOP_Listing</members>-->
         
         <name>ApexPage</name>
     </types>
