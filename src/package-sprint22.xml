@@ -10,7 +10,7 @@
         <members>API_ShortFormTest</members>
         <members>HOP_ApplicationFormController</members>
         <members>HOP_ApplicationViewController</members>
-        <members>ListingUnitSummaryAPI</members>
+        <members>ListingUnitSummaryApi</members>
         <members>ListingService</members>
         <!--<members>LOT_Lottery</members>
         <members>LOT_PreferenceRankBatch</members>
@@ -27,8 +27,10 @@
         
         <name>ApexClass</name>
     </types>
-   ponent</name>
-    </types>
+
+
+  
+  
     <types>
         <members>HOP_ApplicationForm</members><!-- https://www.pivotaltracker.com/story/show/130765381 -->
         <members>HOP_ApplicationView</members><!-- https://www.pivotaltracker.com/story/show/130695759, https://www.pivotaltracker.com/story/show/129147191 -->
@@ -47,10 +49,12 @@
     <types>
         <name>CustomField</name>
     </types>
-    <types>
-      
+     <types>
+    
+        <members>Lottery_Preference__c</members>
         <name>CustomObject</name>
     </types>
+
     <types>
         <name>Flow</name>
     </types>
@@ -85,7 +89,7 @@
         <members>Information_Session__c-Information Session Layout</members>
         <members>Listing_Image__c-Listing Image Layout</members>
         <members>Listing__c-Community Listing Layout</members>
-        <members>Lottery_Preference__c-Lottery Prefference Layout</members>
+        <members>Lottery_Preference__c-Preference Layout</members>
         <members>Open_Houses__c-Community Open House Layout</members>
         <members>Open_Houses__c-Open House Layout</members>
         <name>Layout</name>
@@ -105,7 +109,7 @@
     </types>
 
     <types>
-        <members>NRHP_Verified_Online_Added_to_Live_Work</members><!-- https://www.pivotaltracker.com/story/show/130660273, https://www.pivotaltracker.com/story/show/130696845 -->
+        <members>NRHP_Verified_Online_Added_to_Live_Work-3</members><!-- https://www.pivotaltracker.com/story/show/130660273, https://www.pivotaltracker.com/story/show/130696845 -->
         <name>Flow</name>
     </types>
 
