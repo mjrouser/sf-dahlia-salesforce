@@ -1269,6 +1269,9 @@
         lotteryNumber:
           type: "string"
           description: "lottery number"
+        lotteryNumberManual:
+          type: "string"
+          description: "lottery number"
         formMetadata:
           type: "string"
           description: "additional metadata that can be saved on the form - non user input data"
