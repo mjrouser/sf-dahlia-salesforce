@@ -115,6 +115,10 @@ global without sharing class API_Application {
 		}
 		
 		global void validate() {
+			if (this.id == null) {
+				validateLotteryRun();
+			}
+			
 			if (primaryApplicant == null) {
 				throw new IncompleteApplicationException ();
 			}
@@ -125,11 +129,19 @@ global without sharing class API_Application {
 				}
 			}
 		}
+		
+		global void validateLotteryRun() {
+			List<Listing__c> currentListing = ListingService.getListingByID(this.listingID);
+			if (currentListing[0].Lottery_Status__c == 'In Progress' || currentListing[0].Lottery_Status__c == 'Lottery Complete') {
+				throw new LotteryAlreadyRunException ();
+			}
+		}
 	}
 	
 	global class IncompleteApplicationException extends Exception {}
+	global class LotteryAlreadyRunException extends Exception {}
 	
-
+	
 	global class Person {
 		global String webAppID;
 		//global String webAppIDSource;

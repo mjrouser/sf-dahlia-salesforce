@@ -143,7 +143,7 @@
                                         </div>
                                     </div> -->
                                 </div>
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="col-sm-6 control-label">Building</label>
@@ -170,7 +170,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-sm-6">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="col-sm-6 control-label">Min BR</label>
                                             <div class="col-sm-6">
@@ -182,8 +182,8 @@
                                                 </apex:outputPanel>
                                             </div>
                                         </div>
-                                    </div> -->
-                                </div>
+                                    </div>
+                                </div> -->
                                 <!-- <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
@@ -252,7 +252,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <!-- <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="col-sm-6 control-label">Max Occupancy</label>
                                             <div class="col-sm-6">
@@ -265,7 +265,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-sm-6">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="col-sm-6 control-label">Max Income</label>
                                             <div class="col-sm-6">

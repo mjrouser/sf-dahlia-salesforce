@@ -416,7 +416,7 @@ public without sharing class API_ApplicationService {
 
 	public static API_Application.ShortForm upsertShortform(API_Application.ShortForm sf) {
 		if (sf == null) return null;
-		if (sf.status!='Draft') {
+		if (sf.status != 'Draft') {
 			sf.validate();
 		}
 		
@@ -428,7 +428,9 @@ public without sharing class API_ApplicationService {
 		//if sf exist make sure to populate AM with ids
 		if (sf.id != null) {
 			existingSf = getShortformById(sf.Id);
-			
+			if (existingSf.status != 'Submitted' && sf.status == 'Submitted') {
+				sf.validateLotteryRun();
+			}
 			
 			//add alternate contact Id
 			if (existingSf.alternateContact != null && existingSf.alternateContact.appMemberId != null) {

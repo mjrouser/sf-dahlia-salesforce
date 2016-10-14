@@ -21,11 +21,15 @@
         <apex:define name="scripts">
             <apex:includeLightning />
             <script>
+                function getApplicationViewURL(applicationId) {
+                    return  '/apex/HOP_ApplicationView?id=' + applicationId +
+                            '&retUrl=' + encodeURIComponent(window.location.pathname + window.location.search);
+                }
+
             	function onSFDTEventReceive(event) {
             		if (event && event.getParam('message') == 'View') {
 						var row = event.getParam('data');
-						window.location = '/apex/HOP_ApplicationView?id=' + row.Id +
-                                          '&retUrl=' + encodeURIComponent(window.location.pathname + window.location.search);
+						window.location = getApplicationViewURL(row.Id);
 					}
             	}
 
@@ -63,6 +67,9 @@
                                     "event": "c:SalesforceDataTablesEvent",
                                     "handler" : onSFDTEventReceive
                                 });
+                                cmp.onCellDblClick = function(obj) {
+                                    window.location = getApplicationViewURL(obj.row.Id);
+                                };
                             }
                         );
                     });

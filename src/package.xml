@@ -165,7 +165,7 @@
         <members>Information_Session__c-Information Session Layout</members>
         <members>Listing_Image__c-Listing Image Layout</members>
         <members>Listing__c-Community Listing Layout</members>
-        <members>Lottery_Preference__c-Lottery Prefference Layout</members>
+        <members>Lottery_Preference__c-Preference Layout</members>
         <members>Open_Houses__c-Community Open House Layout</members>
         <members>Open_Houses__c-Open House Layout</members>
         <name>Layout</name>
