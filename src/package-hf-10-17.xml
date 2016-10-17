@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-    
     <types>
-        <members>HOP_ApplicationForm</members>
-        <members>HOP_ApplicationReview</members>
-        <members>HOP_ApplicationView</members>
-        <members>HOP_Applications</members>
-        <members>HOP_DuplicateApplications</members>
-        <members>HOP_FlaggedApplications</members>
-        <members>HOP_Listing</members>
-        <members>HOP_Listings</members>
-        <members>HOP_Template</members>
+
+        <members>API_Application</members>
+        <members>API_ApplicationService</members>
+        <members>HOP_ApplicationFormController</members>
+        <members>HOP_ApplicationViewController</members>
         <members>LOT_Lottery</members>
         <members>LOT_PreferenceRankBatch</members>
         <members>LOT_PreferenceRankBatchTest</members>
@@ -23,6 +18,19 @@
         <members>LOT_RandomDrawService</members>
         <members>LOT_RandomDrawServiceTest</members>
         <members>LOT_QueueUpPreferenceBatches</members>
+        <name>ApexClass</name>
+    </types>
+
+    <types>
+        <members>HOP_ApplicationForm</members>
+        <members>HOP_ApplicationReview</members>
+        <members>HOP_ApplicationView</members>
+        <members>HOP_Applications</members>
+        <members>HOP_DuplicateApplications</members>
+        <members>HOP_FlaggedApplications</members>
+        <members>HOP_Listing</members>
+        <members>HOP_Listings</members>
+        <members>HOP_Template</members>
         <name>ApexPage</name>
     </types>
   
