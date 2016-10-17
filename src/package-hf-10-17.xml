@@ -11,6 +11,18 @@
         <members>HOP_Listing</members>
         <members>HOP_Listings</members>
         <members>HOP_Template</members>
+        <members>LOT_Lottery</members>
+        <members>LOT_PreferenceRankBatch</members>
+        <members>LOT_PreferenceRankBatchTest</members>
+        <members>LOT_RandomBaseRequest</members>
+        <members>LOT_RandomDrawBatch</members>
+        <members>LOT_RandomDrawBatchTest</members>
+        <members>LOT_RandomDrawReq</members>
+        <members>LOT_RandomDrawReqTest</members>
+        <members>LOT_RandomDrawReqTest_Test</members>
+        <members>LOT_RandomDrawService</members>
+        <members>LOT_RandomDrawServiceTest</members>
+        <members>LOT_QueueUpPreferenceBatches</members>
         <name>ApexPage</name>
     </types>
   
