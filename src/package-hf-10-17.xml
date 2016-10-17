@@ -2,10 +2,10 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
 
-        <members>API_Application</members>
+        <!--<members>API_Application</members>
         <members>API_ApplicationService</members>
         <members>HOP_ApplicationFormController</members>
-        <members>HOP_ApplicationViewController</members>
+        <members>HOP_ApplicationViewController</members>-->
         <members>LOT_Lottery</members>
         <members>LOT_PreferenceRankBatch</members>
         <members>LOT_PreferenceRankBatchTest</members>
