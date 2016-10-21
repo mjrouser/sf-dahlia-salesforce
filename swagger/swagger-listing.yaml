@@ -444,6 +444,26 @@
               type: "array"
               items:
                 $ref: "#/definitions/UnitSummary"
+    
+    /Listing/Preferences/{listingID}':
+      get:
+        description: "returns UnitSummary for listings by unit type"
+        parameters:
+          -
+            name: "listingID"
+            in: "path"
+            description: "listing id"
+            required: true
+            type: "string"
+        tags:
+          - "Listing"
+        responses:
+          200:
+            description: "Preferences for a giving Listing"
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/ListingPreference"
     /Listing/UnitSummary/':
       get:
         description: "returns UnitSummary for listings by unit type"
@@ -1275,6 +1295,36 @@
         formMetadata:
           type: "string"
           description: "additional metadata that can be saved on the form - non user input data"
+    
+    ListingPreference:
+      type: "object"
+      description: "Listing preference"
+      properties:
+        listingPreferenceID:
+          type: "string"
+          description: "salesforce ID"
+        name:
+          type: "string"
+          description: "preference"
+        order:
+          type: "number"
+          description: "order to display in"
+        description:
+          type: "string"
+          description: "description"
+        readMoreUrl:
+          type: "string"
+          format: "url"
+          description: "readMore Url"
+        NRHPDistrict:
+          type: "string"
+          description: "neighborhood district "
+        appTotal:
+          type: "number"
+          description: "total number of people who have applied "
+        unitsAvailable:
+          type: "number"
+          description: "total units available "
     
     ListingResult:
       type: "object"
