@@ -1303,9 +1303,15 @@
         listingPreferenceID:
           type: "string"
           description: "salesforce ID"
+        listingID:
+          type: "string"
+          description: "listing salesforce ID"
         name:
           type: "string"
           description: "preference"
+        preferenceName:
+          type: "string"
+          description: "preference name"
         order:
           type: "number"
           description: "order to display in"
@@ -1487,11 +1493,6 @@
           format: "int32"
           description: "raw lottery rank returned form drawing"
 
-
-
-       
- 
-     
     Person:
       type: "object"
       description: "Applicant Contact"
@@ -1606,7 +1607,6 @@
         neighborhoodPreferenceMatch:
           type: "string"
           description: "the front end can validate that the neighborhood preference matches- Value {match, unmatched, <blank>}  "
-        
         noPhone:
           type: "boolean"
           description: "the front end validates if user has phone"
