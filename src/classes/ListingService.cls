@@ -11,7 +11,8 @@ global  class ListingService {
 	
 	private static final String LOTTERY_QUERY = 'SELECT Lottery_Number__c, Rank__c FROM Lottery_Members__c where Status__c = \'Winner\'';
 	private static final String APPLICATION_QUERY = 'SELECT id, Lottery_Number__c, Live_Work_Preference_Rank__c, Lottery_Rank__c, Lottery_Status__c, General_Lottery__c, General_Lottery_Rank__c, Live_Work_Preference__c, Live_in_SF_Preference_Member__c, Work_in_SF_Preference_Member__c, DTHP_Preference__c, DTHP_Preference_Member__c, DTHP_Preference_Rank__c, COP_Preference__c, COP_Preference_Member__c, COP_Preference_Rank__c, Neighborhood_Preference__c, Neighborhood_Preference_Member__c, Neighborhood_Preference_Rank__c FROM Application__c';
-	private static final String LISTING_QUERY='Select name, Office_Hours__c, Lottery_Status__c, Building_Name__c, Building_Street_Address__c, Building_City__c, Building_State__c, Building_Zip_Code__c, Developer__c, Description__c, Neighborhood__c, Year_Built__c, LastModifiedDate, Application_Due_Date__c, Building_URL__c, Legal_Disclaimers__c, Application_Organization__c, Application_Street_Address__c, Application_City__c, Application_State__c, Application_Postal_Code__c, Application_Phone__c, Lottery_Summary__c, Lottery_Results_Date__c, Lottery_End__c, Lottery_Start_Time__c, Lottery_End_Time__c, Lottery_Venue__c, Lottery_Street_Address__c, Lottery_City__c, Lottery_Date__c, Lottery_Preferences__c, Lottery_Results__c, Lottery_URL__c, LotteryResultsURL__c, Accepting_Online_Applications__c, COP_App_Total__c, COPUnitsAvailable__c, DTHP_App_Total__c, DTHPUnitsAvailable__c, Live_Work_App_Total__c, LiveWorkUnitsAvailable__c, Neighborhood_App_Total__c, NeighborhoodUnitsAvailable__c, General_App_Total__c, Lottery_Winners__c, AMI_Percentage__c,  Preference_Detail__c, Credit_Rating__c, Criminal_History__c, Eviction_History__c,  Leasing_Agent_Name__c, Leasing_Agent_Title__c, Leasing_Agent_Email__c, Leasing_Agent_Phone__c, Leasing_Agent_Street__c, Leasing_Agent_City__c, Leasing_Agent_State__c, Leasing_Agent_Zip__c, Office_Open__c, Office_Closed__c,  Organization_URL__c, Download_URL__c, Fee__c, Deposit_Min__c, Deposit_Max__c, Costs_Not_Included__c, Rental_Assistance__c, Amenities__c, Accessibility__c, Building_Selection_Criteria__c, Required_Documents__c,Smoking_Policy__c, Pet_Policy__c, NeighborHoodPreferenceUrl__c, (SELECT Date__c, Start_Time__c, End_Time__c, Venue__c, Street_Address__c, City__c FROM Information_Sessions__r), (SELECT Date__c, Start_Time__c, End_Time__c FROM Open_Houses__r), (SELECT Id, Lottery_Preference__r.Id, Lottery_Preference__r.Name FROM Listing_Lottery_Preferences__r), (SELECT Unit_Type__c, BMR_Rent_Monthly__c, BMR_Rental_Minimum_Monthly_Income_Needed__c FROM Units__r ORDER BY Unit_Type__c), (SELECT id, Name, Image_URL__c FROM Listing_Images__r) from Listing__c';
+	private static final String LISTING_QUERY ='Select name, Office_Hours__c, Lottery_Status__c, Building_Name__c, Building_Street_Address__c, Building_City__c, Building_State__c, Building_Zip_Code__c, Developer__c, Description__c, Neighborhood__c, Year_Built__c, LastModifiedDate, Application_Due_Date__c, Building_URL__c, Legal_Disclaimers__c, Application_Organization__c, Application_Street_Address__c, Application_City__c, Application_State__c, Application_Postal_Code__c, Application_Phone__c, Lottery_Summary__c, Lottery_Results_Date__c, Lottery_End__c, Lottery_Start_Time__c, Lottery_End_Time__c, Lottery_Venue__c, Lottery_Street_Address__c, Lottery_City__c, Lottery_Date__c, Lottery_Preferences__c, Lottery_Results__c, Lottery_URL__c, LotteryResultsURL__c, Accepting_Online_Applications__c, COP_App_Total__c, COPUnitsAvailable__c, DTHP_App_Total__c, DTHPUnitsAvailable__c, Live_Work_App_Total__c, LiveWorkUnitsAvailable__c, Neighborhood_App_Total__c, NeighborhoodUnitsAvailable__c, General_App_Total__c, Lottery_Winners__c, AMI_Percentage__c,  Preference_Detail__c, Credit_Rating__c, Criminal_History__c, Eviction_History__c,  Leasing_Agent_Name__c, Leasing_Agent_Title__c, Leasing_Agent_Email__c, Leasing_Agent_Phone__c, Leasing_Agent_Street__c, Leasing_Agent_City__c, Leasing_Agent_State__c, Leasing_Agent_Zip__c, Office_Open__c, Office_Closed__c,  Organization_URL__c, Download_URL__c, Fee__c, Deposit_Min__c, Deposit_Max__c, Costs_Not_Included__c, Rental_Assistance__c, Amenities__c, Accessibility__c, Building_Selection_Criteria__c, Required_Documents__c,Smoking_Policy__c, Pet_Policy__c, NeighborHoodPreferenceUrl__c, (SELECT Date__c, Start_Time__c, End_Time__c, Venue__c, Street_Address__c, City__c FROM Information_Sessions__r), (SELECT Date__c, Start_Time__c, End_Time__c FROM Open_Houses__r), (SELECT Id, Lottery_Preference__r.Id, Lottery_Preference__r.Name FROM Listing_Lottery_Preferences__r), (SELECT Unit_Type__c, BMR_Rent_Monthly__c, BMR_Rental_Minimum_Monthly_Income_Needed__c FROM Units__r ORDER BY Unit_Type__c), (SELECT id, Name, Image_URL__c FROM Listing_Images__r) from Listing__c';
+	private static final String LISTING_PREFERENCE_QUERY ='Select name, Available_Units__c, Description__c, Listing__c, NRHP_District__c, Order__c, Lottery_Preference__c, Preference_Name__c, Read_More_URL__c from Listing_Lottery_Preference__c';
 	// 01/25/2016 - 'Select Building_Name__c, Building_Street_Address__c, Building_City__c, Building_State__c, Building_Zip_Code__c, Developer__c, Description__c, Neighborhood__c, Year_Built__c, LastModifiedDate, Application_Due_Date__c, Building_URL__c, Legal_Disclaimers__c, Application_Organization__c, Application_Street_Address__c, Application_City__c, Application_State__c, Application_Postal_Code__c, Application_Phone__c, Lottery_Summary__c, Lottery_Results_Date__c, Lottery_End__c, Lottery_Start_Time__c, Lottery_End_Time__c, Lottery_Venue__c, Lottery_Street_Address__c, Lottery_City__c, Lottery_Date__c, AMI_Percentage__c,  Preference_Detail__c, Credit_Rating__c, Criminal_History__c, Eviction_History__c,  Leasing_Agent_Name__c, Leasing_Agent_Title__c, Leasing_Agent_Email__c, Leasing_Agent_Phone__c, Lottery_Results__c, Lottery_Winners__c, Office_Open__c, Office_Closed__c,  Organization_URL__c, Download_URL__c, Fee__c, Deposit_Min__c, Deposit_Max__c, Costs_Not_Included__c, Lottery_Preferences__c, Rental_Assistance__c, Amenities__c, Accessibility__c, Building_Selection_Criteria__c, Required_Documents__c,Smoking_Policy__c, Pet_Policy__c,(SELECT Date__c, Start_Time__c, End_Time__c, Venue__c, Street_Address__c, City__c FROM Information_Sessions__r), (SELECT Date__c, Start_Time__c, End_Time__c FROM Open_Houses__r),(SELECT Lottery_Number__c, Rank__c FROM Lottery_Members__r where Status__c = \'Winner\'),(SELECT Unit_Type__c, BMR_Rent_Monthly__c, BMR_Rental_Minimum_Monthly_Income_Needed__c, Unit_Square_Footage__c,  Unit_Number__c, Unit_Floor__c, Other_Accessibility_Information__c,Number_of_Bathrooms__c FROM Units__r ORDER BY Unit_Type__c),  (SELECT Id, Lottery_Preference__r.Id, Lottery_Preference__r.Name FROM Listing_Lottery_Preferences__r) from Listing__c';
 	// 02/19/2016 - 'Select Building_Name__c, Building_Street_Address__c, Building_City__c, Building_State__c, Building_Zip_Code__c, Developer__c, Application_Due_Date__c, Building_URL__c, Legal_Disclaimers__c, (SELECT Unit_Type__c, BMR_Rent_Monthly__c, BMR_Rental_Minimum_Monthly_Income_Needed__c FROM Units__r ORDER BY Unit_Type__c), Application_Phone__c, Lottery_Summary__c, Lottery_Results_Date__c, Lottery_Date__c, AMI_Percentage__c,  Preference_Detail__c, Credit_Rating__c, Criminal_History__c, Eviction_History__c,  Leasing_Agent_Name__c, Leasing_Agent_Title__c, Leasing_Agent_Email__c, Leasing_Agent_Phone__c, Lottery_Results__c, Lottery_Winners__c, (SELECT Id, Lottery_Preference__r.Id, Lottery_Preference__r.Name FROM Listing_Lottery_Preferences__r) from Listing__c';
 	private static final String LISTING_QUERY_ORDER = ' ORDER BY Unit_Type__c';
@@ -46,7 +47,7 @@ global  class ListingService {
 				
 	static String UNIT_QUERY = 'SELECT Listing__c, Unit_Type__c,count(id)Total, MIN(BMR_Rental_Minimum_Monthly_Income_Needed__c) minRentalMinIncome,  MAX(BMR_Rental_Minimum_Monthly_Income_Needed__c) maxRentalMinIncome, MIN(BMR_Rent_Monthly__c) minMonthlyRent ,   MAX(BMR_Rent_Monthly__c) maxMonthlyRent , MIN(Min_Occupancy__c)Min_Occupancy, Max(Maximum_Household_Size__c)Max_Occupancy, MIN(Unit_Square_Footage__c)Sq_Footage_Min, MAX(Unit_Square_Footage__c)Sq_Footage_Max  FROM UNIT__C ';
 	
-	static string UNIT_QUERY_GROUP =  ' GROUP BY listing__C, Unit_Type__c ';
+	static string UNIT_QUERY_GROUP =  ' GROUP BY listing__c, Unit_Type__c ';
 	static string UNIT_QUERY_ALL =UNIT_QUERY + UNIT_QUERY_GROUP;
 	
 	
@@ -166,6 +167,17 @@ global  class ListingService {
 		}
 	}
 	
+	global class ListingPreference {
+		public String listingPreferenceID;
+		public String name;
+		public Decimal order;
+		public String description;
+		public String readMoreUrl;
+		public String NRHPDistrict;
+		public Decimal appTotal;
+		public Decimal unitsAvailable;
+	}
+	
 	global class UnitSummary{
 		public ID listingID;
 		public String unitType;
@@ -260,6 +272,34 @@ global  class ListingService {
         
     }
 	
+	global static List<ListingPreference>  getListingPreferenceByListingID(String listingID)
+	{ 
+		ID theID = ID.valueof(listingID);
+		String query = LISTING_PREFERENCE_QUERY;
+		String queryFilter='';
+		if (theID != null) {
+			queryFilter += ' Listing__c = \'' + theID + '\' order by Order__c asc nulls last';
+		}
+		query += (queryFilter.length() > 0) ? ' where ' + queryFilter: '';
+		List<Listing_Lottery_Preference__c> listingPreferenceList = (List<Listing_Lottery_Preference__c>) Database.Query(query);
+		
+		List<ListingPreference> listingPreferences = new List<ListingPreference>();
+		ListingPreference listingPref;
+		for (Listing_Lottery_Preference__c listPref : listingPreferenceList) {
+			listingPref = new ListingPreference();
+			listingPref.listingPreferenceID = listPref.Id;
+			listingPref.name = listPref.Name;
+			listingPref.order = listPref.Order__c;
+			listingPref.description = listPref.Description__c;
+			listingPref.readMoreUrl = listPref.Read_More_URL__c;
+			listingPref.NRHPDistrict = listPref.NRHP_District__c;
+			//listingPref.appTotal = listPref.Id;
+			listingPref.unitsAvailable = listPref.Available_Units__c;
+			listingPreferences.add(listingPref);
+		}
+		return listingPreferences;
+	}
+	
 	global static List<Listing__c>  getListingByID(String listingID)
 	{ 
 		ID theID = ID.valueof(listingID);
@@ -284,8 +324,7 @@ global  class ListingService {
 	
 	global static List<Listing__c> getListingByFilter(Set<ID> listingIDs,String filter)
 	{ 
-		String query  = LISTING_QUERY;
-		system.debug(listingIDs);
+		String query = LISTING_QUERY;
 		String queryFilter='';
 		if (listingIds!=null && listingIDs.size()>0) {
 			queryFilter+= ' id in :listingIDs';

@@ -41,10 +41,6 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Follow</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -133,6 +129,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -197,6 +194,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -313,6 +311,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -365,6 +364,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -385,6 +385,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -411,6 +412,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -444,6 +446,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -470,6 +473,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -487,6 +491,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -504,6 +509,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -549,6 +555,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -566,6 +573,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -595,6 +603,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -648,6 +657,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -665,6 +675,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -694,6 +705,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -747,6 +759,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -764,6 +777,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -793,6 +807,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -846,6 +861,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -959,6 +975,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -992,6 +1009,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1035,6 +1053,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1092,6 +1111,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1166,6 +1186,7 @@
             <restrictedPicklist>true</restrictedPicklist>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1218,6 +1239,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1274,6 +1296,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1339,6 +1362,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1451,6 +1475,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1477,6 +1502,7 @@
             <restrictedPicklist>true</restrictedPicklist>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1531,6 +1557,7 @@
             <restrictedPicklist>true</restrictedPicklist>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1754,6 +1781,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1861,6 +1889,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2011,6 +2040,21 @@
             <value>Contact.Lending_Agent</value>
         </filters>
         <label>For Sony and Ruth</label>
+    </listViews>
+    <listViews>
+        <fullName>Lender_Contacts</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>CONTACT.PHONE1</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <columns>CONTACT.CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CONTACT.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Contact.Lending_Agent</value>
+        </filters>
+        <label>Lender Contacts</label>
     </listViews>
     <listViews>
         <fullName>NewThisWeek</fullName>

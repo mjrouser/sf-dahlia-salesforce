@@ -47,7 +47,7 @@ public without sharing class API_ApplicationService {
 		prefixQuery('Alternate_Contact__r.', APPLICATION_MEMBER_FIELDLIST) +
 		', Work_in_SF_Preference__c, Status__c, Is_Resident__c, Referral_Source__c, Housing_Voucher_or_Subsidy__c ' +
 		', Terms_Acknowledged__c, Name, Application_Submission_Type__c, Primary_Applicant__c, Live_Work_Preference_Paper__c ' + 
-		', COP_Preference_Member__c, DTHP_Preference_Member__c, Neighborhood_Preference_Member__c, Lottery_Number__c, Form_Metadata__c' +
+		', COP_Preference_Member__c, DTHP_Preference_Member__c, Neighborhood_Preference_Member__c, Lottery_Number__c, Lottery_Number_Manual__c, Form_Metadata__c' +
 		', Work_in_SF_Preference_Member__c, Live_in_SF_Preference_Member__c, Total_Household_Gross_Income__c, Application_Language__c, Application_Submitted_Date__c ' + 
 		', Live_in_SF_Preference_Proof__c, Neighborhood_Preference_Proof__c, Work_in_SF_Preference_Proof__c, Annual_Income__c, Monthly_Income__c';
 
@@ -57,7 +57,7 @@ public without sharing class API_ApplicationService {
 		', ' +
 		prefixQuery('Alternate_Contact__r.Contact__r.', CONTACT_FIELDLIST) +
 		', Work_in_SF_Preference__c, Status__c, Is_Resident__c, Referral_Source__c, Housing_Voucher_or_Subsidy__c , Application_Submitted_Date__c' +
-		', Terms_Acknowledged__c, Total_Household_Gross_Income__c, Application_Language__c, Application_Submission_Type__c, Lottery_Number__c, Form_Metadata__c' +
+		', Terms_Acknowledged__c, Total_Household_Gross_Income__c, Application_Language__c, Application_Submission_Type__c, Lottery_Number__c, Lottery_Number_Manual__c, Form_Metadata__c' +
 		', Annual_Income__c, Monthly_Income__c, Primary_Applicant__c, Live_Work_Preference_Paper__c';
 
 	private static String prefixQuery(String prefix, String query) {
@@ -432,6 +432,7 @@ public without sharing class API_ApplicationService {
 				sf.validateLotteryRun();
 			}
 			
+
 			//add alternate contact Id
 			if (existingSf.alternateContact != null && existingSf.alternateContact.appMemberId != null) {
 				existingAppMemberIds.add(existingSf.alternateContact.appMemberId);

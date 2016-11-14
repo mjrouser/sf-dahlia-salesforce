@@ -21,10 +21,6 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Follow</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -210,6 +206,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -232,6 +229,7 @@
             <restrictedPicklist>true</restrictedPicklist>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -271,6 +269,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -381,6 +380,7 @@ IF(
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -540,7 +540,7 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
     <fields>
         <fullName>General_Lottery__c</fullName>
         <externalId>false</externalId>
-        <formula>NOT(OR(DTHP_Preference__c,Live_Work_Preference__c,COP_Preference__c,DTHP_Preference__c))</formula>
+        <formula>NOT(OR(DTHP_Preference__c,Live_Work_Preference__c,COP_Preference__c, Neighborhood_Preference__c ))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>General Lottery</label>
         <trackHistory>false</trackHistory>
@@ -563,6 +563,7 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
             <restrictedPicklist>true</restrictedPicklist>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -809,6 +810,7 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -882,6 +884,7 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -956,6 +959,7 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -1029,6 +1033,7 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -1184,6 +1189,7 @@ IF(
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
@@ -1246,6 +1252,7 @@ IF(
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -1386,6 +1393,7 @@ IF(
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -1429,6 +1437,16 @@ IF(
         <type>Summary</type>
     </fields>
     <label>Application</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Lottery_Number__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Listing__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <listViews>
         <fullName>All_Applications</fullName>
         <columns>NAME</columns>

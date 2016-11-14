@@ -72,11 +72,11 @@ private class LOT_RandomDrawBatchTest {
             entities.put(app.Name, app.id);
             }
         }
-
-        LOT_RandomDrawBatch drawBatch = new LOT_RandomDrawBatch(winners,entities,listing.Id);
-        Database.executeBatch(drawBatch);
-        drawBatch.calculateRank(winners);
-        
+		test.startTest();
+            LOT_RandomDrawBatch drawBatch = new LOT_RandomDrawBatch(winners,entities,listing.Id);
+            Database.executeBatch(drawBatch);
+            drawBatch.calculateRank(winners);
+        test.stopTest();
     }
     
     

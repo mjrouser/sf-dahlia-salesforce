@@ -70,6 +70,7 @@
                                 cmp.onCellDblClick = function(obj) {
                                     window.location = getApplicationViewURL(obj.row.Id);
                                 };
+                                cmp.getElement().parentNode.classList.remove("slds-scope");
                             }
                         );
                     });

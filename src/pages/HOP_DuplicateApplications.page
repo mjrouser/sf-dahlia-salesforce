@@ -75,6 +75,7 @@
                             		"event": "c:SalesforceDataTablesEvent",
                             		"handler" : onSFDTEventReceive
                             	});
+                                cmp.getElement().parentNode.classList.remove("slds-scope");
                             }
                         );
                     });

@@ -1233,6 +1233,7 @@
                                         "event": "c:SalesforceDataTablesEvent",
                                         "handler" : onSFDTEventReceive
                                     });
+                                    cmp.getElement().parentNode.classList.remove("slds-scope");
                                 }
                             );
                         });
@@ -1249,7 +1250,9 @@
                                     removeLookupHyperlinks: true
                                 },
                                 "SFDT_OpenHouses",
-                                function(cmp) {}
+                                function(cmp) {
+                                    cmp.getElement().parentNode.classList.remove("slds-scope");
+                                }
                             );
                         });
 
@@ -1265,7 +1268,9 @@
                                     removeLookupHyperlinks: true
                                 },
                                 "SFDT_InformationSessions",
-                                function(cmp) {}
+                                function(cmp) {
+                                    cmp.getElement().parentNode.classList.remove("slds-scope");
+                                }
                             );
                         });
 

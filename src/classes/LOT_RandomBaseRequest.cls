@@ -44,8 +44,13 @@ public abstract class LOT_RandomBaseRequest {
     protected LOT_RandomBaseRequest () {
      
         method = 'POST'; //default is a post but can be overriden
-
-        extConnection = External_Connections__c.getValues('random.org');
+		
+		List<External_Connections__c> extConections = External_Connections__c.getAll().values();
+		for (External_Connections__c extCon : extConections) {
+			if (extCon.Active__c) {
+        		extConnection = extCon;//External_Connections__c.getValues('random.org');
+			}
+		}
 
         getConfiguration();
         
@@ -83,6 +88,7 @@ public abstract class LOT_RandomBaseRequest {
         boolean success = false;
       
         try {
+        	system.debug('httpResp.getBody():::' + httpResp.getBody());
       		readResponse(httpResp.getBody());
       		
       	} 

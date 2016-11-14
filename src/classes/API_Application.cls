@@ -47,6 +47,7 @@ global without sharing class API_Application {
 		global String applicationSubmissionType;
 		global Date applicationSubmittedDate;
 		global String lotteryNumber;
+		global String lotteryNumberManual;
 		global String formMetadata;
 		
 		global ShortForm() {} 
@@ -84,6 +85,7 @@ global without sharing class API_Application {
 			this.applicationSubmissionType = app.Application_Submission_Type__c;
 			this.applicationSubmittedDate = app.Application_Submitted_Date__c;
 			this.lotteryNumber = app.Lottery_Number__c;
+			this.lotteryNumberManual = app.Lottery_Number_Manual__c;
 			this.formMetadata = app.Form_Metadata__c;
 		}
 
@@ -111,6 +113,7 @@ global without sharing class API_Application {
 			app.Application_Submission_Type__c = this.applicationSubmissionType;
 			app.Application_Submitted_Date__c = this.applicationSubmittedDate;
 			app.Form_Metadata__c = this.formMetadata;
+            app.Lottery_Number_Manual__c = this.lotteryNumberManual;
 			return app;
 		}
 		
@@ -142,6 +145,7 @@ global without sharing class API_Application {
 	global class LotteryAlreadyRunException extends Exception {}
 	
 	
+
 	global class Person {
 		global String webAppID;
 		//global String webAppIDSource;
