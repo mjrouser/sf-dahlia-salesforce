@@ -1116,6 +1116,9 @@
         Accepting_Online_Applications__c:
           type: "boolean"
           description: ""
+        Project_ID__c:
+          type: "string"
+          description: ""
 
     Unit__c:
       type: object
