@@ -108,6 +108,7 @@
 		</apex:define>
 
 		<apex:define name="body">
+		<div id="myFormWrapper">
 			<apex:form styleClass="form-horizontal" rendered="{! !hasErrors }" id="myForm">
 				<apex:actionFunction name="rerenderPicklists" reRender="neighborhoodPreference, dthpPreference, copPreference, liveInSfPreference, workInSfPreference" />
 				<apex:actionFunction name="saveApplicationForm" action="{!saveApplicationForm}" />
@@ -129,9 +130,9 @@
 							<h4>{! 'Application ' + appName.Name }</h4>
 						</apex:outputPanel>
 						<apex:commandButton styleClass="btn btn-primary" value="Save"
-											onclick="checkRequiredFields_primaryApplicant(saveApplicationForm); return false;" />
+											onclick="sanitizeFields(); checkRequiredFields_primaryApplicant(saveApplicationForm); return false;" />
 						<apex:commandButton styleClass="btn btn-primary" value="Save & New"
-											onclick="checkRequiredFields_primaryApplicant(saveApplicationFormAndNew); return false;" />
+											onclick="sanitizeFields(); checkRequiredFields_primaryApplicant(saveApplicationFormAndNew); return false;" />
 					</div>
 				</div>
 				<div style="padding-top: 15px;">
@@ -139,6 +140,14 @@
 				</div>
 				<div class="section form-group-section">
 					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label class="col-sm-6 control-label">Lottery Number (Paper Ticket)</label>
+								<div class="col-sm-6">
+										<apex:inputField value="{!app.Lottery_Number_Manual__c}" styleClass="form-control" />
+								</div>
+							</div>
+						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label class="col-sm-6 control-label">Language of Application</label>
@@ -495,13 +504,13 @@
 					-->
 
 					<apex:outputPanel layout="none" rendered="{!currentHouseholdMember != null && selectedHouseholdMemberIdx == -1}">
-						<button type="button" class="btn btn-primary" onclick="checkRequiredFields_householdMember(addHouseholdMember);">Add</button>
+						<button type="button" class="btn btn-primary" onclick="sanitizeFields(); checkRequiredFields_householdMember(addHouseholdMember);">Add</button>
 					</apex:outputPanel>
 					<apex:outputPanel layout="none" rendered="{!currentHouseholdMember != null && selectedHouseholdMemberIdx == -1}">
-						<button type="button" class="btn btn-primary" onclick="checkRequiredFields_householdMember(addHouseholdMemberAndNew);">Add &amp; New</button>
+						<button type="button" class="btn btn-primary" onclick="sanitizeFields(); checkRequiredFields_householdMember(addHouseholdMemberAndNew);">Add &amp; New</button>
 					</apex:outputPanel>
 					<apex:outputPanel layout="none" rendered="{!currentHouseholdMember != null && selectedHouseholdMemberIdx != -1}">
-						<button type="button" class="btn btn-primary" onclick="checkRequiredFields_householdMember(saveHouseholdMember);">Save</button>
+						<button type="button" class="btn btn-primary" onclick="sanitizeFields(); checkRequiredFields_householdMember(saveHouseholdMember);">Save</button>
 					</apex:outputPanel>
 					<apex:outputPanel layout="none" rendered="{!currentHouseholdMember != null}">
 						<button type="button" class="btn btn-primary" onclick="cancelHouseholdMember();">Cancel</button>
@@ -677,12 +686,13 @@
 				<div class="form-group">
 					<div class="col-xs-12 sectionHeader">
 						<apex:commandButton styleClass="btn btn-primary" value="Save"
-											onclick="checkRequiredFields_primaryApplicant(saveApplicationForm); return false;" />
+											onclick="sanitizeFields(); checkRequiredFields_primaryApplicant(saveApplicationForm); return false;" />
 						<apex:commandButton styleClass="btn btn-primary" value="Save & New"
-											onclick="checkRequiredFields_primaryApplicant(saveApplicationFormAndNew); return false;" />
+											onclick="sanitizeFields(); checkRequiredFields_primaryApplicant(saveApplicationFormAndNew); return false;" />
 					</div>
 				</div>
 			</apex:form>
+		</div>
 		</apex:define>
 
 		<apex:define name="scripts">
@@ -708,6 +718,10 @@
 						'</button>' + html;
 				}
 				
+				function encodeHTML(s) {
+				    return s.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+				}
+
 				function checkRequiredFields(wrapperId, postCheckRun) {
 					var toFocus;
 					$('#' + wrapperId + ' .required').each(function() {
@@ -727,12 +741,17 @@
 					}
 				}
 
+				function sanitizeFields() {
+					$('#myFormWrapper').find('input,textarea').val(function(i, v) {
+						return encodeHTML(v);
+					});
+				}
+
 				function checkRequiredFields_primaryApplicant(postCheckRun) {
 					checkRequiredFields('primaryApplicantSection', postCheckRun);
 				}
 
 				function checkRequiredFields_householdMember(postCheckRun) {
-					console.log(postCheckRun);
 					checkRequiredFields('householdMemberSection', postCheckRun);
 				}
 
@@ -751,23 +770,28 @@
 				}
 				*/
 
+				function householdMemberRowSelect($row, idx) {
+					$row.parent().children('tr.selected').removeClass('selected');
+					$row.addClass('selected');
+					$('#HOP_ApplicationForm\\:HOP_Template\\:myForm\\:householdMemberEdit').prop('disabled', false);
+					$('#HOP_ApplicationForm\\:HOP_Template\\:myForm\\:householdMemberDelete').prop('disabled', false);
+					$('#HOP_ApplicationForm\\:HOP_Template\\:myForm\\:selectedHouseholdMemberIdx').val(idx);
+				}
+
+				function householdMemberRowDeselect($row) {
+					if ($row) $row.removeClass('selected');
+					$('#HOP_ApplicationForm\\:HOP_Template\\:myForm\\:householdMemberEdit').prop('disabled', true);
+					$('#HOP_ApplicationForm\\:HOP_Template\\:myForm\\:householdMemberDelete').prop('disabled', true);
+					$('#HOP_ApplicationForm\\:HOP_Template\\:myForm\\:selectedHouseholdMemberIdx').val(-1);
+				}
+
 				function onHouseholdMemberRowClick(row, idx) {
 					var $row = $(row);
-					var $editButton = $('#HOP_ApplicationForm\\:HOP_Template\\:myForm\\:householdMemberEdit');
-					var $deleteButton = $('#HOP_ApplicationForm\\:HOP_Template\\:myForm\\:householdMemberDelete');
-
+					
 					if ($row.hasClass('selected')) {
-						$row.removeClass('selected');
-						$editButton.prop('disabled', true);
-						$deleteButton.prop('disabled', true);
-						$('#HOP_ApplicationForm\\:HOP_Template\\:myForm\\:selectedHouseholdMemberIdx').val(-1);
+						householdMemberRowDeselect($row);
 					} else {
-						var $tbody = $row.parent();
-						$tbody.children('tr.selected').removeClass('selected');
-						$row.addClass('selected');
-						$editButton.prop('disabled', false);
-						$deleteButton.prop('disabled', false);
-						$('#HOP_ApplicationForm\\:HOP_Template\\:myForm\\:selectedHouseholdMemberIdx').val(idx);
+						householdMemberRowSelect($row, idx)
 					}
 				}
 
@@ -839,6 +863,7 @@
 						'info': true,
 						'searching': true
 					});
+					householdMemberRowDeselect();
 				}
 
 				$(document).ready(function() {

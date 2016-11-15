@@ -52,7 +52,8 @@ public without sharing class HOP_ApplicationViewController extends HOP_Controlle
                 Live_Work_Preference__c, Live_in_SF_Preference_Member__r.Name__c, Work_in_SF_Preference_Member__r.Name__c,
                 Annual_Income__c, Monthly_Income__c, Is_Lottery_Complete__c, Housing_Voucher_or_Subsidy__c, Referral_Source__c,
                 Application_Language__c, DTHP_Preference_Manual__c, COP_Preference_Manual__c, Neighborhood_Preference_Manual__c,
-                Live_in_SF_Preference_Proof__c, Work_in_SF_Preference_Proof__c, Neighborhood_Preference_Proof__c
+            	Live_in_SF_Preference_Proof__c, Work_in_SF_Preference_Proof__c, Neighborhood_Preference_Proof__c,
+            	Lottery_Number_Manual__c, Lottery_Number__c
             FROM Application__c
             WHERE Id = :paramApplicationId
         ];

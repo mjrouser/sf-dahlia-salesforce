@@ -106,7 +106,7 @@ public with sharing class LOT_RandomDrawServiceTest {
 			mock.status = 'OK';
 			mock.body = '{    "jsonrpc": "2.0","result": {        "drawId": 22993,        "status": "completed",        "entryCount": 3,        "winners": ["' + app.Name + '"],        "completionTime": "2011-10-10 13:19:12Z",        "recordUrl": "https://draws.random.org/records/draw=22993"    },   "error": null,    "id": 42}';
 			Test.setMock(HttpCalloutMock.class, mock);
-	    	LOT_RandomDrawService.testBulk(listingID);
+	    	LOT_RandomDrawService.runLottery(listingID,true);
         	
         	/*RestRequest req = new RestRequest(); 
             RestResponse res = new RestResponse();

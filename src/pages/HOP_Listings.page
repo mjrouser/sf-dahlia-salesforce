@@ -15,14 +15,14 @@
                         <h4>Listings</h4>
                     </div>
                 </div>
-		        <div class="section" id="SFDT_Listings"></div>
+                <div class="section" id="SFDT_Listings"></div>
             </apex:form>
         </apex:define>
         <apex:define name="scripts">
             <apex:includeLightning />
             <script>
-            	function onSFDTEventReceive(event) {
-            		if (event) {
+                function onSFDTEventReceive(event) {
+                    if (event) {
                         if (event.getParam('message') == 'View Listing') {
                             var row = event.getParam('data');
                             window.location = '/apex/HOP_Listing?id=' + row.Id +
@@ -38,7 +38,7 @@
                                               '&retUrl=' + encodeURIComponent(window.location.pathname + window.location.search);
                         }
                     }
-            	}
+                }
 
                 function loadSFDT() {
                     var whereClause = '{!myUser.Profile.UserLicense.Name}' == '{!COMMUNITY_LICENSE_NAME}'
@@ -56,9 +56,9 @@
                                 whereClause: whereClause,
                                 eventButtons: [
                                     {
-                                    	"label": "View Listing",
-                                    	"select": true,
-                                    	"send": "row"
+                                        "label": "View Listing",
+                                        "select": true,
+                                        "send": "row"
                                     },
                                     {
                                         "label": "Add Application",
@@ -69,10 +69,11 @@
                             },
                             "SFDT_Listings",
                             function(cmp) {
-                            	$A.eventService.addHandler({
-                            		"event": "c:SalesforceDataTablesEvent",
-                            		"handler" : onSFDTEventReceive
-                            	});
+                                $A.eventService.addHandler({
+                                    "event": "c:SalesforceDataTablesEvent",
+                                    "handler" : onSFDTEventReceive
+                                });
+                                cmp.getElement().parentNode.classList.remove("slds-scope");
                             }
                         );
                     });

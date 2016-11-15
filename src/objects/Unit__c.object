@@ -21,10 +21,6 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Follow</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -206,6 +202,19 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Maximum_Household_Income_Allowed__c</fullName>
+        <description>Based on Household size, the maximum income allowed for the unit.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Based on Household size, the maximum income allowed for the unit.</inlineHelpText>
+        <label>Maximum Household Income Allowed</label>
+        <precision>9</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
         <fullName>Maximum_Household_Size__c</fullName>
         <description>Maximum members of a household that are allowed in a unit.</description>
         <externalId>false</externalId>
@@ -223,7 +232,14 @@
         <fullName>Min_Occupancy__c</fullName>
         <description>Field will ultimately be hidden from page layout and is automatically determined based on number of Bedrooms. Field is used to hold the minimum occupancy based on bedrooms.</description>
         <externalId>false</externalId>
-        <formula>IF (Number_of_Bedrooms__c &gt;1, Number_of_Bedrooms__c, 1)</formula>
+        <formula>/*OLD FORMULA - Replaced 10/13. Pivotal story: https://www.pivotaltracker.com/story/show/131777421
+/*IF (Number_of_Bedrooms__c &gt;1, Number_of_Bedrooms__c, 1)*/
+
+IF(ISPICKVAL(Unit_Type__c,&apos;2 BR&apos;), 2, 
+  IF(ISPICKVAL(Unit_Type__c,&apos;3 BR&apos;), 3,
+    IF(ISPICKVAL(Unit_Type__c,&apos;4 BR&apos;), 4,
+      IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
+     1))))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <inlineHelpText>Field will ultimately be hidden from page layout and is automatically determined based on number of Bedrooms. Field is used to hold the minimum occupancy based on bedrooms.</inlineHelpText>
         <label>Min Occupancy</label>
@@ -433,6 +449,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -501,6 +518,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -570,6 +588,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>

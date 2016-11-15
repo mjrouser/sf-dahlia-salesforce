@@ -17,8 +17,9 @@ global class LOT_PreferenceRankBatch implements Database.Batchable<sObject>, Dat
         this.totalField = prefTotalField;
         this.listingId = listingId;
         
-		query = 'SELECT Id, Lottery_Rank__c, ' + preferedField + ', ' + rankField + ' FROM Application__c WHERE Listing__c = \'' + listingId + '\' AND Status__c = \'Submitted\' AND ' + preferedField + ' = true ORDER BY Lottery_Rank__c asc';
-		
+		query = 'SELECT Id, Lottery_Rank__c, ' + preferedField + ', ' + rankField + ' FROM Application__c WHERE Listing__c = \'' + listingId + '\' AND Status__c = \'Submitted\' AND (' + preferedField + ' = true OR ' + rankField + ' != null) ORDER BY Lottery_Rank__c asc';
+		//query = 'SELECT Id, Lottery_Rank__c, ' + preferedField + ', ' + rankField + ' FROM Application__c WHERE Listing__c = \'' + listingId + '\' AND Status__c = \'Submitted\' ORDER BY Lottery_Rank__c asc';
+		system.debug('query:::' + query);
 	}
 	
 	global Database.QueryLocator start(Database.BatchableContext BC) {
@@ -43,10 +44,12 @@ global class LOT_PreferenceRankBatch implements Database.Batchable<sObject>, Dat
 		List<Application__c> updatedApplications = new List<Application__c>();
 
 		for(Application__c application : scope){
-			preferedRank++;
-			
-			application.put(rankField, preferedRank);
-
+			if ((boolean)application.get(preferedField) == true) {
+				preferedRank++;
+				application.put(rankField, preferedRank);
+			} else {
+				application.put(rankField, null);
+			}
 		}
 		update scope;
 	}

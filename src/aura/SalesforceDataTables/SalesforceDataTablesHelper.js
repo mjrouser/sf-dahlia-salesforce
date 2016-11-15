@@ -752,6 +752,7 @@
                         }
 
                         var myEvent = $A.get("e.c:SalesforceDataTablesEvent");
+                        console.log(myEvent);
                         myEvent.setParams({
                             'message': eventButton.label,
                             'data': data

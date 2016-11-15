@@ -21,10 +21,6 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Follow</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -104,6 +100,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -222,6 +219,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
             <restrictedPicklist>true</restrictedPicklist>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -279,6 +277,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -288,6 +287,15 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <label>Has Alt Mailing Address</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Has_Mailing_Address__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Has Mailing Address</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -428,6 +436,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -491,6 +500,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -515,6 +525,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
             <restrictedPicklist>true</restrictedPicklist>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -578,6 +589,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -633,6 +645,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -676,6 +689,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
             <restrictedPicklist>true</restrictedPicklist>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -700,6 +714,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
             <restrictedPicklist>true</restrictedPicklist>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -760,6 +775,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
             <restrictedPicklist>true</restrictedPicklist>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -819,6 +835,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -839,6 +856,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
             <restrictedPicklist>true</restrictedPicklist>
             <sorted>false</sorted>
         </picklist>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -854,6 +872,29 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>appid2__c</fullName>
+        <externalId>false</externalId>
+        <label>appid2</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>appid__c</fullName>
+        <externalId>false</externalId>
+        <formula>Application__r.Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>appid</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Application Member</label>
     <listViews>
         <fullName>All</fullName>
@@ -861,6 +902,13 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <columns>First_Name__c</columns>
         <columns>Last_Name__c</columns>
         <columns>Date_of_Birth__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Mailing_City__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>All1</fullName>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

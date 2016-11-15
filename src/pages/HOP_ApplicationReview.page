@@ -94,6 +94,7 @@
                                         var lotteryStatus = obj.row[0].Application__r.Listing__r.Lottery_Status__c;
                                         obj.buttons.filter('.buttons-edit').toggleClass('disabled', obj.row.selected == false || lotteryStatus == 'In Progress' || lotteryStatus == 'Lottery Complete');
                                     }*/
+                                    cmp.getElement().parentNode.classList.remove("slds-scope");
                                 }
                             );
                         });
