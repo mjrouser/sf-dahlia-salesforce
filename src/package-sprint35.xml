@@ -10,7 +10,7 @@
         <members>LOT_Lottery</members>
         <members>LOT_PreferenceRankBatch</members>
         <members>LOT_PreferenceRankBatchTest</members>
-        <members>LOT_QueueUpPreferenceBatches</members>
+        <!--<members>LOT_QueueUpPreferenceBatches</members>-->
         <members>LOT_RandomBaseRequest</members>
         <members>LOT_RandomDrawBatch</members>
         <members>LOT_RandomDrawBatchTest</members>
