@@ -1,14 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-    <!-- Pivotal search for accepted stories (Package includes this) - "accepted:09/22/2016..10/06/2016" -->
+    <!-- Pivotal search for accepted stories (Package includes this) - "accepted:10/07/2016..11/16/2016 includedone:true" -->
     <types>
+        <!-- /Listing/Preferences/listingID/ https://www.pivotaltracker.com/story/show/131120791 -->
+        <!-- Lottery Preference Re-run https://www.pivotaltracker.com/story/show/129945399 -->
+		<!-- Draw ID not populating https://www.pivotaltracker.com/story/show/132868529 -->
+		<!-- Code for using "External Connections" - https://www.pivotaltracker.com/story/show/131100839 -->
+		<!-- Project_ID on API - https://www.pivotaltracker.com/story/show/133953503 -->
+        <members>LOT_Lottery</members>
+        <members>LOT_PreferenceRankBatch</members>
+        <members>LOT_PreferenceRankBatchTest</members>
+        <members>LOT_QueueUpPreferenceBatches</members>
+        <members>LOT_RandomBaseRequest</members>
+        <members>LOT_RandomDrawBatch</members>
+        <members>LOT_RandomDrawBatchTest</members>
+        <members>LOT_RandomDrawReq</members>
+        <members>LOT_RandomDrawReqTest</members>
+        <members>LOT_RandomDrawReqTest_Test</members>
+        <members>LOT_RandomDrawService</members>
+        <members>LOT_RandomDrawServiceTest</members>	
         <members>ListingPreferencesAPI</members>
         <members>ListingPreferencesAPITest</members>
-        <members>ListingService</members>
-        <name>ApexClass</name>
+        <members>ListingService</members>		
+		<name>ApexClass</name>
     </types>
 
+    <types> <!-- Confirm new pages -->
+        <members>HOP_ApplicationView</members> <!-- https://www.pivotaltracker.com/story/show/132124349 -->
+		<members>HOP_ApplicationForm</members> <!-- https://www.pivotaltracker.com/story/show/132124349 -->
+        <name>ApexPage</name>
+    </types>
+	
     <types>
+        <name>ApexTrigger</name>
+    </types>
+	
+    <types>
+        <name>AuraDefinitionBundle</name>
+    </types>
+	
+    <types> <!-- Confirm custom fields -->
+		<members>Unit__c.Number_of_bedrooms_formula__c</members> <!-- https://www.pivotaltracker.com/story/show/131777421 -->
+		<members>Unit__c.Min_Occupancy__c</members> <!-- https://www.pivotaltracker.com/story/show/131777421 -->
+		<members>Building__c.Reserved_community_type__c</members><!-- https://www.pivotaltracker.com/story/show/131471433 -->
+		<members>Building__c.Reserved_community_type_description__c</members><!-- https://www.pivotaltracker.com/story/show/131471433 -->
+		<members>Listing__c.Reserved_community_type__c</members><!-- https://www.pivotaltracker.com/story/show/131471433 -->
+		<members>Listing__c.Reserved_community_type_description__c</members><!-- https://www.pivotaltracker.com/story/show/131471433 -->
+		<members>Lottery_Preference__c.Active__c</members><!-- https://www.pivotaltracker.com/story/show/128816317 -->
+		<members>Lottery_Preference__c.Description__c</members><!-- https://www.pivotaltracker.com/story/show/128816317 -->
+		<members>Lottery_Preference__c.Read_More_URL__c</members><!-- https://www.pivotaltracker.com/story/show/128816317-->
+		<members>Lottery_Preference__c.Status__c</members><!-- https://www.pivotaltracker.com/story/show/128816317 -->
+		<members>Listing_Lottery_Preference__c.Available_Units__c</members><!-- https://www.pivotaltracker.com/story/show/128816317 -->
+		<members>Listing_Lottery_Preference__c.Description__c</members><!-- https://www.pivotaltracker.com/story/show/128816317 -->
+		<members>Listing_Lottery_Preference__c.Listing__c</members><!-- https://www.pivotaltracker.com/story/show/128816317 -->
+		<members>Listing_Lottery_Preference__c.NRHP_District__c</members><!-- https://www.pivotaltracker.com/story/show/128816317 -->
+		<members>Listing_Lottery_Preference__c.Order__c</members><!-- https://www.pivotaltracker.com/story/show/128816317 -->
+		<members>Listing_Lottery_Preference__c.Lottery_Preference__c</members><!-- https://www.pivotaltracker.com/story/show/128816317 -->
+		<members>Listing_Lottery_Preference__c.Preference_Name__c</members><!-- https://www.pivotaltracker.com/story/show/128816317 -->
+		<members>Listing_Lottery_Preference__c.Read_More_URL__c</members><!-- https://www.pivotaltracker.com/story/show/128816317 -->
+		<members>Building__c.Reserved_community_maximum_age__c</members><!-- https://www.pivotaltracker.com/story/show/134314493 -->
+		<members>Building__c.Reserved_community_minimum_age__c</members><!-- https://www.pivotaltracker.com/story/show/134314493 -->
+		<members>Listing__c.Reserved_community_maximum_age__c</members><!-- https://www.pivotaltracker.com/story/show/134314493 -->
+		<members>Listing__c.Reserved_community_minimum_age__c</members><!-- https://www.pivotaltracker.com/story/show/134314493 -->
+		<members>Listing__c.Project_ID__c</members><!-- https://www.pivotaltracker.com/story/show/126808139 -->
+		<members>Building__c.Project_ID__c</members><!-- https://www.pivotaltracker.com/story/show/126808139 -->
+		<members>Development__c.Project_ID__c</members><!-- https://www.pivotaltracker.com/story/show/126808139 -->
+        <name>CustomField</name>
+    </types>
+	
+     <types> <!-- Confirm new objects -->
+        <members>External_Connections__c</members><!-- https://www.pivotaltracker.com/story/show/131100839 -->
+		<members>Lottery_Preference__c</members><!-- https://www.pivotaltracker.com/story/show/128816317 -->
+		<members>Listing_Lottery_Preference__c</members><!-- https://www.pivotaltracker.com/story/show/128816317 -->
+		<name>CustomObject</name>
+    </types>
+
+    <types> <!-- Confirm impacted layouts -->
+		<members>Unit__c-BMR Rental Unit Layout</members> <!-- https://www.pivotaltracker.com/story/show/131777421 -->
+		<members>Listing__c-Listing Layout</members><!-- https://www.pivotaltracker.com/story/show/129945399 -->
+		<members>Building__c-Building Layout</members><!-- https://www.pivotaltracker.com/story/show/131471433 -->
+		<members>Lottery_Preference__c-Preference Layout</members><!-- https://www.pivotaltracker.com/story/show/128816317 -->
+		<members>Listing_Lottery_Preference__c-Listing Lottery Preference Layout</members><!-- https://www.pivotaltracker.com/story/show/128816317 -->
+		<members>Application__c-Application Layout - BMR Rental Short-Form</members><!-- https://www.pivotaltracker.com/story/show/133280149 -->
+		<members>Development__c-Development Layout</members><!-- https://www.pivotaltracker.com/story/show/126808139-->
+        <name>Layout</name>
+    </types>
+	
+	<types>
+		<members>Listing__c.Lottery_Random</members><!-- https://www.pivotaltracker.com/story/show/129945399 -->
+		<members>Listing__c.Run_Preference_Lottery</members><!-- https://www.pivotaltracker.com/story/show/129945399 -->
+		<name>WebLink</name>
+	</types>
+	
+      <types>
+        <name>PermissionSet</name>
+    </types>
+    <types> <!-- Will always include ALL profiles -->
         <members>Admin</members>
         <members>MOHCD - Household</members>
         <members>MOHCD - Leasing Agent</members>
@@ -19,5 +106,33 @@
         <name>Profile</name>
     </types>
 
+    <types> <!-- Confirm any flows -->
+        <members>NRHP_Verified_Online_Added_to_Live_Work-3</members><!-- https://www.pivotaltracker.com/story/show/130660273, https://www.pivotaltracker.com/story/show/130696845 -->
+		<members>Building_Developer_Fields_Updates</members><!-- https://www.pivotaltracker.com/story/show/131383995 -->
+        <name>Flow</name>
+    </types>
+
+    <types>
+        <members>Verification_Reports/NRHP_Verification_Unconfirmed</members> <!-- https://www.pivotaltracker.com/story/show/128985485, https://www.pivotaltracker.com/story/show/131105487 -->
+        <members>Verification_Reports/NRHP_Verification_Invalid_Address</members> <!-- https://www.pivotaltracker.com/story/show/128985485, https://www.pivotaltracker.com/story/show/131105487 -->
+        <members>Verification_Reports/NRHP_Verification_Valid_Address</members> <!-- https://www.pivotaltracker.com/story/show/128985485, https://www.pivotaltracker.com/story/show/131105487 -->
+        <members>Verification_Reports/Lottery_Preference_Re_Rank_Test</members> <!-- https://www.pivotaltracker.com/story/show/129945399 - Used for testing Build -->
+        <name>Report</name>
+    </types>
+   
     <version>36.0</version>
+	
+	<!--
+	POST DEPLOY MANUAL STEPS
+	1 - Change Unit Name to Unit ID auto-number (UN-{0000000})
+	2 - Activate and confirm all Process Builders
+	3 - UNIT - Add 4BR and 5BR to type picklist
+	4 - Confirm security model matches QA (OWD for Listings, etc.) - https://www.pivotaltracker.com/story/show/132705967
+	5 - Confirm community email settings - https://www.pivotaltracker.com/story/show/130234553
+	6 - Confirm random.org test credentials - Setup as needed
+	7 - Add tab for preferences
+	8 - Confirm APP setup
+	9 - Verify Communit settings
+	
+	-->
 </Package>
