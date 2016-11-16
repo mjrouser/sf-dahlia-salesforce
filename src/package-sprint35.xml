@@ -65,6 +65,7 @@
 		<members>Listing__c.Project_ID__c</members><!-- https://www.pivotaltracker.com/story/show/126808139 -->
 		<members>Building__c.Project_ID__c</members><!-- https://www.pivotaltracker.com/story/show/126808139 -->
 		<members>Development__c.Project_ID__c</members><!-- https://www.pivotaltracker.com/story/show/126808139 -->
+	    <members>Listing__c.Random_org_Public_Draw_URL__c</members>
         <name>CustomField</name>
     </types>
 	
