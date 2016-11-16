@@ -136,6 +136,8 @@
 	7 - Add tab for preferences
 	8 - Confirm APP setup
 	9 - Verify Communit settings
+	10 - Change Flagged Applications page layout assignments
+	11 - Remove non-needed layouts (Unit Layout, Community Listing Layout, etc.)
 	
 	-->
 </Package>
