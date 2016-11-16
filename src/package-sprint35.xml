@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <!-- Pivotal search for accepted stories (Package includes this) - "accepted:09/22/2016..10/06/2016" -->
+    <types>
+        <members>ListingPreferencesAPI</members>
+        <members>ListingPreferencesAPITest</members>
+        <members>ListingService</members>
+        <name>ApexClass</name>
+    </types>
+
+    <types>
+        <members>Admin</members>
+        <members>MOHCD - Household</members>
+        <members>MOHCD - Leasing Agent</members>
+        <members>MOHCD - Leasing Agent Clerk</members>
+        <members>MOHCD - Lender</members>
+        <members>MOHCD - Property Agent</members>
+        <members>MOHCD - Staff</members>
+        <name>Profile</name>
+    </types>
+
+    <version>36.0</version>
+</Package>
