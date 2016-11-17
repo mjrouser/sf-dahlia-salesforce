@@ -78,9 +78,9 @@
     </types>
 
     <types> <!-- Confirm impacted layouts -->
-		<members>Unit__c-BMR Rental Unit Layout</members> <!-- https://www.pivotaltracker.com/story/show/131777421 -->
-		<members>Listing__c-Listing Layout</members><!-- https://www.pivotaltracker.com/story/show/129945399 -->
-		<members>Building__c-Building Layout</members><!-- https://www.pivotaltracker.com/story/show/131471433 -->
+		<!--<members>Unit__c-BMR Rental Unit Layout</members> <!-- https://www.pivotaltracker.com/story/show/131777421 -->
+		<!--<members>Listing__c-Listing Layout</members><!-- https://www.pivotaltracker.com/story/show/129945399 -->
+		<!--<members>Building__c-Building Layout</members><!-- https://www.pivotaltracker.com/story/show/131471433 -->
 		<members>Lottery_Preference__c-Preference Layout</members><!-- https://www.pivotaltracker.com/story/show/128816317 -->
 		<members>Listing_Lottery_Preference__c-Listing Lottery Preference Layout</members><!-- https://www.pivotaltracker.com/story/show/128816317 -->
 		<members>Application__c-Application Layout - BMR Rental Short-Form</members><!-- https://www.pivotaltracker.com/story/show/133280149 -->
@@ -153,5 +153,6 @@
 	10 - Change Flagged Applications page layout assignments
 	11 - Remove non-needed layouts (Unit Layout, Community Listing Layout, etc.)
 	12 - Add Field History tracking to App Members - https://www.pivotaltracker.com/story/show/130950753
+	13 - Confirm commented layouts
 	-->
 </Package>
