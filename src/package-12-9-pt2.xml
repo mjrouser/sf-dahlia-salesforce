@@ -42,6 +42,11 @@
         <members>Unit.Rent_percent_of_income__c</members>
         <members>Application.Housing_Voucher_or_Subsidy__c</members>
     </types>
+
+    <types>
+        <members>Priority</members>
+        <name>GlobalPicklist</name>
+    </types>
     
     <types> <!-- Confirm new objects -->
         <members>API_Service_Log__c</members>
