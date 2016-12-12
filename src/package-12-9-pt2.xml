@@ -31,6 +31,10 @@
     
     <types> <!-- Confirm custom fields -->
         <name>CustomField</name>
+        <members>Unit.AMI_chart_type__c</members>
+        <members>Unit.AMI_chart_year__c</members>
+        <members>Unit.Rent_percent_of_income__c</members>
+        <members>Application.Housing_Voucher_or_Subsidy__c</members>
     </types>
     
      <types> <!-- Confirm new objects -->
