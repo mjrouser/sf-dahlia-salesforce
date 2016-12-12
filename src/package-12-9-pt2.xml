@@ -14,6 +14,12 @@
         <members>ApplicationStatusChangeAction</members>
         <members>ListingApplicationMemberDuplicateAction</members>
         <members>ListingApplicationStatusChangeAction</members>
+        <members>ListingAMIApi</members>
+        <members>ListingAMIApiTest</members>
+        <members>ListingEligibilityCheckAPI</members>
+        <members>ListingEligibilityCheckAPITest</members>
+        <members>ListingService</members>
+        <members>ListingServiceTest</members>
         <name>ApexClass</name>
     </types>
 
@@ -33,7 +39,7 @@
         <name>CustomField</name>
     </types>
     
-     <types> <!-- Confirm new objects -->
+    <types> <!-- Confirm new objects -->
         <members>API_Service_Log__c</members>
         <name>CustomObject</name>
     </types>
