@@ -82,6 +82,12 @@
         <name>GlobalValueSet</name>
     </types>
 
+    <!--
+    POST DEPLOY
+    1 - Update duplicate rules to match QA
+    2 - Confirm security updates on new custom fields
+    3 - Update page layouts for new Unit fields
+    -->
    
     <version>38.0</version>
     
