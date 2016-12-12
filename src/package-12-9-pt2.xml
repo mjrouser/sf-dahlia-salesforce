@@ -37,6 +37,10 @@
     
     <types> <!-- Confirm custom fields -->
         <name>CustomField</name>
+        <members>Unit.AMI_chart_type__c</members>
+        <members>Unit.AMI_chart_year__c</members>
+        <members>Unit.Rent_percent_of_income__c</members>
+        <members>Application.Housing_Voucher_or_Subsidy__c</members>
     </types>
     
     <types> <!-- Confirm new objects -->
@@ -84,6 +88,12 @@
         <name>GlobalValueSet</name>
     </types>
 
+    <!--
+    POST DEPLOY
+    1 - Update duplicate rules to match QA
+    2 - Confirm security updates on new custom fields
+    3 - Update page layouts for new Unit fields
+    -->
    
     <version>38.0</version>
     
