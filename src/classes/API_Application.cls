@@ -191,10 +191,18 @@ global without sharing class API_Application {
 		
 		private String parseDate(Date inputDate) {
 			if (inputDate != null) {
+				Time myTime = Time.newInstance(0, 0, 0, 0);
+				Date today =inputDate; 
+				Datetime tempDateTime = datetime.newInstance(today, myTime);
+				String prettyDate = tempDateTime.format('YYYY-MM-dd');
+				system.debug(prettyDate);
+				return prettyDate;
+				/*
 				Integer m = inputDate.month();
 				Integer d = inputDate.day();
 				Integer y = inputDate.year();
 				return y + '-' + m + '-' + d;
+				*/
 			}
 			return '';
 		}

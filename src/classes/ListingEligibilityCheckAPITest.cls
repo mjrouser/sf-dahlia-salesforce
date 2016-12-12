@@ -45,16 +45,7 @@ private class ListingEligibilityCheckAPITest {
         listing.Does_Match__c = true;
         insert listing;
         
-        Listing__c listing1 = new Listing__c();
-        listing1.name='somelisting';
-        listing1.Building__c  = build.id;
-        listing1.Account__c = acc.Id;
-        listing1.Status__c = 'Active';
-        listing1.Does_Match__c = true;
-        insert listing1;
-        
         listingID = listing.id;
-        listing1ID = listing1.id;
         listListingId = new List<Id>();
         listListingId.add(listingID);
         
@@ -64,8 +55,7 @@ private class ListingEligibilityCheckAPITest {
         unit.Rent_Multiple__c=3;
         unit.of_AMI_for_Pricing_Unit__c=50;
         unit.Listing__c = listing.id;
-        unit.Maximum_Household_Size__c  = 2;
-        unit.Number_of_Bedrooms__c = 1;
+        unit.Unit_Type__c = 'Studio';
         insert unit;
         
         Unit__c unit1 = new Unit__c();
@@ -73,22 +63,10 @@ private class ListingEligibilityCheckAPITest {
         unit1.BMR_Rent_Monthly__c = 400;
         unit1.Rent_Multiple__c=3;
         unit1.of_AMI_for_Pricing_Unit__c=50;
-        unit1.Listing__c = listing1.id;
-        unit1.Maximum_Household_Size__c  = 3;
-        unit1.Number_of_Bedrooms__c = 1;
+        unit1.Listing__c = listing.id;
+        unit1.Unit_Type__c = '1 BR';
         insert unit1;
-        /*
-        Lottery_Preference__c lp = new Lottery_Preference__c();
-        lp.Name = 'Test Lottery Preference';
-        lp.Status__c = 'New';
-        insert lp;
-       	preferenceName = lp.Name;
         
-        Listing_Lottery_Preference__c llp = new Listing_Lottery_Preference__c();
-        llp.Listing__c = listing.Id;
-        llp.Lottery_Preference__c = lp.Id;
-        insert llp;
-        */
         ami = new AMI__c();
         ami.name='Test Lottery Preference';
         ami.amount__c = 53850;

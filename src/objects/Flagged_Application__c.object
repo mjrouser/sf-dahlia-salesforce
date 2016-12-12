@@ -101,7 +101,6 @@
     </fields>
     <fields>
         <fullName>DuplicateRecordItem__c</fullName>
-        <caseSensitive>false</caseSensitive>
         <externalId>true</externalId>
         <label>DuplicateRecordItem</label>
         <length>18</length>
@@ -109,7 +108,20 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
-        <unique>true</unique>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Flagged_Application_Member__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Flagged Application Member</label>
+        <referenceTo>Application_Member__c</referenceTo>
+        <relationshipLabel>Flagged Applications</relationshipLabel>
+        <relationshipName>Flagged_Applications</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Flagged_Record_Set__c</fullName>
@@ -177,30 +189,32 @@
         <externalId>false</externalId>
         <inlineHelpText>Select the current status for the manual review of this potential conflicting application.</inlineHelpText>
         <label>Review Status</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Pending Review</fullName>
-                <default>true</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Reviewed - Not Duplicate</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Reviewed - Duplicate</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Appealed</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pending Review</fullName>
+                    <default>true</default>
+                </value>
+                <value>
+                    <fullName>Reviewed - Not Duplicate</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Reviewed - Duplicate</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Appealed</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>System_Flagged__c</fullName>
@@ -226,6 +240,11 @@
         <columns>Primary_Application_Submission_Date__c</columns>
         <columns>CREATED_DATE</columns>
         <columns>CREATEDBY_USER.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>All1</fullName>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

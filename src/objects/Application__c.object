@@ -187,29 +187,31 @@
         <externalId>false</externalId>
         <inlineHelpText>Language used to fill out this application</inlineHelpText>
         <label>Application Language</label>
-        <picklist>
-            <picklistValues>
-                <fullName>English</fullName>
-                <default>true</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Spanish</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Chinese</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Filipino</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>English</fullName>
+                    <default>true</default>
+                </value>
+                <value>
+                    <fullName>Spanish</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Chinese</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Filipino</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Application_Submission_Type__c</fullName>
@@ -217,22 +219,24 @@
         <externalId>false</externalId>
         <inlineHelpText>Please indicate the method by which this application was submitted to SF MOHCD.</inlineHelpText>
         <label>Application Submission Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Electronic</fullName>
-                <default>true</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Paper</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Electronic</fullName>
+                    <default>true</default>
+                </value>
+                <value>
+                    <fullName>Paper</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Application_Submitted_Date__c</fullName>
@@ -250,29 +254,31 @@
         <externalId>false</externalId>
         <inlineHelpText>Certificate of Preference</inlineHelpText>
         <label>COP Preference Manual</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Unconfirmed</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Valid</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Invalid</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Valid - Added</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Unconfirmed</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Valid</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Invalid</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Valid - Added</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>COP_Preference_Member_DOB__c</fullName>
@@ -361,29 +367,31 @@ IF(
         <externalId>false</externalId>
         <inlineHelpText>Displaced Tenant Housing Preference</inlineHelpText>
         <label>DTHP Preference Manual</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Unconfirmed</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Valid</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Valid - Added</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Invalid</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Unconfirmed</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Valid</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Valid - Added</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Invalid</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>DTHP_Preference_Member_DOB__c</fullName>
@@ -551,22 +559,24 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
         <fullName>Housing_Voucher_or_Subsidy__c</fullName>
         <externalId>false</externalId>
         <label>Housing Voucher or Subsidy</label>
-        <picklist>
-            <picklistValues>
-                <fullName>true</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>false</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>true</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>false</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Is_Lottery_Complete__c</fullName>
@@ -759,61 +769,63 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
         <fullName>Live_in_SF_Preference_Proof__c</fullName>
         <externalId>false</externalId>
         <label>Live in SF Preference Proof</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Telephone bill</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Cable and internet bill</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Gas bill</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Electric bill</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Garbage bill</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Water bill</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Paystub</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Public benefits record</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>School record</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Paystub with employer address</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Letter from employer</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Third-Party Proof of SF Homelessness</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Telephone bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Cable and internet bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Gas bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Electric bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Garbage bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Water bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Paystub</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Public benefits record</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>School record</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Paystub with employer address</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Letter from employer</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Third-Party Proof of SF Homelessness</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Live_in_SF_Preference_Rank__c</fullName>
@@ -869,25 +881,27 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
         <externalId>false</externalId>
         <inlineHelpText>The status of this application as related to the lottery</inlineHelpText>
         <label>Lottery Status</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Awaiting Lottery</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Non-Winner</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Winner</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Awaiting Lottery</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Non-Winner</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Winner</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Mailing_Address__c</fullName>
@@ -940,29 +954,31 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
         <description>Neighborhood manual preference override for msol</description>
         <externalId>false</externalId>
         <label>Neighborhood Preference Manual</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Unconfirmed</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Valid Address</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Invalid Address</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Valid Address - Added</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Unconfirmed</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Valid Address</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Invalid Address</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Valid Address - Added</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Neighborhood_Preference_Member__c</fullName>
@@ -982,61 +998,63 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
         <fullName>Neighborhood_Preference_Proof__c</fullName>
         <externalId>false</externalId>
         <label>Neighborhood Preference Proof</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Telephone bill</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Cable and internet bill</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Gas bill</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Electric bill</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Garbage bill</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Water bill</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Paystub</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Public benefits record</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>School record</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Paystub with employer address</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Letter from employer</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Third-Party Proof of SF Homelessness</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Telephone bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Cable and internet bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Gas bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Electric bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Garbage bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Water bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Paystub</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Public benefits record</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>School record</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Paystub with employer address</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Letter from employer</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Third-Party Proof of SF Homelessness</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Neighborhood_Preference_Rank__c</fullName>
@@ -1154,45 +1172,47 @@ IF(
         <fullName>Referral_Source__c</fullName>
         <externalId>false</externalId>
         <label>Referral Source</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Newspaper</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>MOHCD Website</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Developer Website</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Flyer</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Email Alert</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Friend</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Housing Counselor</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Newspaper</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>MOHCD Website</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Developer Website</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Flyer</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Email Alert</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Friend</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Housing Counselor</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
         <visibleLines>10</visibleLines>
     </fields>
     <fields>
@@ -1237,25 +1257,27 @@ IF(
         <externalId>false</externalId>
         <inlineHelpText>The current status of this application</inlineHelpText>
         <label>Status</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Draft</fullName>
-                <default>true</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Submitted</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Removed</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Draft</fullName>
+                    <default>true</default>
+                </value>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Removed</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Terms_Acknowledged__c</fullName>
@@ -1342,61 +1364,63 @@ IF(
         <fullName>Work_in_SF_Preference_Proof__c</fullName>
         <externalId>false</externalId>
         <label>Work in SF Preference Proof</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Telephone bill</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Cable and internet bill</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Gas bill</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Electric bill</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Garbage bill</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Water bill</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Paystub</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Public benefits record</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>School record</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Paystub with employer address</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Letter from employer</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Third-Party Proof of SF Homelessness</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Telephone bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Cable and internet bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Gas bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Electric bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Garbage bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Water bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Paystub</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Public benefits record</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>School record</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Paystub with employer address</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Letter from employer</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Third-Party Proof of SF Homelessness</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Work_in_SF_Preference_Rank__c</fullName>
@@ -1439,11 +1463,20 @@ IF(
     <label>Application</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Lottery_Number__c</columns>
-        <columns>Application_Submission_Type__c</columns>
         <columns>Listing__c</columns>
-        <columns>CREATED_DATE</columns>
+        <columns>NAME</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Applicant__c</columns>
+        <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_birth__c</columns>
+        <columns>Status__c</columns>
+        <columns>Housing_Voucher_or_Subsidy__c</columns>
+        <columns>Annual_Income__c</columns>
+        <columns>Monthly_Income__c</columns>
+        <columns>Total_Household_Size__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -1451,11 +1484,18 @@ IF(
         <fullName>All_Applications</fullName>
         <columns>NAME</columns>
         <columns>Application_Submitted_Date__c</columns>
+        <columns>Applicant__c</columns>
+        <columns>Primary_Applicant__c</columns>
         <columns>Listing__c</columns>
         <columns>CREATED_DATE</columns>
         <columns>Status__c</columns>
         <columns>Email__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Draft</value>
+        </filters>
         <label>All Applications</label>
     </listViews>
     <listViews>
@@ -1467,6 +1507,7 @@ IF(
         <columns>DTHP_Preference_Manual__c</columns>
         <columns>DTHP_Preference_Member__c</columns>
         <columns>DTHP_Preference__c</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>RECORDTYPE</field>

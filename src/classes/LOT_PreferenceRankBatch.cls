@@ -7,7 +7,7 @@ global class LOT_PreferenceRankBatch implements Database.Batchable<sObject>, Dat
     String totalField;
     Id listingId;
 	Set<string> completedPreffered;
-	
+	public LOT_PreferenceRankBatch nextBatch;
 
 	
 	global LOT_PreferenceRankBatch(string prefField, string prefRankField, string prefTotalField, Id listingId) {
@@ -33,10 +33,17 @@ global class LOT_PreferenceRankBatch implements Database.Batchable<sObject>, Dat
 	
 	global void finish(Database.BatchableContext BC) {
         
-        if(preferedRank > 0){
-            Listing__c listing = new Listing__c(Id=listingId);
-            listing.put(totalField,preferedRank);
-            update listing;
+        if (nextBatch != null){
+        	Database.executeBatch(nextBatch);
+        } else {
+        	Listing__c listing = new Listing__c(Id=listingId);
+	        if(preferedRank > 0){
+	            //Listing__c listing = new Listing__c(Id=listingId);
+	            listing.put(totalField,preferedRank);
+	            //update listing;
+	        }
+        	listing.Lottery_Status__c = 'Lottery Complete';
+	        update listing;
         }
 	}
 

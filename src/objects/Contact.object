@@ -65,6 +65,10 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
+        <actionName>SmsHighlightAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
         <actionName>Tab</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -118,19 +122,21 @@
         <externalId>false</externalId>
         <inlineHelpText>Were there any years in the preceding three years the Applicant was not required by law to file a Federal Income Tax return?</inlineHelpText>
         <label>Any years last 3 yrs Tax Filing not req?</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Yes</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>No</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Apt_Unit__c</fullName>
@@ -167,35 +173,37 @@
         <fullName>Best_Way_to_Reach_You__c</fullName>
         <externalId>false</externalId>
         <label>Best Way to Reach You?</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Email</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Residence Mail</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Work Mail</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Work Phone</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Mobile Phone</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>PO Box</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Residence Mail</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Work Mail</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Work Phone</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Mobile Phone</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>PO Box</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Birthdate</fullName>
@@ -300,19 +308,21 @@
         <fullName>Does_this_appear_on_another_title__c</fullName>
         <externalId>false</externalId>
         <label>Does this appear on another title?</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Yes</fullName>
-                <default>true</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>No</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>true</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>EAHP_Cert_Exp_Date_Existing_Dev__c</fullName>
@@ -349,23 +359,25 @@
         <fullName>Ethnicity__c</fullName>
         <externalId>false</externalId>
         <label>Ethnicity</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Hispanic/Latino</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Not Hispanic/Latino</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Decline to state</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Hispanic/Latino</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Not Hispanic/Latino</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Decline to state</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Fax</fullName>
@@ -374,19 +386,21 @@
         <fullName>Filed_Federal_Tax_Return_for_prior_year__c</fullName>
         <externalId>false</externalId>
         <label>Filed Federal Tax Return for prior year?</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Yes</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>No</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Full_Contact_Name__c</fullName>
@@ -401,53 +415,57 @@
         <fullName>Full_Time_Student__c</fullName>
         <externalId>false</externalId>
         <label>Full Time Student?</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Yes</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>No</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Gender__c</fullName>
         <externalId>false</externalId>
         <label>Gender</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Male</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Female</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Trans Male</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Trans Female</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Not Listed</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Decline to State</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Male</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Female</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Trans Male</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Trans Female</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Not Listed</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Decline to State</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>HasOptedOutOfEmail</fullName>
@@ -459,58 +477,70 @@
         <fullName>Has_an_Extension_of_Time_been_filed__c</fullName>
         <externalId>false</externalId>
         <label>Has an Extension of Time been filed?</label>
-        <picklist>
-            <controllingField>Filed_Federal_Tax_Return_for_prior_year__c</controllingField>
-            <picklistValues>
-                <fullName>Yes</fullName>
-                <default>false</default>
-                <controllingFieldValues>No</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>No</fullName>
-                <default>false</default>
-                <controllingFieldValues>No</controllingFieldValues>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <controllingField>Filed_Federal_Tax_Return_for_prior_year__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>Yes</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>No</valueName>
+            </valueSettings>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Has_owned_a_unit_last_3_yrs__c</fullName>
         <externalId>false</externalId>
         <label>Has owned a unit (last 3 yrs)</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Yes</fullName>
-                <default>true</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>No</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>true</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Head_of_Household2__c</fullName>
         <externalId>false</externalId>
         <label>Head of Household</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Yes</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>No</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Head_of_Household__c</fullName>
@@ -544,67 +574,73 @@
         <fullName>In_School__c</fullName>
         <externalId>false</externalId>
         <label>In School?</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Yes</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>No</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Income_Tax_1_Deduction_Type_Used__c</fullName>
         <externalId>false</externalId>
         <label>Income Tax 1 Deduction Type Used</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Standard</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Itemized</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Standard</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Itemized</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Income_Tax_1_Filing_Status__c</fullName>
         <externalId>false</externalId>
         <label>Income Tax 1 Filing Status</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Single</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Married Filing Jointly</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Married Filing Separately</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Head of Household</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Qualifying Widow(er) with dependent Child</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Single</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Married Filing Jointly</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Married Filing Separately</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Head of Household</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Qualifying Widow(er) with dependent Child</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Income_Tax_1_Return_AGI__c</fullName>
@@ -646,67 +682,73 @@
         <fullName>Income_Tax_1_W2_s_Add_Up__c</fullName>
         <externalId>false</externalId>
         <label>Income Tax 1 W2&apos;s Add Up?</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Yes</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>No</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Income_Tax_2_Deduction_Type_Used__c</fullName>
         <externalId>false</externalId>
         <label>Income Tax 2 Deduction Type Used</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Standard</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Itemized</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Standard</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Itemized</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Income_Tax_2_Filing_Status__c</fullName>
         <externalId>false</externalId>
         <label>Income Tax 2 Filing Status</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Single</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Married Filing Jointly</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Married Filing Separately</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Head of Household</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Qualifying Widow(er) with dependent Child</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Single</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Married Filing Jointly</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Married Filing Separately</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Head of Household</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Qualifying Widow(er) with dependent Child</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Income_Tax_2_Return_AGI__c</fullName>
@@ -748,67 +790,73 @@
         <fullName>Income_Tax_2_W2_s_Add_Up__c</fullName>
         <externalId>false</externalId>
         <label>Income Tax 2 W2&apos;s Add Up?</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Yes</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>No</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Income_Tax_3_Deduction_Type_Used__c</fullName>
         <externalId>false</externalId>
         <label>Income Tax 3 Deduction Type Used</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Standard</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Itemized</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Standard</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Itemized</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Income_Tax_3_Filing_Status__c</fullName>
         <externalId>false</externalId>
         <label>Income Tax 3 Filing Status</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Single</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Married Filing Jointly</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Married Filing Separately</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Head of Household</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Qualifying Widow(er) with dependent Child</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Single</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Married Filing Jointly</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Married Filing Separately</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Head of Household</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Qualifying Widow(er) with dependent Child</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Income_Tax_3_Return_AGI__c</fullName>
@@ -850,19 +898,21 @@
         <fullName>Income_Tax_3_W2_s_Add_Up__c</fullName>
         <externalId>false</externalId>
         <label>Income Tax 3 W2&apos;s Add Up?</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Yes</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>No</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Is_Developer__c</fullName>
@@ -903,80 +953,35 @@
     </fields>
     <fields>
         <fullName>LeadSource</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Advertisement</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Employee Referral</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>External Referral</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Partner</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Public Relations</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Seminar - Internal</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Seminar - Partner</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Trade Show</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Web</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Word of mouth</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <type>Picklist</type>
     </fields>
     <fields>
         <fullName>Lender_Certification_Status__c</fullName>
         <externalId>false</externalId>
         <label>Lender Certification Status</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Active</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Inactive</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>In-training</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Canceled</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Active</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Inactive</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>In-training</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Canceled</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Lender_Mortgage_Broker_Company_Name__c</fullName>
@@ -998,19 +1003,21 @@
         <fullName>Live_or_Work_in_San_Francisco__c</fullName>
         <externalId>false</externalId>
         <label>Live or Work in San Francisco?</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Yes</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>No</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Living_with_disabling_HIVAIDS__c</fullName>
@@ -1042,19 +1049,21 @@
         <fullName>Married_or_Domestic_Partnered__c</fullName>
         <externalId>false</externalId>
         <label>Married or Domestic Partnered?</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Yes</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>No</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Middle_Name__c</fullName>
@@ -1084,35 +1093,37 @@
         <fullName>Name_Suffix__c</fullName>
         <externalId>false</externalId>
         <label>Name Suffix</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Sr.</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Jr.</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>II</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>III</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>IV</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Esq.</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Sr.</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Jr.</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>II</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>III</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>IV</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Esq.</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Not_Req_d_to_File_Tax_Return_Explanation__c</fullName>
@@ -1170,24 +1181,26 @@
         <fullName>Phone_Type__c</fullName>
         <externalId>false</externalId>
         <label>Phone Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Home</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Work</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Cell</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Home</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Work</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Cell</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Primary_Household_Member__c</fullName>
@@ -1204,43 +1217,45 @@
         <externalId>false</externalId>
         <inlineHelpText>Primary Language of the Contact</inlineHelpText>
         <label>Primary Language</label>
-        <picklist>
-            <picklistValues>
-                <fullName>English</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Cantonese Chinese</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Mandarin Chinese</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Spanish</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Filipino</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Vietnamese</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Russian</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>English</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Cantonese Chinese</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Mandarin Chinese</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Spanish</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Filipino</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Vietnamese</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Russian</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Prior_Tax_Year_Total_Income_Amount__c</fullName>
@@ -1265,105 +1280,139 @@
         <fullName>Race_Ethnicity_optional__c</fullName>
         <externalId>false</externalId>
         <label>OldRace/Ethnicity</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Hispanic or Latino</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>American Indian or Alaskan Native</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Asian</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Black or African American</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Native Hawaiian or Other Pacific Islander</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>White</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Hispanic or Latino</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>American Indian or Alaskan Native</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Asian</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Black or African American</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Native Hawaiian or Other Pacific Islander</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>White</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Race__c</fullName>
         <description>Picklist to determine more granular racial/ethnic identity of applicant; dependent on Ethnicity picklist on Contact object.</description>
         <externalId>false</externalId>
         <label>Race</label>
-        <picklist>
-            <controllingField>Ethnicity__c</controllingField>
-            <picklistValues>
-                <fullName>American Indian/Alaskan Native</fullName>
-                <default>false</default>
-                <controllingFieldValues>Not Hispanic/Latino</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Asian</fullName>
-                <default>false</default>
-                <controllingFieldValues>Not Hispanic/Latino</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Black/African American</fullName>
-                <default>false</default>
-                <controllingFieldValues>Not Hispanic/Latino</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Native Hawaiian/Other Pacific Islander</fullName>
-                <default>false</default>
-                <controllingFieldValues>Not Hispanic/Latino</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>White</fullName>
-                <default>false</default>
-                <controllingFieldValues>Not Hispanic/Latino</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>American Indian/Alaskan Native and Black/African American</fullName>
-                <default>false</default>
-                <controllingFieldValues>Not Hispanic/Latino</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>American Indian/Alaskan Native and White</fullName>
-                <default>false</default>
-                <controllingFieldValues>Not Hispanic/Latino</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Asian and White</fullName>
-                <default>false</default>
-                <controllingFieldValues>Not Hispanic/Latino</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Black/African American and White</fullName>
-                <default>false</default>
-                <controllingFieldValues>Not Hispanic/Latino</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other/Multiracial</fullName>
-                <default>false</default>
-                <controllingFieldValues>Not Hispanic/Latino</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Decline to State</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <controllingField>Ethnicity__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>American Indian/Alaskan Native</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Asian</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Black/African American</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Native Hawaiian/Other Pacific Islander</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>White</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>American Indian/Alaskan Native and Black/African American</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>American Indian/Alaskan Native and White</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Asian and White</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Black/African American and White</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other/Multiracial</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Decline to State</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Not Hispanic/Latino</controllingFieldValue>
+                <valueName>American Indian/Alaskan Native</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Not Hispanic/Latino</controllingFieldValue>
+                <valueName>Asian</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Not Hispanic/Latino</controllingFieldValue>
+                <valueName>Black/African American</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Not Hispanic/Latino</controllingFieldValue>
+                <valueName>Native Hawaiian/Other Pacific Islander</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Not Hispanic/Latino</controllingFieldValue>
+                <valueName>White</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Not Hispanic/Latino</controllingFieldValue>
+                <valueName>American Indian/Alaskan Native and Black/African American</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Not Hispanic/Latino</controllingFieldValue>
+                <valueName>American Indian/Alaskan Native and White</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Not Hispanic/Latino</controllingFieldValue>
+                <valueName>Asian and White</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Not Hispanic/Latino</controllingFieldValue>
+                <valueName>Black/African American and White</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Not Hispanic/Latino</controllingFieldValue>
+                <valueName>Other/Multiracial</valueName>
+            </valueSettings>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Real_Estate_License__c</fullName>
@@ -1396,87 +1445,134 @@
         <fullName>Relationship_to_Head_of_Household__c</fullName>
         <externalId>false</externalId>
         <label>Relationship to Head of Household</label>
-        <picklist>
-            <controllingField>Head_of_Household2__c</controllingField>
-            <picklistValues>
-                <fullName>Spouse</fullName>
-                <default>false</default>
-                <controllingFieldValues>No</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Registered Domestic Partner</fullName>
-                <default>false</default>
-                <controllingFieldValues>No</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Parent</fullName>
-                <default>false</default>
-                <controllingFieldValues>No</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Child</fullName>
-                <default>false</default>
-                <controllingFieldValues>No</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Sibling</fullName>
-                <default>false</default>
-                <controllingFieldValues>No</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Cousin</fullName>
-                <default>false</default>
-                <controllingFieldValues>No</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Aunt</fullName>
-                <default>false</default>
-                <controllingFieldValues>No</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Uncle</fullName>
-                <default>false</default>
-                <controllingFieldValues>No</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Nephew</fullName>
-                <default>false</default>
-                <controllingFieldValues>No</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Niece</fullName>
-                <default>false</default>
-                <controllingFieldValues>No</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Grandparent</fullName>
-                <default>false</default>
-                <controllingFieldValues>No</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Great Grandparent</fullName>
-                <default>false</default>
-                <controllingFieldValues>No</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>In-Law</fullName>
-                <default>false</default>
-                <controllingFieldValues>No</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Friend</fullName>
-                <default>false</default>
-                <controllingFieldValues>No</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-                <controllingFieldValues>No</controllingFieldValues>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <controllingField>Head_of_Household2__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Spouse</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Registered Domestic Partner</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Parent</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Child</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Sibling</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Cousin</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Aunt</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Uncle</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Nephew</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Niece</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Grandparent</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Great Grandparent</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>In-Law</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Friend</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>Spouse</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>Registered Domestic Partner</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>Parent</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>Child</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>Sibling</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>Cousin</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>Aunt</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>Uncle</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>Nephew</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>Niece</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>Grandparent</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>Great Grandparent</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>In-Law</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>Friend</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>Other</valueName>
+            </valueSettings>
+        </valueSet>
     </fields>
     <fields>
         <fullName>ReportsToId</fullName>
@@ -1486,24 +1582,26 @@
         <fullName>Second_Phone_Type__c</fullName>
         <externalId>false</externalId>
         <label>Second Phone Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Home</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Work</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Cell</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Home</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Work</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Cell</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Served_in_the_US_Military__c</fullName>
@@ -1525,40 +1623,42 @@
         <fullName>Sexual_Orientation__c</fullName>
         <externalId>false</externalId>
         <label>Sexual Orientation</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Straight/Heterosexual</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Gay</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Lesbian</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Bisexual</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Questioning/Unsure</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Not listed</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Decline to state</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Straight/Heterosexual</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Gay</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Lesbian</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Bisexual</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Questioning/Unsure</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Not listed</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Decline to state</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Social_Security_Number__c</fullName>
@@ -1574,215 +1674,217 @@
         <fullName>State__c</fullName>
         <externalId>false</externalId>
         <label>State</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Alabama</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Alaska</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Arizona</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Arkansas</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>California</fullName>
-                <default>true</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Colorado</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Connecticut</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Delaware</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>District of Columbia</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Florida</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Georgia</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Hawaii</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Idaho</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Illinois</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Indiana</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Iowa</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Kansas</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Kentucky</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Louisiana</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Maine</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Maryland</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Massachusetts</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Michigan</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Minnesota</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Mississippi</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Missouri</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Montana</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Nebraska</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Nevada</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>New Hampshire</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>New Jersey</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>New Mexico</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>New York</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>North Carolina</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>North Dakota</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Ohio</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Oklahoma</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Oregon</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Pennsylvania</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Rhode Island</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>South Carolina</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>South Dakota</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Tennessee</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Texas</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Utah</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Vermont</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Virginia</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Washington</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>West Virginia</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Wisconsin</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Wyoming</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Alabama</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Alaska</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Arizona</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Arkansas</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>California</fullName>
+                    <default>true</default>
+                </value>
+                <value>
+                    <fullName>Colorado</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Connecticut</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Delaware</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>District of Columbia</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Florida</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Georgia</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Hawaii</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Idaho</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Illinois</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Indiana</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Iowa</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Kansas</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Kentucky</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Louisiana</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Maine</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Maryland</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Massachusetts</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Michigan</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Minnesota</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Mississippi</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Missouri</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Montana</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Nebraska</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Nevada</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>New Hampshire</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>New Jersey</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>New Mexico</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>New York</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>North Carolina</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>North Dakota</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Ohio</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Oklahoma</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Oregon</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Pennsylvania</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Rhode Island</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>South Carolina</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>South Dakota</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Tennessee</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Texas</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Utah</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Vermont</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Virginia</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Washington</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>West Virginia</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Wisconsin</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Wyoming</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Street_Name__c</fullName>
@@ -1806,91 +1908,93 @@
         <fullName>Street_Type__c</fullName>
         <externalId>false</externalId>
         <label>Street Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>[Not Applicable]</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Alley</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Avenue</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Boulevard</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Circle</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Court</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Drive</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Highway</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Lane</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Loop</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Park</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Place</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Plaza</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Road</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Row</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Square</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Street</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Terrace</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Walk</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Way</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>[Not Applicable]</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Alley</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Avenue</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Boulevard</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Circle</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Court</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Drive</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Highway</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Lane</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Loop</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Park</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Place</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Plaza</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Road</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Row</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Square</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Street</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Terrace</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Walk</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Way</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Title</fullName>

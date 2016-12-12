@@ -111,30 +111,32 @@
         <description>We are strictly enforcing this.  Based off this value the API chooses which buckets to return in the preference buckets</description>
         <externalId>false</externalId>
         <label>ApplicablePreferences</label>
-        <picklist>
-            <picklistValues>
-                <fullName>LiveWork</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>COP</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>DTHP</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Neighborhood</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>LiveWork</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>COP</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>DTHP</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Neighborhood</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
@@ -231,21 +233,23 @@
         <externalId>false</externalId>
         <inlineHelpText>What is the category - New Rental/Rerental?</inlineHelpText>
         <label>Building Listing Category</label>
-        <picklist>
-            <picklistValues>
-                <fullName>New Rental</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Rerental</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New Rental</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Rerental</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Building_Name__c</fullName>
@@ -831,25 +835,27 @@
         <fullName>Lottery_Preferences__c</fullName>
         <externalId>false</externalId>
         <label>Lottery Preferences</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Certificate of Preference</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Ellis Act</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Live\Work</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Certificate of Preference</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Ellis Act</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Live\Work</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Lottery_Results_Date__c</fullName>
@@ -889,25 +895,27 @@
         <fullName>Lottery_Status__c</fullName>
         <externalId>false</externalId>
         <label>Lottery Status</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Not Yet Run</fullName>
-                <default>true</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Lottery Complete</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not Yet Run</fullName>
+                    <default>true</default>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Lottery Complete</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Lottery_Street_Address__c</fullName>
@@ -1112,37 +1120,39 @@
         <fullName>Office_Closed__c</fullName>
         <externalId>false</externalId>
         <label>Office Closed</label>
-        <picklist>
-            <picklistValues>
-                <fullName>2:00 PM</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>3:00 PM</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>4:00 PM</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>5:00 PM</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>6:00 PM</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>7:00 PM</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>2:00 PM</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>3:00 PM</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>4:00 PM</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>5:00 PM</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>6:00 PM</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>7:00 PM</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Office_Hours__c</fullName>
@@ -1157,25 +1167,27 @@
         <fullName>Office_Open__c</fullName>
         <externalId>false</externalId>
         <label>Office Open</label>
-        <picklist>
-            <picklistValues>
-                <fullName>8:00 AM</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>9:00 AM</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>10:00 AM</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>8:00 AM</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>9:00 AM</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>10:00 AM</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Organization_URL__c</fullName>
@@ -1212,9 +1224,9 @@
     <fields>
         <fullName>Project_ID__c</fullName>
         <externalId>false</externalId>
-        <formula>Building__r.Development__r.Project_ID__c</formula>
+        <formula>Building__r.Project_ID__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Project ID</label>
+        <label>MOHCD Project ID</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1227,21 +1239,23 @@
         <externalId>false</externalId>
         <inlineHelpText>What is the category - New Rental/Rerental?</inlineHelpText>
         <label>Property Listing Category</label>
-        <picklist>
-            <picklistValues>
-                <fullName>New Rental</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Rerental</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New Rental</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Rerental</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Property_Selection_Criteria__c</fullName>
@@ -1252,6 +1266,18 @@
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Random_org_Public_Draw_URL__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&quot;https://www.random.org/draws/details/?draw=&quot;+Draw_ID__c, &quot;Random.org Draw #&quot;+Draw_ID__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Random.org Public Draw URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Removed_from_Lottery__c</fullName>
@@ -1275,17 +1301,19 @@
         <externalId>false</externalId>
         <inlineHelpText>To be further built but placeholder for rental assistance</inlineHelpText>
         <label>Rental Assistance</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Subsidies and Vouchers</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Subsidies and Vouchers</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Required_Documents__c</fullName>
@@ -1298,10 +1326,38 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
-        <fullName>Restricted_Community_Type_Description__c</fullName>
+        <fullName>Reserved_community_maximum_age__c</fullName>
         <externalId>false</externalId>
-        <formula>Building__r.Restricted_Community_Type_Description__c</formula>
-        <label>Restricted Community Type Description</label>
+        <formula>Building__r.Reserved_community_maximum_age__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Reserved community maximum age</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reserved_community_minimum_age__c</fullName>
+        <externalId>false</externalId>
+        <formula>Building__r.Reserved_community_minimum_age__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Reserved community minimum age</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reserved_community_type__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT( Building__r.Reserved_community_type__c )</formula>
+        <label>Reserved community type</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1309,10 +1365,10 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Restricted_Community_Type__c</fullName>
+        <fullName>Reserved_community_type_description__c</fullName>
         <externalId>false</externalId>
-        <formula>TEXT( Building__r.Restricted_Community_Type__c )</formula>
-        <label>Restricted Community Type</label>
+        <formula>Building__r.Reserved_community_type_description__c</formula>
+        <label>Reserved community type description</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1334,29 +1390,31 @@
         <fullName>Status__c</fullName>
         <externalId>false</externalId>
         <label>Status</label>
-        <picklist>
-            <picklistValues>
-                <fullName>New</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Pricing Request Approved</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Marketing Plan Approved</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Active</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Pricing Request Approved</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Marketing Plan Approved</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Active</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Submitted_Applications__c</fullName>
@@ -1454,7 +1512,6 @@
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
-        <columns>Account__c</columns>
         <columns>Status__c</columns>
         <columns>Application_Due_Date__c</columns>
         <columns>Lottery_Date__c</columns>
@@ -1468,6 +1525,8 @@
     </listViews>
     <listViews>
         <fullName>Listing_Details</fullName>
+        <columns>Lottery_Status__c</columns>
+        <columns>In_Lottery__c</columns>
         <columns>NAME</columns>
         <columns>Building__c</columns>
         <columns>Building_Street_Address__c</columns>
@@ -1540,7 +1599,9 @@ navigateToUrl(&apos;/{!Listing__c.Id}&apos;);
 {!REQUIRESCRIPT(&quot;/soap/ajax/33.0/apex.js&quot;)} 
 
 var lotteryStatus = &apos;{!Listing__c.Lottery_Status__c}&apos;;
-if( lotteryStatus != &quot;Lottery Complete&quot;){
+if( lotteryStatus == &quot;In Progress&quot;){
+ alert(&quot;Preference bucket calculations are still in progress; please reload the page&quot;);
+} else if( lotteryStatus != &quot;Lottery Complete&quot;){
  alert(&quot;Lottery hasn&apos;t been run&quot;);
 } else {
 

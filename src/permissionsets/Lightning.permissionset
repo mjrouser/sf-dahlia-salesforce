@@ -281,6 +281,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>ListingPreferencesAPI</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ListingPreferencesAPITest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ListingService</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -573,12 +581,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Application_Member__c.appid2__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Application_Member__c.appid__c</field>
+        <field>Application_Member__c.xNatural_key_test__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1733,6 +1736,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Flagged_Application__c.Flagged_Application_Member__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Flagged_Application__c.Listing__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -1829,6 +1837,36 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Listing_Image__c.Image_URL__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing_Lottery_Preference__c.Available_Units__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing_Lottery_Preference__c.Description__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing_Lottery_Preference__c.NRHP_District__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing_Lottery_Preference__c.Order__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing_Lottery_Preference__c.Preference_Name__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing_Lottery_Preference__c.Read_More_URL__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2308,6 +2346,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Listing__c.Random_org_Public_Draw_URL__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Listing__c.Removed_from_Lottery__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -2323,12 +2366,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Listing__c.Restricted_Community_Type_Description__c</field>
+        <field>Listing__c.Reserved_community_maximum_age__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Listing__c.Restricted_Community_Type__c</field>
+        <field>Listing__c.Reserved_community_minimum_age__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing__c.Reserved_community_type__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing__c.Reserved_community_type_description__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2374,6 +2427,26 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Listing__c.sfxId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lottery_Preference__c.Active__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lottery_Preference__c.Description__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lottery_Preference__c.Read_More_URL__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lottery_Preference__c.Status__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2453,6 +2526,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Unit__c.Max_Occupancy__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Unit__c.Maximum_Household_Income_Allowed__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -2479,6 +2557,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Unit__c.Number_of_Parking_Spaces__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Unit__c.Number_of_bedrooms_formula__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2607,6 +2690,7 @@
         <readable>false</readable>
     </fieldPermissions>
     <label>Lightning</label>
+    <license>Salesforce</license>
     <pageAccesses>
         <apexPage>HOP_ApplicationForm</apexPage>
         <enabled>false</enabled>
@@ -2691,5 +2775,4 @@
         <tab>standard-Contact</tab>
         <visibility>None</visibility>
     </tabSettings>
-    <userLicense>Salesforce</userLicense>
 </PermissionSet>

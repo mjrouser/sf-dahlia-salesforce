@@ -80,8 +80,9 @@ public class LOT_RandomDrawReq extends LOT_RandomBaseRequest{
 	}
 	
 	public override void readResponse(String json) {
+		system.debug('drawResult:::json::' + json);
 		drawResult = (DrawingResult) System.JSON.deserialize(json, DrawingResult.class);
-		system.debug('drawResult:::' + drawResult);
+		system.debug('drawResult:::' + drawResult.error);
 	}
 	
 	public class Drawing {
@@ -112,10 +113,15 @@ public class LOT_RandomDrawReq extends LOT_RandomBaseRequest{
 	//Container class for drawing response
 	public class DrawingResult {
 		public String jsonrpc;
-		public String error;
+		public DrawingError error;
 		public Integer id;
 		public Result result;
 			
+	}
+	
+	public class DrawingError {
+		public String code;
+		public String message;
 	}
 	//subclass
 	public class Result {

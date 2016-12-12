@@ -76,7 +76,7 @@ public abstract class LOT_RandomBaseRequest {
     	HttpRequest request = new System.HttpRequest();
     	String json =  getJSON();
     	String jsonRequest = json.replaceAll('(\\r|\\n)', '');
-    	System.debug('json Request- '  + jsonRequest);
+    	system.debug('json Request- '  + jsonRequest);
         request.setBody(json);
         request.setMethod('POST');
         String endpoint = extConnection.End_Point__c; //'https://draws.random.org/api/json-rpc/2/invoke';
@@ -88,10 +88,9 @@ public abstract class LOT_RandomBaseRequest {
         boolean success = false;
       
         try {
-        	system.debug('httpResp.getBody():::' + httpResp.getBody());
-      		readResponse(httpResp.getBody());
+        	readResponse(httpResp.getBody());
       		
-      	} 
+      	}
       	catch(Exception e){
       		success = false;
       		system.debug('exception hit' + e);

@@ -281,6 +281,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>ListingPreferencesAPI</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ListingPreferencesAPITest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ListingService</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -317,6 +325,31 @@
         <enabled>false</enabled>
     </classAccesses>
     <custom>true</custom>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>AMI_Chart__mdt.Amount__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>AMI_Chart__mdt.Num_of_Household__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>AMI_Chart__mdt.Percent_of_Median__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>AMI_Chart__mdt.Type__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>AMI_Chart__mdt.Year__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Application_Member__c.Agency_Name__c</field>
@@ -574,12 +607,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Application_Member__c.appid2__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Application_Member__c.appid__c</field>
+        <field>Application_Member__c.xNatural_key_test__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1733,6 +1761,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Flagged_Application__c.Flagged_Application_Member__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Flagged_Application__c.Listing__c</field>
         <readable>true</readable>
@@ -1831,6 +1864,36 @@
         <editable>true</editable>
         <field>Listing_Image__c.Image_URL__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing_Lottery_Preference__c.Available_Units__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing_Lottery_Preference__c.Description__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing_Lottery_Preference__c.NRHP_District__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing_Lottery_Preference__c.Order__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing_Lottery_Preference__c.Preference_Name__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing_Lottery_Preference__c.Read_More_URL__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -2295,7 +2358,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Listing__c.Project_ID__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -2305,6 +2368,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Listing__c.Property_Selection_Criteria__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing__c.Random_org_Public_Draw_URL__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2324,12 +2392,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Listing__c.Restricted_Community_Type_Description__c</field>
+        <field>Listing__c.Reserved_community_maximum_age__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Listing__c.Restricted_Community_Type__c</field>
+        <field>Listing__c.Reserved_community_minimum_age__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing__c.Reserved_community_type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing__c.Reserved_community_type_description__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2376,6 +2454,26 @@
         <editable>false</editable>
         <field>Listing__c.sfxId__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lottery_Preference__c.Active__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lottery_Preference__c.Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lottery_Preference__c.Read_More_URL__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lottery_Preference__c.Status__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -2453,6 +2551,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Unit__c.Max_Occupancy__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Unit__c.Maximum_Household_Income_Allowed__c</field>
         <readable>true</readable>
@@ -2480,6 +2583,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Unit__c.Number_of_Parking_Spaces__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Unit__c.Number_of_bedrooms_formula__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2622,7 +2730,7 @@
         <recordType>Application__c.BMR_Rental_Short_Form</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Building__c-Building Data Entry</layout>
+        <layout>Building__c-Building Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Contact-Contact Layout - Applicant</layout>
@@ -2661,7 +2769,7 @@
         <layout>DuplicateRecordSet-Duplicate Record Set Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Flagged_Application__c-Community Conflicting Application Layout</layout>
+        <layout>Flagged_Application__c-Conflicting Application Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Flagged_Record_Set__c-Conflict Layout</layout>
@@ -2676,13 +2784,23 @@
         <layout>Listing_Image__c-Listing Image Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Listing__c-Community Listing Layout</layout>
+        <layout>Listing_Lottery_Preference__c-Listing Lottery Preference Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Listing__c-Listing Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Lottery_Preference__c-Preference Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Open_Houses__c-Community Open House Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Unit__c-BMR Rental Unit Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Unit__c-BMR Rental Unit Layout</layout>
+        <recordType>Unit__c.BMR_Rental</recordType>
     </layoutAssignments>
     <objectPermissions>
         <allowCreate>true</allowCreate>
@@ -2754,6 +2872,15 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>Listing__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Lottery_Preference__c</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -2856,6 +2983,10 @@
         <recordType>Unit__c.BMR_Rental</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
+    <tabVisibilities>
+        <tab>standard-Contact</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
     <userLicense>Customer Community Login</userLicense>
     <userPermissions>
         <enabled>true</enabled>

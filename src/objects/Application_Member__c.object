@@ -81,29 +81,31 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <fullName>Alternate_Contact_Type__c</fullName>
         <externalId>false</externalId>
         <label>Alternate Contact Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Family Member</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Friend</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Social Worker or Housing Counselor</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Family Member</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Friend</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Social Worker or Housing Counselor</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Application_Household_Auto_Number__c</fullName>
@@ -139,7 +141,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <label>City</label>
         <length>75</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -165,7 +167,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <relationshipLabel>Application Members</relationshipLabel>
         <relationshipName>Household_Members</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -185,7 +187,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <externalId>false</externalId>
         <label>Date of Birth</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -194,7 +196,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <externalId>false</externalId>
         <label>Email</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Email</type>
         <unique>false</unique>
@@ -203,26 +205,28 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <fullName>Ethnicity__c</fullName>
         <externalId>false</externalId>
         <label>Ethnicity</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Hispanic/Latino</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Not Hispanic/Latino</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Decline to state</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Hispanic/Latino</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Not Hispanic/Latino</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Decline to state</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>First_Name__c</fullName>
@@ -230,7 +234,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <label>First Name</label>
         <length>50</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -250,37 +254,39 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <fullName>Gender__c</fullName>
         <externalId>false</externalId>
         <label>Gender</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Male</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Female</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Trans Male</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Trans Female</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Not Listed</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Decline to State</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Male</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Female</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Trans Male</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Trans Female</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Not Listed</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Decline to State</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Has_Alt_Mailing_Address__c</fullName>
@@ -315,7 +321,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <label>Last Name</label>
         <length>50</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -336,7 +342,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <label>Living with HIV/AIDS</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -358,7 +364,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <label>Mailing City</label>
         <length>75</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -370,7 +376,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <label>Mailing State</label>
         <length>2</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -381,7 +387,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <label>Mailing Street</label>
         <length>75</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -392,7 +398,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <label>Mailing Zip Code</label>
         <length>15</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -425,21 +431,23 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <description>Field to determine if neighborhood address was matched by GIS service.</description>
         <externalId>false</externalId>
         <label>Neighborhood Preference Match</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Matched</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Not Matched</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Matched</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Not Matched</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Neighborhood_Preference__c</fullName>
@@ -481,61 +489,65 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <fullName>Other_Language__c</fullName>
         <externalId>false</externalId>
         <label>Other Language</label>
-        <picklist>
-            <picklistValues>
-                <fullName>English</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Tagalog</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Chinese</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Spanish</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>English</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Tagalog</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Chinese</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Spanish</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Phone_Type__c</fullName>
         <externalId>false</externalId>
         <label>Phone Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Home</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Work</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Cell</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Home</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Work</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Cell</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Phone__c</fullName>
         <externalId>false</externalId>
         <label>Phone</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Phone</type>
     </fields>
@@ -554,101 +566,105 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <fullName>Primary_Language__c</fullName>
         <externalId>false</externalId>
         <label>Primary Language</label>
-        <picklist>
-            <picklistValues>
-                <fullName>English</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Cantonese Chinese</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Mandarin Chinese</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Spanish</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Filipino</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Vietnamese</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Russian</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>English</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Cantonese Chinese</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Mandarin Chinese</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Spanish</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Filipino</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Vietnamese</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Russian</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Race__c</fullName>
         <externalId>false</externalId>
         <label>Race</label>
-        <picklist>
-            <picklistValues>
-                <fullName>American Indian/Alaskan Native</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Asian</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Black/African American</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Native Hawaiian/Other Pacific Islander</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>White</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>American Indian/Alaskan Native and Black/African American</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>American Indian/Alaskan Native and White</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Asian and White</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Black/African American and White</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other/Multiracial</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Decline to state</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>American Indian/Alaskan Native</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Asian</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Black/African American</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Native Hawaiian/Other Pacific Islander</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>White</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>American Indian/Alaskan Native and Black/African American</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>American Indian/Alaskan Native and White</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Asian and White</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Black/African American and White</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other/Multiracial</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Decline to state</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Relationship_to_Applicant__c</fullName>
@@ -677,47 +693,51 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <fullName>Same_Address_as_Applicant__c</fullName>
         <externalId>false</externalId>
         <label>Same Address as Applicant</label>
-        <picklist>
-            <picklistValues>
-                <fullName>true</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>false</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>true</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>false</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Second_Phone_Type__c</fullName>
         <externalId>false</externalId>
         <label>Second Phone Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Home</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Work</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Cell</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Home</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Work</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Cell</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Second_Phone__c</fullName>
@@ -743,42 +763,44 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <fullName>Sexual_Orientation__c</fullName>
         <externalId>false</externalId>
         <label>Sexual Orientation</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Straight/Heterosexual</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Gay</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Lesbian</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Bisexual</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Questioning/Unsure</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Not listed</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Decline to state</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Straight/Heterosexual</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Gay</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Lesbian</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Bisexual</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Questioning/Unsure</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Not listed</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Decline to state</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>State__c</fullName>
@@ -787,7 +809,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <label>State</label>
         <length>2</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -798,7 +820,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <label>Street</label>
         <length>75</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -820,46 +842,50 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <fullName>Type__c</fullName>
         <externalId>false</externalId>
         <label>Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Primary Applicant</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Alternate Contact</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Household Member</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Primary Applicant</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Alternate Contact</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Household Member</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Work_in_SF__c</fullName>
         <externalId>false</externalId>
         <label>Work in SF</label>
-        <picklist>
-            <picklistValues>
-                <fullName>true</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>false</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>true</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>false</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Zip_Code__c</fullName>
@@ -867,28 +893,17 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <label>Zip Code</label>
         <length>15</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>appid2__c</fullName>
+        <fullName>xNatural_key_test__c</fullName>
         <externalId>false</externalId>
-        <label>appid2</label>
-        <length>18</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>appid__c</fullName>
-        <externalId>false</externalId>
-        <formula>Application__r.Id</formula>
+        <formula>LOWER(First_Name__c)+ &apos;,&apos; + LOWER(Last_Name__c)+&apos;,&apos; + DOB_Text__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>appid</label>
+        <label>xNatural key test</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -902,8 +917,6 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <columns>First_Name__c</columns>
         <columns>Last_Name__c</columns>
         <columns>Date_of_Birth__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>Mailing_City__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

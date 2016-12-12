@@ -43,6 +43,7 @@ public with sharing class LOT_RandomDrawServiceTest {
         listing.Account__c = acc.Id;
         listing.Status__c = 'Active';
         listing.Does_Match__c = true;
+        listing.Lottery_Status__c = 'Not Yet Run';
         insert listing;
         
         
@@ -94,9 +95,11 @@ public with sharing class LOT_RandomDrawServiceTest {
         extConnection.End_Point__c = 'https://draws.random.org/api/json-rpc/2/invoke';
         extConnection.Password__c = 'asdf1234';
         extConnection.User_Name__c = 'luke@vertiba.com';
+		extConnection.RecordType__c = 'test';
+		extConnection.Active__c = true;
 		insert extConnection;
     }
-    public static testmethod void testDrawService() {
+    public static testmethod void testReRunLottery() {
     	setupTestData();
         app = [SELECT Id, Name, Lottery_Number__c from Application__c WHERE Id = :app.Id];
     	//LOT_PreferenceRankBatch prefRankBatch = new LOT_PreferenceRankBatch();
@@ -108,21 +111,21 @@ public with sharing class LOT_RandomDrawServiceTest {
 			Test.setMock(HttpCalloutMock.class, mock);
 	    	LOT_RandomDrawService.runLottery(listingID,true);
         	
-        	/*RestRequest req = new RestRequest(); 
-            RestResponse res = new RestResponse();
-            
-        	system.debug('app.Lottery_Number__c:::' + app.Lottery_Number__c);
-            req.requestURI = '/Listing/LotteryResult/' + listingID + '/' + app.Lottery_Number__c;  
-            req.httpMethod = 'GET';
-            RestContext.request = req;
-            RestContext.response = res;
-            
-            ListingService.ListingResult listingRes = ListingLotteryResultApi.doGet();
-            
-            system.debug('listingRes:::' + listingRes);
-            //check if returned application is the right one and has the same lottery number
-            system.assert(listingRes.ListingId == listingID);	
-            //system.assert(listingRes.applicationResults[0].Live_in_SF_Preference_Rank__c == 1);*/
-       test.stopTest();
+        test.stopTest();
+    }
+    
+    public static testmethod void testRunLottery() {
+    	setupTestData();
+        app = [SELECT Id, Name, Lottery_Number__c from Application__c WHERE Id = :app.Id];
+    	//LOT_PreferenceRankBatch prefRankBatch = new LOT_PreferenceRankBatch();
+    	test.startTest();
+			HttpCalloutMockGeneratorTest mock = new HttpCalloutMockGeneratorTest();
+			mock.statusCode=200;
+			mock.status = 'OK';
+			mock.body = '{    "jsonrpc": "2.0","result": {        "drawId": 22993,        "status": "completed",        "entryCount": 3,        "winners": ["' + app.Name + '"],        "completionTime": "2011-10-10 13:19:12Z",        "recordUrl": "https://draws.random.org/records/draw=22993"    },   "error": null,    "id": 42}';
+			Test.setMock(HttpCalloutMock.class, mock);
+	    	LOT_RandomDrawService.runLottery(listingID,false);
+        	
+        test.stopTest();
     }
 }

@@ -33,27 +33,76 @@ public without sharing class ListingFlaggedApplicationAction extends TriggerActi
     
     // trigger controller that accepts trigger data
     public ListingFlaggedApplicationAction (Map<Id,SObject> newMap) {
-        
+        //listing flagged 
         super(newMap);
-        DuplicateRecordItem duplicateRecordItem = new DuplicateRecordItem();
-        Set<Id> appIds = new Set<Id>();
-        relaventDupItems = new List<DuplicateRecordItem>();
+                system.debug('ListingFlaggedApplicationAction(newMap) started' );
         
+        DuplicateRecordItem duplicateRecordItem = new DuplicateRecordItem();
+      //  Set<Id> appIds = new Set<Id>();
+      	Map<ID,DuplicateRecordItem> appMemberToDupRecords = new Map<ID,DuplicateRecordItem> ();
+        relaventDupItems = new List<DuplicateRecordItem>();
+        Set<ID> duplicateRecordSetIDS = new Set<ID>();
         for(Id driId : newMap.keySet()){
             duplicateRecordItem = (DuplicateRecordItem)newMap.get(driId);
-            if(duplicateRecordItem.RecordId .getSObjectType().getDescribe().getName() == 'Application_Member__c' && !appIds.contains(duplicateRecordItem.RecordId))	{
+            if(duplicateRecordItem.RecordId .getSObjectType().getDescribe().getName() == 'Application_Member__c') { // && !appIds.contains(duplicateRecordItem.RecordId))	{
                 
-                relaventDupItems.add(duplicateRecordItem);
-                appIds.add(duplicateRecordItem.RecordId);
+             //   relaventDupItems.add(duplicateRecordItem);
+             //   appIds.add(duplicateRecordItem.RecordId);
+            	duplicateRecordSetIDS.add(duplicateRecordItem.DuplicateRecordSetID);
+             
+             	//appMemberToDupRecords.put(duplicateRecordItem.RecordId,duplicateRecordItem);
             }
+        } 
+        if((duplicateRecordSetIDS == null) ||(duplicateRecordSetIDS.size() ==0)){
+        	
+        	system.debug('no relevant records');
+        	return ; //
         }
-        
-        if(appIds != null && !appIds.isEmpty()){
-            applicationMap = new Map<Id,Application_Member__c>([SELECT Id, Application__c, Application__r.Listing__c FROM Application_Member__c WHERE Id in : appIds]);
+		//DuplicateRecordSet get siblings
+		//get relevant duplicate record sets
+		for (DuplicateRecordItem drs:  [Select d.RecordId, d.Name, d.Id, d.DuplicateRecordSetId From DuplicateRecordItem d where DuplicateRecordSetID in :duplicateRecordSetIDS] ) {		
+			appMemberToDupRecords.put(drs.RecordId,drs);
+		}
+		applicationMap = new Map<Id,Application_Member__c>([SELECT Id, Application__c, Application__r.Listing__c FROM Application_Member__c WHERE Id in : appMemberToDupRecords.keyset()]);
+		    	
+      
+           // applicationMap = new Map<Id,Application_Member__c>([SELECT Id, Application__c, Application__r.Listing__c FROM Application_Member__c WHERE Id in : appIds]);
+            applicationMap = new Map<Id,Application_Member__c>([SELECT Id, Application__c, Application__r.Listing__c FROM Application_Member__c WHERE Id in : appMemberToDupRecords.keyset()]);
+            
+        //relaventDupItems need to figure out what they are based of parent id - ll 
+        //applicaitonID to list of applicationMembers
+        Map<ID,List<Application_Member__c>> appMaps = new   Map<ID,List<Application_Member__c>> ();
+        for (ID appMemberID : applicationMap.keyset()) {
+        	Application_Member__c appMember = applicationMap.get(appMemberID);
+        	//find sibling application members
+        	List<Application_Member__c> siblingAppMembers = appMaps.containsKey(appMember.Application__c)  ? appMaps.get(appMember.Application__c) :new List<Application_Member__c> ();
+       		siblingAppMembers.add(appMember); 
+       		appMaps.put(appMember.Application__c,siblingAppMembers);
         }
+        List<DuplicateRecordItem> filteredDuplicateRecords=new List<DuplicateRecordItem> ();
         
+        if (appMaps.keyset().size() <=1) {
+        	//relaventDupItems  size == 0
+        	filteredDuplicateRecords = appMemberToDupRecords.values();
+        	//delete itemsTodelete;
+        	addExcludeFlags(filteredDuplicateRecords);
+        	return;
+        }	
+        
+        relaventDupItems = appMemberToDupRecords.values();
+        system.debug('relaventDupItems' + relaventDupItems);
+   
+        
+        //if they all flag against hte same application - then delete the recordset
+        //if they flag against different applications - then only push the relevant ones over
         
     }
+    public void addExcludeFlags(List<DuplicateRecordItem> filteredDuplicateRecords){
+    	for (DuplicateRecordItem dupRecordItem : filteredDuplicateRecords ) {
+    //		dupRecordItem.exclude_from_flagged__c = true;
+    	}
+    //	update filteredDuplicateRecords;
+    } 
     
     // check if action should run on insert if there are relavent duplicate items
     public override Boolean shouldRunOnInsert() { 
@@ -163,6 +212,9 @@ public without sharing class ListingFlaggedApplicationAction extends TriggerActi
             flaggedApp = new Flagged_Application__c();
             flaggedApp.Application__c = applicationMap.get(dri.RecordId).Application__c;
             flaggedApp.DuplicateRecordItem__c = dri.Id;
+            //ll -	
+            flaggedApp.Flagged_Application_Member__c= dri.RecordId;
+            
             if(duplicateRecordFlaggedSet.containsKey(dri.Id)){
                 flaggedApp.Flagged_Record_Set__c = duplicateRecordFlaggedSet.get(dri.Id);
             }

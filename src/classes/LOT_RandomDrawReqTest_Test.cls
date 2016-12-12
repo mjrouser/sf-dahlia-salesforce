@@ -43,6 +43,7 @@ public with sharing class LOT_RandomDrawReqTest_Test {
         listing.Account__c = acc.Id;
         listing.Status__c = 'Active';
         listing.Does_Match__c = true;
+        listing.Lottery_Status__c = 'Not Yet Run';
         insert listing;
         
         app = new Application__c(Applicant_Household__c = acc.Id, Listing__c = listing.Id, Status__c = 'Submitted');
@@ -82,6 +83,8 @@ public with sharing class LOT_RandomDrawReqTest_Test {
         extConnection.End_Point__c = 'https://draws.random.org/api/json-rpc/2/invoke';
         extConnection.Password__c = 'asdf1234';
         extConnection.User_Name__c = 'luke@vertiba.com';
+		extConnection.RecordType__c = 'test';
+		extConnection.Active__c = true;
 		insert extConnection;
     }
     public static testmethod void testRandomDrawReq() {

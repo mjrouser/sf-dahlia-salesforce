@@ -70,7 +70,11 @@
         <members>ListingLotteryResultSummaryAPI</members>
         <members>ListingLotteryResultSummaryAPITest</members>
         <members>ListingLotteryService</members>
+
         <members>ListingLotteryServiceTest</members>
+          <members>ListingPreferencesAPI</members>
+        <members>ListingPreferencesAPITest</members>
+
         <members>ListingService</members>
         <members>ListingServiceTest</members>
         <members>ListingUnitApi</members>
@@ -113,6 +117,9 @@
         <name>CustomField</name>
     </types>
     <types>
+        <members>AMI_Chart__mdt</members>
+
+        
         <members>AMI__c</members>
         <members>Application_Member__c</members>
         <members>Application__c</members>
@@ -128,23 +135,32 @@
         <members>Listing__c</members>
         <members>Open_Houses__c</members>
         <members>Unit__c</members>
+          <members>External_Connections__c</members>
+        <members>Listing_Lottery_Preference__c</members>
+        <members>Lottery_Preference__c</members>
         <name>CustomObject</name>
     </types>
     <types>
         <members>*</members>
         <name>Flow</name>
     </types>
+
+    <types>
+        <members>*</members>
+        <name>GlobalValueSet</name>
+    </types>
+     <types>
+        <members>*</members>
+        <name>CustomMetadata</name>
+    </types>
     <types>
         <members>Account-Account Layout - Lenders</members>
         <members>Account-Account Layout - Property Management</members>
         <members>Account-CCSF and Partners</members>
         <members>Account-Property Management - Community</members>
-        <members>Application_Member__c-Application Member Community Layout</members>
         <members>Application_Member__c-Application Member Layout</members>
         <members>Application__c-Application Layout - BMR Rental Short-Form</members>
         <members>Application__c-Community Application Layout - BMR Rental Short-Form</members>
-        <members>Building__c-Building Data Entry</members>
-        <members>Building__c-Property Layout</members>
         <members>Contact-CCSF and Partners</members>
         <members>Contact-Contact Layout</members>
         <members>Contact-Contact Layout - Applicant</members>
@@ -164,10 +180,17 @@
         <members>Information_Session__c-Community Information Session Layout</members>
         <members>Information_Session__c-Information Session Layout</members>
         <members>Listing_Image__c-Listing Image Layout</members>
-        <members>Listing__c-Community Listing Layout</members>
         <members>Lottery_Preference__c-Lottery Prefference Layout</members>
         <members>Open_Houses__c-Community Open House Layout</members>
         <members>Open_Houses__c-Open House Layout</members>
+            <members>Application__c-Application Layout - BMR Rental Short-Form</members>
+        <members>Building__c-Building Layout</members>
+        <members>Development__c-Development Layout</members>
+        <members>Listing_Lottery_Preference__c-Listing Lottery Preference Layout</members>
+        <members>Listing__c-Listing Layout</members>
+        <members>Lottery_Preference__c-Preference Layout</members>
+        <members>Unit__c-BMR Rental Unit Layout</members>
+
         <name>Layout</name>
     </types>
     <types>
@@ -188,6 +211,11 @@
         <members>MOHCD - Staff</members>
         <name>Profile</name>
     </types>
+     <types>
+        <members>Listing__c.Lottery_Random</members>
+        <members>Listing__c.Run_Preference_Lottery</members>
+        <name>WebLink</name>
+    </types>
     <types>
         <members>Cell_handsontable_full_min_css</members>
         <members>Cell_handsontable_full_min_js</members>
@@ -200,5 +228,5 @@
         <members>SalesforceDataTables</members>
         <name>StaticResource</name>
     </types>
-    <version>36.0</version>
+    <version>38.0</version>
 </Package>

@@ -202,6 +202,24 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Max_Occupancy__c</fullName>
+        <externalId>false</externalId>
+        <formula>/* Change on 11/17 to account for special rules for SRO and Studio (0 bedroom) types 
+(Number_of_bedrooms_formula__c * 2) + 1 */
+
+
+IF(Number_of_bedrooms_formula__c = 0, 2, ((Number_of_bedrooms_formula__c * 2) + 1))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Max Occupancy</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Maximum_Household_Income_Allowed__c</fullName>
         <description>Based on Household size, the maximum income allowed for the unit.</description>
         <externalId>false</externalId>
@@ -241,7 +259,7 @@ IF(ISPICKVAL(Unit_Type__c,&apos;2 BR&apos;), 2,
       IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
      1))))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <inlineHelpText>Field will ultimately be hidden from page layout and is automatically determined based on number of Bedrooms. Field is used to hold the minimum occupancy based on bedrooms.</inlineHelpText>
+        <inlineHelpText>Field is used to hold the minimum occupancy based on bedrooms.</inlineHelpText>
         <label>Min Occupancy</label>
         <precision>18</precision>
         <required>false</required>
@@ -282,6 +300,25 @@ IF(ISPICKVAL(Unit_Type__c,&apos;2 BR&apos;), 2,
         <precision>3</precision>
         <required>false</required>
         <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_bedrooms_formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL(Unit_Type__c,&apos;1 BR&apos;), 1,
+IF(ISPICKVAL(Unit_Type__c,&apos;2 BR&apos;), 2, 
+IF(ISPICKVAL(Unit_Type__c,&apos;3 BR&apos;), 3,
+IF(ISPICKVAL(Unit_Type__c,&apos;4 BR&apos;), 4,
+IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
+0)))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Number of bedrooms</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
@@ -426,33 +463,35 @@ IF(ISPICKVAL(Unit_Type__c,&apos;2 BR&apos;), 2,
         <externalId>false</externalId>
         <inlineHelpText>Property Type (i.e. Condo, townhouse, single family, etc)</inlineHelpText>
         <label>Property Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Condo</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Townhouse</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Co-op</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Single Family</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Apartment</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Condo</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Townhouse</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Co-op</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Single Family</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Apartment</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Property__c</fullName>
@@ -507,21 +546,23 @@ IF(ISPICKVAL(Unit_Type__c,&apos;2 BR&apos;), 2,
         <externalId>false</externalId>
         <inlineHelpText>To be Built out, but is the unit currently occupied/available (includes in development). Will largely be a hidden field.</inlineHelpText>
         <label>Status</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Available</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Occupied</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Available</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Occupied</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Unit_Floor__c</fullName>
@@ -565,33 +606,43 @@ IF(ISPICKVAL(Unit_Type__c,&apos;2 BR&apos;), 2,
         <externalId>false</externalId>
         <inlineHelpText>Description of units.</inlineHelpText>
         <label>Unit Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>SRO</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Studio</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>1 BR</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>2 BR</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>3 BR</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>SRO</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Studio</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>1 BR</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>2 BR</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>3 BR</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>4 BR</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>5 BR</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Washer_dryer_hook_ups__c</fullName>
@@ -676,9 +727,10 @@ IF(ISPICKVAL(Unit_Type__c,&apos;2 BR&apos;), 2,
         <label>Unit Details</label>
     </listViews>
     <nameField>
-        <label>Unit Name</label>
+        <displayFormat>UID-{0000000}</displayFormat>
+        <label>Unit ID</label>
         <trackHistory>false</trackHistory>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Units</pluralLabel>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
@@ -733,6 +785,14 @@ IF(ISPICKVAL(Unit_Type__c,&apos;2 BR&apos;), 2,
             </values>
             <values>
                 <fullName>3 BR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 BR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 BR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -796,6 +856,14 @@ IF(ISPICKVAL(Unit_Type__c,&apos;2 BR&apos;), 2,
             </values>
             <values>
                 <fullName>3 BR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 BR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 BR</fullName>
                 <default>false</default>
             </values>
             <values>
