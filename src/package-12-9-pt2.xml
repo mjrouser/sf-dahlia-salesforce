@@ -1,94 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-    <!-- Pivotal search for accepted stories (Package includes this) - "accepted:10/07/2016..11/16/2016 includedone:true" -->
     <types>
         <members>API_Application</members>
         <members>API_ApplicationService</members>
         <members>API_ApplicationServiceTest</members>
+        <members>API_LoggingService</members>
         <members>API_Person</members>
         <members>API_PersonTest</members>
-        <members>API_ShortForm</members>    
+        <members>API_ShortForm</members>
         <members>API_ShortFormTest</members>
-        <members>API_LoggingService</members>
-        <members>ApplicationMemberDuplicateAction</members>
-        <members>ApplicationStatusChangeAction</members>
         <members>ListingApplicationMemberDuplicateAction</members>
+        <members>ListingApplicationMemberDuplicateTest</members>
         <members>ListingApplicationStatusChangeAction</members>
+        <members>ListingApplicationStatusChangeActionTest</members>
+        <members>ListingService</members>
+        <members>ListingServiceTest</members>
+        <members>RecordTypeUtil</members>
         <name>ApexClass</name>
     </types>
-
-    <types> <!-- Confirm new pages -->
-        <name>ApexPage</name>
-    </types>
-    
     <types>
+        <members>ApplicationMemberTrigger</members>
+        <members>ApplicationTrigger</members>
         <name>ApexTrigger</name>
     </types>
-    
     <types>
-        <name>AuraDefinitionBundle</name>
-    </types>
-    
-    <types> <!-- Confirm custom fields -->
+        <members>Application_Member__c.Is_Application_Draft__c</members>
+        <members>Application_Member__c.isFiltered__c</members>
+       
         <name>CustomField</name>
-        <members>Unit.AMI_chart_type__c</members>
-        <members>Unit.AMI_chart_year__c</members>
-        <members>Unit.Rent_percent_of_income__c</members>
-        <members>Application.Housing_Voucher_or_Subsidy__c</members>
     </types>
-    
-     <types> <!-- Confirm new objects -->
+    <types>
         <members>API_Service_Log__c</members>
         <name>CustomObject</name>
     </types>
-
-    <types> <!-- Confirm impacted layouts -->
-        <name>Layout</name>
-    </types>
-    
     <types>
-        <name>WebLink</name>
+        <members>*</members>
+        <name>MatchingRule</name>
     </types>
-    
     <types>
-        <name>PermissionSet</name>
-    </types>
-    
-    <types> <!-- Will always include ALL profiles -->
         <members>Admin</members>
-        <members>MOHCD - Household</members>
-        <members>MOHCD - Leasing Agent</members>
-        <members>MOHCD - Leasing Agent Clerk</members>
-        <members>MOHCD - Lender</members>
-        <members>MOHCD - Property Agent</members>
         <members>MOHCD - Staff</members>
         <name>Profile</name>
     </types>
-
-    <types> <!-- Confirm any flows -->
-        <name>Flow</name>
-    </types>
-
-    <types>
-        <members>*</members>
-        <name>CustomMetadata</name>
-    </types>
-    <types>
-        <members>AMI_Chart__mdt</members>
-        <name>CustomObject</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>GlobalValueSet</name>
-    </types>
-
-    <!--
-    POST DEPLOY
-    1 - Update duplicate rules to match QA
-    2 - Confirm security updates on new custom fields
-    3 - Update page layouts for new Unit fields
-    -->
-   
     <version>38.0</version>
-    
 </Package>
