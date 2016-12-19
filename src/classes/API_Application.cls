@@ -9,8 +9,16 @@
 // *****************************************************************************
 
 global without sharing class API_Application {
+	//appmember types
 	public static final String PRIMARY_APPLICANT = 'Primary Applicant';
-	public static final String ALTERANTE_CONTACT = 'Alternate Contact';
+	public static final String ALTERNATE_CONTACT = 'Alternate Contact';
+	private static final String HOUSEHOLD_MEMBER = 'Household Member';
+	
+	private static final String CONTACT_APPLICANT_RT_DEVELOPER_NAME = 'Applicant';
+	private static final String ACCOUNT_HOUSEHOLD_RT_DEVELOPER_NAME = 'Household';
+	private static final ID CONTACT_APPLICANT_RT_ID = RecordTypeUtil.getRecordTypeIDByDevName('Contact',CONTACT_APPLICANT_RT_DEVELOPER_NAME);
+	private static final ID ACCOUNT_HOUSEHOLD_RT_ID =  RecordTypeUtil.getRecordTypeIDByDevName('Account',ACCOUNT_HOUSEHOLD_RT_DEVELOPER_NAME);
+	
 	private static boolean isNullorBlank(String value) {
 		return (value == null || value.length() == 0) ? true: false;
 	}
@@ -51,7 +59,7 @@ global without sharing class API_Application {
 		global String formMetadata;
 		
 		global ShortForm() {} 
-
+	
 		global ShortForm(Application__c app, List<Application_Member__c> hms) {
 			this.id = app.Id;
 			this.name = app.Name;
@@ -60,7 +68,7 @@ global without sharing class API_Application {
 			this.alternateContact = app.Alternate_Contact__r == null ? null : new Person(app.Alternate_Contact__r);
 			this.householdMembers = new List<Person>();
 			for (Application_Member__c am : hms) {
-				if (am.Type__c != PRIMARY_APPLICANT && am.Type__c != ALTERANTE_CONTACT) {
+				if (am.Type__c != PRIMARY_APPLICANT && am.Type__c != ALTERNATE_CONTACT) {
 					this.householdMembers.add(new Person(am));
 				}
 			}
@@ -181,6 +189,7 @@ global without sharing class API_Application {
 		global String relationship;
 		global String alternateContactType;
 		global String agency;
+		global String appMemberType; //maps to household member type
 		global String alternateContactTypeOther;
 		global String hasSameAddressAsApplicant;
 		global String neighborhoodPreferenceMatch;
@@ -197,12 +206,10 @@ global without sharing class API_Application {
 				String prettyDate = tempDateTime.format('YYYY-MM-dd');
 				system.debug(prettyDate);
 				return prettyDate;
-				/*
-				Integer m = inputDate.month();
+				/*Integer m = inputDate.month();
 				Integer d = inputDate.day();
 				Integer y = inputDate.year();
-				return y + '-' + m + '-' + d;
-				*/
+				return y + '-' + m + '-' + d;*/
 			}
 			return '';
 		}
@@ -214,11 +221,15 @@ global without sharing class API_Application {
 		}
 		
 		global String getKey() {
-			return this.firstName.toLowerCase() + ',' + this.lastName.toLowerCase() + ',' + this.parseDate(this.dob);
+			if (this.firstName != null && this.lastName != null && this.DOB!=null) {
+				return this.firstName.toLowerCase() + ',' + this.lastName.toLowerCase() + ',' + this.parseDate(this.dob);
+			}
+			else return null;
 		}
 
 		global Person() {}
-
+		
+		
 		global Person(Contact c) {
 			this.contactId = c.Id;
 			this.firstName = c.FirstName;
@@ -227,6 +238,8 @@ global without sharing class API_Application {
 			this.DOB = c.Birthdate;
 			this.email = c.Email;
 			this.webAppID = c.Webapp_Id__c;
+			
+			this.appMemberType = (c.recordtypeid == CONTACT_APPLICANT_RT_ID)?  PRIMARY_APPLICANT : '';
 			//we keep those fields blank because we forseeing using in the future
 			/*this.phone = c.Phone;
 			this.phoneType = c.Phone_Type__c;
@@ -292,6 +305,8 @@ global without sharing class API_Application {
 			this.noEmail = am.No_Email__c;
 			this.noAddress = am.No_Address__c;
 			this.hasAltMailingAddress = am.Has_Alt_Mailing_Address__c;
+			this.appMemberType = am.type__c;
+			
 		}
 
 		global Contact toContact() {
@@ -303,6 +318,7 @@ global without sharing class API_Application {
 			c.Birthdate = this.DOB;
 			c.Email = this.email;
 			c.Webapp_Id__c = this.webAppID;
+			c.recordtypeid = CONTACT_APPLICANT_RT_ID;//(this.appMemberType== PRIMARY_APPLICANT ) ? CONTACT_APPLICANT_RT_ID:'';
 			//we keep those fields blank because we forseeing using in the future
 			/*c.Phone = this.phone;
 			c.Phone_Type__c = this.phoneType;
@@ -368,6 +384,8 @@ global without sharing class API_Application {
 			am.No_Email__c = this.noEmail == null ? false : this.noEmail;
 			am.No_Address__c = this.noAddress == null ? false : this.noAddress;
 			am.Has_Alt_Mailing_Address__c = this.hasAltMailingAddress == null ? false : this.hasAltMailingAddress;
+			am.type__c = this.appMemberType;
+			
 			return am;
 		}
 		

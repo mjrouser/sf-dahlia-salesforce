@@ -21,7 +21,7 @@ global class API_ShortForm {
 
         RestRequest req = RestContext.request;
         RestResponse res = RestContext.response;
-        
+        API_LoggingService.logRequest(req);
         List<String> tokens = req.requestURI.split('/');
         if (tokens.size() != 3) {
             res.statusCode = 400;
@@ -44,10 +44,11 @@ global class API_ShortForm {
         
         RestRequest req = RestContext.request;
         RestResponse res = RestContext.response;
-
+		API_LoggingService.logRequest(req);
+		
         API_Application.ShortForm sf = (API_Application.ShortForm)JSON.deserialize(req.requestBody.toString(), API_Application.ShortForm.class);
 		sf.applicationSubmissionType = ELECTRONIC_SUBMISSION_TYPE;
-		
+        
         if (sf.id != null) {
         	Boolean invalidId = false;
         	try {

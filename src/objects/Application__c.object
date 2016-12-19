@@ -1473,6 +1473,7 @@ IF(
         <columns>Last_Name__c</columns>
         <columns>Date_of_birth__c</columns>
         <columns>Status__c</columns>
+        <columns>CREATED_DATE</columns>
         <columns>Housing_Voucher_or_Subsidy__c</columns>
         <columns>Annual_Income__c</columns>
         <columns>Monthly_Income__c</columns>

@@ -1,3 +1,12 @@
+// *****************************************************************************
+// CLASS: API_ShortFormTest
+// *****************************************************************************
+//
+// Author: Vertiba
+// Date: 03/08/16
+// Description: Test class for API_ShortForm.cls and API_ApplicationService.cls
+//
+// *
 @isTest
 private without sharing class API_ShortFormTest {
    	
@@ -196,8 +205,9 @@ private without sharing class API_ShortFormTest {
             RestContext.response = res;
 
             API_Application.ShortForm resSf = API_ShortForm.doPost();
-            system.assertEquals(resSf.householdMembers.size(), 2);
-            
+            system.debug ('shortform' + resSf);
+            system.assertEquals(resSf.householdMembers.size(), 2); // i think this is supposed to be 3
+         //    system.assertEquals(resSf.householdMembers.size(), 3);
             appM.First_Name__c = 'Test';
             sf = new API_Application.ShortForm(app, new List<Application_Member__c>{appM});
         	appM2 = new Application_Member__c(Application__c = app.Id, First_Name__c = 'firstName2', Last_Name__c = 'lastName2', Date_of_Birth__c = date.today().addYears(-20));

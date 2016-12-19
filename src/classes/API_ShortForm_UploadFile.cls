@@ -19,7 +19,8 @@ global class API_ShortForm_UploadFile {
 	@HttpPost
     global static Attachment attachPicture(){
     	RestRequest req = RestContext.request;
-    	system.debug('rest context '+req);
+    	API_LoggingService.logrequest(req); 
+    	//system.debug('rest context '+req);
     	String name = req.headers.containsKey('Name') ? req.headers.get('Name') : 'unnamed';
     	String contentType = req.headers.containsKey('ContentType') ? req.headers.get('ContentType') : '';
     	

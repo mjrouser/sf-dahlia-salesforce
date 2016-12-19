@@ -13,6 +13,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>API_LoggingService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>API_Person</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -213,6 +217,14 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>ListingApplicationMemberDuplicateAction</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ListingApplicationMemberDuplicateTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ListingDetailAPI</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -313,6 +325,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>RecordTypeUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>SalesforceDataTables</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -349,6 +365,31 @@
         <editable>false</editable>
         <field>AMI_Chart__mdt.Year__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>API_Service_Log__c.Body__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>API_Service_Log__c.Method__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>API_Service_Log__c.Serialized_Request__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>API_Service_Log__c.Serialized_Response__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>API_Service_Log__c.URL__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -433,6 +474,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Application_Member__c.Identify_as_Lesbian_Gay_Bisexual__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Application_Member__c.Is_Application_Draft__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2802,6 +2848,15 @@
         <layout>Unit__c-BMR Rental Unit Layout</layout>
         <recordType>Unit__c.BMR_Rental</recordType>
     </layoutAssignments>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>API_Service_Log__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>true</allowDelete>

@@ -740,6 +740,21 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
         <description>BMR Ownership</description>
         <label>BMR Ownership</label>
         <picklistValues>
+            <picklist>AMI_Chart_Types</picklist>
+            <values>
+                <fullName>HCD%2FTCAC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HUD Unadjusted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-HERA</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Property_Type__c</picklist>
             <values>
                 <fullName>Apartment</fullName>
@@ -810,6 +825,21 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
         <active>true</active>
         <description>BMR Rental</description>
         <label>BMR Rental</label>
+        <picklistValues>
+            <picklist>AMI_Chart_Types</picklist>
+            <values>
+                <fullName>HCD%2FTCAC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HUD Unadjusted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-HERA</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
         <picklistValues>
             <picklist>Property_Type__c</picklist>
             <values>

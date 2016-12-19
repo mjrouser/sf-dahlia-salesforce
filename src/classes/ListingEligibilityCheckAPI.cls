@@ -24,7 +24,7 @@ global class ListingEligibilityCheckAPI {
 	global static ListingService.Eligibility doGet () {
 		RestRequest req = RestContext.request;
 		RestResponse res = RestContext.response;
-		
+		API_LoggingService.logRequest(req);
 		List<String> tokens =  req.requestURI.split('/');
 		//sample uri = /Listing/EligibilityCheck/<sfdcid>
 		String id;

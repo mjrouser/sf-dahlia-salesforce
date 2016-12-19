@@ -4,6 +4,7 @@
         <members>API_Application</members>
         <members>API_ApplicationService</members>
         <members>API_ApplicationServiceTest</members>
+        <members>API_LoggingService</members>
         <members>API_Person</members>
         <members>API_PersonTest</members>
         <members>API_ShortForm</members>
@@ -54,6 +55,8 @@
         <members>ListingAMIApiTest</members>
         <members>ListingApi</members>
         <members>ListingApiTest</members>
+        <members>ListingApplicationMemberDuplicateAction</members>
+        <members>ListingApplicationMemberDuplicateTest</members>
         <members>ListingDetailAPI</members>
         <members>ListingDetailAPITest</members>
         <members>ListingEligibilityCheckAPI</members>
@@ -79,6 +82,7 @@
         <members>ListingUnitApiTest</members>
         <members>ListingUnitSummaryApi</members>
         <members>ListingUnitSummaryApiTest</members>
+        <members>RecordTypeUtil</members>
         <members>SalesforceDataTables</members>
         <members>SalesforceDataTablesInterface</members>
         <members>TriggerAction</members>
@@ -101,6 +105,8 @@
         <name>ApexPage</name>
     </types>
     <types>
+        <members>ApplicationMemberTrigger</members>
+        <members>ApplicationTrigger</members>
         <members>DuplicateRecordItemTrigger</members>
         <name>ApexTrigger</name>
     </types>
@@ -121,6 +127,7 @@
     <types>
         <members>AMI_Chart__mdt</members>
         <members>AMI__c</members>
+        <members>API_Service_Log__c</members>
         <members>Application_Member__c</members>
         <members>Application__c</members>
         <members>Application__c</members>
@@ -180,7 +187,6 @@
         <members>Listing_Image__c-Listing Image Layout</members>
         <members>Listing_Lottery_Preference__c-Listing Lottery Preference Layout</members>
         <members>Listing__c-Listing Layout</members>
-        <members>Lottery_Preference__c-Lottery Prefference Layout</members>
         <members>Lottery_Preference__c-Preference Layout</members>
         <members>Open_Houses__c-Community Open House Layout</members>
         <members>Open_Houses__c-Open House Layout</members>

@@ -228,6 +228,10 @@
                 <behavior>Readonly</behavior>
                 <field>LastModifiedById</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>isFiltered__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>

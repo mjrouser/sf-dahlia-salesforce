@@ -220,12 +220,5 @@ private class ListingServiceTest {
           System.assertEquals(ListingService.getAll(listingID).size(), 2);
           System.assertEquals(ListingService.getUnitByListingId(listingID).size(), 1);
     }
-    
-    static testMethod void getAMI() {
-          setupTestData();
-          ListingService.Ami filter = new ListingService.Ami();
-          System.assertEquals(ListingService.getByFilter(filter).size(), 1);
-          filter.amount = 100;
-          System.assertEquals(ListingService.Calc(filter).size(), 1);
-    }
+
 }

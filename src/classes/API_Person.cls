@@ -18,6 +18,7 @@ global class API_Person {
         
         RestRequest req = RestContext.request;
         RestResponse res = RestContext.response;
+        API_LoggingService.logRequest(req);
         
         List<String> tokens = req.requestURI.split('/');
         if (tokens.size() != 3) {
@@ -65,7 +66,8 @@ global class API_Person {
         
         res.statusCode = 200;
         
-        API_Application.Person updatedPerson = API_ApplicationService.upsertContactAndCascadeUpdate(person);
+        //API_Application.Person updatedPerson = API_ApplicationService.upsertContactAndCascadeUpdate(person);
+        API_Application.Person updatedPerson = API_ApplicationService.upsertPrimaryPerson(person);
         return updatedPerson;
     }
 

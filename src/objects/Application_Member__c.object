@@ -316,6 +316,15 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Is_Application_Draft__c</fullName>
+        <externalId>false</externalId>
+        <formula>ISPICKVAL(Application__r.Status__c, &quot;Draft&quot;)</formula>
+        <label>Is Application Draft</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Last_Name__c</fullName>
         <externalId>false</externalId>
         <label>Last Name</label>
@@ -897,6 +906,29 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>isFiltered__c</fullName>
+        <externalId>false</externalId>
+        <label>isFiltered</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>FALSE</fullName>
+                    <default>true</default>
+                </value>
+                <value>
+                    <fullName>TRUE</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>xNatural_key_test__c</fullName>
