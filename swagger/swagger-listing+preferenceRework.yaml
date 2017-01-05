@@ -449,25 +449,6 @@
               items:
                 $ref: "#/definitions/Lottery_Preference__c"
     
-    /Listing/Preferences/{listingID}':
-      get:
-        description: "returns listingpreferneces for listings by unit type"
-        parameters:
-          -
-            name: "listingID"
-            in: "path"
-            description: "listing id"
-            required: true
-            type: "string"
-        tags:
-          - "Listing"
-        responses:
-          200:
-            description: "Preferences for a giving Listing"
-            schema:
-              type: "array"
-              items:
-                $ref: "#/definitions/ListingPreference"
 
     /Listing/UnitSummary/{id}':
       get:
@@ -487,9 +468,25 @@
             schema:
               $ref: "#/definitions/UnitSummaries"
 
-             
-  
- 
+    /Listing/Preferences/{listingID}':
+      get:
+        description: "returns UnitSummary for listings by unit type"
+        parameters:
+          -
+            name: "listingID"
+            in: "path"
+            description: "listing id"
+            required: true
+            type: "string"
+        tags:
+          - "Listing"
+        responses:
+          200:
+            description: "Preferences for a giving Listing"
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/ListingPreference"
     /Listing/UnitSummary/':
       get:
         description: "returns UnitSummary for listings by unit type"
@@ -555,6 +552,41 @@
               items:
                 $ref: "#/definitions/AMI"
 
+    /ami/calc/:
+      get:
+        description: "Calculates the percentage ami based off household and amount and returns ami"
+        parameters:
+          -
+            name: "chartType"
+            in: "query"
+            description: "type of chart for AMI"
+            required: false
+            type: "string"
+          -
+            name: "year"
+            in: "query"
+            description: "year of the chart for the ami"
+            required: false
+            type: "number"
+          -  
+            name: "amount"
+            in: "query"
+            description: "amount"
+            required: true
+            type: "number"
+          -
+            name: "householdsize"
+            in: "query"
+            description: "household size"
+            required: true
+            type: "number"
+        tags:
+          - "AMI"
+        responses:
+          200:
+            description: "AMI entry"
+            schema:
+              $ref: "#/definitions/AMI"
     /ami/charts/:
       get:
         description: "returns the list of application charts type and years for those chart types"

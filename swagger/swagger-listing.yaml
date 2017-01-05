@@ -151,6 +151,7 @@
             description: "An array of listing"
             schema:
               $ref: "#/definitions/ListingResult"
+              
     /Listing/LotteryResult/Bucket/{listingID}:
       get:
         description: "this returns the bucket of lottery results, application results are empty
@@ -441,10 +442,8 @@
           200:
             description: "Units by listing ID"
             schema:
-              type: "array"
-              items:
-                $ref: "#/definitions/UnitSummary"
-    
+              $ref: "#/definitions/UnitSummaries"
+
     /Listing/Preferences/{listingID}':
       get:
         description: "returns UnitSummary for listings by unit type"
@@ -482,13 +481,25 @@
           200:
             description: "Units by listing ID"
             schema:
-              type: "array"
-              items:
-                $ref: "#/definitions/UnitSummary"
+              
+              $ref: "#/definitions/UnitSummaries"
+              
     /ami:
       get:
         description: "Returns the ami table value based on 2 passed in parameters"
         parameters:
+          -
+            name: "chartType"
+            in: "query"
+            description: "type of chart for AMI"
+            required: false
+            type: "string"
+          -
+            name: "year"
+            in: "query"
+            description: "year of the chart for the ami"
+            required: false
+            type: "number"
           -
             name: "percent"
             in: "query"
@@ -522,6 +533,18 @@
         description: "Calculates the percentage ami based off household and amount and returns ami"
         parameters:
           -
+            name: "chartType"
+            in: "query"
+            description: "type of chart for AMI"
+            required: false
+            type: "string"
+          -
+            name: "year"
+            in: "query"
+            description: "year of the chart for the ami"
+            required: false
+            type: "number"
+          -  
             name: "amount"
             in: "query"
             description: "amount"
@@ -540,6 +563,20 @@
             description: "AMI entry"
             schema:
               $ref: "#/definitions/AMI"
+    /ami/charts/:
+      get:
+        description: "returns the list of application charts type and years for those chart types"
+
+        tags:
+          - "AMI"
+        responses:
+          200:
+            description: "returns a list of AMI objects where the chart and year are filled out only."
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/AMI"
+            
     /LotteryMember/{id}':
       get:
         security:
@@ -640,98 +677,16 @@
               $ref: "#/definitions/Person"
           "400":
             description: Invalid ID supplied
-            
+
     /shortForm/list/{ContactID}:
       get:
-        deprecated: true
         security:
           - restrictedAccess:
             - ShortForm
         parameters:
           - in: path
             name: ContactID
-            description: list of shortforms by contact
-            required: true
-            type: string
-        description: "This returns the Listing information and its summary information."
-        tags:
-          - "Shortform Application"
-
-        responses:
-          "404":
-            description: Short form not found
-          "200":
-            description: successful operation
-            schema:
-              type: array
-              items:
-                $ref: '#/definitions/ShortForm'
-          "400":
-            description: Invalid ID supplied
-
-    /shortForm/contact/{sfdcID}:
-      get:
-        deprecated: true
-        security:
-          - restrictedAccess:
-            - ShortForm
-        parameters:
-          - in: path
-            name: sfdcID
-            description: list of shortforms by contact
-            required: true
-            type: string
-        description: "This returns the Listing information and its summary information."
-        tags:
-          - "Shortform Application"
-
-        responses:
-          "404":
-            description: Short form not found
-          "200":
-            description: successful operation
-            schema:
-              type: array
-              items:
-                $ref: '#/definitions/ShortForm'
-          "400":
-            description: Invalid ID supplied
-    /shortForm/account/{sfdcID}:
-      get:
-        deprecated: true
-        security:
-          - restrictedAccess:
-            - ShortForm
-        parameters:
-          - in: path
-            name: sfdcID
-            description: sfdc AccountID
-            required: true
-            type: string
-        description: "This returns the Listing information and its summary information."
-        tags:
-          - "Shortform Application"
-
-        responses:
-          "404":
-            description: Short form not found
-          "200":
-            description: successful operation
-            schema:
-              type: array
-              items:
-                $ref: '#/definitions/ShortForm'
-          "400":
-            description: Invalid ID supplied
-    /shortForm/webappID/{sfdcID}:
-      get:
-        deprecated: true
-        security:
-          - restrictedAccess:
-            - ShortForm
-        parameters:
-          - in: path
-            name: sfdcID
+            
             description: external webappID 
             required: true
             type: string
@@ -775,7 +730,7 @@
           "400":
             description: Invalid ID supplied
     /shortForm/:
-      post:
+      put:
         security:
           - restrictedAccess:
             - ShortForm
@@ -798,6 +753,7 @@
               $ref: "#/definitions/ShortForm"
           "400":
             description: Invalid ID supplied
+ 
     /shortForm/delete/{shortFormId}:
       delete:
         security:
@@ -871,6 +827,18 @@
             description: OK
   definitions:
 
+    UnitSummaries:
+      type: "object"
+      description: "summary statistics of a given unit type per listing"
+      properties:
+        general:
+          type: array
+          items:
+              $ref: '#/definitions/UnitSummary'
+        reserved:
+          type: array
+          items:
+              $ref: '#/definitions/UnitSummary'
     UnitSummary:
       type: "object"
       description: "summary statistics of a given unit type per listing"
@@ -908,6 +876,16 @@
         maxRentalMinIncome:
           type: "number"
           description: "highest minimum required income at this type for this listing"
+        minPrecentIncome:
+          type: "number"
+          description: "lowest rent percent income at this type for this listing"
+        maxPercentIncome:
+          type: "number"
+          description: "max rent percent income at this type for this listing"
+        priorities:
+          type: "array"
+          items:
+            type: string
 
     ListingDetails:
       type: "object"
@@ -916,16 +894,16 @@
         listingID:
           type: "string"
           description: "the listing id"
-        unitSummary:
-          type: "array"
-          items:
-            $ref: "#/definitions/UnitSummary"
+        
+        unitSummaries:
+          $ref: '#/definitions/UnitSummaries'
+
         doesMatch:
           type: "boolean"
           description: "does listing match passed criteria"
         listing:
             $ref: '#/definitions/Listing__c'
-    
+  
     Listing__c:
       type: "object"
       description: ""
@@ -1113,11 +1091,9 @@
         Pet_Policy__c:
           type: "string"
           description: ""
+          
         Accepting_Online_Applications__c:
           type: "boolean"
-          description: ""
-        Project_ID__c:
-          type: "string"
           description: ""
 
     Unit__c:
@@ -1150,11 +1126,29 @@
           type: number
           format: double
           description: ''
+        isReserved__c:
+          type: boolean
+          description: 'is this unit reserved or not'
+        rent_percent_of_income__c:
+          type: number
+          format: double
+          description: 'percent in the format of 100.00 (whole numbers not decimals) showing rent precent of income'
+        building_priority__c:
+          type: string
+          description: 'name of priority attached to this unit - this priority comes from a subset of building priorities'
+      
+
 
     AMI:
       type: "object"
       description: "summary statistics of a given unit type per listing"
       properties:
+        chartType:
+          type: "string"
+          description: "precentage"
+        year:
+          type: "number"
+          description: "4 digit year of the chart"
         percent:
           type: "number"
           description: "precentage"
@@ -1325,7 +1319,7 @@
           type: "string"
           format: "url"
           description: "readMore Url"
-        NRHPDistrict:
+        NRHP District:
           type: "string"
           description: "neighborhood district "
         appTotal:
@@ -1334,7 +1328,7 @@
         unitsAvailable:
           type: "number"
           description: "total units available "
-    
+     
     ListingResult:
       type: "object"
       description: "lottery result"
@@ -1435,7 +1429,6 @@
           type: array
           items:
               $ref: '#/definitions/BucketResult'
-  
     BucketResult:
       type: "object"
       description: "ApplicationResult"
@@ -1610,6 +1603,8 @@
         neighborhoodPreferenceMatch:
           type: "string"
           description: "the front end can validate that the neighborhood preference matches- Value {match, unmatched, <blank>}  "
+
+          
         noPhone:
           type: "boolean"
           description: "the front end validates if user has phone"
@@ -1622,7 +1617,7 @@
         hasAltMailingAddress:
           type: "boolean"
           description: "the front end validates if user has an alternative mailing address"
-
+    
     Attachment__C:
       type: "object"
       description: "Applicant Contact"
