@@ -1267,7 +1267,7 @@
           type: "string"
           format: "url"
           description: "readMore Url"
-        NRHP District:
+        NRHPDistrict:
           type: "string"
           description: "neighborhood district "
         appTotal:
