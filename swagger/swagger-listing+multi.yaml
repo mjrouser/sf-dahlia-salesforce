@@ -1187,7 +1187,32 @@
         building_priority__c:
           type: string
           description: 'name of priority attached to this unit - this priority comes from a subset of building priorities'
-      
+        Priority_Type__c:
+          type: string
+          description: ''
+        Priority_Grouping__c:
+          type: string
+          description: ''
+        isReservedCommunity__c:
+          type: boolean
+          description: ''
+        Reserved_Type__c:
+          type: string
+          description: ''
+        Status__c:
+          type: string
+          description: ''
+        AMI_chart_type__c:
+          type: string
+          description: ''
+        AMI_chart_year__c:
+          type: number
+          description: ''
+        of_AMI_for_Pricing_Unit__c:
+          type: number
+          format: double
+          description: ''
+        
 
 
     AMI:
