@@ -680,95 +680,13 @@
 
     /shortForm/list/{ContactID}:
       get:
-        deprecated: true
         security:
           - restrictedAccess:
             - ShortForm
         parameters:
           - in: path
             name: ContactID
-            description: list of shortforms by contact
-            required: true
-            type: string
-        description: "This returns the Listing information and its summary information."
-        tags:
-          - "Shortform Application"
             
-        responses:
-          "404":
-            description: Short form not found
-          "200":
-            description: successful operation
-            schema:
-              type: array
-              items:
-                $ref: '#/definitions/ShortForm'
-          "400":
-            description: Invalid ID supplied
-
-    /shortForm/contact/{sfdcID}:
-      get:
-        deprecated: true
-        security:
-          - restrictedAccess:
-            - ShortForm
-        parameters:
-          - in: path
-            name: sfdcID
-            description: list of shortforms by contact
-            required: true
-            type: string
-        description: "This returns the Listing information and its summary information."
-        tags:
-          - "Shortform Application"
-
-        responses:
-          "404":
-            description: Short form not found
-          "200":
-            description: successful operation
-            schema:
-              type: array
-              items:
-                $ref: '#/definitions/ShortForm'
-          "400":
-            description: Invalid ID supplied
-    /shortForm/account/{sfdcID}:
-      get:
-        deprecated: true
-        security:
-          - restrictedAccess:
-            - ShortForm
-        parameters:
-          - in: path
-            name: sfdcID
-            description: sfdc AccountID
-            required: true
-            type: string
-        description: "This returns the Listing information and its summary information."
-        tags:
-          - "Shortform Application"
-
-        responses:
-          "404":
-            description: Short form not found
-          "200":
-            description: successful operation
-            schema:
-              type: array
-              items:
-                $ref: '#/definitions/ShortForm'
-          "400":
-            description: Invalid ID supplied
-    /shortForm/webappID/{sfdcID}:
-      get:
-        deprecated: true
-        security:
-          - restrictedAccess:
-            - ShortForm
-        parameters:
-          - in: path
-            name: sfdcID
             description: external webappID 
             required: true
             type: string

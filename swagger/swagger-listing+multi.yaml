@@ -448,6 +448,7 @@
               type: "array"
               items:
                 $ref: "#/definitions/Lottery_Preference__c"
+    
 
     /Listing/UnitSummary/{id}':
       get:
@@ -465,10 +466,8 @@
           200:
             description: "Units by listing ID"
             schema:
-              type: "array"
-              items:
-                $ref: "#/definitions/UnitSummary"
-  
+              $ref: "#/definitions/UnitSummaries"
+
     /Listing/Preferences/{listingID}':
       get:
         description: "returns UnitSummary for listings by unit type"
@@ -506,13 +505,25 @@
           200:
             description: "Units by listing ID"
             schema:
-              type: "array"
-              items:
-                $ref: "#/definitions/UnitSummary"
+              
+              $ref: "#/definitions/UnitSummaries"
+              
     /ami:
       get:
         description: "Returns the ami table value based on 2 passed in parameters"
         parameters:
+          -
+            name: "chartType"
+            in: "query"
+            description: "type of chart for AMI"
+            required: false
+            type: "string"
+          -
+            name: "year"
+            in: "query"
+            description: "year of the chart for the ami"
+            required: false
+            type: "number"
           -
             name: "percent"
             in: "query"
@@ -546,6 +557,18 @@
         description: "Calculates the percentage ami based off household and amount and returns ami"
         parameters:
           -
+            name: "chartType"
+            in: "query"
+            description: "type of chart for AMI"
+            required: false
+            type: "string"
+          -
+            name: "year"
+            in: "query"
+            description: "year of the chart for the ami"
+            required: false
+            type: "number"
+          -  
             name: "amount"
             in: "query"
             description: "amount"
@@ -564,6 +587,20 @@
             description: "AMI entry"
             schema:
               $ref: "#/definitions/AMI"
+    /ami/charts/:
+      get:
+        description: "returns the list of application charts type and years for those chart types"
+
+        tags:
+          - "AMI"
+        responses:
+          200:
+            description: "returns a list of AMI objects where the chart and year are filled out only."
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/AMI"
+            
     /LotteryMember/{id}':
       get:
         security:
@@ -815,6 +852,18 @@
             description: OK
   definitions:
 
+    UnitSummaries:
+      type: "object"
+      description: "summary statistics of a given unit type per listing"
+      properties:
+        general:
+          type: array
+          items:
+              $ref: '#/definitions/UnitSummary'
+        reserved:
+          type: array
+          items:
+              $ref: '#/definitions/UnitSummary'
     UnitSummary:
       type: "object"
       description: "summary statistics of a given unit type per listing"
@@ -852,6 +901,16 @@
         maxRentalMinIncome:
           type: "number"
           description: "highest minimum required income at this type for this listing"
+        minPercentIncome:
+          type: "number"
+          description: "lowest rent percent income at this type for this listing"
+        maxPercentIncome:
+          type: "number"
+          description: "max rent percent income at this type for this listing"
+        priorities:
+          type: "array"
+          items:
+            type: string
 
     ListingDetails:
       type: "object"
@@ -860,16 +919,16 @@
         listingID:
           type: "string"
           description: "the listing id"
-        unitSummary:
-          type: "array"
-          items:
-            $ref: "#/definitions/UnitSummary"
+        
+        unitSummaries:
+          $ref: '#/definitions/UnitSummaries'
+
         doesMatch:
           type: "boolean"
           description: "does listing match passed criteria"
         listing:
             $ref: '#/definitions/Listing__c'
-    
+  
     Listing__c:
       type: "object"
       description: ""
@@ -1092,11 +1151,29 @@
           type: number
           format: double
           description: ''
+        isReserved__c:
+          type: boolean
+          description: 'is this unit reserved or not'
+        rent_percent_of_income__c:
+          type: number
+          format: double
+          description: 'percent in the format of 100.00 (whole numbers not decimals) showing rent precent of income'
+        building_priority__c:
+          type: string
+          description: 'name of priority attached to this unit - this priority comes from a subset of building priorities'
+      
+
 
     AMI:
       type: "object"
       description: "summary statistics of a given unit type per listing"
       properties:
+        chartType:
+          type: "string"
+          description: "precentage"
+        year:
+          type: "number"
+          description: "4 digit year of the chart"
         percent:
           type: "number"
           description: "precentage"

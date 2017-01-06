@@ -143,7 +143,7 @@
             required: true
             type: "string"
 
-        deprecated: true
+
         tags:
           - "Listing"
         responses:
@@ -167,7 +167,6 @@
 
         tags:
           - "Listing"
-        deprecated: true
         responses:
           200:
             description: "An array of listing"
@@ -197,27 +196,7 @@
           200:
             description: "An array of listing"
             schema:
-              $ref: "#/definitions/LotteryResult"
-    /Listing/LotteryResult/{listingID}:
-      get:
-        description: "This returns the Listing result - with 1 applicationResult inside this is the Application with the appropriate lottery number.  If no lotteryNumber fits, applicationsResult will be empty.  If listing isIncorrect it will error."
-        parameters:
-          -
-            name: "listingID"
-            in: "path"
-            description: "listingID for lottery"
-            required: true
-            type: "string"
-         
-
-        tags:
-          - "Listing"
-        responses:
-          200:
-            description: "An array of listing"
-            schema:
-              $ref: "#/definitions/LotteryResult"
-
+              $ref: "#/definitions/ListingResult"
 
     /ListingDetails/{sfdcid}:
       get:
@@ -400,7 +379,6 @@
                 $ref: "#/definitions/Unit__c"
     /LotteryPreference/{id}':
       get:
-        deprecated: true
         description: "returns lottery Preference by ID"
         parameters:
           -
@@ -421,7 +399,6 @@
                 $ref: "#/definitions/Lottery_Preference__c"
     /LotteryPreference/':
       get:
-        deprecated: true
         description: "returns lottery preferences by ID.  If not id is provided it returns all lottery preferences"
         parameters:
 
@@ -448,26 +425,6 @@
               type: "array"
               items:
                 $ref: "#/definitions/Lottery_Preference__c"
-    
-    /Listing/Preferences/{listingID}':
-      get:
-        description: "returns listingpreferneces for listings by unit type"
-        parameters:
-          -
-            name: "listingID"
-            in: "path"
-            description: "listing id"
-            required: true
-            type: "string"
-        tags:
-          - "Listing"
-        responses:
-          200:
-            description: "Preferences for a giving Listing"
-            schema:
-              type: "array"
-              items:
-                $ref: "#/definitions/ListingPreference"
 
     /Listing/UnitSummary/{id}':
       get:
@@ -487,9 +444,25 @@
             schema:
               $ref: "#/definitions/UnitSummaries"
 
-             
-  
- 
+    /Listing/Preferences/{listingID}':
+      get:
+        description: "returns UnitSummary for listings by unit type"
+        parameters:
+          -
+            name: "listingID"
+            in: "path"
+            description: "listing id"
+            required: true
+            type: "string"
+        tags:
+          - "Listing"
+        responses:
+          200:
+            description: "Preferences for a giving Listing"
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/ListingPreference"
     /Listing/UnitSummary/':
       get:
         description: "returns UnitSummary for listings by unit type"
@@ -555,6 +528,41 @@
               items:
                 $ref: "#/definitions/AMI"
 
+    /ami/calc/:
+      get:
+        description: "Calculates the percentage ami based off household and amount and returns ami"
+        parameters:
+          -
+            name: "chartType"
+            in: "query"
+            description: "type of chart for AMI"
+            required: false
+            type: "string"
+          -
+            name: "year"
+            in: "query"
+            description: "year of the chart for the ami"
+            required: false
+            type: "number"
+          -  
+            name: "amount"
+            in: "query"
+            description: "amount"
+            required: true
+            type: "number"
+          -
+            name: "householdsize"
+            in: "query"
+            description: "household size"
+            required: true
+            type: "number"
+        tags:
+          - "AMI"
+        responses:
+          200:
+            description: "AMI entry"
+            schema:
+              $ref: "#/definitions/AMI"
     /ami/charts/:
       get:
         description: "returns the list of application charts type and years for those chart types"
@@ -801,11 +809,10 @@
 
     /shortForm/contact/delete:
       post:
-        deprecated: true
         security:
           - restrictedAccess:
             - ShortForm
-        description: deletes specified contact from household  - use "delete" instead
+        description: deletes specified contact from household
         parameters:
         - name: id
           in: query
@@ -869,7 +876,7 @@
         maxRentalMinIncome:
           type: "number"
           description: "highest minimum required income at this type for this listing"
-        minPercentIncome:
+        minPrecentIncome:
           type: "number"
           description: "lowest rent percent income at this type for this listing"
         maxPercentIncome:
@@ -1203,10 +1210,6 @@
           type: array
           items:
               $ref: '#/definitions/Person'
-        shortFormPreferences:
-          type: array
-          items:
-              $ref: '#/definitions/ShortFormPreference'
         worksInSanFrancisco:
           type: "boolean"
           description: "currently works In SF"
@@ -1214,8 +1217,8 @@
           type: "string"
           description: "how applicant found out about the program (multiselect)"
         agreeToTerms:
-          type: "string"
-          description: "applicant agrees to terms of application - Value {true, false, <blank>}"
+          type: "boolean"
+          description: "applicant agrees to terms of application"
         householdVouchersSubsidies:
           type: "string"
           description: "household has vouchers or subsidies - Value {true, false, <blank>}"
@@ -1228,7 +1231,45 @@
         liveInSfPreferenceManual:
           type: "boolean"
           description: "manual override for livework preference"
-    
+        liveInSfPreferenceNatKey:
+          type: "string"
+          description: "implicit -(first,lastname,DOB) can be provided on insert, or sfdcID. (0 is primary applicant)"
+        liveInSfPreferenceID:
+          type: "string"
+          description: "sfdc household_member__c which holds preference"
+        workInSfPreferenceNatKey:
+          type: "string"
+          description: "naturalkey  = lastName,FirstName,DOB(YYYY-MM-DD) can be provided on insert as an alternate to sfdcID"
+        worksInSfPreferenceID:
+          type: "string"
+          description: "sfdc household_member__r.id which holds preference"
+        displacedPreferenceNatKey:
+          type: "string"
+          description:  "naturalkey  = lastName,FirstName,DOB(MM.DD.YYYY) can be provided on insert as an alternate to sfdcID"
+        displacedPreferenceID:
+          type: "string"
+          description: "sfdc household_member__c which holds preference"
+        certOfPreferenceNatKey:
+          type: "string"
+          description:  "naturalkey  = lastName,FirstName,DOB(MM.DD.YYYY) can be provided on insert as an alternate to sfdcID"
+        certOfPreferenceID:
+          type: "string"
+          description: "sfdc household_member__c which holds preference"
+        neighborhoodPreferenceNatKey:
+          type: "string"
+          description:  "naturalkey  = lastName,FirstName,DOB(MM.DD.YYYY) can be provided on insert as an alternate to sfdcID"
+        neighborhoodPreferenceID:
+          type: "string"
+          description: "sfdc household_member__c which holds preference"
+        liveInSfPreferenceProof:
+          type: "string"
+          description: "picklist (telephone bill, electric bill etc)"
+        workInSfPreferenceProof:
+          type: "string"
+          description: "picklist (telephone bill, electric bill etc)"
+        neighborhoodPreferenceProof:
+          type: "string"
+          description: "picklist (telephone bill, electric bill etc)"
         status:
           type: "string"
           description: "application status"
@@ -1245,49 +1286,12 @@
         lotteryNumber:
           type: "string"
           description: "lottery number"
-    
-    LotteryResult:
-      type: "object"
-      description: "lottery result"
-      properties:
-        listingID:
+        lotteryNumberManual:
           type: "string"
-          description: "listing ID"
-        bucketResults:
-          type: array
-          items:
-              $ref: '#/definitions/LotteryBucket'
-       
-        URL:
+          description: "lottery number"
+        formMetadata:
           type: "string"
-          description: "randome.org url"
-        lotteryResultsURL:
-          type: "string"
-          description: "link to a file"
- 
-        lotteryAppTotal:
-          type: "number"
-          description: "total applications for  lottery"
-        lotteryCity:
-          type: "string"
-          description: "listing lottery City"
-        lotteryDate:
-          type: "string"
-          format: "date"
-          description: "lottery date "
-        lotteryEndTime:
-          type: "string"
-          format: "date"
-          description: "lottery date "
-        lotteryPreferences:
-          type: "string"
-          description: "preferences" 
-        lotteryResults:
-          type: "boolean"
-          description: "lotteryResults"
-        officeHours:
-          type: "string"
-          description: "office hours"
+          description: "additional metadata that can be saved on the form - non user input data"
     
     ListingPreference:
       type: "object"
@@ -1296,15 +1300,18 @@
         listingPreferenceID:
           type: "string"
           description: "salesforce ID"
-      
+        listingID:
+          type: "string"
+          description: "listing salesforce ID"
         name:
           type: "string"
           description: "preference"
-          
+        preferenceName:
+          type: "string"
+          description: "preference name"
         order:
           type: "number"
           description: "order to display in"
- 
         description:
           type: "string"
           description: "description"
@@ -1321,32 +1328,10 @@
         unitsAvailable:
           type: "number"
           description: "total units available "
-      
-    ShortFormPreference:
-      type: "object"
-      description: "Application preference"
-      properties:
-        preferenceType:
-          type: "string"
-          description: "preference type (COP, DTHP etc..)"
-      
-        appMemberID:
-          type: "string"
-          description: "application Member ID"
- 
-        naturalKey:
-          type: "string"
-          description: "naturalKey"
      
-        listingPreferenceID:
-          type: "string"
-          description: "listing Preference ID"
-        preferenceProof:
-          type: "string"
-          description: "type of proof given "
     ListingResult:
       type: "object"
-      description: "lottery result - deprecated"
+      description: "lottery result"
       properties:
         listingID:
           type: "string"
@@ -1368,7 +1353,6 @@
         liveWorkPreferenceAppTotal:
           type: "number"
           description: "total applications for preference"
-        
         liveWorkPreferenceUnitsAvailable:
           type: "number"
           description: "total slots for preference"
@@ -1413,7 +1397,6 @@
         officeHours:
           type: "string"
           description: "office hours"
-     
 
     Eligibility:
       type: "object"
@@ -1435,24 +1418,6 @@
           type: "boolean"
           description: "does income match passed criteria"
           
-    LotteryBucket:
-      type: "object"
-      description: "list of application results by preference"
-      properties:
-        PreferenceName:
-          type: "string"
-          description: "Preference name, (liveWork,COP,DCP,Neighborhood)"
-        AppTotal:
-          type: "number"
-          description: "total applications for preference"
-        UnitsAvailable:
-          type: "number"
-          description: "total slots for preference"
-        bucketResults:
-          type: array
-          items:
-              $ref: '#/definitions/ApplicationResult'
-  
     PreferenceBucket:
       type: "object"
       description: "list of application results by preference"
@@ -1463,8 +1428,8 @@
         bucketResults:
           type: array
           items:
-              $ref: '#/definitions/ApplicationResult'
-    ApplicationResult:
+              $ref: '#/definitions/BucketResult'
+    BucketResult:
       type: "object"
       description: "ApplicationResult"
       properties:
@@ -1482,7 +1447,47 @@
           format: "int32"
           description: "raw lottery rank returned form drawing"
        
-  
+    ApplicationResult:
+      type: "object"
+      description: "ApplicationResult"
+      properties:
+        applicationID:
+          type: "string"
+          description: "ApplicationID ID"
+        liveWorkPreference:
+          type: "boolean"
+          description: "true/false"
+        liveWorkPreferenceRank:
+          type: "number"
+          description: "raw rank for this live work - which are treated as one preference"
+        displacedPreference:
+          type: "boolean"
+          description: "true/false"
+        displacedPreferenceRank:
+          type: "number"
+          description: "raw rank for this preference"
+        certOfPreference:
+          type: "boolean"
+          description: "true/false"
+        certOfPreferenceRank:
+          type: "number"
+          description: "raw rank for this preference"
+        neighborhoodPreference:
+          type: "boolean"
+          description: "true/false"
+        neighborhoodPreferenceRank:
+          type: "number"
+          description: "raw rank for this preference"
+        generalLotteryRank:
+          type: "number"
+          description: "raw rank for general lottery"
+        lotteryNumber:
+          type: "string"
+          description: "the lottery number  "
+        lotteryRank:
+          type: "integer"
+          format: "int32"
+          description: "raw lottery rank returned form drawing"
 
     Person:
       type: "object"
