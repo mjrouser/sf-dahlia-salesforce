@@ -919,8 +919,11 @@
         listingID:
           type: "string"
           description: "the listing id"
-        
+        chartTypes:          
+          description: "this is the set of charttypes for units on a given listing "
+          $ref: '#/definitions/AMI'          
         unitSummaries:
+          description: "this is the set of summaries against units "
           $ref: '#/definitions/UnitSummaries'
 
         doesMatch:
