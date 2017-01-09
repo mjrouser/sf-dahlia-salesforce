@@ -1146,6 +1146,9 @@
         Accepting_Online_Applications__c:
           type: "boolean"
           description: ""
+        Services_Onsite__c:
+          type: "string"
+          description: ""
 
     Unit__c:
       type: object
