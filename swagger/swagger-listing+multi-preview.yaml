@@ -919,7 +919,9 @@
         listingID:
           type: "string"
           description: "the listing id"
-        
+        chartTypes:
+          $ref: '#/definitions/AMI'
+
         unitSummaries:
           $ref: '#/definitions/UnitSummaries'
 
