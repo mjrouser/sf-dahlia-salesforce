@@ -1,0 +1,1673 @@
+---
+  swagger: "2.0"
+  info:
+    version: "1.2.0"
+    title: "SFMOHD API"
+    description:  |
+      The first version of the SFMO Housing API is an exciting step in providing information to listings to apply.  We want to make it easy for you, to build apps and have open access to city Listing data to apply for affordable housing
+
+      There are two ways to connect to the api-
+      The listing data is public domain and can be accessed at <publicsite>/salesforce.com/apexrest
+      You can connect your listing information to this
+
+      To connect a full fledge application to the city data in order to facilitate applications please email the city, and we will get you the proper credentials.
+      All application data requires oauth to connect.
+
+
+  host: "salesforce.com"
+  schemes:
+    - "https"
+  basePath: "/services/apexrest"
+  produces:
+    - "application/json"
+
+  securityDefinitions:
+    restrictedAccess:
+      type: oauth2
+      flow: password
+      tokenUrl: https://test.salesforce.com/services/oauth2/token
+      scopes:
+        Listing: |
+          Information of a particular listing, including qualifications, to apply for listing as well as details on the listing itself - this is available via public and pwd based oauth
+        ListingDetails: |
+          Listing information coupled with detailed information on unit summary data, and if a criteria was passed in the request, it will show the "match" on the citeria
+        UnitSummary: summary information on particular unit types for a listing
+        ShortForm: the shortform application for a particular person for a particular listing this includes contact/household information for a person
+        LotteryMember: current lottery memebers for a given listing
+        
+        Person: primary applicant/person who will have applications connected to them.  
+
+        ami: ami calculation
+    public:
+      type: apiKey
+      in: query
+      name: access_token
+
+  security:
+    - restrictedAccess:
+      - Listing
+      - ListingDetails
+      - LotteryMember
+      - UnitSummary
+      - ShortForm
+      - Person
+      - ami
+
+    - public: []
+
+
+  paths:
+   
+    
+    /Listing/{sfdcid}:
+      get:
+
+        description: "This returns the Listing information and its summary information."
+        parameters:
+          -
+            name: "sfdcid"
+            in: "path"
+            description: "sfdc listing id put into the path"
+            required: true
+            type: "string"
+        tags:
+          - "Listing"
+        responses:
+          200:
+            description: "An array of listings"
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/Listing__c"
+
+    /Listing:
+      get:
+        description: "This returns the Listing information and its summary information."
+        parameters:
+          -
+            name: "id"
+            in: "query"
+            description: "sfdc listing id"
+            required: false
+            type: "string"
+          -
+            name: "ids"
+            in: "query"
+            description: "sfdc listing ids split by ','"
+            required: false
+            type: "string"
+          -
+            name: "householdsize"
+            in: "query"
+            description: "household size"
+            required: false
+            type: "string"
+          -
+            name: "incomelevel"
+            in: "query"
+            description: "income level"
+            required: false
+            type: "string"
+          -
+            name: "childrenUnder6"
+            in: "query"
+            description: "number of children under 6"
+            required: false
+            type: "string"
+          -
+            name: "preference"
+            in: "query"
+            description: "Certificate of Preference, Ellis Act, Live\\Work"
+            required: false
+            type: "string"
+
+        tags:
+          - "Listing"
+        responses:
+          200:
+            description: "An array of listing"
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/Listing__c"
+
+
+    /Listing/LotteryResult/Summary/{listingID}:
+      get:
+        description: "This returns the LotteryResult"
+        parameters:
+          -
+            name: "listingID"
+            in: "path"
+            description: "this returns the application lottery results, bucket results are empty"
+            required: true
+            type: "string"
+
+        deprecated: true
+        tags:
+          - "Listing"
+        responses:
+          200:
+            description: "An array of listing"
+            schema:
+              $ref: "#/definitions/ListingResult"
+              
+    /Listing/LotteryResult/Bucket/{listingID}:
+      get:
+        description: "this returns the bucket of lottery results, application results are empty
+            the bucket of results is a list of applicaition results by preference - we may need to add additional filter parameters to define result set size - default is to return top 100"
+        parameters:
+          -
+            name: "listingID"
+            in: "path"
+            description: "listingID for the application"
+            required: true
+            type: "string"
+
+
+        tags:
+          - "Listing"
+        deprecated: true
+        responses:
+          200:
+            description: "An array of listing"
+            schema:
+              $ref: "#/definitions/ListingResult"
+    /Listing/LotteryResult/{listingID}/{lotteryNumber}:
+      get:
+        description: "This returns the Listing result - with 1 applicationResult inside this is the Application with the appropriate lottery number.  If no lotteryNumber fits, applicationsResult will be empty.  If listing isIncorrect it will error."
+        parameters:
+          -
+            name: "listingID"
+            in: "path"
+            description: "listingID for lottery"
+            required: true
+            type: "string"
+          -
+            name: "lotteryNumber"
+            in: "path"
+            description: "lottery number to look up"
+            required: true
+            type: "string"
+         
+
+        tags:
+          - "Listing"
+        responses:
+          200:
+            description: "An array of listing"
+            schema:
+              $ref: "#/definitions/LotteryResult"
+    /Listing/LotteryResult/{listingID}:
+      get:
+        description: "This returns the Listing result - with 1 applicationResult inside this is the Application with the appropriate lottery number.  If no lotteryNumber fits, applicationsResult will be empty.  If listing isIncorrect it will error."
+        parameters:
+          -
+            name: "listingID"
+            in: "path"
+            description: "listingID for lottery"
+            required: true
+            type: "string"
+         
+
+        tags:
+          - "Listing"
+        responses:
+          200:
+            description: "An array of listing"
+            schema:
+              $ref: "#/definitions/LotteryResult"
+
+
+    /ListingDetails/{sfdcid}:
+      get:
+        description: "This returns the Listing information and its summary information."
+        parameters:
+          -
+            name: "sfdcid"
+            in: "path"
+            description: "sfdc listing id put into the path"
+            required: true
+            type: "string"
+        tags:
+          - "Listing"
+        responses:
+          200:
+            description: "An array of listing details"
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/ListingDetails"
+
+    /ListingDetails:
+      get:
+        description: "This returns the Listing information and its summary information."
+        parameters:
+          -
+            name: "id"
+            in: "query"
+            description: "sfdc listing id"
+            required: false
+            type: "string"
+          -
+            name: "ids"
+            in: "query"
+            description: "sfdc listing id"
+            required: false
+            type: "string"
+          -
+            name: "householdsize"
+            in: "query"
+            description: "household size"
+            required: false
+            type: "string"
+          -
+            name: "incomelevel"
+            in: "query"
+            description: "income level"
+            required: false
+            type: "string"
+          -
+            name: "childrenUnder6"
+            in: "query"
+            description: "number of children under 6"
+            required: false
+            type: "string"
+          -
+            name: "preference"
+            in: "query"
+            description: "Certificate of Preference, Ellis Act, Live\\Work"
+            required: false
+            type: "string"
+        tags:
+          - "Listing"
+        responses:
+          200:
+            description: "An array of listing details"
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/ListingDetails"
+    /ListingDetails/Criteria/:
+      get:
+        description: "This queries the Listing information and its summary information."
+        parameters:
+          -
+            name: "householdsize"
+            in: "query"
+            description: "household size"
+            required: false
+            type: "string"
+          -
+            name: "incomelevel"
+            in: "query"
+            description: "income level"
+            required: false
+            type: "string"
+          -
+            name: "childrenUnder6"
+            in: "query"
+            description: "number of children under 6"
+            required: false
+            type: "string"
+          -
+            name: "preference"
+            in: "query"
+            description: "Certificate of Preference, Ellis Act, Live\\Work"
+            required: false
+            type: "string"
+        tags:
+          - "Listing"
+        responses:
+          200:
+            description: "An array of listingdetails queried by criteria <this end point doesn't exist it is proposed>"
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/ListingDetails"
+    /Listing/EligibilityCheck:
+      get:
+        description: "This returns the Listing Id and eligibility information."
+        parameters:
+          -
+            name: "id"
+            in: "query"
+            description: "sfdc listing id"
+            required: true
+            type: "string"
+          -
+            name: "householdsize"
+            in: "query"
+            description: "household size"
+            required: true
+            type: "string"
+          -
+            name: "incomelevel"
+            in: "query"
+            description: "income level"
+            required: false
+            type: "string"
+          -
+            name: "childrenUnder6"
+            in: "query"
+            description: "number of children under 6"
+            required: false
+            type: "string"
+        tags:
+          - "Listing"
+        responses:
+          "200":
+            description: "Listing eligibility details"
+            schema:
+              $ref: "#/definitions/Eligibility"
+    /Listing/Units/{id}':
+      get:
+        description: "returns Units for listing based on Listing ID"
+        parameters:
+          -
+            name: "id"
+            in: "path"
+            description: "listing id"
+            required: true
+            type: "string"
+        tags:
+          - "Listing"
+        responses:
+          200:
+            description: "Units by listing ID"
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/Unit__c"
+    /Listing/Units/':
+      get:
+        description: "returns Units for listing based on Listing ID"
+        parameters:
+          -
+            name: "id"
+            in: "query"
+            description: "listing id"
+            required: true
+            type: "string"
+        tags:
+          - "Listing"
+        responses:
+          200:
+            description: "Units by listing ID"
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/Unit__c"
+    /LotteryPreference/{id}':
+      get:
+        deprecated: true
+        description: "returns lottery Preference by ID"
+        parameters:
+          -
+            name: "id"
+            in: "path"
+            description: "lottery preference id"
+            required: true
+            type: "string"
+        tags:
+          - "Listing"
+          - "Shortform Application"
+        responses:
+          200:
+            description: "Units by listing ID"
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/Lottery_Preference__c"
+    /LotteryPreference/':
+      get:
+        deprecated: true
+        description: "returns lottery preferences by ID.  If not id is provided it returns all lottery preferences"
+        parameters:
+
+          -
+            name: "id"
+            in: "query"
+            description: "lottery preference id"
+            required: false
+            type: "string"
+          -
+            name: "ids"
+            in: "query"
+            description: "lottery ids separated by ',' "
+            required: false
+            type: "string"
+
+        tags:
+          - "Listing"
+          - "Shortform Application"
+        responses:
+          200:
+            description: "Units by listing ID"
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/Lottery_Preference__c"
+    
+
+    /Listing/UnitSummary/{id}':
+      get:
+        description: "returns UnitSummary for listings by unit type"
+        parameters:
+          -
+            name: "id"
+            in: "path"
+            description: "listing id"
+            required: true
+            type: "string"
+        tags:
+          - "Listing"
+        responses:
+          200:
+            description: "Units by listing ID"
+            schema:
+              $ref: "#/definitions/UnitSummaries"
+
+    /Listing/Preferences/{listingID}':
+      get:
+        description: "returns UnitSummary for listings by unit type"
+        parameters:
+          -
+            name: "listingID"
+            in: "path"
+            description: "listing id"
+            required: true
+            type: "string"
+        tags:
+          - "Listing"
+        responses:
+          200:
+            description: "Preferences for a giving Listing"
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/ListingPreference"
+    /Listing/UnitSummary/':
+      get:
+        description: "returns UnitSummary for listings by unit type"
+        parameters:
+          -
+            name: "id"
+            in: "query"
+            description: "listing id"
+            required: true
+            type: "string"
+        tags:
+          - "Listing"
+
+
+        responses:
+          200:
+            description: "Units by listing ID"
+            schema:
+              
+              $ref: "#/definitions/UnitSummaries"
+              
+    /ami:
+      get:
+        description: "Returns the ami table value based on 2 passed in parameters"
+        parameters:
+          -
+            name: "chartType"
+            in: "query"
+            description: "type of chart for AMI"
+            required: false
+            type: "string"
+          -
+            name: "year"
+            in: "query"
+            description: "year of the chart for the ami"
+            required: false
+            type: "number"
+          -
+            name: "percent"
+            in: "query"
+            description: "Percent of median"
+            required: false
+            type: "number"
+          -
+            name: "amount"
+            in: "query"
+            description: "amount"
+            required: false
+            type: "number"
+          -
+            name: "householdsize"
+            in: "query"
+            description: "household size"
+            required: false
+            type: "number"
+        tags:
+          - "AMI"
+        responses:
+          200:
+            description: "AMI entry"
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/AMI"
+
+    /ami/calc/:
+      get:
+        description: "Calculates the percentage ami based off household and amount and returns ami"
+        parameters:
+          -
+            name: "chartType"
+            in: "query"
+            description: "type of chart for AMI"
+            required: false
+            type: "string"
+          -
+            name: "year"
+            in: "query"
+            description: "year of the chart for the ami"
+            required: false
+            type: "number"
+          -  
+            name: "amount"
+            in: "query"
+            description: "amount"
+            required: true
+            type: "number"
+          -
+            name: "householdsize"
+            in: "query"
+            description: "household size"
+            required: true
+            type: "number"
+        tags:
+          - "AMI"
+        responses:
+          200:
+            description: "AMI entry"
+            schema:
+              $ref: "#/definitions/AMI"
+    /ami/charts/:
+      get:
+        description: "returns the list of application charts type and years for those chart types"
+
+        tags:
+          - "AMI"
+        responses:
+          200:
+            description: "returns a list of AMI objects where the chart and year are filled out only."
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/AMI"
+            
+    /LotteryMember/{id}':
+      get:
+        security:
+          - restrictedAccess:
+            - LotteryMember
+            - Listing
+        description: "returns lottery members by listing id"
+        parameters:
+          -
+            name: "id"
+            in: "path"
+            description: "listing id"
+            required: true
+            type: "string"
+        tags:
+          - "Listing"
+          - "Shortform Application"
+        responses:
+          200:
+            description: "Units by listing ID"
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/Lottery_Member__c"
+    /LotteryMember/':
+      get:
+        security:
+          - restrictedAccess:
+            - LotteryMember
+            - Listing
+
+        description: "returns lottery Members for listing - either id or ids is required"
+        parameters:
+          -
+            name: "id"
+            in: "query"
+            description: "listing id"
+            required: true
+            type: "string"
+          -
+            name: "ids"
+            in: "query"
+            description: "listing ids by ',' "
+            required: true
+            type: "string"
+        tags:
+          - "Listing"
+          - "Shortform Application"
+        responses:
+          200:
+            description: "Units by listing ID"
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/Lottery_Member__c"
+
+    /Person/{sfdcid}:
+      get:
+
+        description: "This returns a Perons account data.  This is their contact information"
+        parameters:
+          -
+            name: "sfdcid"
+            in: "path"
+            description: "sfdc contact id put into the path"
+            required: true
+            type: "string"
+        tags:
+          - "Person"
+        responses:
+          200:
+            description: "An array of listings"
+            schema:
+              type: "array"
+              items:
+                $ref: "#/definitions/Person"
+    /Person/:
+      post:
+        security:
+          - restrictedAccess:
+            - Person
+        parameters:
+        - in: body
+          name: body
+          description: Person that wants to update their "account" data.  This is the contact data only and doesn't update the application data that has already been entered.
+          required: false
+          schema:
+            $ref: "#/definitions/Person"
+        tags:
+          - "Person/Account Management"
+
+        responses:
+          "404":
+            description: Short form not found
+          "200":
+            description: Success
+            schema:
+              $ref: "#/definitions/Person"
+          "400":
+            description: Invalid ID supplied
+
+    /shortForm/list/{ContactID}:
+      get:
+        security:
+          - restrictedAccess:
+            - ShortForm
+        parameters:
+          - in: path
+            name: ContactID
+            
+            description: external webappID 
+            required: true
+            type: string
+        description: "This returns the Listing information and its summary information."
+        tags:
+          - "Shortform Application"
+
+        responses:
+          "404":
+            description: Short form not found
+          "200":
+            description: successful operation
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/ShortForm'
+          "400":
+            description: Invalid ID supplied
+
+    /shortForm/{shortFormId}:
+      get:
+        security:
+          - restrictedAccess:
+            - ShortForm
+        parameters:
+          - in: path
+            name: shortFormId
+            description: ID of shortform
+            required: true
+            type: string
+        description: "This returns the Listing information and its summary information."
+        tags:
+          - "Shortform Application"
+        responses:
+          "404":
+            description: Short form not found
+          "200":
+            description: successful operation
+            schema:
+              $ref: "#/definitions/ShortForm"
+          "400":
+            description: Invalid ID supplied
+    /shortForm/:
+      put:
+        security:
+          - restrictedAccess:
+            - ShortForm
+        parameters:
+        - in: body
+          name: body
+          description: short form placed
+          required: false
+          schema:
+            $ref: "#/definitions/ShortForm"
+        tags:
+          - "Shortform Application"
+
+        responses:
+          "404":
+            description: Short form not found
+          "200":
+            description: Success
+            schema:
+              $ref: "#/definitions/ShortForm"
+          "400":
+            description: Invalid ID supplied
+ 
+    /shortForm/delete/{shortFormId}:
+      delete:
+        security:
+          - restrictedAccess:
+            - ShortForm
+        description: deletes specified application
+        parameters:
+        - name: shortFormId
+          in: path
+          description: ID shortForm To Delete
+          type: string
+          required: true
+        tags:
+           - "Shortform Application"
+        responses:
+          200:
+            description: OK
+    /shortForm/file/{shortFormId}:
+      post:
+        security:
+          - restrictedAccess:
+            - ShortForm
+        description: upload attachment to shortform.
+        parameters:
+        - in: path
+          name: shortFormId
+          description: ID of shortform to attach file too
+          required: true
+          type: string
+        - name: BinaryData
+          in: body
+          required: true
+          schema: 
+            type: string
+            format: byte 
+        - name: Name
+          in: header
+          description: ID shortForm To Delete
+          type: string
+          required: true
+        - name: ContentType
+          in: header
+          description: ID shortForm To Delete  
+          type: string
+          required: true
+        tags:
+           - "Shortform Application"
+        responses:
+          200:
+            description: OK
+            schema:
+              $ref: "#/definitions/Attachment__C"
+
+    /shortForm/contact/delete:
+      post:
+        deprecated: true
+        security:
+          - restrictedAccess:
+            - ShortForm
+        description: deletes specified contact from household  - use "delete" instead
+        parameters:
+        - name: id
+          in: query
+          description: ID of contact to delete
+          type: string
+          required: true
+
+        tags:
+          - "Shortform Application"
+        responses:
+          200:
+            description: OK
+  definitions:
+
+    UnitSummaries:
+      type: "object"
+      description: "summary statistics of a given unit type per listing"
+      properties:
+        general:
+          type: array
+          items:
+              $ref: '#/definitions/UnitSummary'
+        reserved:
+          type: array
+          items:
+              $ref: '#/definitions/UnitSummary'
+    UnitSummary:
+      type: "object"
+      description: "summary statistics of a given unit type per listing"
+      properties:
+        listingID:
+          type: "string"
+          description: "the listing id"
+        unitType:
+          type: "string"
+          description: "the type of unit.  (1br, 2br, studio)"
+        totalUnits:
+          type: "integer"
+          description: "total number of units at this type per this listing"
+        minOccupancy:
+          type: "integer"
+          description: "fewest tenants available at this unittype"
+        maxOccupancy:
+          type: "integer"
+          description: "most tenants available at this unittype"
+        minSquareFt:
+          type: "integer"
+          description: "Smallest unit at this type for this listing"
+        maxSquareFt:
+          type: "integer"
+          description: "largest unit at this type for this listing"
+        minMonthlyRent:
+          type: "number"
+          description: "lowest rent at this type for this listing"
+        maxMonthlyRent:
+          type: "number"
+          description: "highest rent at this type for this listing"
+        minRentalMinIncome:
+          type: "number"
+          description: "lowest minimum required income at this type for this listing"
+        maxRentalMinIncome:
+          type: "number"
+          description: "highest minimum required income at this type for this listing"
+        minPercentIncome:
+          type: "number"
+          description: "lowest rent percent income at this type for this listing"
+        maxPercentIncome:
+          type: "number"
+          description: "max rent percent income at this type for this listing"
+        priorities:
+          type: "array"
+          items:
+            type: string
+
+    ListingDetails:
+      type: "object"
+      description: "summary statistics of a given unit type per listing"
+      properties:
+        listingID:
+          type: "string"
+          description: "the listing id"
+        
+        unitSummaries:
+          $ref: '#/definitions/UnitSummaries'
+
+        doesMatch:
+          type: "boolean"
+          description: "does listing match passed criteria"
+        listing:
+            $ref: '#/definitions/Listing__c'
+  
+    Listing__c:
+      type: "object"
+      description: ""
+      properties:
+        Building_Name__c:
+          type: "string"
+          description: ""
+        Building_Street_Address__c:
+          type: "string"
+          description: ""
+        Building_City__c:
+          type: "string"
+          description: ""
+        Building_State__c:
+          type: "string"
+          description: ""
+        Building_Zip_Code__c:
+          type: "string"
+          description: ""
+        Developer__c:
+          type: "string"
+          description: "Name of the Developer for the Building."
+        Description__c:
+          type: "string"
+          description: "Description of the Listing"
+        Neighborhood__c:
+          type: "string"
+          description: "Neighborhood for the listing."
+        Year_Built__c:
+          type: "number"
+          format: "double"
+          description: ""
+        Application_Due_Date__c:
+          type: "string"
+          format: "date"
+          description: "Due Date for Applications for the lottery for this listing."
+        Building_URL__c:
+          type: "string"
+          description: ""
+        Legal_Disclaimers__c:
+          type: "string"
+          description: ""
+        Application_Organization__c:
+          type: "string"
+          description: ""
+        Application_Street_Address__c:
+          type: "string"
+          description: ""
+        Application_City__c:
+          type: "string"
+          description: ""
+        Application_State__c:
+          type: "string"
+          description: ""
+        Application_Postal_Code__c:
+          type: "string"
+          description: ""
+        Application_Phone__c:
+          type: "string"
+          description: ""
+        Lottery_Summary__c:
+          type: "string"
+          description: "Summary of the Lottery Results."
+        Lottery_Results_Date__c:
+          type: "string"
+          format: "date"
+          description: "Date Lottery Results are posted"
+        Lottery_End__c:
+          type: "string"
+          format: "date-time"
+          description: "End of the Lottery - DateTime"
+        Lottery_Start_Time__c:
+          type: "string"
+          description: ""
+        Lottery_End_Time__c:
+          type: "string"
+          description: ""
+        Lottery_Venue__c:
+          type: "string"
+          description: ""
+        Lottery_Street_Address__c:
+          type: "string"
+          description: ""
+        Lottery_City__c:
+          type: "string"
+          description: ""
+        Lottery_Date__c:
+          type: "string"
+          format: "date-time"
+          description: ""
+        AMI_Percentage__c:
+          type: "null"
+          description: ""
+        Preference_Detail__c:
+          type: "string"
+          description: ""
+        Credit_Rating__c:
+          type: "string"
+          description: ""
+        Criminal_History__c:
+          type: "string"
+          description: ""
+        Eviction_History__c:
+          type: "string"
+          description: ""
+        Leasing_Agent_Name__c:
+          type: "string"
+          description: ""
+        Leasing_Agent_Title__c:
+          type: "string"
+          description: ""
+        Leasing_Agent_Email__c:
+          type: "string"
+          description: ""
+        Leasing_Agent_Phone__c:
+          type: "string"
+          description: ""
+        Leasing_Agent_Street__c:
+          type: "string"
+          description: ""
+        Leasing_Agent_City__c:
+          type: "string"
+          description: ""
+        Leasing_Agent_State__c:
+          type: "string"
+          description: ""
+        Leasing_Agent_Zip__c:
+          type: "string"
+          description: ""
+        Lottery_Results__c:
+          type: "boolean"
+          description: "Indicates there is at least one lottery winner"
+        Lottery_Winners__c:
+          type: "number"
+          format: "double"
+          description: "Rollup sumary with Count of people who have been selected as winning lottery and therefore, the status of their lottery member = Winner."
+        NeighborHoodPreferenceUrl__c:
+          type: "string"
+          description: "neightborhood Preference URL"
+        Office_Open__c:
+          type: "string"
+          description: ""
+        Office_Closed__c:
+          type: "string"
+          description: ""
+        Organization_URL__c:
+          type: "string"
+          description: ""
+        Download_URL__c:
+          type: "null"
+          description: ""
+        Fee__c:
+          type: "number"
+          description: ""
+        Deposit_Min__c:
+          type: "number"
+          description: ""
+        Deposit_Max__c:
+          type: "number"
+          description: ""
+        Costs_Not_Included__c:
+          type: "string"
+          description: "Detailed Information about other costs not included with rent. Converted to text field from currency."
+        Lottery_Preferences__c:
+          type: "string"
+          description: ""
+        Rental_Assistance__c:
+          type: "string"
+          description: "To be further built but placeholder for rental assistance"
+        Amenities__c:
+          type: "string"
+          description: ""
+        Accessibility__c:
+          type: "string"
+          description: ""
+        Building_Selection_Criteria__c:
+          type: "string"
+          description: ""
+        Required_Documents__c:
+          type: "string"
+          description: ""
+        Smoking_Policy__c:
+          type: "string"
+          description: "Will be set via code from Property."
+        Pet_Policy__c:
+          type: "string"
+          description: ""
+          
+        Accepting_Online_Applications__c:
+          type: "boolean"
+          description: ""
+
+    Unit__c:
+      type: object
+      description: ''
+      properties:
+        Unit_Type__c:
+          type: string
+          description: Description of units.
+        BMR_Rent_Monthly__c:
+          type: number
+          description: Monthly Rent for BMR Unit
+        BMR_Rental_Minimum_Monthly_Income_Needed__c:
+          type: number
+          description: ''
+        Unit_Square_Footage__c:
+          type: number
+          format: double
+          description: Square Footage of the Unit.
+        Unit_Number__c:
+          type: string
+          description: ''
+        Unit_Floor__c:
+          type: string
+          description: ''
+        Other_Accessibility_Information__c:
+          type: string
+          description: Other Accessibility Information
+        Number_of_Bathrooms__c:
+          type: number
+          format: double
+          description: ''
+        isReserved__c:
+          type: boolean
+          description: 'is this unit reserved or not'
+        rent_percent_of_income__c:
+          type: number
+          format: double
+          description: 'percent in the format of 100.00 (whole numbers not decimals) showing rent precent of income'
+        building_priority__c:
+          type: string
+          description: 'name of priority attached to this unit - this priority comes from a subset of building priorities'
+      
+
+
+    AMI:
+      type: "object"
+      description: "summary statistics of a given unit type per listing"
+      properties:
+        chartType:
+          type: "string"
+          description: "precentage"
+        year:
+          type: "number"
+          description: "4 digit year of the chart"
+        percent:
+          type: "number"
+          description: "precentage"
+        numOfHousehold:
+          type: "number"
+          description: "number of people"
+        amount:
+          type: "number"
+          description: "amount of threshhold"
+
+    Lottery_Preference__c:
+      type: object
+      description: ''
+      properties:
+        Name:
+          type: string
+          description: ''
+        Description__c:
+          type: string
+          description: ''
+
+    Lottery_Member__c:
+      type: object
+      description: Lotttery Members. Will ultimately be a join of contacts and listings but initially it will just be a child of listings with information about the lottery results.
+      properties:
+        Lottery_Number__c:
+          type: number
+          format: double
+          description: Lottery Number for the Specific Lottery Member.
+        Rank__c:
+          type: number
+          format: double
+          description: Rank of the Lottery Member in the Lottery Results
+        Listing__c:
+          type: string
+          description: Rank of the Lottery Member in the Lottery Results
+        Status__c:
+          type: string
+          description: Status of the Lottery Member for the given Lottery
+          
+    ShortForm:
+      type: "object"
+      description: "ShortForm for housing"
+      properties:
+        ID:
+          type: "string"
+          description: "Sfdc ID"
+        name:
+          type: "string"
+          description: "name"
+        listingID:
+          type: "string"
+          description: "listing ID for SFDC"
+        primaryApplicant:
+          $ref: '#/definitions/Person'
+        alternateContact:
+          $ref: '#/definitions/Person'
+        householdMembers:
+          type: array
+          items:
+              $ref: '#/definitions/Person'
+        shortFormPreferences:
+          type: array
+          items:
+              $ref: '#/definitions/ShortFormPreference'
+        worksInSanFrancisco:
+          type: "boolean"
+          description: "currently works In SF"
+        referral:
+          type: "string"
+          description: "how applicant found out about the program (multiselect)"
+        agreeToTerms:
+          type: "string"
+          description: "applicant agrees to terms of application - Value {true, false, <blank>}"
+        householdVouchersSubsidies:
+          type: "string"
+          description: "household has vouchers or subsidies - Value {true, false, <blank>}"
+        annualIncome:
+          type: "number"
+          description: "either annual or monthly needs to be specified"
+        monthlyIncome:
+          type: "number"
+          description: "either annual or monthly needs to be specified"
+        liveInSfPreferenceManual:
+          type: "boolean"
+          description: "manual override for livework preference"
+    
+        status:
+          type: "string"
+          description: "application status"
+        applicationLanguage:
+          type: "string"
+          description: "application language"
+        applicationSubmissionType:
+          type: "string"
+          description: "application submission type"
+        applicationSubmissionDate:
+          type: "string"
+          format: "date"
+          description: "application submission date"
+        lotteryNumber:
+          type: "string"
+          description: "lottery number"
+    
+    LotteryResult:
+      type: "object"
+      description: "lottery result"
+      properties:
+        listingID:
+          type: "string"
+          description: "listing ID"
+        bucketResults:
+          type: array
+          items:
+              $ref: '#/definitions/LotteryBucket'
+       
+        URL:
+          type: "string"
+          description: "randome.org url"
+        lotteryResultsURL:
+          type: "string"
+          description: "link to a file"
+ 
+        lotteryAppTotal:
+          type: "number"
+          description: "total applications for  lottery"
+        lotteryCity:
+          type: "string"
+          description: "listing lottery City"
+        lotteryDate:
+          type: "string"
+          format: "date"
+          description: "lottery date "
+        lotteryEndTime:
+          type: "string"
+          format: "date"
+          description: "lottery date "
+        lotteryPreferences:
+          type: "string"
+          description: "preferences" 
+        lotteryResults:
+          type: "boolean"
+          description: "lotteryResults"
+        officeHours:
+          type: "string"
+          description: "office hours"
+    
+    ListingPreference:
+      type: "object"
+      description: "Listing preference"
+      properties:
+        listingPreferenceID:
+          type: "string"
+          description: "salesforce ID"
+      
+        name:
+          type: "string"
+          description: "preference"
+          
+        order:
+          type: "number"
+          description: "order to display in"
+ 
+        description:
+          type: "string"
+          description: "description"
+        readMoreUrl:
+          type: "string"
+          format: "url"
+          description: "readMore Url"
+        NRHP District:
+          type: "string"
+          description: "neighborhood district "
+        appTotal:
+          type: "number"
+          description: "total number of people who have applied "
+        unitsAvailable:
+          type: "number"
+          description: "total units available "
+      
+    ShortFormPreference:
+      type: "object"
+      description: "Application preference"
+      properties:
+        preferenceType:
+          type: "string"
+          description: "preference type (COP, DTHP etc..)"
+      
+        appMemberID:
+          type: "string"
+          description: "application Member ID"
+ 
+        naturalKey:
+          type: "string"
+          description: "naturalKey"
+     
+        listingPreferenceID:
+          type: "string"
+          description: "listing Preference ID"
+        preferenceProof:
+          type: "string"
+          description: "type of proof given "
+    ListingResult:
+      type: "object"
+      description: "lottery result - deprecated"
+      properties:
+        listingID:
+          type: "string"
+          description: "listing ID"
+        bucketResults:
+          type: array
+          items:
+              $ref: '#/definitions/PreferenceBucket'
+        applicationResults:
+          type: array
+          items:
+              $ref: '#/definitions/ApplicationResult'
+        URL:
+          type: "string"
+          description: "randome.org url"
+        lotteryResultsURL:
+          type: "string"
+          description: "link to a file"
+        liveWorkPreferenceAppTotal:
+          type: "number"
+          description: "total applications for preference"
+        
+        liveWorkPreferenceUnitsAvailable:
+          type: "number"
+          description: "total slots for preference"
+        certOfPreferenceAppTotal:
+          type: "number"
+          description: "total applications for preference"
+        certOfPreferenceUnitsAvailable:
+          type: "number"
+          description: "total slots for preference"
+        displacedPreferenceAppTotal:
+          type: "number"
+          description: "total applications for preference"
+        displacedPreferenceUnitsAvailable:
+          type: "number"
+          description: "total applications for preference"
+        neighborhoodPreferenceAppTotal:
+          type: "number"
+          description: "total applications for preference"
+        neighborhoodPreferenceUnitsAvailable:
+          type: "number"
+          description: "total applications for preference"
+        generalLotteryAppTotal:
+          type: "number"
+          description: "total applications for general lottery"
+        lotteryCity:
+          type: "string"
+          description: "listing lottery City"
+        lotteryDate:
+          type: "string"
+          format: "date"
+          description: "lottery date "
+        lotteryEndTime:
+          type: "string"
+          format: "date"
+          description: "lottery date "
+        lotteryPreferences:
+          type: "string"
+          description: "preferences" 
+        lotteryResults:
+          type: "boolean"
+          description: "lotteryResults"
+        officeHours:
+          type: "string"
+          description: "office hours"
+     
+
+    Eligibility:
+      type: "object"
+      description: "eligibility information per listing"
+      properties:
+        listing ID:
+          type: "string"
+          description: "the listing id"
+        householdEligibilityResult:
+          type: "string"
+          description: "the household eligibility result.  (Match, Too Big, Too Small)"
+        incomeEligibilityResult:
+          type: "integer"
+          description: "the household eligibility result. (Match, Too High, Too Low)"
+        householdMatch:
+          type: "boolean"
+          description: "does household match passed criteria"
+        incomeMatch:
+          type: "boolean"
+          description: "does income match passed criteria"
+          
+    LotteryBucket:
+      type: "object"
+      description: "list of application results by preference"
+      properties:
+        PreferenceName:
+          type: "string"
+          description: "Preference name, (liveWork,COP,DCP,Neighborhood)"
+        AppTotal:
+          type: "number"
+          description: "total applications for preference"
+        UnitsAvailable:
+          type: "number"
+          description: "total slots for preference"
+        bucketResults:
+          type: array
+          items:
+              $ref: '#/definitions/ApplicationResult'
+  
+    PreferenceBucket:
+      type: "object"
+      description: "list of application results by preference"
+      properties:
+        PreferenceName:
+          type: "string"
+          description: "Preference name, (liveWork,COP,DCP,Neighborhood)"
+        bucketResults:
+          type: array
+          items:
+              $ref: '#/definitions/ApplicationResult'
+    ApplicationResult:
+      type: "object"
+      description: "ApplicationResult"
+      properties:
+        applicationID:
+          type: "string"
+          description: "ApplicationID ID"
+        lotteryNumber:
+          type: "string"
+          description: "the lottery number  "
+        preferenceRank:
+          type: "number"
+          description: "raw rank for this live work - which are treated as one preference"
+        lotteryRank:
+          type: "integer"
+          format: "int32"
+          description: "raw lottery rank returned form drawing"
+       
+  
+
+    Person:
+      type: "object"
+      description: "Applicant Contact"
+      properties:
+        webAppID:
+          type: "string"
+          description: "3rd party webAppID that api consumers can set ID - shoud be unique per source and ID"
+       
+        appMemberID:
+          type: "string"
+          description: "App Member ID"
+        contactID:
+          type: "string"
+          description: "sfdc contact ID - null for everyone but primary applicant"
+        firstName:
+          type: "string"
+          description: "first name"
+        lastName:
+          type: "string"
+          description: "the listing id"
+        middleName:
+          type: "string"
+          description: "middle name"
+        DOB:
+          type: "string"
+          format: "date"
+          description: "date of Birth"
+        email:
+          type: "string"
+          description: "email"
+        phone:
+          type: "string"
+          description: "phone number"
+        phoneType:
+          type: "string"
+          description: "phone number type (Home, Work,Cell)"
+        alternatePhone:
+          type: "string"
+          description: "alternate phone number"
+        alternatePhoneType:
+          type: "string"
+          description: "alternate number type (Home, Work, Cell)"
+        address:
+          type: "string"
+          description: "Primary Address"
+        city:
+          type: "string"
+          description: "City"
+        state:
+          type: "string"
+          description: "State"
+        zip:
+          type: "string"
+          description: "Zip"
+        mailingAddress:
+          type: "string"
+          description: "Mailing address"
+        mailingCity:
+          type: "string"
+          description: "Mailing City"
+        mailingState:
+          type: "string"
+          description: "Mailing State"
+        mailingZip:
+          type: "string"
+          description: "Mailing zip"
+        workInSf:
+          type: "string"
+          description: "Member works in SF - Value {true, false, <blank>}"
+        gender:
+          type: "string"
+          description: "gender, can have multiple options. e.g.'male,transgendered-male'"
+        genderOther:
+          type: "string"
+          description: "other gender"
+        sexualOrientation:
+          type: "string"
+          description: "sexual orientation"
+        sexualOrientationOther:
+          type: "string"
+          description: "other sexual orientation"
+        hiv:
+          type: "boolean"
+          description: "hiv"
+        ethnicity:
+          type: "string"
+          description: "ethnicity"
+        race:
+          type: "string"
+          description: "race"
+        language:
+          type: "string"
+          description: "language"
+        languageOther:
+          type: "string"
+          description: "other language - if language is other"
+        relationship:
+          type: "string"
+          description: "relationship to primary applicant"
+        alternateContactType:
+          type: "string"
+          description: "picklist of types for alternate contact"
+        agency:
+          type: "string"
+          description: "only if alternateContactType == 'Social worker or housing counselor'"
+        alternateContactTypeOther:
+          type: "string"
+          description: "only if alternateContactType is other"
+        hasSameAddressAsApplicant:
+          type: "string"
+          description: "only for household members to indicate separate address - Value {true, false, <blank>}"
+        neighborhoodPreferenceMatch:
+          type: "string"
+          description: "the front end can validate that the neighborhood preference matches- Value {match, unmatched, <blank>}  "
+
+          
+        noPhone:
+          type: "boolean"
+          description: "the front end validates if user has phone"
+        noEmail:
+          type: "boolean"
+          description: "the front end validates if user has an email"
+        noAddress:
+          type: "boolean"
+          description: "the front end validates if user has an address"
+        hasAltMailingAddress:
+          type: "boolean"
+          description: "the front end validates if user has an alternative mailing address"
+    
+    Attachment__C:
+      type: "object"
+      description: "Applicant Contact"
+      properties:
+        ID:
+          type: "string"
+          description: "Salesforce AttachmentID"
+        ParentId:
+          type: "string"
+          description: "the application id"
+        Name:
+          type: "string"
+          description: "the preference Name"
+        ContentType:
+          type: "string"
+          description: "the content type"
+        BodyLength:
+          type: "number"
+          description: "the length in bytes"
+        Body:
+          type: "string"
+          description: "url to the download : /services/data/v36.0/sobjects/Attachment/<AttachmenID>/Body "
+        Description:
+          type: "string"
+          description: "the description of the file"
+         
