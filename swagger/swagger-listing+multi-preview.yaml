@@ -362,7 +362,7 @@
               $ref: "#/definitions/Eligibility"
     /Listing/Units/{id}':
       get:
-        description: "returns active Units for listing based on Listing ID"
+        description: "returns Units for listing based on Listing ID"
         parameters:
           -
             name: "id"
@@ -381,7 +381,7 @@
                 $ref: "#/definitions/Unit__c"
     /Listing/Units/':
       get:
-        description: "returns active Units for listing based on Listing ID"
+        description: "returns Units for listing based on Listing ID"
         parameters:
           -
             name: "id"
@@ -920,11 +920,11 @@
           type: "string"
           description: "the listing id"
         chartTypes:          
-          description: "this is the set of charttypes for units on a given listing where the unit is active "
+          description: "this is the set of charttypes for units on a given listing "
           $ref: '#/definitions/AMI'
 
         unitSummaries:
-          description: "this is the set of summaries against active units "
+          description: "this is the set of summaries against units "
           $ref: '#/definitions/UnitSummaries'
 
         doesMatch:
