@@ -856,12 +856,16 @@
       type: "object"
       description: "summary statistics of a given unit type per listing"
       properties:
+       
         general:
           type: array
+          description: this is default context for a listing
           items:
               $ref: '#/definitions/UnitSummary'
+        
         reserved:
           type: array
+          description: this is context driven list where values are different 
           items:
               $ref: '#/definitions/UnitSummary'
     UnitSummary:
@@ -907,10 +911,7 @@
         maxPercentIncome:
           type: "number"
           description: "max rent percent income at this type for this listing"
-        priorities:
-          type: "array"
-          items:
-            type: string
+
 
     ListingDetails:
       type: "object"
@@ -919,12 +920,21 @@
         listingID:
           type: "string"
           description: "the listing id"
-        chartTypes:          
-          description: "this is the set of charttypes for units on a given listing "
+        chartTypes:
           $ref: '#/definitions/AMI'
 
+        prioritiesDescriptor:
+          type: array
+          description: asdf
+          items:
+              $ref: '#/definitions/PRDescriptor'
+        reservedDescriptor:
+          type: array
+          description: asdf
+          items:
+              $ref: '#/definitions/PRDescriptor'
+            
         unitSummaries:
-          description: "this is the set of summaries against units "
           $ref: '#/definitions/UnitSummaries'
 
         doesMatch:
@@ -932,6 +942,26 @@
           description: "does listing match passed criteria"
         listing:
             $ref: '#/definitions/Listing__c'
+  
+    PRDescriptor:
+      type: "object"
+      description: "Priority/Reserved type descriptor "
+      properties:
+        name:
+          type: "string"
+          description: "the listing id"
+        description:
+          type: "string"
+          description: "the description"
+
+        shortDescription:
+          type: "string"
+          description: "abbreviated description"
+
+        numberOfUnits:
+          type: "number"
+          description: "this is the number of units with the priority, when this object is the context of a listing.  Otherwise it is n/a - "
+        
   
     Listing__c:
       type: "object"
