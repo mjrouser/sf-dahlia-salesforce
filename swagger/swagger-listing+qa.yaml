@@ -894,6 +894,9 @@
         listingID:
           type: "string"
           description: "the listing id"
+        listingOtherNotes:
+          type: "string"
+          description: "listing other notes"
         
         unitSummaries:
           $ref: '#/definitions/UnitSummaries'
