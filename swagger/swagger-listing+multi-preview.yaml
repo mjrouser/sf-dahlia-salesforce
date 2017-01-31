@@ -947,12 +947,12 @@
       type: "object"
       description: "Priority/Reserved type descriptor "
       properties:
-        name:
+        listingId:
           type: "string"
           description: "the listing id"
-        description:
+        Name:
           type: "string"
-          description: "the description"
+          description: "the priority name"
 
         shortDescription:
           type: "string"
