@@ -1156,6 +1156,9 @@
         Services_Onsite__c:
           type: "string"
           description: ""
+        Units_Available__c:
+          type: "string"
+          description: ""
 
     Unit__c:
       type: object
