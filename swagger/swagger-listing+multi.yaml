@@ -917,11 +917,13 @@
         listingID:
           type: "string"
           description: "the listing id"
+        unitsAvailable:
+          type: "number"
+          description: "Count Listing Units on Listing where Status = Available"
         chartTypes:          
           $ref: '#/definitions/AMI'          
         unitSummaries:
           $ref: '#/definitions/UnitSummaries'
-         
         unitPriorities:
           type: "array"
           items:
