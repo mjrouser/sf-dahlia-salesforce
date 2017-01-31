@@ -1243,21 +1243,33 @@
         worksInSfPreferenceID:
           type: "string"
           description: "sfdc household_member__r.id which holds preference"
+        liveWorkOptOut:
+          type: "boolean"
+          description:  ""
         displacedPreferenceNatKey:
           type: "string"
           description:  "naturalkey  = lastName,FirstName,DOB(MM.DD.YYYY) can be provided on insert as an alternate to sfdcID"
+        displacedPreferenceOptOut:
+          type: "boolean"
+          description:  ""
         displacedPreferenceID:
           type: "string"
           description: "sfdc household_member__c which holds preference"
         certOfPreferenceNatKey:
           type: "string"
           description:  "naturalkey  = lastName,FirstName,DOB(MM.DD.YYYY) can be provided on insert as an alternate to sfdcID"
+        certOfPreferenceOptOut:
+          type: "boolean"
+          description:  ""
         certOfPreferenceID:
           type: "string"
           description: "sfdc household_member__c which holds preference"
         neighborhoodPreferenceNatKey:
           type: "string"
           description:  "naturalkey  = lastName,FirstName,DOB(MM.DD.YYYY) can be provided on insert as an alternate to sfdcID"
+        neighborhoodPreferenceOptOut:
+          type: "boolean"
+          description:  ""
         neighborhoodPreferenceID:
           type: "string"
           description: "sfdc household_member__c which holds preference"
