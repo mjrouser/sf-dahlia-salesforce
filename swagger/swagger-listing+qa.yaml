@@ -1057,6 +1057,24 @@
         Download_URL__c:
           type: "null"
           description: ""
+        Download_URL_Cantonese__c:
+          type: "null"
+          description: ""
+        Download_URL_Spanish__c:
+          type: "null"
+          description: ""
+        Download_URL_Tagalog__c:
+          type: "null"
+          description: ""
+        Accepting_applications_at_leasing_agent__c:
+          type: "boolean"
+          description: ""
+        Accepting_applications_by_PO_Box__c:
+          type: "boolean"
+          description: ""
+        Blank_paper_application_can_be_picked_up__c:
+          type: "boolean"
+          description: ""
         Fee__c:
           type: "number"
           description: ""
