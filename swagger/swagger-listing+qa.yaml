@@ -1324,6 +1324,18 @@
         formMetadata:
           type: "string"
           description: "additional metadata that can be saved on the form - non user input data"
+        xCoordinate:
+          type: "string"
+          description: "X Coordinate"
+        yCoordinate:
+          type: "string"
+          description: "Y Coordinate"
+        whichComponentOfLocatorWasUsed:
+          type: "string"
+          description: "Which Component Of Locator Was Used"
+        candidateScore:
+          type: "number"
+          description: "Candidate Score"
     
     ListingPreference:
       type: "object"
