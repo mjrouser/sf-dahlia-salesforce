@@ -38,7 +38,7 @@ private class ListingApiTest {
         Building__c build = new Building__c();
         build.Development__c = dev.Id;
         build.Developer__c = acc.Id;
-       	insert build;
+        insert build;
         
         List<Listing__c> listingList = new List<Listing__c>();
         Listing__c listing = new Listing__c();
@@ -67,7 +67,7 @@ private class ListingApiTest {
         lp.Name = 'Test Lottery Preference';
         lp.Status__c = 'New';
         insert lp;
-       	preferenceName = lp.Name;
+        preferenceName = lp.Name;
         
         Listing_Lottery_Preference__c llp = new Listing_Lottery_Preference__c();
         llp.Listing__c = listing.Id;
@@ -80,7 +80,6 @@ private class ListingApiTest {
         unit.Rent_Multiple__c=3;
         unit.of_AMI_for_Pricing_Unit__c=55;
         unit.Listing__c = listing.id;
-        unit.Maximum_Household_Size__c  =2;
         insert unit;
         listingID = listing.id;
         listingID2 = listing2.id;
@@ -134,7 +133,7 @@ private class ListingApiTest {
         
         //verify the returned listings are the right ones
         for (Listing__c listing : listingList) {
-        	system.assert(listing.Id == listingID || listing.Id == listingID2);
+            system.assert(listing.Id == listingID || listing.Id == listingID2);
         }
     }
     static testMethod void testGetByIDParam() {

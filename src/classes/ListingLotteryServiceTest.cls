@@ -66,7 +66,6 @@ private class ListingLotteryServiceTest {
         unit.Rent_Multiple__c=3;
         unit.of_AMI_for_Pricing_Unit__c=55;
         unit.Listing__c = listing.id;
-        unit.Maximum_Household_Size__c  = 8;
         unit.Number_of_Bedrooms__c = 3;
         insert unit;
      /*   

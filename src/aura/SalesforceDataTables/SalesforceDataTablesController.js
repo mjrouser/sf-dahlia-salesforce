@@ -136,5 +136,16 @@
     dismissErrorMessage : function(cmp, event, helper) {
         cmp.set('v._errorMessage', '');
         cmp.set('v._displayErrorMessage', false);
+    },
+
+    handleIncomingEvent : function(cmp, event, helper) {
+        var message = event.getParam('message');
+        var data = event.getParam('data');
+
+        var found = message.match(/updateAttribute:(.+)/);
+        if (found) {
+            cmp.set('v.' + found[1], data);
+            helper.pullData(cmp);
+        }
     }
 })

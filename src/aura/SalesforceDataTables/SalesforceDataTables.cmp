@@ -60,6 +60,7 @@
     <!-- Event handlers -->
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <aura:registerEvent name="SalesforceDataTablesEvent" type="c:SalesforceDataTablesEvent" />
+    <aura:handler event="c:SalesforceDataTablesEvent" action="{!c.handleIncomingEvent}"/>
 
     <!-- Dynamic loading of CSS/JS plugins -->
     <aura:if isTrue="{!v._isInitDone}">

@@ -64,7 +64,6 @@ private class ListingDetailAPITest {
         unit.Rent_Multiple__c=3;
         unit.of_AMI_for_Pricing_Unit__c=55;
         unit.Listing__c = listing.id;
-        unit.Maximum_Household_Size__c  = 8;
         unit.Number_of_Bedrooms__c = 3;
         insert unit;
         
@@ -74,27 +73,15 @@ private class ListingDetailAPITest {
         unit1.Rent_Multiple__c=3;
         unit1.of_AMI_for_Pricing_Unit__c=55;
         unit1.Listing__c = listing1.id;
-        unit1.Maximum_Household_Size__c  = 8;
         unit1.Number_of_Bedrooms__c = 3;
         insert unit1;
-     /*   
-        Lottery_Preference__c lp = new Lottery_Preference__c();
-        lp.Name = 'Test Lottery Preference';
-        lp.Status__c = 'New';
-        insert lp;
-       	preferenceName = lp.Name;
-        
-        Listing_Lottery_Preference__c llp = new Listing_Lottery_Preference__c();
-        llp.Listing__c = listing.Id;
-        llp.Lottery_Preference__c = lp.Id;
-        insert llp;
-        */
-        ami = new AMI__c();
+
+        /*ami = new AMI__c();
         ami.name='Test Lottery Preference';
         ami.amount__c = 40000;
         ami.Num_of_HouseHold__c=2;
         ami.Percent_of_Median__c=100;
-        insert ami;
+        insert ami;*/
         
     }
         

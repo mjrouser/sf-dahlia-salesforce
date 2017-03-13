@@ -31,8 +31,20 @@ private without sharing class API_ShortFormTest {
 
         c = new Contact(FirstName = 'FirstName', LastName = 'LastName', AccountId = a.Id, Work_State__c = 'CO', Birthdate = date.today().addYears(-30));
         insert c;
-
-		listing = new Listing__c();
+        
+		Development__c dev = new Development__c();
+        dev.Name_of_Development__c = 'amli';
+        insert dev;
+      
+        Building__c build = new Building__c();
+        build.Development__c = dev.Id;
+        build.Maximum_waitlist_size__c = 10;
+        build.Number_of_people_currently_on_waitlist__c = 5;
+        build.hasWaitlist__c = true;
+       	insert build;
+        
+        listing = new Listing__c();
+        listing.Building__c  = build.id;
         insert listing;
     }
     
@@ -62,7 +74,19 @@ private without sharing class API_ShortFormTest {
         
         c = new Contact(FirstName = 'FirstName', LastName = 'LastName', Work_State__c = 'CO', Birthdate = date.today().addYears(-30));
         
-		listing = new Listing__c();
+		Development__c dev = new Development__c();
+        dev.Name_of_Development__c = 'amli';
+        insert dev;
+      
+        Building__c build = new Building__c();
+        build.Development__c = dev.Id;
+        build.Maximum_waitlist_size__c = 10;
+        build.Number_of_people_currently_on_waitlist__c = 5;
+        build.hasWaitlist__c = true;
+       	insert build;
+        
+        listing = new Listing__c();
+        listing.Building__c  = build.id;
         insert listing;
         
         app = new Application__c(Primary_Applicant__c = c.Id, Applicant_Household__c = a.Id);
@@ -138,7 +162,6 @@ private without sharing class API_ShortFormTest {
         API_Application.ShortForm sf = new API_Application.ShortForm(app, new List<Application_Member__c>{appM});
         sf.primaryApplicant = new API_Application.Person(c);
         sf.alternateContact = new API_Application.Person(appM2);
-        sf.worksInSanFrancisco = true;
         sf.listingID = listing.Id;
         
         Test.startTest();
@@ -192,7 +215,6 @@ private without sharing class API_ShortFormTest {
         
         API_Application.ShortForm sf = new API_Application.ShortForm(app, new List<Application_Member__c>{appM, appM1});
         sf.primaryApplicant = new API_Application.Person(appM2);
-        sf.worksInSanFrancisco = true;
         sf.listingID = listing.Id;
         
         Test.startTest();
@@ -237,7 +259,6 @@ private without sharing class API_ShortFormTest {
         
         API_Application.ShortForm sf = new API_Application.ShortForm(app, new List<Application_Member__c>{appM});
         sf.primaryApplicant = new API_Application.Person(c);
-        sf.worksInSanFrancisco = true;
         sf.listingID = listing.Id;
         API_Application.Person p = new API_Application.Person(c);
         sf.liveInSfPreferenceNatKey = p.getKey();

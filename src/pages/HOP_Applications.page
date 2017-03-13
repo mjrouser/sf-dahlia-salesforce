@@ -9,10 +9,18 @@
             </div>
         </apex:define>
         <apex:define name="body">
-            <apex:form styleClass="form-horizontal">
+            <apex:form styleClass="form-horizontal" id="theForm">
                 <div class="form-group">
                     <div class="col-xs-12 sectionHeader">
                         <h4>Applications</h4>
+                        <div class="pull-right">
+                            <label class="control-label" style="padding-right: 10px;">Filter by Listing</label>
+                            <apex:selectList id="filterListing" value="{!filterListingId}"
+                                             multiselect="false" size="1" onchange="onListingFilterChange()"
+                                             styleClass="form-control" style="display: inline-block; width: auto;">
+                                <apex:selectOptions value="{!listingOptions}"/>
+                            </apex:selectList>
+                        </div>
                     </div>
                 </div>
 		        <div id="SFDT_Applications" class="section"></div>
@@ -33,11 +41,26 @@
 					}
             	}
 
-                function loadSFDT() {
-                    var whereClause = '{!myUser.Profile.UserLicense.Name}' == '{!COMMUNITY_LICENSE_NAME}'
-                                        ? "Listing__r.Account__c = '{!myUser.Contact.AccountId}' AND Status__c != '{!DRAFT_APPLICATION}'"
-                                        : undefined;
+                function getWhereClause() {
+                    return "Listing__c = '" + document.getElementById('HOP_Applications:HOP_Template:theForm:filterListing').value + "' AND Status__c != '{!DRAFT_APPLICATION}'";
+                }
 
+                function onListingFilterChange() {
+                    var sendEvent = $A.get("e.c:SalesforceDataTablesEvent");
+                    console.log(getWhereClause());
+                    sendEvent.setParams({
+                        'message': 'updateAttribute:whereClause',
+                        'data': getWhereClause()
+                    });
+                    sendEvent.fire();
+                }
+
+                function loadSFDT() {
+                    /*var whereClause = '{!myUser.Profile.UserLicense.Name}' == '{!COMMUNITY_LICENSE_NAME}'
+                                        ? "Listing__r.Account__c = '{!myUser.Contact.AccountId}' AND Status__c != '{!DRAFT_APPLICATION}'"
+                                        : undefined;*/
+                    console.log('whereClause:::' + getWhereClause());
+                    
                     $Lightning.use("c:SalesforceDataTablesApp", function() {
                         $Lightning.createComponent(
                             "c:SalesforceDataTables",
@@ -46,7 +69,7 @@
                                 enhanced: true,
                                 objectName: "Application__c",
                                 fieldList: "Name, Listing__c, Last_Name__c, First_Name__c, Application_Submitted_Date__c, COP_Preference__c, DTHP_Preference__c, Neighborhood_Preference__c, Live_Work_Preference__c",
-                                whereClause: whereClause,
+                                whereClause: getWhereClause(),
                                 orders: [
                                     {
                                         'col': 'Name',

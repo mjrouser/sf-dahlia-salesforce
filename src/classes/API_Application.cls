@@ -30,7 +30,7 @@ global without sharing class API_Application {
 		global Person primaryApplicant;
 		global Person alternateContact;
 		global List<Person> householdMembers;
-		global Boolean worksInSanFrancisco;
+		//global Boolean worksInSanFrancisco;
 		global String referral;
 		global Boolean agreeToTerms;
 		global String householdVouchersSubsidies;
@@ -42,13 +42,17 @@ global without sharing class API_Application {
 		global String workInSfPreferenceNatKey;
 		global String worksInSfPreferenceID;
 		global String displacedPreferenceNatKey;
+		global Boolean displacedPreferenceOptOut;
 		global String displacedPreferenceID;
 		global String certOfPreferenceNatKey;
+		global Boolean certOfPreferenceOptOut;
 		global String certOfPreferenceID;
 		global String neighborhoodResidencePreferenceNatKey;
+		global Boolean neighborhoodPreferenceOptOut;
 		global String neighborhoodPreferenceID;
 		global String liveInSfPreferenceProof;
 		global String workInSfPreferenceProof;
+		global Boolean liveWorkOptOut;
 		global String neighborhoodPreferenceProof;
 		global String status;
 		global String applicationLanguage;
@@ -73,7 +77,7 @@ global without sharing class API_Application {
 				}
 			}
 			
-			this.worksInSanFrancisco = app.Work_in_SF_Preference__c;
+			//this.worksInSanFrancisco = app.Work_in_SF_Preference__c;
 			this.referral = app.Referral_Source__c;
 			this.agreeToTerms = app.Terms_Acknowledged__c;
 			this.householdVouchersSubsidies = app.Housing_Voucher_or_Subsidy__c;
@@ -85,6 +89,10 @@ global without sharing class API_Application {
 			this.displacedPreferenceID = app.DTHP_Preference_Member__c;
 			this.certOfPreferenceID = app.COP_Preference_Member__c;
 			this.neighborhoodPreferenceID = app.Neighborhood_Preference_Member__c;
+			this.liveWorkOptOut = app.Live_Work_Opt_Out__c;
+			this.displacedPreferenceOptOut = app.DTHP_Opt_Out__c;
+			this.certOfPreferenceOptOut = app.COP_Opt_Out__c;
+			this.neighborhoodPreferenceOptOut = app.NRHP_Opt_Out__c;
 			this.liveInSfPreferenceProof = app.Live_in_SF_Preference_Proof__c;
 			this.workInSfPreferenceProof = app.Work_in_SF_Preference_Proof__c;
 			this.neighborhoodPreferenceProof = app.Neighborhood_Preference_Proof__c;
@@ -113,6 +121,10 @@ global without sharing class API_Application {
 			app.DTHP_Preference_Member__c = String.isBlank(this.displacedPreferenceID) ? null : this.displacedPreferenceID;
 			app.COP_Preference_Member__c = String.isBlank(this.certOfPreferenceID) ? null : this.certOfPreferenceID;
 			app.Neighborhood_Preference_Member__c = String.isBlank(this.neighborhoodPreferenceID) ? null : this.neighborhoodPreferenceID;
+			app.Live_Work_Opt_Out__c = this.liveWorkOptOut == null ? false : this.liveWorkOptOut;
+			app.DTHP_Opt_Out__c = this.displacedPreferenceOptOut == null ? false : this.displacedPreferenceOptOut;
+			app.COP_Opt_Out__c = this.certOfPreferenceOptOut == null ? false : this.certOfPreferenceOptOut;
+			app.NRHP_Opt_Out__c = this.neighborhoodPreferenceOptOut == null ? false : this.neighborhoodPreferenceOptOut;
 			app.Live_in_SF_Preference_Proof__c = this.liveInSfPreferenceProof;
 			app.Work_in_SF_Preference_Proof__c = this.workInSfPreferenceProof;
 			app.Neighborhood_Preference_Proof__c = this.neighborhoodPreferenceProof;
@@ -203,7 +215,7 @@ global without sharing class API_Application {
 				Time myTime = Time.newInstance(0, 0, 0, 0);
 				Date today =inputDate; 
 				Datetime tempDateTime = datetime.newInstance(today, myTime);
-				String prettyDate = tempDateTime.format('YYYY-MM-dd');
+				String prettyDate = tempDateTime.format('yyyy-MM-dd');
 				system.debug(prettyDate);
 				return prettyDate;
 				/*Integer m = inputDate.month();

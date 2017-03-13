@@ -35,6 +35,9 @@ private class ListingEligibilityCheckAPITest {
         Building__c build = new Building__c();
         build.Development__c = dev.Id;
         build.Developer__c = acc.Id;
+        build.Maximum_waitlist_size__c = 10;
+        build.Number_of_people_currently_on_waitlist__c = 5;
+        build.hasWaitlist__c = true;
        	insert build;
         
         Listing__c listing = new Listing__c();
@@ -137,7 +140,7 @@ private class ListingEligibilityCheckAPITest {
          RestResponse res = new RestResponse();
          req.requestURI = '/Listing/EligibilityCheck';  
          req.addParameter('id', listingID);
-         req.addParameter('incomelevel', '53851');
+         req.addParameter('incomelevel', '100000');
          req.addParameter('householdsize', '6');
          req.addParameter('childrenUnder6', '2');
          req.httpMethod = 'GET';

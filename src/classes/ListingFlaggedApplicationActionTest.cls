@@ -50,7 +50,6 @@ public class ListingFlaggedApplicationActionTest {
         unit.Rent_Multiple__c=3;
         unit.of_AMI_for_Pricing_Unit__c=55;
         unit.Listing__c = theListing.id;
-        unit.Maximum_Household_Size__c  = 8;
         unit.Number_of_Bedrooms__c = 3;
         units.add( unit);
         
@@ -60,7 +59,6 @@ public class ListingFlaggedApplicationActionTest {
         unit1.Rent_Multiple__c=3;
         unit1.of_AMI_for_Pricing_Unit__c=55;
         unit1.Listing__c = theListing.id;
-        unit1.Maximum_Household_Size__c  = 8;
         unit1.Number_of_Bedrooms__c = 3;
         units.add( unit1);
         insert units;

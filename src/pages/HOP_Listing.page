@@ -470,6 +470,12 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12 sectionHeader">
+                                    <h4>Listing Preferences</h4>
+                                </div>
+                            </div>
+                            <div id="SFDT_ListingPreferences" class="section"></div>
+                            <div class="form-group">
+                                <div class="col-xs-12 sectionHeader">
                                     <h4>Accessibility, Amenities, Fees</h4>
                                 </div>
                             </div>
@@ -1278,8 +1284,28 @@
                     }
                 }
 
+                function loadListingPreferences() {
+                    $Lightning.use("c:SalesforceDataTablesApp", function() {
+                        $Lightning.createComponent(
+                            "c:SalesforceDataTables",
+                            {
+                                style: "bootstrap",
+                                objectName: "Listing_Lottery_Preference__c",
+                                fieldList: "Preference_Name__c, Description__c, Order__c, Available_Units__c",
+                                whereClause: "Listing__c = '" + lstId + "'",
+                                removeLookupHyperlinks: true
+                            },
+                            "SFDT_ListingPreferences",
+                            function(cmp) {
+                                cmp.getElement().parentNode.classList.remove("slds-scope");
+                            }
+                        );
+                    });
+                }
+
                 $(document).ready(function() {
                     tryInitRelated();
+                    loadListingPreferences();
                 });
             </script>
         </apex:define>

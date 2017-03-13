@@ -18,7 +18,7 @@ global class ListingLotteryService {
     //*************************************
     // Lottery Preference
     //*************************************
-    
+     
     /*
     original preference design - 
     

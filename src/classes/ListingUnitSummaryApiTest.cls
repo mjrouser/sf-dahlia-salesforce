@@ -45,7 +45,6 @@ private class ListingUnitSummaryApiTest {
         unit.Rent_Multiple__c=3;
         unit.of_AMI_for_Pricing_Unit__c=55;
         unit.Listing__c = listing.id;
-        unit.Maximum_Household_Size__c  = 1;
         unit.Number_of_Bedrooms__c = 1;
         unit.Unit_Square_Footage__c = 10;
         
@@ -55,7 +54,6 @@ private class ListingUnitSummaryApiTest {
         unit2.Rent_Multiple__c=3;
         unit2.of_AMI_for_Pricing_Unit__c=55;
         unit2.Listing__c = listing.id;
-        unit2.Maximum_Household_Size__c = 2;
         unit2.Number_of_Bedrooms__c = 2;
         unit2.Unit_Square_Footage__c = 20;
         insert new List<Unit__c>{unit, unit2};
@@ -63,9 +61,9 @@ private class ListingUnitSummaryApiTest {
         listingID = listing.id;
     }
 	
-    /*
-     * get unit summary by listing id
-     */
+    
+     //* get unit summary by listing id
+     
     static testMethod void testGetUnitSummaryByListingID() {
         setupTestData();
         RestRequest req = new RestRequest(); 
@@ -76,25 +74,25 @@ private class ListingUnitSummaryApiTest {
         RestContext.request = req;
         RestContext.response = res;
         
-        List<ListingService.UnitSummary> unitSummary = ListingUnitSummaryApi.doGet();
+        ListingService.UnitSummaries unitSummaries = ListingUnitSummaryApi.doGet();
         
         //check if returned values are correct
-        system.assert(unitSummary[0].listingID == listingId);
-        system.assert(unitSummary[0].totalUnits == 2);
-        system.assert(unitSummary[0].minOccupancy == 1);
-        system.assert(unitSummary[0].maxOccupancy == 2);
-        system.assert(unitSummary[0].minSquareFt == 10);
-        system.assert(unitSummary[0].maxSquareFt == 20);
-        system.assert(unitSummary[0].minMonthlyRent == 200);
-        system.assert(unitSummary[0].maxMonthlyRent == 400);
-        system.assert(unitSummary[0].minRentalMinIncome == 600);
-        system.assert(unitSummary[0].maxRentalMinIncome == 1200);
+        system.assert(unitSummaries.general[0].listingID == listingId);
+        system.assert(unitSummaries.general[0].totalUnits == 2);
+        system.assert(unitSummaries.general[0].minOccupancy == 1);
+        system.assert(unitSummaries.general[0].maxOccupancy == 2);
+        system.assert(unitSummaries.general[0].minSquareFt == 10);
+        system.assert(unitSummaries.general[0].maxSquareFt == 20);
+        system.assert(unitSummaries.general[0].minMonthlyRent == 200);
+        system.assert(unitSummaries.general[0].maxMonthlyRent == 400);
+        system.assert(unitSummaries.general[0].minRentalMinIncome == 600);
+        system.assert(unitSummaries.general[0].maxRentalMinIncome == 1200);
         
     }
     
-    /*
-     * get unit summary by listing id
-     */
+    
+     //* get unit summary by listing id
+     
     static testMethod void testGetUnitSummaryByListingIDParam() {
         setupTestData();
         RestRequest req = new RestRequest(); 
@@ -106,18 +104,18 @@ private class ListingUnitSummaryApiTest {
         RestContext.request = req;
         RestContext.response = res;
         
-        List<ListingService.UnitSummary> unitSummary = ListingUnitSummaryApi.doGet();
+        ListingService.UnitSummaries unitSummaries = ListingUnitSummaryApi.doGet();
         
         //check if returned values are correct
-        system.assert(unitSummary[0].listingID == listingId);
-        system.assert(unitSummary[0].totalUnits == 2);
-        system.assert(unitSummary[0].minOccupancy == 1);
-        system.assert(unitSummary[0].maxOccupancy == 2);
-        system.assert(unitSummary[0].minSquareFt == 10);
-        system.assert(unitSummary[0].maxSquareFt == 20);
-        system.assert(unitSummary[0].minMonthlyRent == 200);
-        system.assert(unitSummary[0].maxMonthlyRent == 400);
-        system.assert(unitSummary[0].minRentalMinIncome == 600);
-        system.assert(unitSummary[0].maxRentalMinIncome == 1200);
+        system.assert(unitSummaries.general[0].listingID == listingId);
+        system.assert(unitSummaries.general[0].totalUnits == 2);
+        system.assert(unitSummaries.general[0].minOccupancy == 1);
+        system.assert(unitSummaries.general[0].maxOccupancy == 2);
+        system.assert(unitSummaries.general[0].minSquareFt == 10);
+        system.assert(unitSummaries.general[0].maxSquareFt == 20);
+        system.assert(unitSummaries.general[0].minMonthlyRent == 200);
+        system.assert(unitSummaries.general[0].maxMonthlyRent == 400);
+        system.assert(unitSummaries.general[0].minRentalMinIncome == 600);
+        system.assert(unitSummaries.general[0].maxRentalMinIncome == 1200);
     }
 }

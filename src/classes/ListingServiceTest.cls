@@ -72,7 +72,6 @@ private class ListingServiceTest {
         unit.Rent_Multiple__c=2;
         unit.of_AMI_for_Pricing_Unit__c=55;
         unit.Listing__c = listing.id;
-        unit.Maximum_Household_Size__c  = 8;
         unit.Number_of_Bedrooms__c = 3;
         insert unit;
         
@@ -82,9 +81,18 @@ private class ListingServiceTest {
         unit1.Rent_Multiple__c=2;
         unit1.of_AMI_for_Pricing_Unit__c=55;
         unit1.Listing__c = listing1.id;
-        unit1.Maximum_Household_Size__c  = 8;
         unit1.Number_of_Bedrooms__c = 3;
+        unit1.Priority_Type__c = 'Senior';
         insert unit1;
+        
+        Unit__c unit2 = new Unit__c();
+        unit2.property__c  = build.id;
+        unit2.BMR_Rent_Monthly__c = 400;
+        unit2.Rent_Multiple__c=2;
+        unit2.of_AMI_for_Pricing_Unit__c=55;
+        unit2.Listing__c = listing1.id;
+        unit2.Number_of_Bedrooms__c = 3;
+        insert unit2;
         
         listingID = listing.id;
         listListingId = new List<Id>();
@@ -172,7 +180,9 @@ private class ListingServiceTest {
         setupTestData();
         
         LIst<ListingService.ListingDetail> testLD = new LIst<ListingService.ListingDetail>();
-         testLD = ListingService.getAllActiveListingDetails();
+        testLD = ListingService.getAllActiveListingDetails();
+        List<ListingService.PRDescriptor> prDescriptorList = testLD[0].prioritiesDescriptor;
+        system.assertEquals(prDescriptorList.size(), 1);
         //number of expected result is met
         system.assert(testLd.size() == 2);
     }
@@ -185,17 +195,6 @@ private class ListingServiceTest {
         testU = ListingService.getUnitsByListingID(listingID);
         //number of expected result is met
         system.assert(testU.size() == 1);
-     }
-    static testMethod void testGetUnitSummaryByListingID() {
-        setupTestData();
-        
-        LIst<ListingService.ListingDetail> testLD = new LIst<ListingService.ListingDetail>();
-        
-        //ListingService.getUnitsByListingID(listingId);
-        List<ListingService.UnitSummary> testUS = new List<ListingService.UnitSummary>();
-        testUS = ListingService.getUnitSummaryByListingID(listingID);
-        //number of expected result is met
-        system.assert(testUS.size() == 1);
      }
     static testMethod void testGetListingDetailAll() {
         setupTestData();
@@ -220,5 +219,22 @@ private class ListingServiceTest {
           System.assertEquals(ListingService.getAll(listingID).size(), 2);
           System.assertEquals(ListingService.getUnitByListingId(listingID).size(), 1);
     }
-
+    
+    static testMethod void getAMI() {
+          setupTestData();
+          AMI_Chart__mdt amiChartMdt = [SELECT id,Amount__c, Num_of_Household__c, Percent_of_Median__c, Type__c, Year__c FROM AMI_Chart__mdt Limit 1];
+          ListingService.Ami filter = new ListingService.Ami();
+          ListingService.Ami filter1 = new ListingService.Ami(amiChartMdt);
+          String x = filter1.getFilterString();
+     } 
+    static testMethod void getListingDetails() {
+        setupTestData();
+        LIst<ListingService.ListingDetail> testLD = new LIst<ListingService.ListingDetail>();
+        
+        List<Listing__c> lstList = [SELECT name, Building__c, Account__c, Application_Due_Date__c, Status__c, Does_Match__c, Min_Occupancy__c FROM Listing__c where Name = 'somelisting1'];
+        
+        testLD = ListingService.getListingDetails(lstList);
+        system.assertEquals(testLD[0].prioritiesDescriptor[0].Name, 'Senior');
+        system.assertEquals(testLD[0].prioritiesDescriptor[0].numberOfUnits, 1);
+    }
 }

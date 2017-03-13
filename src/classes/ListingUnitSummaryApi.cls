@@ -17,17 +17,17 @@ global with sharing class ListingUnitSummaryApi {
     public class NoRecordMatchException extends Exception {}
 
     @HttpGet
-    global static List<ListingService.UnitSummary> doGet () {
+    global static ListingService.UnitSummaries doGet () {
         RestRequest req = RestContext.request;
         RestResponse res = RestContext.response;
         
         List<String> tokens =  req.requestURI.split('/');
        
         if (tokens.size()>3) {
-            return ListingService.getUnitSummaryByListingID(tokens[3]);
+            return ListingService.getUnitSummariesByListingID(tokens[3]);
         }	
         if (req.params.containsKey('id')) {
-            return ListingService.getUnitSummaryByListingID(req.params.get('id'));
+            return ListingService.getUnitSummariesByListingID(req.params.get('id'));
         }
         
         throw new NoRecordMatchException(); 
