@@ -967,6 +967,9 @@
         Lottery_Summary__c:
           type: "string"
           description: "Summary of the Lottery Results."
+        Listing_Other_Notes__c:
+          type: "string"
+          description: "Listing Other Notes."
         Lottery_Results_Date__c:
           type: "string"
           format: "date"
@@ -1054,6 +1057,24 @@
           description: ""
         Download_URL__c:
           type: "null"
+          description: ""
+        Download_URL_Cantonese__c:
+          type: "null"
+          description: ""
+        Download_URL_Spanish__c:
+          type: "null"
+          description: ""
+        Download_URL_Tagalog__c:
+          type: "null"
+          description: ""
+        Accepting_applications_at_leasing_agent__c:
+          type: "boolean"
+          description: ""
+        Accepting_applications_by_PO_Box__c:
+          type: "boolean"
+          description: ""
+        Blank_paper_application_can_be_picked_up__c:
+          type: "boolean"
           description: ""
         Fee__c:
           type: "number"
@@ -1269,21 +1290,33 @@
         worksInSfPreferenceID:
           type: "string"
           description: "sfdc household_member__r.id which holds preference"
+        liveWorkOptOut:
+          type: "boolean"
+          description:  ""
         displacedPreferenceNatKey:
           type: "string"
           description:  "naturalkey  = lastName,FirstName,DOB(MM.DD.YYYY) can be provided on insert as an alternate to sfdcID"
+        displacedPreferenceOptOut:
+          type: "boolean"
+          description:  ""
         displacedPreferenceID:
           type: "string"
           description: "sfdc household_member__c which holds preference"
         certOfPreferenceNatKey:
           type: "string"
           description:  "naturalkey  = lastName,FirstName,DOB(MM.DD.YYYY) can be provided on insert as an alternate to sfdcID"
+        certOfPreferenceOptOut:
+          type: "boolean"
+          description:  ""
         certOfPreferenceID:
           type: "string"
           description: "sfdc household_member__c which holds preference"
         neighborhoodPreferenceNatKey:
           type: "string"
           description:  "naturalkey  = lastName,FirstName,DOB(MM.DD.YYYY) can be provided on insert as an alternate to sfdcID"
+        neighborhoodPreferenceOptOut:
+          type: "boolean"
+          description:  ""
         neighborhoodPreferenceID:
           type: "string"
           description: "sfdc household_member__c which holds preference"

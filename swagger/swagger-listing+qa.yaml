@@ -1111,7 +1111,33 @@
         Pet_Policy__c:
           type: "string"
           description: ""
-          
+        Reserved_community_type__c:
+          type: "string"
+          description: ""
+        Reserved_community_type_description__c:
+          type: "string"
+          description: ""
+        Reserved_community_minimum_age__c:
+          type: "number"
+          description: ""
+        Reserved_community_maximum_age__c:
+          type: "number"
+          description: ""
+        Total_number_of_building_units__c:
+          type: "number"
+          description: ""
+        hasWaitlist__c:
+          type: "boolean"
+          description: ""
+        Number_of_people_currently_on_waitlist__c:
+          type: "number"
+          description: ""
+        Maximum_waitlist_size__c:
+          type: "number"
+          description: ""
+        Total_waitlist_openings__c:
+          type: "number"
+          description: ""
         Accepting_Online_Applications__c:
           type: "boolean"
           description: ""
