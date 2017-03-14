@@ -876,7 +876,7 @@
         maxRentalMinIncome:
           type: "number"
           description: "highest minimum required income at this type for this listing"
-        minPrecentIncome:
+        minPercentIncome:
           type: "number"
           description: "lowest rent percent income at this type for this listing"
         maxPercentIncome:
@@ -1501,7 +1501,7 @@
               $ref: '#/definitions/BucketResult'
     BucketResult:
       type: "object"
-      description: "ApplicationResult"
+      description: "BucketResult"
       properties:
         applicationID:
           type: "string"
@@ -1566,7 +1566,6 @@
         webAppID:
           type: "string"
           description: "3rd party webAppID that api consumers can set ID - shoud be unique per source and ID"
-       
         appMemberID:
           type: "string"
           description: "App Member ID"
