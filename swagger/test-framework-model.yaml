@@ -1,0 +1,153 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: Uber API
+  description: Move your app forward with the Uber API
+  version: "1.0.0"
+# the domain of the service
+host: api.uber.com
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /v1
+produces:
+  - application/json
+paths:
+  /assert:
+    get:
+      summary: assertion types
+      description: |
+       modeled after chai.js asserstions - for 
+      parameters:
+        - name: latitude
+          in: query
+          description: Latitude component of location.
+          required: true
+          type: number
+          format: double
+ 
+      tags:
+        - Products
+      responses:
+        200:
+          description: An array of products
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AssertValue'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+definitions:
+  
+
+  TestRequest:
+    type: object
+    properties:
+      description:
+        type: string
+        description: description of the test scenario
+      url:
+        type: string
+        description: url to hit
+      method:
+        type: string
+        description: post/get
+      body: 
+        type: string
+        description: json payload for request
+        
+      assertions:
+          type: array
+          description: assertions that we expect
+          items:
+              $ref: '#/definitions/AssertBase'
+  
+  AssertBase:
+    description: A representation of a base assertion - cannot be instantiated
+    properties:
+      query:
+        type: string
+        description: the query of the records that are being called
+    required:
+      - query
+      
+      
+  AssertArrayValue:
+    type: object
+    description: used to assert an db result value is equal to a certain value 
+    allOf:
+    - "$ref": "#/definitions/AssertBase"
+    properties:
+      object:
+        type: string
+        description: name of the sobject
+      field:
+        type: string
+        description: name of the field
+      index:
+        type: string
+        description: array index
+      expectedValue:
+        type: string
+        description: expected value
+  AssertResponse:
+    type: object
+    description: used to assert an db result value is equal to a certain value 
+
+    allOf:
+    - "$ref": "#/definitions/AssertBase"
+    properties:
+      
+      expectedValue:
+        type: string
+        description: expected value   
+  AssertValue:
+    type: object
+    allOf:
+    - "$ref": "#/definitions/AssertBase"
+    properties:
+      object:
+        type: string
+        description: name of the sobject
+      field:
+        type: string
+        description: name of the field
+      index:
+        type: string
+        description: array index
+      expectedValue:
+        type: string
+        description: expected value
+  AssertCount:
+    type: object
+    allOf:
+    - "$ref": "#/definitions/AssertBase"
+    properties:
+      query:
+        type: string
+        description: the query of the records that are being called
+      object:
+        type: string
+        description: Description of product.
+      field:
+        type: string
+        description: Display name of product.
+      expectedValue:
+        type: string
+        description: expected value
+ 
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
