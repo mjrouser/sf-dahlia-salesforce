@@ -198,9 +198,10 @@
             description: "An array of listing"
             schema:
               $ref: "#/definitions/LotteryResult"
+              
     /Listing/LotteryResult/{listingID}:
       get:
-        description: "This returns the Listing result - with 1 applicationResult inside this is the Application with the appropriate lottery number.  If no lotteryNumber fits, applicationsResult will be empty.  If listing isIncorrect it will error."
+        description: "This returns the Listing result - with many lotteryResults inside this is the Application with the appropriate lottery number.  If no lotteryNumber fits, applicationsResult will be empty.  If listing isIncorrect it will error."
         parameters:
           -
             name: "listingID"
@@ -208,7 +209,7 @@
             description: "listingID for lottery"
             required: true
             type: "string"
-         
+        
 
         tags:
           - "Listing"
@@ -217,8 +218,6 @@
             description: "An array of listing"
             schema:
               $ref: "#/definitions/LotteryResult"
-
-
     /ListingDetails/{sfdcid}:
       get:
         description: "This returns the Listing information and its summary information."
@@ -832,8 +831,7 @@
               $ref: "#/definitions/Attachment__C"
 
     /shortForm/contact/delete:
-      post:
-        deprecated: true
+      delete:
         security:
           - restrictedAccess:
             - ShortForm
@@ -856,16 +854,12 @@
       type: "object"
       description: "summary statistics of a given unit type per listing"
       properties:
-       
         general:
           type: array
-          description: this is default context for a listing
           items:
               $ref: '#/definitions/UnitSummary'
-        
         reserved:
           type: array
-          description: this is context driven list where values are different 
           items:
               $ref: '#/definitions/UnitSummary'
     UnitSummary:
@@ -911,7 +905,10 @@
         maxPercentIncome:
           type: "number"
           description: "max rent percent income at this type for this listing"
-
+        priorities:
+          type: "array"
+          items:
+            type: string
 
     ListingDetails:
       type: "object"
@@ -1026,6 +1023,9 @@
         Lottery_Summary__c:
           type: "string"
           description: "Summary of the Lottery Results."
+        Listing_Other_Notes__c:
+          type: "string"
+          description: "Listing Other Notes."
         Lottery_Results_Date__c:
           type: "string"
           format: "date"
@@ -1114,6 +1114,24 @@
         Download_URL__c:
           type: "null"
           description: ""
+        Download_URL_Cantonese__c:
+          type: "null"
+          description: ""
+        Download_URL_Spanish__c:
+          type: "null"
+          description: ""
+        Download_URL_Tagalog__c:
+          type: "null"
+          description: ""
+        Accepting_applications_at_leasing_agent__c:
+          type: "boolean"
+          description: ""
+        Accepting_applications_by_PO_Box__c:
+          type: "boolean"
+          description: ""
+        Blank_paper_application_can_be_picked_up__c:
+          type: "boolean"
+          description: ""
         Fee__c:
           type: "number"
           description: ""
@@ -1150,7 +1168,33 @@
         Pet_Policy__c:
           type: "string"
           description: ""
-          
+        Reserved_community_type__c:
+          type: "string"
+          description: ""
+        Reserved_community_type_description__c:
+          type: "string"
+          description: ""
+        Reserved_community_minimum_age__c:
+          type: "number"
+          description: ""
+        Reserved_community_maximum_age__c:
+          type: "number"
+          description: ""
+        Total_number_of_building_units__c:
+          type: "number"
+          description: ""
+        hasWaitlist__c:
+          type: "boolean"
+          description: ""
+        Number_of_people_currently_on_waitlist__c:
+          type: "number"
+          description: ""
+        Maximum_waitlist_size__c:
+          type: "number"
+          description: ""
+        Total_waitlist_openings__c:
+          type: "number"
+          description: ""
         Accepting_Online_Applications__c:
           type: "boolean"
           description: ""
@@ -1280,8 +1324,8 @@
           type: "string"
           description: "how applicant found out about the program (multiselect)"
         agreeToTerms:
-          type: "string"
-          description: "applicant agrees to terms of application - Value {true, false, <blank>}"
+          type: "boolean"
+          description: "applicant agrees to terms of application"
         householdVouchersSubsidies:
           type: "string"
           description: "household has vouchers or subsidies - Value {true, false, <blank>}"
@@ -1362,15 +1406,18 @@
         listingPreferenceID:
           type: "string"
           description: "salesforce ID"
-      
+        listingID:
+          type: "string"
+          description: "listing salesforce ID"
         name:
           type: "string"
           description: "preference"
-          
+        preferenceName:
+          type: "string"
+          description: "preference name"
         order:
           type: "number"
           description: "order to display in"
- 
         description:
           type: "string"
           description: "description"
@@ -1434,7 +1481,6 @@
         liveWorkPreferenceAppTotal:
           type: "number"
           description: "total applications for preference"
-        
         liveWorkPreferenceUnitsAvailable:
           type: "number"
           description: "total slots for preference"
@@ -1479,7 +1525,6 @@
         officeHours:
           type: "string"
           description: "office hours"
-     
 
     Eligibility:
       type: "object"
@@ -1517,20 +1562,9 @@
         bucketResults:
           type: array
           items:
-              $ref: '#/definitions/ApplicationResult'
-  
-    PreferenceBucket:
-      type: "object"
-      description: "list of application results by preference"
-      properties:
-        PreferenceName:
-          type: "string"
-          description: "Preference name, (liveWork,COP,DCP,Neighborhood)"
-        bucketResults:
-          type: array
-          items:
-              $ref: '#/definitions/ApplicationResult'
-    ApplicationResult:
+              $ref: '#/definitions/PreferenceResult'
+    
+    PreferenceResult:
       type: "object"
       description: "ApplicationResult"
       properties:
@@ -1547,8 +1581,77 @@
           type: "integer"
           format: "int32"
           description: "raw lottery rank returned form drawing"
-       
-  
+   
+    PreferenceBucket:
+      type: "object"
+      description: "list of application results by preference ( deprecated) "
+      properties:
+        PreferenceName:
+          type: "string"
+          description: "Preference name, (liveWork,COP,DCP,Neighborhood)"
+        bucketResults:
+          type: array
+          items:
+              $ref: '#/definitions/BucketResult'
+ 
+    BucketResult:
+      type: "object"
+      description: "bucket result ( deprecated) "
+      properties:
+        applicationID:
+          type: "string"
+          description: "ApplicationID ID"
+        lotteryNumber:
+          type: "string"
+          description: "the lottery number  "
+        preferenceRank:
+          type: "number"
+          description: "raw rank for this live work - which are treated as one preference"
+        lotteryRank:
+          type: "integer"
+          format: "int32"
+          description: "raw lottery rank returned form drawing"
+    ApplicationResult:
+      type: "object"
+      description: "ApplicationResult ( deprecated) "
+      properties:
+        applicationID:
+          type: "string"
+          description: "ApplicationID ID"
+        liveWorkPreference:
+          type: "boolean"
+          description: "true/false"
+        liveWorkPreferenceRank:
+          type: "number"
+          description: "raw rank for this live work - which are treated as one preference"
+        displacedPreference:
+          type: "boolean"
+          description: "true/false"
+        displacedPreferenceRank:
+          type: "number"
+          description: "raw rank for this preference"
+        certOfPreference:
+          type: "boolean"
+          description: "true/false"
+        certOfPreferenceRank:
+          type: "number"
+          description: "raw rank for this preference"
+        neighborhoodPreference:
+          type: "boolean"
+          description: "true/false"
+        neighborhoodPreferenceRank:
+          type: "number"
+          description: "raw rank for this preference"
+        generalLotteryRank:
+          type: "number"
+          description: "raw rank for general lottery"
+        lotteryNumber:
+          type: "string"
+          description: "the lottery number  "
+        lotteryRank:
+          type: "integer"
+          format: "int32"
+          description: "raw lottery rank returned form drawing"
 
     Person:
       type: "object"
@@ -1557,7 +1660,6 @@
         webAppID:
           type: "string"
           description: "3rd party webAppID that api consumers can set ID - shoud be unique per source and ID"
-       
         appMemberID:
           type: "string"
           description: "App Member ID"
@@ -1664,8 +1766,6 @@
         neighborhoodPreferenceMatch:
           type: "string"
           description: "the front end can validate that the neighborhood preference matches- Value {match, unmatched, <blank>}  "
-
-          
         noPhone:
           type: "boolean"
           description: "the front end validates if user has phone"
