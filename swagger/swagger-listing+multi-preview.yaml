@@ -198,10 +198,10 @@
             description: "An array of listing"
             schema:
               $ref: "#/definitions/LotteryResult"
-              
+ 
     /Listing/LotteryResult/{listingID}:
       get:
-        description: "This returns the Listing result - with many lotteryResults inside this is the Application with the appropriate lottery number.  If no lotteryNumber fits, applicationsResult will be empty.  If listing isIncorrect it will error."
+        description: "This returns the Listing result - with 1 applicationResult inside this is the Application with the appropriate lottery number.  If no lotteryNumber fits, applicationsResult will be empty.  If listing isIncorrect it will error."
         parameters:
           -
             name: "listingID"
@@ -209,7 +209,7 @@
             description: "listingID for lottery"
             required: true
             type: "string"
-        
+         
 
         tags:
           - "Listing"
@@ -217,7 +217,8 @@
           200:
             description: "An array of listing"
             schema:
-              $ref: "#/definitions/LotteryResult"
+              $ref: "#/definitions/LotteryResult"             
+   
     /ListingDetails/{sfdcid}:
       get:
         description: "This returns the Listing information and its summary information."
