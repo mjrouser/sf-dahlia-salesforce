@@ -1169,6 +1169,9 @@
         Pet_Policy__c:
           type: "string"
           description: ""
+        Community_Restriction__c:
+          type: "string"
+          description: "Indicates whether a community building listing requires \"All People\" or \"One Person\" to meet the community requirements on an application."
         Reserved_community_type__c:
           type: "string"
           description: ""
@@ -1356,6 +1359,21 @@
         lotteryNumber:
           type: "string"
           description: "lottery number"
+        communityScreening:
+          type: "string"
+          description: "Answer to community building screening question: \"Yes\" or \"No\", defaults to blank."
+        householdPublicHousing:
+          type: "string"
+          description: "Answer to public housing question: \"Yes\" or \"No\", defaults to blank."
+        totalMonthlyRent:
+          type: "number"
+          description: "Total monthly rent, in dollars, paid by applicant and all household members on the application."
+        qualifyingServedInMilitary:
+          type: "string"
+          description: "Answer to question about military service: \"Yes\" or \"No\", defaults to blank."
+        qualifyingDevelopmentallyDisabled:
+          type: "string"
+          description: "Answer to question about disability: \"Yes\" or \"No\", defaults to blank."
     
     LotteryResult:
       type: "object"
