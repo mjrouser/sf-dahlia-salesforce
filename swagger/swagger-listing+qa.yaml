@@ -1350,18 +1350,6 @@
         formMetadata:
           type: "string"
           description: "additional metadata that can be saved on the form - non user input data"
-        xCoordinate:
-          type: "string"
-          description: "X Coordinate"
-        yCoordinate:
-          type: "string"
-          description: "Y Coordinate"
-        whichComponentOfLocatorWasUsed:
-          type: "string"
-          description: "Which Component Of Locator Was Used"
-        candidateScore:
-          type: "number"
-          description: "Candidate Score"
     
     ListingPreference:
       type: "object"
@@ -1672,8 +1660,6 @@
         neighborhoodPreferenceMatch:
           type: "string"
           description: "the front end can validate that the neighborhood preference matches- Value {match, unmatched, <blank>}  "
-
-          
         noPhone:
           type: "boolean"
           description: "the front end validates if user has phone"
@@ -1686,7 +1672,19 @@
         hasAltMailingAddress:
           type: "boolean"
           description: "the front end validates if user has an alternative mailing address"
-    
+        xCoordinate:
+          type: "string"
+          description: "X Coordinate"
+        yCoordinate:
+          type: "string"
+          description: "Y Coordinate"
+        whichComponentOfLocatorWasUsed:
+          type: "string"
+          description: "Which Component Of Locator Was Used"
+        candidateScore:
+          type: "number"
+          description: "Candidate Score"
+
     Attachment__C:
       type: "object"
       description: "Applicant Contact"
