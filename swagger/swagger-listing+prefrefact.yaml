@@ -5,15 +5,11 @@
     title: "SFMOHD API"
     description:  |
       The first version of the SFMO Housing API is an exciting step in providing information to listings to apply.  We want to make it easy for you, to build apps and have open access to city Listing data to apply for affordable housing
-
       There are two ways to connect to the api-
       The listing data is public domain and can be accessed at <publicsite>/salesforce.com/apexrest
       You can connect your listing information to this
-
       To connect a full fledge application to the city data in order to facilitate applications please email the city, and we will get you the proper credentials.
       All application data requires oauth to connect.
-
-
   host: "salesforce.com"
   schemes:
     - "https"
@@ -1169,6 +1165,9 @@
         Pet_Policy__c:
           type: "string"
           description: ""
+        Reserved_community_is_Strict:
+          type: "boolean"
+          description: "strict communities requires \"All People\" non-strict fields require one tenant to meet the community requirements on an application."
         Reserved_community_type__c:
           type: "string"
           description: ""
@@ -1327,7 +1326,7 @@
         agreeToTerms:
           type: "boolean"
           description: "applicant agrees to terms of application"
-        householdVouchersSubsidies:
+        xhouseholdVouchersSubsidies:
           type: "string"
           description: "household has vouchers or subsidies - Value {true, false, <blank>}"
         annualIncome:
@@ -1356,6 +1355,25 @@
         lotteryNumber:
           type: "string"
           description: "lottery number"
+        isCommunityScreened:
+          type: "string"
+          description: "Answer to community building screening question: \"Yes\" or \"No\", defaults to blank."
+        totalMonthlyRent:
+          type: "number"
+          description: "Total monthly rent, in dollars, paid by applicant and all household members on the application."
+        hasVouchersSubsidies:
+          type: "string"
+          description: "Answer to public housing question: \"Yes\" or \"No\", defaults to blank."
+        hasPublicHousing:
+          type: "string"
+          description: "Answer to public housing question: \"Yes\" or \"No\", defaults to blank."
+   
+        hasMilitaryService:
+          type: "string"
+          description: "Answer to question about military service: \"Yes\" or \"No\", defaults to blank."
+        hasDevelopmentalDisability:
+          type: "string"
+          description: "Answer to question about disability: \"Yes\" or \"No\", defaults to blank."
     
     LotteryResult:
       type: "object"
