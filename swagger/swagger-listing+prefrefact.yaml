@@ -1458,24 +1458,30 @@
       type: "object"
       description: "Application preference"
       properties:
-        preferenceType:
+        shortformPreferenceID:
           type: "string"
-          description: "preference type (COP, DTHP etc..)"
-      
+          description: "shortform Preference ID"
+        applicationID:
+          type: "string"
+          description: "application ID"
         appMemberID:
           type: "string"
           description: "application Member ID"
- 
         naturalKey:
           type: "string"
           description: "naturalKey"
-     
         listingPreferenceID:
           type: "string"
           description: "listing Preference ID"
         preferenceProof:
           type: "string"
-          description: "type of proof given "
+          description: "type of proof given"
+        optOut:
+          type: "boolean"
+          description: "opt Out"
+        ifCombinedIndividualPreference:
+          type: "string"
+          description: "If Combined Individual Preference"
     ListingResult:
       type: "object"
       description: "lottery result - deprecated"
