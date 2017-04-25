@@ -30,6 +30,7 @@ public with sharing class LOT_RandomDrawReqTest_Test {
         
         Development__c dev = new Development__c();
         dev.Name_of_Development__c = 'amli';
+        dev.Project_ID__c = '123';
         insert dev;
       
         Building__c build = new Building__c();

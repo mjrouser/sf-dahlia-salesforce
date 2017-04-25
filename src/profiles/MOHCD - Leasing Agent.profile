@@ -653,6 +653,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Application_Member__c.test_text__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Application_Member__c.xNatural_key_test__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -723,6 +728,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Application__c.COP_Opt_Out__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Application__c.COP_Preference_Manual__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -754,6 +764,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Application__c.Conflict_Number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Application__c.DTHP_Opt_Out__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -819,12 +834,12 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Application__c.General_Lottery_Rank__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Application__c.General_Lottery__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -898,6 +913,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Application__c.Live_Work_Opt_Out__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Application__c.Live_Work_Preference_Paper__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -919,11 +939,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Application__c.Live_in_SF_Preference_Proof__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Application__c.Live_in_SF_Preference_Rank__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -959,6 +974,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Application__c.Monthly_Income__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Application__c.NRHP_Opt_Out__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1067,11 +1087,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Application__c.Work_in_SF_Count__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>Application__c.Work_in_SF_Preference_Member__c</field>
         <readable>true</readable>
@@ -1082,23 +1097,18 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>Application__c.Work_in_SF_Preference_Rank__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Application__c.Work_in_SF_Preference__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>Application__c.of_Reviewed_Flagged_Applications__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Contact.AccountId</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Account_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1762,11 +1772,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Development__c.Project_ID__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>Development__c.Property_Manager_Contact__c</field>
         <readable>true</readable>
@@ -1792,16 +1797,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Flagged_Application__c.Conflicting_Application_Applicant_Name__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Flagged_Application__c.Conflicting_Application__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>Flagged_Application__c.DuplicateRecordItem__c</field>
         <readable>true</readable>
@@ -1824,11 +1819,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Flagged_Application__c.Primary_Application_Applicant_Name__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Flagged_Application__c.Primary_Application_Submission_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1942,13 +1932,23 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Listing__c.AMI_Percentage__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Listing__c.Accepting_Online_Applications__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Listing__c.Accepting_applications_at_leasing_agent__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Listing__c.Accepting_applications_by_PO_Box__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1967,9 +1967,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Listing__c.ApplicablePreferences__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -2004,6 +2004,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Listing__c.Application_Street_Address__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Listing__c.Blank_paper_application_can_be_picked_up__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2069,7 +2074,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Listing__c.Confirmed_Duplicate_Applications__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -2145,6 +2150,21 @@
         <editable>false</editable>
         <field>Listing__c.Does_Match__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Listing__c.Download_URL_Cantonese__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Listing__c.Download_URL_Spanish__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Listing__c.Download_URL_Tagalog__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -2229,6 +2249,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Listing__c.Legal_Disclaimers__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Listing__c.Listing_Other_Notes__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2318,6 +2343,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Listing__c.Marketing_Start_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Listing__c.Max_BR__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2329,6 +2359,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Listing__c.Max_Occupancy__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing__c.Maximum_waitlist_size__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2369,6 +2404,26 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Listing__c.Number_of_Applications__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing__c.Number_of_Communication_priority_units__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing__c.Number_of_Mobility_priority_units__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing__c.Number_of_Other_priority_units__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing__c.Number_of_people_currently_on_waitlist__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2458,6 +2513,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Listing__c.Services_Onsite__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Listing__c.Smoking_Policy__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2483,12 +2543,32 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Listing__c.Total_number_of_building_units__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing__c.Total_waitlist_openings__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing__c.Units_Available__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Listing__c.Year_Built_Display__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Listing__c.Year_Built__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Listing__c.hasWaitlist__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2534,6 +2614,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Open_Houses__c.Start_Time__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Unit__c.AMI_chart_type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Unit__c.AMI_chart_year__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2692,6 +2782,16 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Unit__c.Priority_Grouping__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Unit__c.Priority_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Unit__c.Property_Type__c</field>
         <readable>true</readable>
@@ -2699,6 +2799,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Unit__c.Rent_Multiple__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Unit__c.Rent_percent_of_income__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Unit__c.Reserved_Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2747,6 +2857,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Unit__c.isReservedCommunity__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Unit__c.of_AMI_for_Pricing_Unit__c</field>
         <readable>true</readable>
@@ -2769,11 +2884,11 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Application__c-Application Layout - BMR Rental Short-Form</layout>
-        <recordType>Application__c.Multi_Family_Rental_Short_Form</recordType>
+        <recordType>Application__c.BMR_Rental_Short_Form</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Application__c-Community Application Layout - BMR Rental Short-Form</layout>
-        <recordType>Application__c.BMR_Rental_Short_Form</recordType>
+        <layout>Application__c-Application Layout - BMR Rental Short-Form</layout>
+        <recordType>Application__c.Multi_Family_Rental_Short_Form</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Building__c-Building Layout</layout>
@@ -2839,7 +2954,7 @@
         <layout>Lottery_Preference__c-Preference Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Open_Houses__c-Community Open House Layout</layout>
+        <layout>Open_Houses__c-Open House Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Unit__c-BMR Rental Unit Layout</layout>
@@ -2873,6 +2988,15 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>Contact</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Development__c</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -2917,6 +3041,15 @@
         <allowEdit>false</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
+        <object>Listing_Lottery_Preference__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
         <object>Listing__c</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
@@ -2936,6 +3069,15 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>Open_Houses__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Unit__c</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <pageAccesses>

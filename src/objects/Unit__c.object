@@ -53,6 +53,33 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
+        <fullName>AMI_chart_type__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Default value &quot;HUD Unadjusted&quot; will be updated upon save.</inlineHelpText>
+        <label>AMI chart type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>AMI_Chart_Types</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>AMI_chart_year__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Default value latest year will be updated upon save.</inlineHelpText>
+        <label>AMI chart year</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Accessible_Bathroom__c</fullName>
         <defaultValue>false</defaultValue>
         <description>Is the Bathroom Accessible?</description>
@@ -458,6 +485,31 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Priority_Grouping__c</fullName>
+        <description>Displays the grouping where the Priority belongs, in order to be displayed on the front end. If a new Priority Type is added to the list, it needs to be added to this formula as well or it will default to &quot;Other&quot;</description>
+        <externalId>false</externalId>
+        <formula>IF(OR(ISPICKVAL(Priority_Type__c,&apos;Vision impaired&apos;),ISPICKVAL(Priority_Type__c,&apos;Hearing impaired&apos;),ISPICKVAL(Priority_Type__c,&apos;Hearing/Vision impaired&apos;)),&apos;Communication&apos;,IF(ISPICKVAL(Priority_Type__c,&apos;Mobility impaired&apos;),&apos;Mobility&apos;,IF(ISPICKVAL(Priority_Type__c,&apos;&apos;),&apos;&apos;,&apos;Other&apos;)))</formula>
+        <label>Priority Grouping</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Priority_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Priority Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Priority</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Property_Type__c</fullName>
         <description>Property Type (i.e. Condo, townhouse, single family, etc)</description>
         <externalId>false</externalId>
@@ -518,6 +570,30 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rent_percent_of_income__c</fullName>
+        <externalId>false</externalId>
+        <label>Rent percent of income</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Reserved_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Reserved Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Priority</valueSetName>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Smoking__c</fullName>
@@ -663,6 +739,16 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>isReservedCommunity__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISPICKVAL(Property__r.Reserved_community_type__c,&quot;&quot;),false,true )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Reserved community?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>of_AMI_for_Pricing_Unit__c</fullName>
         <description>% of Area Median Income for Pricing Unit.</description>
         <externalId>false</externalId>
@@ -715,13 +801,40 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
         <label>All</label>
     </listViews>
     <listViews>
-        <fullName>Unit_Details</fullName>
+        <fullName>L_Seven_Units_Details</fullName>
         <columns>NAME</columns>
         <columns>Listing__c</columns>
-        <columns>Property__c</columns>
+        <columns>Unit_Type__c</columns>
+        <columns>Unit_Number__c</columns>
         <columns>Number_of_Bathrooms__c</columns>
-        <columns>Number_of_Bedrooms__c</columns>
-        <columns>CREATEDBY_USER</columns>
+        <columns>Unit_Square_Footage__c</columns>
+        <columns>Unit_Floor__c</columns>
+        <columns>Max_Occupancy__c</columns>
+        <columns>BMR_Rent_Monthly__c</columns>
+        <columns>of_AMI_for_Pricing_Unit__c</columns>
+        <columns>Rent_Multiple__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Listing__c</field>
+            <operation>equals</operation>
+            <value>L Seven</value>
+        </filters>
+        <label>L Seven Units Details</label>
+    </listViews>
+    <listViews>
+        <fullName>Unit_Details</fullName>
+        <columns>Property__c</columns>
+        <columns>Listing__c</columns>
+        <columns>Unit_Number__c</columns>
+        <columns>Unit_Type__c</columns>
+        <columns>Number_of_Bathrooms__c</columns>
+        <columns>Unit_Square_Footage__c</columns>
+        <columns>Unit_Floor__c</columns>
+        <columns>BMR_Rent_Monthly__c</columns>
+        <columns>of_AMI_for_Pricing_Unit__c</columns>
+        <columns>Maximum_Household_Size__c</columns>
+        <columns>Rent_Multiple__c</columns>
+        <columns>NAME</columns>
         <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>Unit Details</label>
@@ -833,10 +946,41 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
             </values>
             <values>
                 <fullName>HUD Unadjusted</fullName>
-                <default>false</default>
+                <default>true</default>
             </values>
             <values>
                 <fullName>Non-HERA</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority</picklist>
+            <values>
+                <fullName>Developmental disabilities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hearing impaired</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hearing%2FVision impaired</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mobility impaired</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Senior</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Veteran</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vision impaired</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

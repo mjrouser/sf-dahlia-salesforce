@@ -62,6 +62,10 @@
         <style>CustomLinks</style>
     </layoutSections>
     <relatedLists>
+        <excludeButtons>New</excludeButtons>
+        <fields>Listing__c.NAME</fields>
+        <fields>Available_Units__c</fields>
+        <fields>Order__c</fields>
         <fields>NAME</fields>
         <relatedList>Listing_Lottery_Preference__c.Lottery_Preference__c</relatedList>
     </relatedLists>
@@ -71,7 +75,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00hf0000000X6XE</masterLabel>
+        <masterLabel>00h0P00000UtTc5</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

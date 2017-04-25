@@ -29,6 +29,7 @@ private class ListingApiTest {
         
         Development__c dev = new Development__c();
         dev.Name_of_Development__c = 'amli';
+        dev.Project_ID__c = '123';
         insert dev;
         
         //Property__c prop = new Property__c();//

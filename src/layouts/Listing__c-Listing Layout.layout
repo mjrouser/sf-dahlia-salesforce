@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customButtons>DAHLIA_Web_Preview</customButtons>
     <customButtons>Lottery_Random</customButtons>
     <customButtons>Run_Preference_Lottery</customButtons>
     <excludeButtons>Submit</excludeButtons>
@@ -37,6 +38,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Marketing_Start_Date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Status__c</field>
             </layoutItems>
             <layoutItems>
@@ -44,12 +49,8 @@
                 <field>Accepting_Online_Applications__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Max_BR__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Max_Income__c</field>
+                <behavior>Readonly</behavior>
+                <field>Units_Available__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -67,10 +68,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>In_Lottery__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Confirmed_Duplicate_Applications__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -111,6 +108,21 @@
                 <behavior>Edit</behavior>
                 <field>General_App_Total__c</field>
             </layoutItems>
+            <layoutItems>
+                <emptySpace>true</emptySpace>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Total_number_of_building_units__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Number_of_Communication_priority_units__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Number_of_Mobility_priority_units__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -128,6 +140,16 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Neighborhood_App_Total__c</field>
+            </layoutItems>
+            <layoutItems>
+                <emptySpace>true</emptySpace>
+            </layoutItems>
+            <layoutItems>
+                <emptySpace>true</emptySpace>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Number_of_Other_priority_units__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -208,6 +230,33 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
+        <label>Waitlist Information</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>hasWaitlist__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Total_waitlist_openings__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Maximum_waitlist_size__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Number_of_people_currently_on_waitlist__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
         <label>Accessibility, Amenities, Fees</label>
         <layoutColumns>
             <layoutItems>
@@ -217,6 +266,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Amenities__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Services_Onsite__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -266,11 +319,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Draw_ID__c</field>
+                <field>Lottery_URL__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Random_org_Public_Draw_URL__c</field>
+                <behavior>Edit</behavior>
+                <field>Draw_ID__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -296,6 +349,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Lottery_Start_Time__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>NeighborHoodPreferenceUrl__c</field>
             </layoutItems>
         </layoutColumns>
@@ -307,10 +364,6 @@
         <editHeading>true</editHeading>
         <label>Application Information</label>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>AMI_Percentage__c</field>
-            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Application_Organization__c</field>
@@ -331,11 +384,31 @@
                 <behavior>Edit</behavior>
                 <field>Application_Postal_Code__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Accepting_applications_by_PO_Box__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Accepting_applications_at_leasing_agent__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Blank_paper_application_can_be_picked_up__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Number_of_Applications__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Application_Phone__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Organization_URL__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -343,15 +416,27 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Office_Open__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Office_Closed__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Download_URL__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Organization_URL__c</field>
+                <behavior>Edit</behavior>
+                <field>Download_URL_Spanish__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Number_of_Applications__c</field>
+                <behavior>Edit</behavior>
+                <field>Download_URL_Tagalog__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Download_URL_Cantonese__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -425,6 +510,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Preference_Detail__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Rental_Assistance__c</field>
             </layoutItems>
         </layoutColumns>
@@ -456,6 +545,19 @@
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Additional Listing Notes</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Listing_Other_Notes__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -499,6 +601,19 @@
         <relatedList>Application__c.Listing__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <excludeButtons>New</excludeButtons>
+        <fields>Unit__c.NAME</fields>
+        <fields>Unit__c.Unit_Number__c</fields>
+        <fields>AMI_chart_type__c</fields>
+        <fields>AMI_chart_year__c</fields>
+        <fields>AMI_Percent__c</fields>
+        <fields>Priority_Type__c</fields>
+        <fields>Rent_multiple__c</fields>
+        <fields>Rent_percent_of_income__c</fields>
+        <fields>NAME</fields>
+        <relatedList>Listing_Unit__c.Listing__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>NAME</fields>
         <relatedList>Open_Houses__c.Listing__c</relatedList>
     </relatedLists>
@@ -518,6 +633,9 @@
         <fields>Min_Occupancy__c</fields>
         <fields>Max_Occupancy__c</fields>
         <fields>of_AMI_for_Pricing_Unit__c</fields>
+        <fields>AMI_chart_type__c</fields>
+        <fields>AMI_chart_year__c</fields>
+        <fields>Reserved_Type__c</fields>
         <relatedList>Unit__c.Listing__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -531,7 +649,6 @@
     <relatedLists>
         <fields>NAME</fields>
         <fields>Application__c</fields>
-        <fields>Conflicting_Application__c</fields>
         <fields>Manually_Flagged__c</fields>
         <fields>System_Flagged__c</fields>
         <fields>Review_Status__c</fields>
@@ -540,6 +657,9 @@
     <relatedLists>
         <fields>NAME</fields>
         <relatedList>Flagged_Record_Set__c.Listing__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

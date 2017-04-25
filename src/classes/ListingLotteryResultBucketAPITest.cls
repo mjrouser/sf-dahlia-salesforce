@@ -25,7 +25,8 @@ public with sharing class ListingLotteryResultBucketAPITest {
 		
 		Development__c dev = new Development__c();
 		dev.Name_of_Development__c = 'amli';
-		insert dev;
+		dev.Project_ID__c = '123';
+        insert dev;
 		
 		Building__c build = new Building__c();
 		build.Development__c = dev.Id;

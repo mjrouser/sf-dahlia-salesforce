@@ -97,6 +97,16 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Account_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account.Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account ID</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Address_Line_2__c</fullName>
         <externalId>false</externalId>
         <label>Address Line 2</label>
@@ -2104,15 +2114,34 @@
         <columns>Is_Developer__c</columns>
         <columns>Is_Property_Manager__c</columns>
         <columns>Is_Real_Estate_Agent__c</columns>
-        <columns>Is_Rental_Sales_Agent__c</columns>
+        <columns>Webapp_Id__c</columns>
         <columns>CONTACT.CREATED_DATE</columns>
+        <columns>CONTACT.LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Contacts</label>
+    </listViews>
+    <listViews>
+        <fullName>AllWebAppAccountHolders</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CONTACT.RECORDTYPE</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>CONTACT.PHONE1</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <columns>Webapp_Id__c</columns>
+        <columns>CONTACT.CREATED_DATE</columns>
+        <columns>CONTACT.LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>CONTACT.CREATED_DATE</field>
+            <field>CONTACT.RECORDTYPE</field>
             <operation>equals</operation>
-            <value>LAST_N_DAYS:60</value>
+            <value>Contact.Applicant</value>
         </filters>
-        <label>All Contacts</label>
+        <filters>
+            <field>CONTACT.CREATED_DATE</field>
+            <operation>greaterThan</operation>
+            <value>10/17/2016 12:00 AM</value>
+        </filters>
+        <label>All Web App Account Holders</label>
     </listViews>
     <listViews>
         <fullName>BirthdaysThisMonth</fullName>

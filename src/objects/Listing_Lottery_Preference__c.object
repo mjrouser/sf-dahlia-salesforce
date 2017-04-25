@@ -145,6 +145,19 @@
         <unique>false</unique>
     </fields>
     <label>Listing Preference</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Available_Units__c</columns>
+        <columns>Description__c</columns>
+        <columns>Listing__c</columns>
+        <columns>Order__c</columns>
+        <columns>NRHP_District__c</columns>
+        <columns>Lottery_Preference__c</columns>
+        <columns>Preference_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>LP-{00000}</displayFormat>
         <label>Listing Preference Name</label>

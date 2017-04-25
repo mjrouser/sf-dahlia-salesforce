@@ -74,6 +74,26 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Accepting_applications_at_leasing_agent__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Accepting applications at leasing agent address</inlineHelpText>
+        <label>Accepting applications at leasing agent</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Accepting_applications_by_PO_Box__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Accepting applications by PO Box</inlineHelpText>
+        <label>Accepting applications by PO Box</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Accessibility__c</fullName>
         <externalId>false</externalId>
         <label>Accessibility</label>
@@ -214,6 +234,16 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Blank_paper_application_can_be_picked_up__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Blank paper application can be picked up at leasing agent</inlineHelpText>
+        <label>Blank paper application can be picked up</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Building_City__c</fullName>
@@ -556,9 +586,40 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Download_URL_Cantonese__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Download URL Cantonese</inlineHelpText>
+        <label>Download URL Cantonese</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Download_URL_Spanish__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Download URL Spanish</inlineHelpText>
+        <label>Download URL Spanish</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Download_URL_Tagalog__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Download URL Tagalog</inlineHelpText>
+        <label>Download URL Tagalog</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
         <fullName>Download_URL__c</fullName>
         <externalId>false</externalId>
-        <label>Download URL</label>
+        <inlineHelpText>Download URL English</inlineHelpText>
+        <label>Download URL English</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -753,6 +814,17 @@
         <visibleLines>12</visibleLines>
     </fields>
     <fields>
+        <fullName>Listing_Other_Notes__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Listing Other Notes</inlineHelpText>
+        <label>Listing Other Notes</label>
+        <length>650</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
         <fullName>LiveWorkUnitsAvailable__c</fullName>
         <description>Total units available for Live/Work preference</description>
         <externalId>false</externalId>
@@ -780,7 +852,6 @@
     </fields>
     <fields>
         <fullName>LotteryResultsURL__c</fullName>
-        <defaultValue>&quot;http://sfmohcd.org/node/1112&quot;</defaultValue>
         <externalId>false</externalId>
         <label>Lottery Results PDF URL</label>
         <required>false</required>
@@ -979,6 +1050,16 @@
         <type>Summary</type>
     </fields>
     <fields>
+        <fullName>Marketing_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Marketing Start Date</inlineHelpText>
+        <label>Marketing Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
         <fullName>Max_BR__c</fullName>
         <externalId>false</externalId>
         <label>Max BR</label>
@@ -1008,6 +1089,18 @@
         <inlineHelpText>Field will ultimately be hidden from page layout and is based on max occupancy of max from all units in a given listing. Field is used to hold the maximum occupancy.</inlineHelpText>
         <label>Max Occupancy</label>
         <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Maximum_waitlist_size__c</fullName>
+        <externalId>false</externalId>
+        <label>Maximum waitlist size</label>
+        <precision>4</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -1108,6 +1201,65 @@
         <externalId>false</externalId>
         <inlineHelpText>Displays how many Applications have been submitted for this particular listing.</inlineHelpText>
         <label>Number of Applications</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Communication_priority_units__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Number of Communication priority units</inlineHelpText>
+        <label>Number of Communication priority units</label>
+        <summaryFilterItems>
+            <field>Listing_Unit__c.Priority_Grouping__c</field>
+            <operation>equals</operation>
+            <value>Communication</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Listing_Unit__c.Listing__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Mobility_priority_units__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Number of Mobility priority units</inlineHelpText>
+        <label>Number of Mobility priority units</label>
+        <summaryFilterItems>
+            <field>Listing_Unit__c.Priority_Grouping__c</field>
+            <operation>equals</operation>
+            <value>Mobility</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Listing_Unit__c.Listing__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Other_priority_units__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Other priority units</label>
+        <summaryFilterItems>
+            <field>Listing_Unit__c.Priority_Grouping__c</field>
+            <operation>equals</operation>
+            <value>Other</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Listing_Unit__c.Listing__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_people_currently_on_waitlist__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of people currently on waitlist</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -1376,6 +1528,19 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Services_Onsite__c</fullName>
+        <description>&quot;Miscellaneous information about other services offered here. This will appear within the web app.&quot;</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Are there any additional services offered for this listing?</inlineHelpText>
+        <label>Services Onsite</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Smoking_Policy__c</fullName>
         <description>Will be set via code from Property.</description>
         <externalId>false</externalId>
@@ -1411,6 +1576,10 @@
                 </value>
                 <value>
                     <fullName>Active</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete</fullName>
                     <default>false</default>
                 </value>
             </valueSetDefinition>
@@ -1458,6 +1627,50 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Total_number_of_building_units__c</fullName>
+        <externalId>false</externalId>
+        <formula>Building__r.Number_of_total_units__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total number of building units</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_waitlist_openings__c</fullName>
+        <externalId>false</externalId>
+        <formula>Maximum_waitlist_size__c - Number_of_people_currently_on_waitlist__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total waitlist openings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Units_Available__c</fullName>
+        <description>The number of Listing Units with &quot;Available&quot; status.</description>
+        <externalId>false</externalId>
+        <label>Units Available</label>
+        <summaryFilterItems>
+            <field>Listing_Unit__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Available</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Listing_Unit__c.Listing__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
         <fullName>Year_Built_Display__c</fullName>
         <externalId>false</externalId>
         <formula>TEXT(Year_Built__c)</formula>
@@ -1481,6 +1694,16 @@
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>hasWaitlist__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Does this building have a waitlist?</inlineHelpText>
+        <label>Has waitlist?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>of_BR_Range_for_listing__c</fullName>
@@ -1512,8 +1735,10 @@
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
+        <columns>Account__c</columns>
         <columns>Status__c</columns>
         <columns>Application_Due_Date__c</columns>
+        <columns>Accepting_Online_Applications__c</columns>
         <columns>Lottery_Date__c</columns>
         <columns>Lottery_Results_Date__c</columns>
         <columns>Submitted_Applications__c</columns>
@@ -1524,17 +1749,88 @@
         <label>All</label>
     </listViews>
     <listViews>
-        <fullName>Listing_Details</fullName>
+        <fullName>All_active</fullName>
+        <columns>Application_Due_Date__c</columns>
+        <columns>NAME</columns>
+        <columns>Account__c</columns>
+        <columns>Status__c</columns>
+        <columns>Units_Available__c</columns>
+        <columns>Accepting_Online_Applications__c</columns>
+        <columns>Submitted_Applications__c</columns>
+        <columns>Flagged_Applications__c</columns>
+        <columns>Removed_from_Lottery__c</columns>
+        <columns>Lottery_Date__c</columns>
+        <columns>Lottery_Results_Date__c</columns>
         <columns>Lottery_Status__c</columns>
-        <columns>In_Lottery__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </filters>
+        <label>Active</label>
+    </listViews>
+    <listViews>
+        <fullName>All_open</fullName>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <columns>NAME</columns>
+        <columns>Account__c</columns>
+        <columns>Status__c</columns>
+        <columns>Application_Due_Date__c</columns>
+        <columns>Accepting_Online_Applications__c</columns>
+        <columns>Lottery_Date__c</columns>
+        <columns>Lottery_Results_Date__c</columns>
+        <columns>Submitted_Applications__c</columns>
+        <columns>Flagged_Applications__c</columns>
+        <columns>Removed_from_Lottery__c</columns>
+        <columns>Lottery_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </filters>
+        <filters>
+            <field>Application_Due_Date__c</field>
+            <operation>greaterThan</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>Open</label>
+    </listViews>
+    <listViews>
+        <fullName>Listing_Details</fullName>
         <columns>NAME</columns>
         <columns>Building__c</columns>
         <columns>Building_Street_Address__c</columns>
         <columns>Status__c</columns>
         <columns>Application_Due_Date__c</columns>
+        <columns>In_Lottery__c</columns>
+        <columns>Submitted_Applications__c</columns>
         <columns>Lottery_Date__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>LotteryResultsURL__c</columns>
         <filterScope>Everything</filterScope>
         <label>Listing Details</label>
+    </listViews>
+    <listViews>
+        <fullName>Pseudo_Listings_for_Admin_Purposes</fullName>
+        <columns>NAME</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>Lottery_Status__c</columns>
+        <columns>Building__c</columns>
+        <columns>COP_App_Total__c</columns>
+        <columns>DTHP_App_Total__c</columns>
+        <columns>General_App_Total__c</columns>
+        <columns>Live_Work_App_Total__c</columns>
+        <columns>Neighborhood_App_Total__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Application_Due_Date__c</field>
+            <operation>equals</operation>
+        </filters>
+        <label>Pseudo Listings for Admin Purposes</label>
     </listViews>
     <nameField>
         <label>Listing Name</label>
@@ -1549,6 +1845,25 @@
         <customTabListAdditionalFields>Number_of_Applications__c</customTabListAdditionalFields>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
+    <webLinks>
+        <fullName>DAHLIA_Web_Preview</fullName>
+        <availability>online</availability>
+        <description>DAHLIA Web Preview</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>DAHLIA Web Preview</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>if (&apos;{!LEFT($Api.Partner_Server_URL_260, FIND(&apos;/services&apos;, $Api.Partner_Server_URL_190))}&apos; == &apos;https://sfhousing.my.salesforce.com/&apos;){
+window.open(&quot;https://housing.sfgov.org/listings/{!CASESAFEID(Listing__c.Id)}&quot;);
+}
+else if(&apos;{!LEFT($Api.Partner_Server_URL_260, FIND(&apos;/services&apos;, $Api.Partner_Server_URL_190))}&apos; == &apos;https://sfhousing--full.cs12.my.salesforce.com/&apos;){
+window.open(&quot;http://dahlia-sandbox.herokuapp.com/listings/{!CASESAFEID(Listing__c.Id)}&quot;);
+}
+else{
+window.open(&quot;https://dahlia-qa.herokuapp.com/listings/{!CASESAFEID(Listing__c.Id)}&quot;);
+}</url>
+    </webLinks>
     <webLinks>
         <fullName>Lottery_Random</fullName>
         <availability>online</availability>

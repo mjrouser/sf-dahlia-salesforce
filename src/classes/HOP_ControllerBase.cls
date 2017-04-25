@@ -24,4 +24,72 @@ public without sharing virtual class HOP_ControllerBase {
 		// Queries the current User's licence name and Account Id
 		myUser = [SELECT Id, Contact.AccountId, Profile.UserLicense.Name FROM User WHERE Id = :UserInfo.getUserId()];
 	}
+	 @RemoteAction
+    public static dataTableResponse getRecords(string objectName,string fieldList,string whereClause) {
+        User myUser = [SELECT Id, Contact.AccountId, Profile.UserLicense.Name FROM User WHERE Id = :UserInfo.getUserId()];
+        
+        string queryString ='select '+fieldList+' from '+objectName;
+        if(whereClause != null && whereClause != ''){
+            queryString +=' where '+whereClause;
+        }
+        list<sobject> sobjList=database.query(queryString);
+        List<rowHeaders> rowHeadersList = new List<rowHeaders>();
+        Map<String, Schema.SObjectField> dfr = Schema.getGlobalDescribe().get(objectName).getDescribe().fields.getMap();
+        system.debug('*'+dfr);
+        for(string str:fieldList.split(',')){
+            str=str.replaceAll( '\\s+', '').normalizeSpace();
+            system.debug('*S'+str);
+            if(str.contains('__r')){
+                rowHeaders r = new rowHeaders(str);
+                rowHeadersList.add(r); 
+            }else{
+                rowHeaders r = new rowHeaders(dfr.get(str).getDescribe(),str);
+                rowHeadersList.add(r); 
+            }              
+        }
+        dataTableResponse dataTableResponseObj = new dataTableResponse();
+        dataTableResponseObj.dataRows=sobjList;
+        dataTableResponseObj.dataColumns=rowHeadersList;
+        //system.debug(dataTableResponseObj);
+        return dataTableResponseObj;
+    }
+    public class dataTableResponse{
+        public list<sobject> dataRows;
+        public List<rowHeaders> dataColumns;
+        
+    }
+    public class rowHeaders{
+        public String title;
+        public String data;
+        public string type;
+        public boolean visible;
+        public rowHeaders(string Name){
+            this.data=name;
+            this.title=name.substring(0,name.indexOfIgnoreCase('__r'));
+        }
+        public rowHeaders(Schema.DescribeFieldResult field,string Name){
+            Schema.DisplayType FldType = field.getType();
+            this.data=name;           
+            if(FldType==schema.displaytype.reference || FldType==schema.displaytype.id){
+            	this.visible=false;
+            	
+            }
+            if(FldType==schema.displaytype.string || FldType==schema.displaytype.id || FldType==schema.displaytype.phone || FldType==schema.displaytype.reference || FldType==schema.displaytype.url || FldType==schema.displaytype.email){
+                type='string';
+            }            
+            if(FldType==schema.displaytype.date || FldType==schema.displaytype.datetime){
+                type='date';
+            }
+            if(FldType==schema.displaytype.boolean){
+                type='boolean';
+            }
+            if(FldType==schema.displaytype.Integer || FldType==schema.displaytype.currency){
+                type='number';
+            }
+            if(FldType==schema.displaytype.percent){
+                type='percent';
+            }
+            title=field.getLabel();
+        }
+    }
 }

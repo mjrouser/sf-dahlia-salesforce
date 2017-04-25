@@ -18,7 +18,7 @@
 </target>
 
 <target name="deployCode" depends="proxy">
-	<sf:deploy	username="${target.username}" password="${target.password}" serverurl="${sf.serverurl}" deployroot="src"/>
+	<sf:deploy	username="${target.username}" password="${target.password}" serverurl="${target.serverurl}" deployroot="src"/>
 </target>
 
 </project>

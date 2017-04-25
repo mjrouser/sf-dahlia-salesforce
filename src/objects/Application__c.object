@@ -244,9 +244,19 @@
         <externalId>false</externalId>
         <label>Application Submitted Date</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>COP_Opt_Out__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>COP Opt Out</inlineHelpText>
+        <label>COP Opt Out</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>COP_Preference_Manual__c</fullName>
@@ -360,6 +370,16 @@ IF(
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>DTHP_Opt_Out__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>DTHP Opt Out</inlineHelpText>
+        <label>DTHP Opt Out</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>DTHP_Preference_Manual__c</fullName>
@@ -575,6 +595,10 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
                     <fullName>false</fullName>
                     <default>false</default>
                 </value>
+                <value>
+                    <fullName>Left Blank</fullName>
+                    <default>false</default>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -721,6 +745,16 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
+        <fullName>Live_Work_Opt_Out__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Live/Work Opt Out</inlineHelpText>
+        <label>Live/Work Opt Out</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Live_Work_Preference_Paper__c</fullName>
         <defaultValue>false</defaultValue>
         <description>Live work manual preference override for msol</description>
@@ -828,18 +862,6 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
         </valueSet>
     </fields>
     <fields>
-        <fullName>Live_in_SF_Preference_Rank__c</fullName>
-        <externalId>false</externalId>
-        <label>Live in SF Preference Rank</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Lottery_Number_Manual__c</fullName>
         <description>Temporary field to use for uploading temp applications to run through the lottery. This will be used to link Salesforce applications, to those that are sent to the MOHCD from others.</description>
         <externalId>false</externalId>
@@ -937,6 +959,16 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>NRHP_Opt_Out__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>End User can use NRHP Opt Out</inlineHelpText>
+        <label>NRHP Opt Out</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Neighborhood_Preference_Address__c</fullName>
@@ -1333,21 +1365,6 @@ IF(
         <type>Summary</type>
     </fields>
     <fields>
-        <fullName>Work_in_SF_Count__c</fullName>
-        <externalId>false</externalId>
-        <label>Work in SF Count</label>
-        <summaryFilterItems>
-            <field>Application_Member__c.Work_in_SF__c</field>
-            <operation>equals</operation>
-            <value>true</value>
-        </summaryFilterItems>
-        <summaryForeignKey>Application_Member__c.Application__c</summaryForeignKey>
-        <summaryOperation>count</summaryOperation>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Summary</type>
-    </fields>
-    <fields>
         <fullName>Work_in_SF_Preference_Member__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
@@ -1423,28 +1440,6 @@ IF(
         </valueSet>
     </fields>
     <fields>
-        <fullName>Work_in_SF_Preference_Rank__c</fullName>
-        <externalId>false</externalId>
-        <label>Work in SF Preference Rank</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Work_in_SF_Preference__c</fullName>
-        <externalId>false</externalId>
-        <formula>IF(Work_in_SF_Count__c &gt; 0, true, false)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Work in SF Preference</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>of_Reviewed_Flagged_Applications__c</fullName>
         <description>Number of Flagged application records (rules that this application is considered duplicate on) where it is considered</description>
         <externalId>false</externalId>
@@ -1469,35 +1464,14 @@ IF(
         <columns>Application_Submission_Type__c</columns>
         <columns>Applicant__c</columns>
         <columns>Email__c</columns>
-        <columns>First_Name__c</columns>
-        <columns>Last_Name__c</columns>
-        <columns>Date_of_birth__c</columns>
         <columns>Status__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>Housing_Voucher_or_Subsidy__c</columns>
-        <columns>Annual_Income__c</columns>
-        <columns>Monthly_Income__c</columns>
-        <columns>Total_Household_Size__c</columns>
+        <columns>DTHP_Preference__c</columns>
+        <columns>Live_Work_Preference__c</columns>
+        <columns>Neighborhood_Preference__c</columns>
+        <columns>Phone__c</columns>
+        <columns>Second_Phone__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>All_Applications</fullName>
-        <columns>NAME</columns>
-        <columns>Application_Submitted_Date__c</columns>
-        <columns>Applicant__c</columns>
-        <columns>Primary_Applicant__c</columns>
-        <columns>Listing__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>Status__c</columns>
-        <columns>Email__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Status__c</field>
-            <operation>notEqual</operation>
-            <value>Draft</value>
-        </filters>
-        <label>All Applications</label>
     </listViews>
     <listViews>
         <fullName>All_BMR_Rental_Short_Form_Applications</fullName>
@@ -1508,7 +1482,6 @@ IF(
         <columns>DTHP_Preference_Manual__c</columns>
         <columns>DTHP_Preference_Member__c</columns>
         <columns>DTHP_Preference__c</columns>
-        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>RECORDTYPE</field>
@@ -1516,6 +1489,105 @@ IF(
             <value>Application__c.BMR_Rental_Short_Form</value>
         </filters>
         <label>All BMR Rental Short-Form Applications</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Submitted_Applications</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Applicant__c</columns>
+        <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_birth__c</columns>
+        <columns>Status__c</columns>
+        <columns>Housing_Voucher_or_Subsidy__c</columns>
+        <columns>Annual_Income__c</columns>
+        <columns>Monthly_Income__c</columns>
+        <columns>Total_Household_Size__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </filters>
+        <label>All Submitted Applications</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Submitted_Applications1</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Applicant__c</columns>
+        <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_birth__c</columns>
+        <columns>Status__c</columns>
+        <columns>Housing_Voucher_or_Subsidy__c</columns>
+        <columns>Annual_Income__c</columns>
+        <columns>Monthly_Income__c</columns>
+        <columns>Total_Household_Size__c</columns>
+        <columns>COP_Preference__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Removed</value>
+        </filters>
+        <filters>
+            <field>Listing__c</field>
+            <operation>contains</operation>
+            <value>280 Brighton</value>
+        </filters>
+        <label>280 Brighton Removed</label>
+    </listViews>
+    <listViews>
+        <fullName>Argenta_909</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Lottery_Number__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Primary_Applicant__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Status__c</columns>
+        <columns>Monthly_Income__c</columns>
+        <columns>Annual_Income__c</columns>
+        <columns>Date_of_birth__c</columns>
+        <columns>Total_Household_Size__c</columns>
+        <columns>Housing_Voucher_or_Subsidy__c</columns>
+        <columns>Residence_Address__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Listing__c</field>
+            <operation>contains</operation>
+            <value>Argenta Unit 909</value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted,Removed</value>
+        </filters>
+        <label>Argenta 909</label>
+    </listViews>
+    <listViews>
+        <fullName>COP_Confirmed_Applications</fullName>
+        <columns>NAME</columns>
+        <columns>COP_Preference_Manual__c</columns>
+        <columns>COP_Preference_Member__c</columns>
+        <columns>COP_Preference_Member_DOB__c</columns>
+        <columns>Listing__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>COP_Preference_Manual__c</field>
+            <operation>equals</operation>
+            <value>Valid,Valid - Added</value>
+        </filters>
+        <label>COP Confirmed Applications</label>
     </listViews>
     <listViews>
         <fullName>COP_Unconfirmed_Applications</fullName>
@@ -1536,28 +1608,399 @@ IF(
             <operation>equals</operation>
             <value>Unconfirmed</value>
         </filters>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted,Removed</value>
+        </filters>
         <label>COP Unconfirmed Applications</label>
     </listViews>
     <listViews>
+        <fullName>DTHP_Confirmed_Valid_Applications</fullName>
+        <columns>NAME</columns>
+        <columns>Applicant__c</columns>
+        <columns>Listing__c</columns>
+        <columns>Status__c</columns>
+        <columns>DTHP_Preference_Manual__c</columns>
+        <columns>DTHP_Preference_Member_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>DTHP_Preference_Manual__c</field>
+            <operation>equals</operation>
+            <value>Valid,Valid - Added</value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Draft</value>
+        </filters>
+        <label>DTHP Confirmed (Valid) Applications</label>
+    </listViews>
+    <listViews>
         <fullName>DTHP_Unconfirmed_Applications</fullName>
+        <columns>Listing__c</columns>
         <columns>NAME</columns>
         <columns>DTHP_Preference_Manual__c</columns>
         <columns>DTHP_Preference_Member_Name__c</columns>
         <columns>DTHP_Preference_Member_DOB__c</columns>
         <columns>DTHP_Preference_Member__c</columns>
-        <columns>Listing__c</columns>
+        <columns>Status__c</columns>
+        <columns>DTHP_Preference__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>Application__c.BMR_Rental_Short_Form</value>
-        </filters>
         <filters>
             <field>DTHP_Preference_Manual__c</field>
             <operation>equals</operation>
             <value>Unconfirmed</value>
         </filters>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted,Removed</value>
+        </filters>
         <label>DTHP Unconfirmed Applications</label>
+    </listViews>
+    <listViews>
+        <fullName>Draft_Applications</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Applicant__c</columns>
+        <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_birth__c</columns>
+        <columns>Status__c</columns>
+        <columns>Housing_Voucher_or_Subsidy__c</columns>
+        <columns>Annual_Income__c</columns>
+        <columns>Monthly_Income__c</columns>
+        <columns>Total_Household_Size__c</columns>
+        <columns>Live_Work_Preference__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Draft</value>
+        </filters>
+        <label>Draft_Applications</label>
+    </listViews>
+    <listViews>
+        <fullName>Draft_Applications_L7</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Applicant__c</columns>
+        <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_birth__c</columns>
+        <columns>Status__c</columns>
+        <columns>Housing_Voucher_or_Subsidy__c</columns>
+        <columns>Annual_Income__c</columns>
+        <columns>Monthly_Income__c</columns>
+        <columns>Total_Household_Size__c</columns>
+        <columns>Live_Work_Preference__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Draft</value>
+        </filters>
+        <filters>
+            <field>Listing__c</field>
+            <operation>contains</operation>
+            <value>Brighton</value>
+        </filters>
+        <label>Draft_Applications_LSeven</label>
+    </listViews>
+    <listViews>
+        <fullName>EVIVA_Applications</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Primary_Applicant__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Status__c</columns>
+        <columns>Lottery_Rank__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Listing__c</field>
+            <operation>equals</operation>
+            <value>EVIVA</value>
+        </filters>
+        <label>EVIVA Applications</label>
+    </listViews>
+    <listViews>
+        <fullName>L_Seven_Initial_Lease_Up_Removed</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Status__c</columns>
+        <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_birth__c</columns>
+        <columns>Housing_Voucher_or_Subsidy__c</columns>
+        <columns>Annual_Income__c</columns>
+        <columns>Monthly_Income__c</columns>
+        <columns>Total_Household_Size__c</columns>
+        <columns>Live_Work_Preference__c</columns>
+        <columns>Neighborhood_Preference__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Removed</value>
+        </filters>
+        <filters>
+            <field>Listing__c</field>
+            <operation>contains</operation>
+            <value>Seven</value>
+        </filters>
+        <label>L Seven Initial Lease-Up Removed</label>
+    </listViews>
+    <listViews>
+        <fullName>L_Seven_Initial_Lease_Up_paper</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Status__c</columns>
+        <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_birth__c</columns>
+        <columns>Housing_Voucher_or_Subsidy__c</columns>
+        <columns>Annual_Income__c</columns>
+        <columns>COP_Preference__c</columns>
+        <columns>Neighborhood_Preference__c</columns>
+        <columns>Live_Work_Preference__c</columns>
+        <columns>Application_Language__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </filters>
+        <filters>
+            <field>Listing__c</field>
+            <operation>contains</operation>
+            <value>Seven</value>
+        </filters>
+        <filters>
+            <field>Application_Submission_Type__c</field>
+            <operation>equals</operation>
+            <value>Paper</value>
+        </filters>
+        <label>L Seven Initial Lease-Up_paper</label>
+    </listViews>
+    <listViews>
+        <fullName>L_Seven_Paper_Submissions</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Applicant__c</columns>
+        <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_birth__c</columns>
+        <columns>Status__c</columns>
+        <columns>Housing_Voucher_or_Subsidy__c</columns>
+        <columns>Annual_Income__c</columns>
+        <columns>Monthly_Income__c</columns>
+        <columns>Total_Household_Size__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </filters>
+        <filters>
+            <field>Listing__c</field>
+            <operation>equals</operation>
+            <value>L Seven</value>
+        </filters>
+        <filters>
+            <field>Application_Submission_Type__c</field>
+            <operation>equals</operation>
+            <value>Paper</value>
+        </filters>
+        <label>L Seven Paper Submissions</label>
+    </listViews>
+    <listViews>
+        <fullName>Nema_3_29_2017_Lottery</fullName>
+        <columns>NAME</columns>
+        <columns>Applicant__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>General_Lottery_Rank__c</columns>
+        <columns>Listing__c</columns>
+        <columns>Number_of_Flags__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Listing__c</field>
+            <operation>equals</operation>
+            <value>Nema</value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </filters>
+        <label>Nema (3/29/2017 Lottery)</label>
+    </listViews>
+    <listViews>
+        <fullName>Nema_Unit_1208_738_RR</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Status__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_birth__c</columns>
+        <columns>Residence_Address__c</columns>
+        <columns>COP_Preference__c</columns>
+        <columns>DTHP_Preference__c</columns>
+        <columns>Live_Work_Preference__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </filters>
+        <filters>
+            <field>Listing__c</field>
+            <operation>contains</operation>
+            <value>Nema</value>
+        </filters>
+        <label>Nema Units 1208 &amp; 738 Re-Rental</label>
+    </listViews>
+    <listViews>
+        <fullName>Test_Applications</fullName>
+        <columns>NAME</columns>
+        <columns>Applicant__c</columns>
+        <columns>Primary_Applicant__c</columns>
+        <columns>Email__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Status__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Primary_Applicant__c</field>
+            <operation>contains</operation>
+            <value>test</value>
+        </filters>
+        <label>Test Applications</label>
+    </listViews>
+    <listViews>
+        <fullName>X1_Polk_Submitted_Applications</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </filters>
+        <filters>
+            <field>Listing__c</field>
+            <operation>equals</operation>
+            <value>Argenta Unit 909 Re-Rental</value>
+        </filters>
+        <label>1 Polk Submitted Applications</label>
+    </listViews>
+    <listViews>
+        <fullName>X855_Brannan_All_Apps</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Applicant__c</columns>
+        <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_birth__c</columns>
+        <columns>Status__c</columns>
+        <columns>Housing_Voucher_or_Subsidy__c</columns>
+        <columns>Annual_Income__c</columns>
+        <columns>Monthly_Income__c</columns>
+        <columns>Total_Household_Size__c</columns>
+        <columns>Application_Language__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </filters>
+        <filters>
+            <field>Listing__c</field>
+            <operation>contains</operation>
+            <value>855 Brannan</value>
+        </filters>
+        <label>855 Brannan All Apps</label>
+    </listViews>
+    <listViews>
+        <fullName>all280_Fell_Initial_Lease_Up</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Status__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_birth__c</columns>
+        <columns>Residence_Address__c</columns>
+        <columns>COP_Preference__c</columns>
+        <columns>DTHP_Preference__c</columns>
+        <columns>Live_Work_Preference__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </filters>
+        <filters>
+            <field>Listing__c</field>
+            <operation>equals</operation>
+            <value>280 Fell Street Apartments</value>
+        </filters>
+        <label>280 Fell Initial Lease-Up</label>
+    </listViews>
+    <listViews>
+        <fullName>all280_Fell_Initial_Lease_Up_drafts</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Status__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_birth__c</columns>
+        <columns>Residence_Address__c</columns>
+        <columns>COP_Preference__c</columns>
+        <columns>DTHP_Preference__c</columns>
+        <columns>Live_Work_Preference__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Draft</value>
+        </filters>
+        <filters>
+            <field>Listing__c</field>
+            <operation>contains</operation>
+            <value>280 Fell</value>
+        </filters>
+        <label>280 Fell Initial Lease-Up Drafts</label>
     </listViews>
     <nameField>
         <displayFormat>APP-{00000000}</displayFormat>
@@ -1642,6 +2085,10 @@ IF(
         </picklistValues>
         <picklistValues>
             <picklist>Housing_Voucher_or_Subsidy__c</picklist>
+            <values>
+                <fullName>Left Blank</fullName>
+                <default>false</default>
+            </values>
             <values>
                 <fullName>false</fullName>
                 <default>false</default>
@@ -1965,6 +2412,10 @@ IF(
         <picklistValues>
             <picklist>Housing_Voucher_or_Subsidy__c</picklist>
             <values>
+                <fullName>Left Blank</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>false</fullName>
                 <default>false</default>
             </values>
@@ -2287,6 +2738,10 @@ IF(
         <picklistValues>
             <picklist>Housing_Voucher_or_Subsidy__c</picklist>
             <values>
+                <fullName>Left Blank</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>false</fullName>
                 <default>false</default>
             </values>
@@ -2546,10 +3001,23 @@ IF(
         <searchFilterFields>Listing__c</searchFilterFields>
         <searchFilterFields>Application_Submitted_Date__c</searchFilterFields>
         <searchFilterFields>Total_Household_Gross_Income__c</searchFilterFields>
+        <searchResultsAdditionalFields>Applicant__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Primary_Applicant__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>L_Applicant_Full_Name__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Listing__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Application_Submitted_Date__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Total_Household_Gross_Income__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>NoEditWhenInDraftStatus</fullName>
+        <active>true</active>
+        <description>No Edit When In Draft Status</description>
+        <errorConditionFormula>AND(
+   $Profile.Name = &quot;MOHCD - Staff&quot; || $Profile.Name = &quot;MOHCD - Leasing Agent&quot; || $Profile.Name = &quot;MOHCD - Leasing Agent Clerk&quot; || $Profile.Name = &quot;MOHCD - Lender&quot; || $Profile.Name = &quot;MOHCD - Property Agent&quot;,
+   ISPICKVAL(Status__c, &quot;draft&quot;) 
+)</errorConditionFormula>
+        <errorMessage>You do NOT have the ability to Edit this record when it is in &quot;Draft&quot; status. 
+Click Cancel to return to View mode.</errorMessage>
+    </validationRules>
 </CustomObject>

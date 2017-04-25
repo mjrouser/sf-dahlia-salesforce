@@ -209,7 +209,7 @@
         <externalId>false</externalId>
         <label>MOHCD Project ID</label>
         <length>8</length>
-        <required>false</required>
+        <required>true</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -281,6 +281,7 @@
         <fullName>All_Developments</fullName>
         <columns>NAME</columns>
         <columns>Name_of_Development__c</columns>
+        <columns>Project_ID__c</columns>
         <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All Developments</label>
