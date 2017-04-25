@@ -119,7 +119,7 @@
         <description>Monthly Rent for BMR Unit</description>
         <externalId>false</externalId>
         <inlineHelpText>Monthly Rent for BMR Unit</inlineHelpText>
-        <label>BMR Rent Monthly</label>
+        <label>Monthly rent (if $)</label>
         <precision>7</precision>
         <required>false</required>
         <scale>2</scale>
@@ -486,9 +486,9 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
     </fields>
     <fields>
         <fullName>Priority_Grouping__c</fullName>
-        <description>Displays the grouping where the Priority belongs, in order to be displayed on the front end. If a new Priority Type is added to the list, it needs to be added to this formula as well or it will default to &quot;Other&quot;</description>
+        <description>Displays the grouping where the Priority belongs, in order to be displayed on the front end. If a new Priority Type is added to the list, it needs to be added to this formula as well or it will default to null</description>
         <externalId>false</externalId>
-        <formula>IF(OR(ISPICKVAL(Priority_Type__c,&apos;Vision impaired&apos;),ISPICKVAL(Priority_Type__c,&apos;Hearing impaired&apos;),ISPICKVAL(Priority_Type__c,&apos;Hearing/Vision impaired&apos;)),&apos;Communication&apos;,IF(ISPICKVAL(Priority_Type__c,&apos;Mobility impaired&apos;),&apos;Mobility&apos;,IF(ISPICKVAL(Priority_Type__c,&apos;&apos;),&apos;&apos;,&apos;Other&apos;)))</formula>
+        <formula>CASE(TEXT(Priority_Type__c), &apos;Vision impaired&apos;, &apos;Communication&apos;, &apos;Mobility impaired&apos;, &apos;Mobility&apos;, &apos;Hearing impaired&apos;, &apos;Communication&apos;,&apos;Hearing/Vision impaired&apos;, &apos;Communication&apos;, &apos;Veteran&apos;, &apos;Other&apos;, &apos;Senior&apos;, &apos;Other&apos;, &apos;Developmental disabilities&apos;, &apos;Other&apos;, &apos;&apos;)</formula>
         <label>Priority Grouping</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -574,7 +574,8 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
     <fields>
         <fullName>Rent_percent_of_income__c</fullName>
         <externalId>false</externalId>
-        <label>Rent percent of income</label>
+        <inlineHelpText>Monthly Rent (if % of income)</inlineHelpText>
+        <label>Monthly Rent (if % of income)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -868,6 +869,41 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Priority</picklist>
+            <values>
+                <fullName>Developmental disabilities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hearing impaired</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hearing%2FVision impaired</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mobility impaired</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mobility%2Fhearing%2Fvision impaired</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Senior</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Veteran</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vision impaired</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Property_Type__c</picklist>
             <values>
                 <fullName>Apartment</fullName>
@@ -972,6 +1008,10 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
                 <default>false</default>
             </values>
             <values>
+                <fullName>Mobility%2Fhearing%2Fvision impaired</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Senior</fullName>
                 <default>false</default>
             </values>
@@ -1052,4 +1092,11 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
     </recordTypes>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>ChooseEitherRentDollarsOrPercent</fullName>
+        <active>true</active>
+        <description>Choose either &quot;Monthly rent (if $)&quot; or &quot;Monthly Rent (if % of income)&quot;, not both.</description>
+        <errorConditionFormula>AND(NOT(ISBLANK(BMR_Rent_Monthly__c)), NOT(ISBLANK( Rent_percent_of_income__c)))</errorConditionFormula>
+        <errorMessage>Enter data in either &quot;Monthly rent (if $)&quot; or &quot;Monthly Rent (if % of income)&quot;, but not both.</errorMessage>
+    </validationRules>
 </CustomObject>

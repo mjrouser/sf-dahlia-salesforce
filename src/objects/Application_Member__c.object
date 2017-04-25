@@ -136,6 +136,19 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
+        <fullName>Candidate_Score__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Candidate Score</inlineHelpText>
+        <label>Candidate Score</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>City__c</fullName>
         <externalId>false</externalId>
         <label>City</label>
@@ -874,6 +887,16 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         </valueSet>
     </fields>
     <fields>
+        <fullName>Which_component_of_locator_was_used__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Which component of locator was used?</inlineHelpText>
+        <label>Which component of locator was used?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
         <fullName>Work_in_SF__c</fullName>
         <externalId>false</externalId>
         <label>Work in SF</label>
@@ -895,6 +918,30 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
                 </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>X_Coordinate__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>X Coordinate for Geocode</inlineHelpText>
+        <label>X Coordinate</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Y_Coordinate__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Y Coordinate for Geocode</inlineHelpText>
+        <label>Y Coordinate</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Zip_Code__c</fullName>
@@ -978,7 +1025,11 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Application Members</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Contact__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Phone__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Email__c</lookupDialogsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <startsWith>Vowel</startsWith>
     <validationRules>

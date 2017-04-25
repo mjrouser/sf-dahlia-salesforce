@@ -9,6 +9,10 @@
         <default>false</default>
     </customValue>
     <customValue>
+        <fullName>Mobility/hearing/vision impaired</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
         <fullName>Hearing impaired</fullName>
         <default>false</default>
     </customValue>
