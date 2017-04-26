@@ -1382,7 +1382,7 @@
         listingID:
           type: "string"
           description: "listing ID"
-        bucketResults:
+        LotteryBuckets:
           type: array
           items:
               $ref: '#/definitions/LotteryBucket'
@@ -1458,30 +1458,24 @@
       type: "object"
       description: "Application preference"
       properties:
-        shortformPreferenceID:
+        preferenceType:
           type: "string"
-          description: "shortform Preference ID"
-        applicationID:
-          type: "string"
-          description: "application ID"
+          description: "preference type (COP, DTHP etc..)"
+      
         appMemberID:
           type: "string"
           description: "application Member ID"
+ 
         naturalKey:
           type: "string"
           description: "naturalKey"
+     
         listingPreferenceID:
           type: "string"
           description: "listing Preference ID"
         preferenceProof:
           type: "string"
-          description: "type of proof given"
-        optOut:
-          type: "boolean"
-          description: "opt Out"
-        ifCombinedIndividualPreference:
-          type: "string"
-          description: "If Combined Individual Preference"
+          description: "type of proof given "
     ListingResult:
       type: "object"
       description: "lottery result - deprecated"
@@ -1584,7 +1578,7 @@
         UnitsAvailable:
           type: "number"
           description: "total slots for preference"
-        bucketResults:
+        PreferenceResults:
           type: array
           items:
               $ref: '#/definitions/PreferenceResult'
