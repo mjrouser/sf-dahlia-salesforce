@@ -1575,9 +1575,9 @@
         PreferenceOrder:
           type: "number"
           description: "Preference order"
-        AppTotal:
+        TotalSubmittedApps:
           type: "number"
-          description: "total applications for preference"
+          description: "total submitted applications for preference"
         UnitsAvailable:
           type: "number"
           description: "total slots for preference"
