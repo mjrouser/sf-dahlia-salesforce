@@ -1135,6 +1135,9 @@
         Reserved_community_maximum_age__c:
           type: "number"
           description: ""
+        Reserved_Community_Requirement__c:
+          type: "string"
+          description: ""
         Total_number_of_building_units__c:
           type: "number"
           description: ""
