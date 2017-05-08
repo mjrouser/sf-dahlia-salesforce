@@ -792,7 +792,7 @@
           200:
             description: OK
 
-    /shortForm/file/:
+    /shortForm/Attachment/:
       post:
         security:
           - restrictedAccess:
@@ -813,14 +813,14 @@
           in: body
           required: true
           schema: 
-             $ref: "#/definitions/File"
+             $ref: "#/definitions/Attachment"
         tags:
            - "Shortform Application"
         responses:
           200:
             description: OK
             schema:
-              $ref: "#/definitions/File"
+              $ref: "#/definitions/Attachment"
   
 
     /shortForm/contact/delete:
@@ -1668,7 +1668,7 @@
           format: "int32"
           description: "raw lottery rank returned form drawing"
 
-    File:
+    Attachment:
       type: "object"
       description: "Applicant Contact"
       properties:
