@@ -792,7 +792,7 @@
           200:
             description: OK
 
-    /shortForm/file/:
+    /shortForm/Attachment/:
       post:
         security:
           - restrictedAccess:
