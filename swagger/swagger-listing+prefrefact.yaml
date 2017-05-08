@@ -774,14 +774,14 @@
           "400":
             description: Invalid ID supplied
  
-    /shortForm/delete/{shortFormId}:
+    /shortForm/delete/{fileid}:
       delete:
         security:
           - restrictedAccess:
             - ShortForm
         description: deletes specified application
         parameters:
-        - name: shortFormId
+        - name: fileid
           in: path
           description: ID shortForm To Delete
           type: string
@@ -791,24 +791,14 @@
         responses:
           200:
             description: OK
-    /shortForm/file/{shortFormId}:
+
+    /shortForm/file/:
       post:
         security:
           - restrictedAccess:
             - ShortForm
         description: upload attachment to shortform.
         parameters:
-        - in: path
-          name: shortFormId
-          description: ID of shortform to attach file too
-          required: true
-          type: string
-        - name: BinaryData
-          in: body
-          required: true
-          schema: 
-            type: string
-            format: byte 
         - name: Name
           in: header
           description: ID shortForm To Delete
@@ -819,13 +809,19 @@
           description: ID shortForm To Delete  
           type: string
           required: true
+        - name: file
+          in: body
+          required: true
+          schema: 
+             $ref: "#/definitions/File"
         tags:
            - "Shortform Application"
         responses:
           200:
             description: OK
             schema:
-              $ref: "#/definitions/Attachment__C"
+              $ref: "#/definitions/File"
+  
 
     /shortForm/contact/delete:
       delete:
@@ -1572,12 +1568,9 @@
         PreferenceName:
           type: "string"
           description: "Preference name, (liveWork,COP,DCP,Neighborhood)"
-        PreferenceOrder:
+        TotalSubmitted:
           type: "number"
-          description: "Preference order"
-        TotalSubmittedApps:
-          type: "number"
-          description: "total submitted applications for preference"
+          description: "total applications for preference"
         UnitsAvailable:
           type: "number"
           description: "total slots for preference"
@@ -1675,6 +1668,35 @@
           format: "int32"
           description: "raw lottery rank returned form drawing"
 
+    File:
+      type: "object"
+      description: "Applicant Contact"
+      properties:
+        ApplicationID:
+          type: "string"
+          description: "3rd party webAppID that api consumers can set ID - shoud be unique per source and ID"
+        ApplicationPreferenceID:
+          type: "string"
+          description: "App Member ID"
+        DocumentType:
+          type: "string"
+          description: "document Type"
+        Date:
+          type: "string"
+          format: "date"
+          description: "date the file was submitted - if blank defaulted to today"
+        Body:
+          type: "string"
+          format: "base64"
+          description: "base64 encoded blob string"
+        BodyLength:
+          type: "number"
+          description: "the length in bytes"
+        Description:
+          type: "string"
+          description: "the description of the file"
+      
+  
     Person:
       type: "object"
       description: "Applicant Contact"
@@ -1803,7 +1825,7 @@
     
     Attachment__C:
       type: "object"
-      description: "Applicant Contact"
+      description: "deprecated  - Applicant Contact"
       properties:
         ID:
           type: "string"
