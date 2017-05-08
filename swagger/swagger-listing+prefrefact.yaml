@@ -813,14 +813,14 @@
           in: body
           required: true
           schema: 
-             $ref: "#/definitions/File"
+             $ref: "#/definitions/Attachment"
         tags:
            - "Shortform Application"
         responses:
           200:
             description: OK
             schema:
-              $ref: "#/definitions/File"
+              $ref: "#/definitions/Attachment"
   
 
     /shortForm/contact/delete:
@@ -1668,20 +1668,23 @@
           format: "int32"
           description: "raw lottery rank returned form drawing"
 
-    File:
+    Attachment:
       type: "object"
       description: "Applicant Contact"
       properties:
         ApplicationID:
           type: "string"
           description: "3rd party webAppID that api consumers can set ID - shoud be unique per source and ID"
-        ApplicationPreferenceID:
+        ApplicationMemberID:
           type: "string"
           description: "App Member ID"
+        ApplicationPreferenceID:
+          type: "string"
+          description: "App Preference ID"
         DocumentType:
           type: "string"
           description: "document Type"
-        Date:
+        UploadedDate:
           type: "string"
           format: "date"
           description: "date the file was submitted - if blank defaulted to today"
