@@ -1351,7 +1351,7 @@
         lotteryNumber:
           type: "string"
           description: "lottery number"
-        isCommunityScreened:
+        answeredCommunityScreening:
           type: "string"
           description: "Answer to community building screening question: \"Yes\" or \"No\", defaults to blank."
         totalMonthlyRent:
