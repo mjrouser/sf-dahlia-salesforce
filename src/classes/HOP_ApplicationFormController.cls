@@ -267,42 +267,57 @@ public without sharing class HOP_ApplicationFormController extends HOP_Controlle
         }
     }
 
+	public class ApplicationException extends Exception {}
 
     // Saves the entire Application form at once (including Primary Applicant, Alternate Contact, Household Members and preferences)
     // using the ApplicationService API.
     public PageReference saveApplicationForm() {
-        app.Applicant__r = primaryApplicant;
-        app.Alternate_Contact__r = alternateContact;
-        API_Application.ShortForm sf = new API_Application.ShortForm(app, householdMembers);
-
-        if (app.Neighborhood_Preference_Member__c == null && neighborhoodPreference != '-1') {
-            sf.neighborhoodResidencePreferenceNatKey = new API_Application.Person(householdMemberFromPreference(neighborhoodPreference)).getKey();
-        }
-        if (app.DTHP_Preference_Member__c == null && dthpPreference != '-1') {
-            sf.displacedPreferenceNatKey = new API_Application.Person(householdMemberFromPreference(dthpPreference)).getKey();
-        }
-        if (app.COP_Preference_Member__c == null && copPreference != '-1') {
-            sf.certOfPreferenceNatKey = new API_Application.Person(householdMemberFromPreference(copPreference)).getKey();
-        }
-        if (app.Live_in_SF_Preference_Member__c == null && liveInSfPreference != '-1') {
-            sf.liveInSfPreferenceNatKey = new API_Application.Person(householdMemberFromPreference(liveInSfPreference)).getKey();
-        }
-        if (app.Work_in_SF_Preference_Member__c == null && workInSfPreference != '-1') {
-            sf.workInSfPreferenceNatKey = new API_Application.Person(householdMemberFromPreference(workInSfPreference)).getKey();
-        }
-        sf = API_ApplicationService.upsertShortform(sf);
-
-        PageReference viewPage = new PageReference('/apex/HOP_ApplicationView?id=' + sf.id);
-        viewPage.setRedirect(true);
-        return viewPage;
+    	try {
+	        app.Applicant__r = primaryApplicant;
+	        app.Alternate_Contact__r = alternateContact;
+	        API_Application.ShortForm sf = new API_Application.ShortForm(app, householdMembers);
+	
+	        if (app.Neighborhood_Preference_Member__c == null && neighborhoodPreference != '-1') {
+	            sf.neighborhoodResidencePreferenceNatKey = new API_Application.Person(householdMemberFromPreference(neighborhoodPreference)).getKey();
+	        }
+	        if (app.DTHP_Preference_Member__c == null && dthpPreference != '-1') {
+	            sf.displacedPreferenceNatKey = new API_Application.Person(householdMemberFromPreference(dthpPreference)).getKey();
+	        }
+	        if (app.COP_Preference_Member__c == null && copPreference != '-1') {
+	            sf.certOfPreferenceNatKey = new API_Application.Person(householdMemberFromPreference(copPreference)).getKey();
+	        }
+	        if (app.Live_in_SF_Preference_Member__c == null && liveInSfPreference != '-1') {
+	            sf.liveInSfPreferenceNatKey = new API_Application.Person(householdMemberFromPreference(liveInSfPreference)).getKey();
+	        }
+	        if (app.Work_in_SF_Preference_Member__c == null && workInSfPreference != '-1') {
+	            sf.workInSfPreferenceNatKey = new API_Application.Person(householdMemberFromPreference(workInSfPreference)).getKey();
+	        }
+	        sf = API_ApplicationService.upsertShortform(sf);
+	        PageReference viewPage = new PageReference('/apex/HOP_ApplicationView?id=' + sf.id);
+	        viewPage.setRedirect(true);
+	        return viewPage;
+    	}  
+        catch(Exception excp) {
+    		ApexPages.addMessages(excp);
+    		system.debug (excp);
+		}
+		return null;
     }
 
     // Save and New convenience button. Saves the current form and refreshes the page.
     public PageReference saveApplicationFormAndNew() {
-        saveApplicationForm();
-        init();
-        app.Listing__c = listingId;
-        return ApexPages.currentPage();
+    	try {
+    	
+	        saveApplicationForm();
+	        init();
+	        app.Listing__c = listingId;
+	        return ApexPages.currentPage();
+    	}
+         catch(Exception excp) {
+    		ApexPages.addMessages(excp);
+    		system.debug (excp);
+		}
+		return null;
     }
 
     // Creates a new Household Member

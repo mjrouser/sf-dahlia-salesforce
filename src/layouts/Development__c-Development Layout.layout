@@ -95,6 +95,7 @@
         <fields>NAME</fields>
         <fields>Property_Name__c</fields>
         <fields>Building_Street_Address__c</fields>
+        <fields>Building_City__c</fields>
         <relatedList>Building__c.Development__c</relatedList>
     </relatedLists>
     <relatedLists>

@@ -1,0 +1,1757 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Address_to_Deliver_Application_Docs__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Address to Which Application and Supporting Documents Should Be Delivered (if not uploading on this system)</inlineHelpText>
+        <label>Address to Deliver Application Documents</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Application_Deadline_Date_at_5_00pm__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Deadline time is by 5:00pm of this date.</inlineHelpText>
+        <label>Application Deadline Date (at 5:00pm)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Area_Sq_Ft_Range_if_more_than_1_unit__c</fullName>
+        <externalId>false</externalId>
+        <label>Area (Sq. Ft.) Range if more than 1 unit</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BMR_Commission_Information__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (  ISPICKVAL(Commissions_to_BMR_Buyer_Realtor__c , &quot;Yes&quot;) , &quot;Realtor commission is based on 2.5% of the sales price. Broker must accompany prospective purchaser on the prospects first visit to the property.  Registration will occur at that time by filling out a registration card.&quot; , &quot;None&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>BMR Commission Information</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BMR_Unit_Appliances_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>BMR Unit Appliances Description</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>BMR_Unit_Finishings_and_Type__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Under finishings and type, include flooring, cabinets, carpet, etc.</inlineHelpText>
+        <label>BMR Unit Finishings and Type</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Board_of_Supervisors_Name__c</fullName>
+        <description>Board of Supervisors</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Board of Supervisors</inlineHelpText>
+        <label>Board of Supervisors Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>John Avalos</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>London Breed</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>David Campos</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Aaron Peskin</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Malia Cohen</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Mark Farrell</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Jane Kim</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Eric Mar</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Katy Tang</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Scott Wiener</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Norman Yee</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Building_City__c</fullName>
+        <description>From Building, City in which the Building is located.</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Building_City__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>From Building, City in which the Building is located.</inlineHelpText>
+        <label>Building City</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Building_Photo_URL__c</fullName>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Photo_URL__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Building Photo URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Building_ST_Address_Planning_Approval__c</fullName>
+        <description>From Building, Street Address of the Building during planning approval.</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Building_ST_Address_Planning_Approval__c</formula>
+        <inlineHelpText>From Building, Street Address of the Building during planning approval.</inlineHelpText>
+        <label>Building ST Address Planning Approval</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Building_Selection_Criteria__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Building Selection Criteria should include information about: 
+
+Ability to pay rent standard 
+Credit Standard 
+Rental History Standard 
+Criminal History Standard 
+Maximum Household Size Standard 
+Other</inlineHelpText>
+        <label>Building Selection Criteria</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Building_State__c</fullName>
+        <description>From Building, State the Building is located in.</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Building_State__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>From Building, State the Building is located in.</inlineHelpText>
+        <label>Building State</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Building_Street_Address__c</fullName>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Building_Street_Address__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Building Street Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Building_Zip_Code_Planning_Approval__c</fullName>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Building_Zip_Code_Planning_Approval__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Building Zip Code Planning Approval</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Building_Zip_Code__c</fullName>
+        <description>From the Building, Zip Code the Building is located in.</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Building_Zip_Code__c</formula>
+        <inlineHelpText>From the Building, Zip Code the Building is located in.</inlineHelpText>
+        <label>Building Zip Code</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>City_2nd_Special_Remark__c</fullName>
+        <defaultValue>&quot;City holds the right of first refusal of this property.&quot; 
+&amp; BR() &amp; BR() &amp; 
+&quot;City 2nd Loans are available to qualified buyers - for program information please visit: http://sf-moh.org/index.aspx?page=747&quot;</defaultValue>
+        <externalId>false</externalId>
+        <label>City 2nd Special Remark</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>City_Wide_Weekend_Paper_1__c</fullName>
+        <description>City Wide Weekend Paper</description>
+        <externalId>false</externalId>
+        <inlineHelpText>City Wide Weekend Paper</inlineHelpText>
+        <label>City-Wide Weekend Paper 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>San Francisco Chronicle</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>San Francisco Examiner</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>City_Wide_Weekend_Paper_2__c</fullName>
+        <externalId>false</externalId>
+        <label>City-Wide Weekend Paper 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>San Francisco Chronicle</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>San Francisco Examiner</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>City_Wide_Wknd_Paper_1_1st_Posting_Date__c</fullName>
+        <description>First Posting Date for the First City-Wide Weekend Paper.  Saturday or Sunday, at least one week apart, in the 3 weeks after the marketing launch date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>First Posting Date for the First City-Wide Weekend Paper.  Saturday or Sunday, at least one week apart, in the 3 weeks after the marketing launch date</inlineHelpText>
+        <label>City-Wide Wknd Paper 1: 1st Posting Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>City_Wide_Wknd_Paper_1_2nd_Posting_Date__c</fullName>
+        <description>Second Posting Date - Saturday or Sunday, at least one week apart, in the 3 weeks after the marketing launch date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Second Posting Date - Saturday or Sunday, at least one week apart, in the 3 weeks after the marketing launch date</inlineHelpText>
+        <label>City-Wide Wknd Paper 1: 2nd Posting Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>City_Wide_Wknd_Paper_2_1st_Posting_Date__c</fullName>
+        <description>Saturday or Sunday, at least one week apart, in the 3 weeks after the marketing launch date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Saturday or Sunday, at least one week apart, in the 3 weeks after the marketing launch date</inlineHelpText>
+        <label>City-Wide Wknd Paper 2: 1st Posting Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>City_Wide_Wknd_Paper_2_2nd_Posting_Date__c</fullName>
+        <description>Saturday or Sunday, at least one week apart, in the 3 weeks after the marketing launch date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Saturday or Sunday, at least one week apart, in the 3 weeks after the marketing launch date</inlineHelpText>
+        <label>City-Wide Wknd Paper 2: 2nd Posting Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Commissions_to_BMR_Buyer_Realtor__c</fullName>
+        <description>Will you be providing commission for realtors representing your BMR buyers?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Will you be providing commission for realtors representing your BMR buyers?</inlineHelpText>
+        <label>Commissions to BMR Buyer Realtor</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Commissions_to_Market_Rate_Buyer_Realtor__c</fullName>
+        <description>Will you be providing commission for any market rate buyer’s realtor in your building?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Will you be providing commission for any market rate buyer’s realtor in your building?</inlineHelpText>
+        <label>Commissions to Market Rate Buyer Realtor</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Credit_Standard__c</fullName>
+        <externalId>false</externalId>
+        <label>Credit Standard</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Criminal_History_Standard__c</fullName>
+        <externalId>false</externalId>
+        <label>Criminal History Standard</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Date_1_Supe_Office_Announcement__c</fullName>
+        <description>Board of Supes District Office announcement dates</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Board of Supes District Office announcement dates</inlineHelpText>
+        <label>Date 1: Supe Office Announcement</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Date_2_Supe_Office_Announcement__c</fullName>
+        <description>Board of Supes District Office announcement dates</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Board of Supes District Office announcement dates</inlineHelpText>
+        <label>Date 2: Supe Office Announcement</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Deposit__c</fullName>
+        <externalId>false</externalId>
+        <label>Deposit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Developer_City__c</fullName>
+        <description>City of the Developer identified on the Building.</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Developer__r.ShippingCity</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>City of the Developer identified on the Building.</inlineHelpText>
+        <label>Developer City</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Developer_Email__c</fullName>
+        <description>The email address of the developer identified on the building.</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Developer__r.Email__c</formula>
+        <inlineHelpText>The email address of the developer identified on the building.</inlineHelpText>
+        <label>Developer Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Developer_Phone__c</fullName>
+        <description>The phone number for the developer identified on the building.</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Developer__r.Phone</formula>
+        <inlineHelpText>The phone number for the developer identified on the building.</inlineHelpText>
+        <label>Developer Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Developer_State__c</fullName>
+        <description>State of the Developer identified on the Building.</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Developer__r.ShippingState</formula>
+        <inlineHelpText>State of the Developer identified on the Building.</inlineHelpText>
+        <label>Developer State</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Developer_Street_Address__c</fullName>
+        <description>The Street Address of the Developer Identified on the Building.</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Developer__r.ShippingStreet</formula>
+        <inlineHelpText>The Street Address of the Developer Identified on the Building.</inlineHelpText>
+        <label>Developer Street Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Developer_Zip_Code__c</fullName>
+        <description>Zip Code of the Developer identified on the building.</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Developer__r.ShippingPostalCode</formula>
+        <inlineHelpText>Zip Code of the Developer identified on the building.</inlineHelpText>
+        <label>Developer Zip Code</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Developer__c</fullName>
+        <description>From the Building, Name of the Developer</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Developer__r.Name</formula>
+        <inlineHelpText>From the Building, Name of the Developer</inlineHelpText>
+        <label>Developer</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Development_Escrow_Officer_Address__c</fullName>
+        <externalId>false</externalId>
+        <label>Development Escrow Officer Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Development_Escrow_Officer_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Development Escrow Officer Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Development_Escrow_Officer_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Development Escrow Officer Name</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Development_Escrow_Officer_Phone__c</fullName>
+        <externalId>false</externalId>
+        <label>Development Escrow Officer Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Development_Title_Company__c</fullName>
+        <externalId>false</externalId>
+        <label>Development Title Company</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Income_Level_of_Applicants__c</fullName>
+        <defaultValue>&quot;% of Area Median Income&quot;&amp; BR() &amp; BR() &amp; 
+
+&quot;1 Person - $81,550&quot; &amp;BR() &amp; 
+&quot;2 Persons - $93,250&quot; &amp;BR() &amp; 
+&quot;3 Persons - $104,900&quot; &amp;BR() &amp; 
+&quot;4 Persons - $116,500&quot; &amp;BR()</defaultValue>
+        <externalId>false</externalId>
+        <label>Income Level of Applicants</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Information_Session_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Information Session Date/Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Is_the_building_Fannie_Mae_approved__c</fullName>
+        <externalId>false</externalId>
+        <label>Is the building Fannie Mae approved?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Issues_w_Buyer_s_Lending_Ability_Reason__c</fullName>
+        <description>Please explain the situation(s) about your building that can impact buyer&apos;s ability to secure loans.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Please explain the situation(s) about your building that can impact buyer&apos;s ability to secure loans.</inlineHelpText>
+        <label>Issues w/ Buyer&apos;s Lending Ability Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Issues_with_Buyer_s_Ability_to_Get_Loans__c</fullName>
+        <description>Is there anything MOHCD should know about your building in terms of buyer’s ability to secure loans (e.g. too many renters for FNMA approval; a pending lawsuit, etc.)?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Is there anything MOHCD should know about your building in terms of buyer’s ability to secure loans (e.g. too many renters for FNMA approval; a pending lawsuit, etc.)?</inlineHelpText>
+        <label>Issues with Buyer&apos;s Ability to Get Loans</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Leasing_Agent_City__c</fullName>
+        <description>The City of the Leasing Agent identified on the building.</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Leasing_Agent__r.MailingCity</formula>
+        <inlineHelpText>The City of the Leasing Agent identified on the building.</inlineHelpText>
+        <label>Leasing Agent City</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Leasing_Agent_Email__c</fullName>
+        <description>Email of the Leasing Agent.</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Leasing_Agent__r.Email</formula>
+        <inlineHelpText>Email of the Leasing Agent.</inlineHelpText>
+        <label>Leasing Agent Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Leasing_Agent_Name__c</fullName>
+        <description>From the building, the name of the identified leasing agent.</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Leasing_Agent__r.FirstName &amp; &quot; &quot; &amp;  Listing__r.Building__r.Leasing_Agent__r.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>From the building, the name of the identified leasing agent.</inlineHelpText>
+        <label>Leasing Agent Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Leasing_Agent_State__c</fullName>
+        <description>The State of the Leasing Agent identified on the building.</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Leasing_Agent__r.MailingState</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The State of the Leasing Agent identified on the building.</inlineHelpText>
+        <label>Leasing Agent State</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Leasing_Agent_Street_Address__c</fullName>
+        <description>From the Building, the street address of the leasing agent.</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Leasing_Agent__r.MailingStreet</formula>
+        <inlineHelpText>From the Building, the street address of the leasing agent.</inlineHelpText>
+        <label>Leasing Agent Street Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Leasing_Agent_Zip_Code__c</fullName>
+        <description>Postal Code of the Leasing Agent.</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Leasing_Agent__r.MailingPostalCode</formula>
+        <inlineHelpText>Postal Code of the Leasing Agent.</inlineHelpText>
+        <label>Leasing Agent Zip Code</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Leasing_Company_Name__c</fullName>
+        <description>From the Building, the Leasing Company responsible</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Leasing_Company__r.Name</formula>
+        <inlineHelpText>From the Building, the Leasing Company responsible</inlineHelpText>
+        <label>Leasing Company Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lenders_aren_t_MOHCD_BMR_Approved_reason__c</fullName>
+        <description>Please explain why your lenders are not approved by MOHCD as a BMR lender.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Please explain why your lenders are not approved by MOHCD as a BMR lender.</inlineHelpText>
+        <label>Lenders aren&apos;t MOHCD BMR-Approved reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Listing__c</fullName>
+        <externalId>false</externalId>
+        <label>Listing</label>
+        <referenceTo>Listing__c</referenceTo>
+        <relationshipLabel>Marketing Plans</relationshipLabel>
+        <relationshipName>Marketing_Plans</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Lottery_City__c</fullName>
+        <defaultValue>&quot;San Francisco&quot;</defaultValue>
+        <externalId>false</externalId>
+        <label>Lottery City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lottery_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Lottery Date/Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Lottery_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Lottery Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Lottery_End_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Lottery End Time</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lottery_End__c</fullName>
+        <description>End of the Lottery - Datetime</description>
+        <externalId>false</externalId>
+        <inlineHelpText>End of the Lottery - Datetime</inlineHelpText>
+        <label>Lottery End</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Lottery_Information__c</fullName>
+        <externalId>false</externalId>
+        <label>Lottery Information</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Lottery_Location__c</fullName>
+        <externalId>false</externalId>
+        <label>Lottery Location</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Lottery_Results_Date__c</fullName>
+        <description>Date Lottery Results are posted</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date Lottery Results are posted</inlineHelpText>
+        <label>Lottery Results Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lottery_Start_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Lottery Start Time</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lottery_Street_Address__c</fullName>
+        <description>Street Address of the Lottery - Such as 1 Market Street</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Street Address of the Lottery - Such as 1 Market Street</inlineHelpText>
+        <label>Lottery Street Address</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lottery_Summary__c</fullName>
+        <description>Summary of the Lottery Results.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Summary of the Lottery Results.</inlineHelpText>
+        <label>Lottery Summary</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lottery_Venue__c</fullName>
+        <description>Location where the lottery will be held.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Location where the lottery will be held.</inlineHelpText>
+        <label>Lottery Venue</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MR_Commission_Arrangement_Rules__c</fullName>
+        <externalId>false</externalId>
+        <label>MR Commission Arrangement (% &amp; Rules)</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Market_Rate_Unit_Appliances_Description__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>List all Market Rate Unit Appliances (Make / Model / Color)</inlineHelpText>
+        <label>Market Rate Unit Appliances Description</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Market_Rate_Unit_Finishings_and_Type__c</fullName>
+        <description>List all Market Rate Unit Finishing and Type.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Under finishings and type, include flooring, cabinets, carpet, etc.</inlineHelpText>
+        <label>Market Rate Unit Finishings and Type</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Marketing_Plan_Approval_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Marketing Plan Approval Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Marketing_Plan_Approval_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Marketing Plan Approval Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not Yet Submitted</fullName>
+                    <default>true</default>
+                </value>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Under Review</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Additional Information Required</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Pending Final Approval</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Denied</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Under Appeal</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Marketing_Plan_MOHCD_Follow_up_Details__c</fullName>
+        <externalId>false</externalId>
+        <label>Marketing Plan MOHCD Follow-up Details</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Marketing_Plan_Ready_for_Approval__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Marketing Plan Ready for Approval</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Marketing_Plan_Submit_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Marketing Plan Submit Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Max_Qualifying_Income_Level_of_HH__c</fullName>
+        <defaultValue>&quot;Maximum household income must not exceed the following amounts by household size:&quot; &amp; BR() &amp; BR() &amp; 
+
+&quot;100% of Maximum Income by Household Size derived from the Unadjusted Area Median Income (AMI) for HUD Metro Fair Market Rent Area (HMFA) that contains San Francisco 2014&quot; 
+&amp; BR() &amp; BR() &amp; 
+
+&quot;A one person household can make no more than $67,950&quot; &amp; BR() &amp; 
+&quot;A two person household can make no more than $77,700&quot; &amp; BR() &amp; 
+&quot;A three person household can make no more than $87,400&quot; &amp; BR() &amp; 
+&quot;A four person household can make no more than $97,100&quot; &amp; BR() &amp; 
+&quot;A five person household can make no more than $104,850&quot; &amp; BR() &amp; 
+&quot;A six person household can make no more than $112,650&quot; &amp; BR() &amp; 
+&quot;A seven person household can make no more than $120,400&quot; &amp; BR() &amp; BR() &amp; 
+
+&quot;(Visit www.sfmohcd.org for larger households.)&quot;&amp; BR() &amp; BR() &amp; 
+
+&quot;Note: These units are priced to be affordable to households at 90% of AMI but will allow households earning up to 100% of AMI to qualify for the units per new program rules outlined in the City and County of San Francisco Inclusionary Housing Program Monitoring and Procedures Manual 2013. &quot;</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Maximum qualifying income level of applicant households</inlineHelpText>
+        <label>Max. Qualifying Income Level of HH</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Maximum_Allowable_Income_Level_of_HH__c</fullName>
+        <defaultValue>&quot;of Maximum Income by Household Size derived from the Unadjusted Area Median Income (AMI) for HUD Metro Fair Market Rent Area (HMFA) that contains San Francisco 2013&quot; &amp; BR() &amp; BR() &amp; 
+
+&quot;A one person household can make no more than $37,350&quot;&amp; BR()&amp; 
+&quot;A two person household can make no more than $42,750&quot;&amp; BR()&amp; 
+&quot;A three person household can make no more than $48,050&quot;&amp; BR()&amp; 
+&quot;A four person household can make no more than $53,400&quot;&amp; BR()&amp; 
+&quot;A five person household can make no more than $57,650&quot;&amp; BR()&amp; 
+&quot;A six person household can make no more than $61,950&quot;&amp; BR()&amp; 
+&quot;A seven person household can make no more than $66,200&quot;&amp; BR()&amp; 
+
+&quot;(Please visit www.sfmohcd.org for larger households.)&quot;</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Maximum Allowable Income Level of Households</inlineHelpText>
+        <label>Maximum Allowable Income Level of HH</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Maximum_City_2nd_Loan_Amount__c</fullName>
+        <defaultValue>&quot;$100,000 or 15% of the purchase price, whichever is less.&quot;</defaultValue>
+        <externalId>false</externalId>
+        <label>Maximum City 2nd Loan Amount</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Maximum_Household_Size_Rule__c</fullName>
+        <externalId>false</externalId>
+        <label>Maximum Household Size Rule</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Maximum_Household_Size_Standard__c</fullName>
+        <externalId>false</externalId>
+        <label>Maximum Household Size Standard</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Minimum_Allowable_Income_Level_of_HH__c</fullName>
+        <externalId>false</externalId>
+        <label>Minimum Allowable Income Level of HH</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Minimum_Household_Size_Rule__c</fullName>
+        <externalId>false</externalId>
+        <label>Minimum Household Size Rule</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Monthly_HOA_Dues__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly HOA Dues</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Rent__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Rent</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Name_of_Building__c</fullName>
+        <description>Name of Building</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Property_Name__c</formula>
+        <inlineHelpText>Name of Building</inlineHelpText>
+        <label>Name of Building</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name_of_City_and_County_of_SF_Planner__c</fullName>
+        <description>From the Building, Name of the Responsible City and County of San Francisco Planner.</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Name_of_City_and_County_of_SF_Planner__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>From the Building, Name of the Responsible City and County of San Francisco Planner.</inlineHelpText>
+        <label>Name of City and County of SF Planner</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Neighborhood__c</fullName>
+        <description>Neighborhood, from the building</description>
+        <externalId>false</externalId>
+        <formula>TEXT (Listing__r.Building__r.Neighborhood__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Neighborhood, from the building</inlineHelpText>
+        <label>Neighborhood</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Notice_of_Special_Restrictions_NSR_Doc__c</fullName>
+        <description>From the Building, Notice of Special Restrictions Doc.</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Notice_of_Special_Restrictions_NSR_Doc__c</formula>
+        <inlineHelpText>From the Building, Notice of Special Restrictions Doc.</inlineHelpText>
+        <label>Notice of Special Restrictions (NSR) Doc</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Open_House_Dates_Times__c</fullName>
+        <externalId>false</externalId>
+        <label>Open House Dates/Times</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Other_Fees_and_or_Building_Rules__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Some examples include late payment fees, pet fees, or other building fees.</inlineHelpText>
+        <label>Other Fees and/or Building Rules</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Other_Qualification_Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Qualification Notes</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Other_Standard__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Standard</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>8</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Parking_Fee_Monthly__c</fullName>
+        <externalId>false</externalId>
+        <label>Parking Fee (Monthly)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Planning_Motion_Number__c</fullName>
+        <description>From the Building, Planning Motion Number</description>
+        <externalId>false</externalId>
+        <formula>Listing__r.Building__r.Planning_Motion_Number__c</formula>
+        <inlineHelpText>From the Building, Planning Motion Number</inlineHelpText>
+        <label>Planning Motion Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Posting_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Posting End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Posting_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Posting Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Pref_Lenders_are_MOHCD_approved_for_BMR__c</fullName>
+        <description>In order for your preferred lenders to provide loan preapprovals to BMR applicants, they must be approved by MOHCD. Are your preferred lenders currently listed on the list of MOHCD-approved BMR lenders at www.sfmohcd.org?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>In order for your preferred lenders to provide loan preapprovals to BMR applicants, they must be approved by MOHCD. Are your preferred lenders currently listed on the list of MOHCD-approved BMR lenders at www.sfmohcd.org?</inlineHelpText>
+        <label>Pref. Lenders are MOHCD approved for BMR</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Preferred_Lender_1_Bank_Brokerage_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Preferred Lender 1: Bank/Brokerage Name</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Preferred_Lender_1_Contact_Phone__c</fullName>
+        <externalId>false</externalId>
+        <label>Preferred Lender 1: Contact Phone #</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Preferred_Lender_1_Lending_Officer_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Preferred Lender 1: Lending Officer Name</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Preferred_Lender_2_Bank_Brokerage_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Preferred Lender 2: Bank/Brokerage Name</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Preferred_Lender_2_Contact_Phone__c</fullName>
+        <externalId>false</externalId>
+        <label>Preferred Lender 2: Contact Phone #</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Preferred_Lender_2_Lending_Officer_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Preferred Lender 2: Lending Officer Name</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Preferred_Lender_3_Bank_Brokerage_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Preferred Lender 3: Bank/Brokerage Name</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Preferred_Lender_3_Contact_Phone__c</fullName>
+        <externalId>false</externalId>
+        <label>Preferred Lender 3: Contact Phone #</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Preferred_Lender_3_Lending_Officer_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Preferred Lender 3: Lending Officer Name</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Preferred_Lender_4_Bank_Brokerage_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Preferred Lender 4: Bank/Brokerage Name</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Preferred_Lender_4_Contact_Phone__c</fullName>
+        <externalId>false</externalId>
+        <label>Preferred Lender 4: Contact Phone #</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Preferred_Lender_4_Lending_Officer_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Preferred Lender 4: Lending Officer Name</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Procedures_Manual_BMR_Ownership__c</fullName>
+        <defaultValue>&quot;All potential buyers must review the 2013 Inclusionary Affordable Housing Program Monitoring and Procedures Manual that governs this property. Buyers will sign an acknowledgement that they have read and understood this document when purchasing a BMR unit.&quot; &amp; BR()&amp; BR()&amp; 
+
+&quot;The 2013 Inclusionary Affordable Housing Program Monitoring and Procedures Manual can be found here: http://sf-moh.org/index.aspx?page=295&quot;</defaultValue>
+        <externalId>false</externalId>
+        <label>Procedures Manual (BMR Ownership)</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Procedures_Manual_BMR_Rental__c</fullName>
+        <defaultValue>&quot;All BMR renters must review and acknowledge the Inclusionary Affordable Housing Program Monitoring and Procedures Manual 2013 that governs this property upon the signing of a lease for a BMR unit.&quot; &amp; BR()&amp; BR()&amp; 
+
+&quot;The 2013 Inclusionary Affordable Housing Program Monitoring and Procedures Manual can be found here: http://sf-moh.org/index.aspx?page=295&quot;</defaultValue>
+        <externalId>false</externalId>
+        <label>Procedures Manual (BMR Rental)</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Proposed_Marketing_Launch_Date__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the date the posting will start to appear on the MOHCD website.</inlineHelpText>
+        <label>Proposed Marketing Launch Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Rental_History_Standard__c</fullName>
+        <externalId>false</externalId>
+        <label>Rental History Standard</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Representative_Signature__c</fullName>
+        <description>Please type your name in field to confirm you completed form.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Please type your name in field to confirm you completed form.</inlineHelpText>
+        <label>Representative Signature</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Price_Range_if_more_than_1_unit__c</fullName>
+        <externalId>false</externalId>
+        <label>Sales Price Range if more than 1 unit</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Special_Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Special Notes</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Steps_you_ll_take_to_ensure_FNMA_appoval__c</fullName>
+        <externalId>false</externalId>
+        <label>Steps you&apos;ll take to ensure FNMA appoval</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Strategy_for_MKTG_to_Neighborhood__c</fullName>
+        <description>I/We understand we must present a strategy for reaching out to the local community surrounding the building. (Suggestions include posting flyers in local community meeting places, posting the units in local papers, and reaching out to local community groups. This strategy is above and beyond your ad placements. At a minimum, list 10 local venues in which you will post your flyer or otherwise distribute your flyer.)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Strategy for Marketing to Residents of the Local neighborhood.</inlineHelpText>
+        <label>Strategy for MKTG to Neighborhood</label>
+        <length>3000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>20</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Type_of_Unit__c</fullName>
+        <defaultValue>&quot;City Second Loan Program with Right of First Refusal&quot;</defaultValue>
+        <externalId>false</externalId>
+        <label>Type of Unit</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>URL_for_the_Ad_for_the_Property__c</fullName>
+        <externalId>false</externalId>
+        <label>URL for the Ad for the Property</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>What_the_HOA_Dues_cover__c</fullName>
+        <externalId>false</externalId>
+        <label>What the HOA Dues cover?</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Will_you_have_preferred_lenders__c</fullName>
+        <description>Will you have preferred Lenders for this building?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Will you have preferred Lenders for this building?</inlineHelpText>
+        <label>Will you have preferred lenders?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Year_Built__c</fullName>
+        <description>From the Building, year built.</description>
+        <externalId>false</externalId>
+        <formula>Text(Listing__r.Year_Built__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>From the Building, year built.</inlineHelpText>
+        <label>Year Built</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Your_Proposed_Ad_Language_Here__c</fullName>
+        <description>Proposed Language for the Advertising.</description>
+        <externalId>false</externalId>
+        <label>Your Proposed Ad Language Here:</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>12</visibleLines>
+    </fields>
+    <fields>
+        <fullName>of_Bathrooms_Range_if_more_than_1_unit__c</fullName>
+        <externalId>false</externalId>
+        <label># of Bathrooms Range if more than 1 unit</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>of_Bedrooms_Range_if_more_than_1_unit__c</fullName>
+        <externalId>false</externalId>
+        <label># of Bedrooms Range if more than 1 unit</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Marketing Plan</label>
+    <nameField>
+        <label>Marketing Plan Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Marketing Plans</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>First_Supe_Office_Date</fullName>
+        <active>true</active>
+        <description>The Date of Supervisor Annoucement must be in the 3 weeks after launch date.</description>
+        <errorConditionFormula>(Proposed_Marketing_Launch_Date__c   &gt;=  Date_1_Supe_Office_Announcement__c)  ||   (Date_1_Supe_Office_Announcement__c  &gt;=  Proposed_Marketing_Launch_Date__c + 21)</errorConditionFormula>
+        <errorDisplayField>Date_1_Supe_Office_Announcement__c</errorDisplayField>
+        <errorMessage>The First Announcement in the Board of Supervisors Office must be within 21 days of the Marketing Launch Date and After the Marketing Launch Date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Only_std_users_can_edit_approved_mktg</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(ISPICKVAL($Profile.UserType, &apos;Standard&apos;)) &amp;&amp; ISPICKVAL(Status__c, &apos;Approved&apos;)</errorConditionFormula>
+        <errorMessage>Only MOHCD staff can edit approved marketing plans</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Second_Supe_Office_Date</fullName>
+        <active>true</active>
+        <description>The Date of Supervisor Annoucement must be in the 3 weeks after launch date.</description>
+        <errorConditionFormula>(Proposed_Marketing_Launch_Date__c   &gt;=  Date_2_Supe_Office_Announcement__c)  ||   (Date_2_Supe_Office_Announcement__c  &gt;=  Proposed_Marketing_Launch_Date__c + 21)  || (Date_1_Supe_Office_Announcement__c = Date_2_Supe_Office_Announcement__c)</errorConditionFormula>
+        <errorDisplayField>Date_2_Supe_Office_Announcement__c</errorDisplayField>
+        <errorMessage>The Second Announcement in the Board of Supervisors Office must be within 21 days of the Marketing Launch Date and After the Marketing Launch Date. It also must not be the same as the First Announcement Date</errorMessage>
+    </validationRules>
+</CustomObject>

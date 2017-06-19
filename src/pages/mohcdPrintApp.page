@@ -1,0 +1,137 @@
+<apex:page docType="html-5.0" controller="CS_MOHCDHousingAppCC" showHeader="false" showChat="false" sidebar="false" standardStylesheets="false" renderAs="pdf" applyBodyTag="false" readOnly="true">
+    
+    <c:MOHHeader />        
+    <center>    
+        <b>------------------------------------------------------------------------------------------------------------------------------------------------------</b>    
+    </center> 
+    
+    <div style="text-align: right;">
+        Date : &nbsp;
+        <apex:outputText value="{0,date,MM'/'dd'/'yyyy}"> 
+            <apex:param value="{!TODAY()}" /> 
+        </apex:outputText> 
+    </div>
+    
+    <apex:outputPanel rendered="{!IF(haInstance.Application_Status__c != 'Submitted', true, false)}">
+        Dear {!$User.FirstName} {!$User.LastName}, 
+        <br/><br/>
+        You have not completed and submitted your housing application yet. Kindly submit your housing application before printing it. 
+        <br/><br/>
+        Regards,<br/>
+        MOHCD Team            
+    </apex:outputPanel>
+    
+    <apex:outputPanel rendered="{!IF(haInstance.Application_Status__c == 'Submitted', true, false)}">    
+        
+        <h3 style="color: #428bca;"> Housing Application Details</h3>
+        <b>Housing Applicant Name : </b> {!$User.FirstName} {!$User.LastName}  <br/>
+        <b>Housing Application Number : </b> {!haInstance.Name}    <br/>
+        <b>Housing Application Status: </b> {!haInstance.Application_Status__c}    <br/>
+        <b>Propoerty of Interest: </b> {!haInstance.Property_of_Interest__r.Name}    <br/>
+        <b>Your Lottery Number: </b> {!haInstance.Lottery_Number__c}    <br/>
+        <b>Your Lottery Rank: </b> {!haInstance.Lottery_Rank__c}    <br/>
+            
+        <br/>
+        
+        <h3 style="color: #428bca;"> Household Composition </h3>    
+        <div > 
+            <div >
+                <table class="pageBlockCss">
+                    <thead >
+                        <tr>               
+                            <th>Last Name</th>
+                            <th>First Name</th>
+                            <th>Relationship with HH</th>                                                
+                            <th>Date of Birth</th>
+                            <th>Gender</th>
+                            <th>Student?</th>
+                            <th>Married?</th>
+                        </tr>
+                    </thead>
+                    <tbody >                                                    
+                        <apex:repeat var="m" value="{!haInstance.Housing_Application_Members1__r}">
+                            <tr>                    
+                                <td>{!m.Last_Name__c}</td>
+                                <td>{!m.First_Name__c}</td>
+                                <td>{!m.Relationship_to_Head_of_Household__c}</td>
+                                <td>
+                                    <apex:outputText value="{0,date,MM'/'dd'/'yyyy}"> 
+                                        <apex:param value="{!m.Date_of_Birth__c}" /> 
+                                    </apex:outputText>                                                            
+                                </td>
+                                <td>{!m.Gender__c}</td>
+                                <td>{!m.In_School__c}</td>
+                                <td>{!m.Married_or_Domestic_Partnered__c}</td>
+                            </tr>
+                        </apex:repeat>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <br/>
+        
+        <h3 style="color: #428bca;"> Income Information </h3>    
+        <div class="row"> 
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>                
+                            <th>Last Name</th>
+                            <th>First Name</th>
+                            <th>Name of Employer</th>                                                
+                            <th>Gross Annual Income</th>                                                        
+                        </tr>
+                    </thead>
+                    <tbody>                                                    
+                        <apex:repeat var="i" value="{!haInstance.Housing_Application_Incomes__r}">
+                            <tr>                  
+                                <td>{!i.Housing_Application_Member__r.Last_Name__c}</td>
+                                <td>{!i.Housing_Application_Member__r.First_Name__c}</td>
+                                <td>{!i.Employer_Name__c}</td>
+                                <td><apex:outputField value="{!i.Annualized_Income__c}" /></td>
+                            </tr>
+                        </apex:repeat>
+                    </tbody>
+                </table>
+            </div>
+        </div>  
+        
+        <br/>
+        
+        <h3 style="color: #428bca;"> Asset Information </h3>
+        <div class="row"> 
+            <div class="col-md-12">
+                <table class="table table-striped" style="border:1;">
+                    <thead>
+                        <tr>                                                                       
+                            <th>Last Name</th>
+                            <th>First Name</th>
+                            <th>Name of Institution</th>
+                            <th>Retirement Asset Type</th>
+                            <th>Current Cash Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>                                                    
+                        <apex:repeat var="a" value="{!haInstance.Housing_Application_Assets__r}">
+                            <tr>                                                                                  
+                                <td>{!a.Housing_Application_Member__r.Last_Name__c}</td>
+                                <td>{!a.Housing_Application_Member__r.First_Name__c}</td>
+                                <td>{!a.Name_of_Institution__c}</td>
+                                <td><apex:outputField value="{!a.Retirement_Asset_Type__c}" /></td>
+                                <td><apex:outputField value="{!a.Current_Cash_Value_of_Gift__c}" /></td>
+                            </tr>
+                        </apex:repeat>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <br/><br/><br/><br/><br/><br/>
+        
+        <div style="text-align: right;">
+            ----------------------------------- <br />
+            {!$User.FirstName} {!$User.LastName}
+        </div>
+    </apex:outputPanel>
+</apex:page>

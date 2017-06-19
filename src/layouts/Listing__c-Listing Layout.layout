@@ -30,6 +30,10 @@
                 <behavior>Edit</behavior>
                 <field>Account__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Program_Type__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -43,6 +47,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Status__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Tenure__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -396,6 +404,10 @@
                 <behavior>Edit</behavior>
                 <field>Blank_paper_application_can_be_picked_up__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SASE_Required_for_Lottery_Ticket__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -592,12 +604,7 @@
         <fields>NAME</fields>
         <fields>Application_Submitted_Date__c</fields>
         <fields>Status__c</fields>
-        <fields>Lottery_Number__c</fields>
         <fields>Lottery_Rank__c</fields>
-        <fields>COP_Preference__c</fields>
-        <fields>DTHP_Preference__c</fields>
-        <fields>Live_Work_Preference__c</fields>
-        <fields>Neighborhood_Preference__c</fields>
         <relatedList>Application__c.Listing__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -627,6 +634,8 @@
         <relatedList>Listing_Image__c.Listing__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <customButtons>New_Unit</customButtons>
+        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Unit_Type__c</fields>
         <fields>BMR_Minimum_Annual_Income_Needed__c</fields>
@@ -657,9 +666,6 @@
     <relatedLists>
         <fields>NAME</fields>
         <relatedList>Flagged_Record_Set__c.Listing__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

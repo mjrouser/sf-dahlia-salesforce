@@ -862,6 +862,16 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
         </valueSet>
     </fields>
     <fields>
+        <fullName>Lottery_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>If checked, the Applicant will be included in the label maker database</inlineHelpText>
+        <label>Lottery Attendance</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Lottery_Number_Manual__c</fullName>
         <description>Temporary field to use for uploading temp applications to run through the lottery. This will be used to link Salesforce applications, to those that are sent to the MOHCD from others.</description>
         <externalId>false</externalId>
@@ -1515,36 +1525,6 @@ IF(
         <label>All Submitted Applications</label>
     </listViews>
     <listViews>
-        <fullName>All_Submitted_Applications1</fullName>
-        <columns>Listing__c</columns>
-        <columns>NAME</columns>
-        <columns>Application_Submitted_Date__c</columns>
-        <columns>Application_Submission_Type__c</columns>
-        <columns>Applicant__c</columns>
-        <columns>Email__c</columns>
-        <columns>First_Name__c</columns>
-        <columns>Last_Name__c</columns>
-        <columns>Date_of_birth__c</columns>
-        <columns>Status__c</columns>
-        <columns>Housing_Voucher_or_Subsidy__c</columns>
-        <columns>Annual_Income__c</columns>
-        <columns>Monthly_Income__c</columns>
-        <columns>Total_Household_Size__c</columns>
-        <columns>COP_Preference__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Status__c</field>
-            <operation>equals</operation>
-            <value>Removed</value>
-        </filters>
-        <filters>
-            <field>Listing__c</field>
-            <operation>contains</operation>
-            <value>280 Brighton</value>
-        </filters>
-        <label>280 Brighton Removed</label>
-    </listViews>
-    <listViews>
         <fullName>Argenta_909</fullName>
         <columns>Listing__c</columns>
         <columns>NAME</columns>
@@ -1715,6 +1695,25 @@ IF(
         <label>Draft_Applications_LSeven</label>
     </listViews>
     <listViews>
+        <fullName>Duboce_Applications</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Primary_Applicant__c</columns>
+        <columns>COP_Preference__c</columns>
+        <columns>DTHP_Preference__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Lottery_Attendance__c</columns>
+        <columns>Neighborhood_Preference__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Listing__c</field>
+            <operation>equals</operation>
+            <value>Duboce</value>
+        </filters>
+        <label>Duboce Applications</label>
+    </listViews>
+    <listViews>
         <fullName>EVIVA_Applications</fullName>
         <columns>Listing__c</columns>
         <columns>NAME</columns>
@@ -1831,6 +1830,59 @@ IF(
         <label>L Seven Paper Submissions</label>
     </listViews>
     <listViews>
+        <fullName>Mosso_All_Submitted_Applications</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Applicant__c</columns>
+        <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_birth__c</columns>
+        <columns>Status__c</columns>
+        <columns>Housing_Voucher_or_Subsidy__c</columns>
+        <columns>Annual_Income__c</columns>
+        <columns>Monthly_Income__c</columns>
+        <columns>Total_Household_Size__c</columns>
+        <columns>COP_Preference__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </filters>
+        <filters>
+            <field>Listing__c</field>
+            <operation>contains</operation>
+            <value>Mosso</value>
+        </filters>
+        <label>Mosso All Submitted</label>
+    </listViews>
+    <listViews>
+        <fullName>Mosson_Unit_742_Lottery_5_25_17</fullName>
+        <columns>NAME</columns>
+        <columns>Primary_Applicant__c</columns>
+        <columns>COP_Preference__c</columns>
+        <columns>DTHP_Preference__c</columns>
+        <columns>DTHP_Preference_Member_Name__c</columns>
+        <columns>DTHP_Preference_Member_DOB__c</columns>
+        <columns>COP_Preference_Member_Name__c</columns>
+        <columns>COP_Preference_Member_DOB__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Draft</value>
+        </filters>
+        <filters>
+            <field>Listing__c</field>
+            <operation>equals</operation>
+            <value>Mosso Unit 742</value>
+        </filters>
+        <label>Mosso Unit 742-Lottery 5/25/17</label>
+    </listViews>
+    <listViews>
         <fullName>Nema_3_29_2017_Lottery</fullName>
         <columns>NAME</columns>
         <columns>Applicant__c</columns>
@@ -1881,6 +1933,21 @@ IF(
         <label>Nema Units 1208 &amp; 738 Re-Rental</label>
     </listViews>
     <listViews>
+        <fullName>Potrero_1010_Unit_236_Applications</fullName>
+        <columns>NAME</columns>
+        <columns>Primary_Applicant__c</columns>
+        <columns>Status__c</columns>
+        <columns>DTHP_Preference__c</columns>
+        <columns>COP_Preference__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Listing__c</field>
+            <operation>equals</operation>
+            <value>Potrero1010 Unit 236</value>
+        </filters>
+        <label>Potrero 1010 Unit 236 Applications</label>
+    </listViews>
+    <listViews>
         <fullName>Test_Applications</fullName>
         <columns>NAME</columns>
         <columns>Applicant__c</columns>
@@ -1897,6 +1964,85 @@ IF(
             <value>test</value>
         </filters>
         <label>Test Applications</label>
+    </listViews>
+    <listViews>
+        <fullName>Trinity_Phase_3_Applications</fullName>
+        <columns>NAME</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Primary_Applicant__c</columns>
+        <columns>COP_Preference__c</columns>
+        <columns>DTHP_Preference__c</columns>
+        <columns>Lottery_Rank__c</columns>
+        <columns>Neighborhood_Preference__c</columns>
+        <columns>Neighborhood_Preference_Address__c</columns>
+        <columns>Neighborhood_Preference_Manual__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Listing__c</field>
+            <operation>equals</operation>
+            <value>Trinity Phase 3</value>
+        </filters>
+        <label>Trinity Phase 3 Applications</label>
+    </listViews>
+    <listViews>
+        <fullName>Trinity_Phase_3_Lottery_Re_run_Apps</fullName>
+        <columns>NAME</columns>
+        <columns>L_Applicant_Full_Name__c</columns>
+        <columns>Listing__c</columns>
+        <columns>Lottery_Rank__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Listing__c</field>
+            <operation>equals</operation>
+            <value>Trinity Phase 3 Re-run Lottery 6-5-2017</value>
+        </filters>
+        <label>Trinity Phase 3 Lottery Re-run Apps</label>
+    </listViews>
+    <listViews>
+        <fullName>X1400_Mission_Unit_1504_and_1507</fullName>
+        <columns>NAME</columns>
+        <columns>Primary_Applicant__c</columns>
+        <columns>COP_Preference__c</columns>
+        <columns>COP_Preference_Member_Name__c</columns>
+        <columns>COP_Preference_Member_DOB__c</columns>
+        <columns>DTHP_Preference__c</columns>
+        <columns>DTHP_Preference_Member_Name__c</columns>
+        <columns>DTHP_Preference_Member_DOB__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Draft</value>
+        </filters>
+        <filters>
+            <field>Listing__c</field>
+            <operation>equals</operation>
+            <value>1400 Mission Unit 1504 and 1507</value>
+        </filters>
+        <label>1400 Mission Unit 1504 and 1507</label>
+    </listViews>
+    <listViews>
+        <fullName>X149_151_Duboce_Unit_1_Lottery_5_26_17</fullName>
+        <columns>NAME</columns>
+        <columns>Primary_Applicant__c</columns>
+        <columns>COP_Preference__c</columns>
+        <columns>COP_Preference_Member_DOB__c</columns>
+        <columns>COP_Preference_Member_Name__c</columns>
+        <columns>DTHP_Preference__c</columns>
+        <columns>DTHP_Preference_Member_DOB__c</columns>
+        <columns>DTHP_Preference_Member_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Draft</value>
+        </filters>
+        <filters>
+            <field>Listing__c</field>
+            <operation>equals</operation>
+            <value>149-151 Duboce Unit 1</value>
+        </filters>
+        <label>149 - 151 Duboce Unit 1 Lottery 5-26-17</label>
     </listViews>
     <listViews>
         <fullName>X1_Polk_Submitted_Applications</fullName>
@@ -1917,6 +2063,46 @@ IF(
         <label>1 Polk Submitted Applications</label>
     </listViews>
     <listViews>
+        <fullName>X308_Turk_Unit_15_Lottery_5_9_17</fullName>
+        <columns>NAME</columns>
+        <columns>Applicant__c</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>COP_Preference__c</columns>
+        <columns>DTHP_Preference__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Listing__c</field>
+            <operation>equals</operation>
+            <value>308 Turk Unit 15</value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </filters>
+        <label>308 Turk Unit 15 Lottery 5-9-17</label>
+    </listViews>
+    <listViews>
+        <fullName>X855_Brannan</fullName>
+        <columns>NAME</columns>
+        <columns>Primary_Applicant__c</columns>
+        <columns>COP_Preference__c</columns>
+        <columns>COP_Preference_Member_Name__c</columns>
+        <columns>COP_Preference_Member_DOB__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Listing__c</field>
+            <operation>equals</operation>
+            <value>855 Brannan</value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Draft</value>
+        </filters>
+        <label>855 Brannan COP</label>
+    </listViews>
+    <listViews>
         <fullName>X855_Brannan_All_Apps</fullName>
         <columns>Listing__c</columns>
         <columns>NAME</columns>
@@ -1928,11 +2114,10 @@ IF(
         <columns>Last_Name__c</columns>
         <columns>Date_of_birth__c</columns>
         <columns>Status__c</columns>
-        <columns>Housing_Voucher_or_Subsidy__c</columns>
-        <columns>Annual_Income__c</columns>
-        <columns>Monthly_Income__c</columns>
         <columns>Total_Household_Size__c</columns>
         <columns>Application_Language__c</columns>
+        <columns>Neighborhood_Preference__c</columns>
+        <columns>Live_Work_Preference__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Status__c</field>

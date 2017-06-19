@@ -1,0 +1,303 @@
+<apex:page standardController="Financial_Application__c" extensions="CS_MOHCDFinancialAppDetailsCX" docType="html-5.0" showHeader="false" showChat="false" sidebar="false" standardStylesheets="false" >
+
+    <apex:composition template="mohcdTemplate">        
+        <apex:define name="mohbody">
+            
+            <div class="col-md-9">                    
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Instructions</h3>
+                    </div>
+                
+                    <div class="panel-body">  
+                        <p>
+                            Please view your application details below.  If you have any questions about the information or would like to make corrections, please contact your lender.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Status</h3>
+                    </div>
+                
+                    <div class="panel-body">                                            
+                        <b>{!$ObjectType.Financial_Application__c.fields.Name.Label} : &nbsp;</b>
+                        <apex:outputField value="{!faInstance.Name}" />
+                        <br/>                        
+                        <b>{!$ObjectType.Financial_Application__c.fields.Application_Status__c.Label} : &nbsp;</b>
+                        <apex:outputField value="{!faInstance.Application_Status__c}" />                                               
+                        <br/><br/>
+                        <b> Notes </b><br/>
+                        <table class="table table-striped" >
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Body</th>                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <apex:repeat var="n" value="{!faInstance.Notes}">
+                                    <tr>
+                                        <td><apex:outputField value="{!n.Title}" /></td>
+                                        <td><apex:outputField value="{!n.Body}" /></td>                                        
+                                    </tr>
+                                </apex:repeat>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Section 1 - Lender Information</h3>
+                    </div>
+                
+                    <div class="panel-body">  
+                        <center>
+                            <apex:form >
+                                <apex:commandbutton styleclass="btn btn-info" value="Back" action="/apex/mohcdDownPayAsstApps"></apex:commandbutton>
+                            </apex:form>
+                        </center><br/>
+                        
+                        <table class="table">
+                            <tr>
+                                <td align="right"><b>{!$ObjectType.Financial_Application__c.fields.Lender_Mortgage_Broker_Company_Name__c.Label}</b></td>
+                                <td align="left"><apex:outputField value="{!faInstance.Lender_Mortgage_Broker_Company_Name__c}" /></td>
+                                
+                                <td align="right"><b>{!$ObjectType.Financial_Application__c.fields.Lender_Branch_Address__c.Label}</b></td>
+                                <td align="left"><apex:outputField value="{!faInstance.Lender_Branch_Address__c}" /></td>                           
+                            </tr>
+                            
+                            <tr>
+                                <td align="right"><b>Submitted By</b></td>
+                                <td align="left"><apex:outputText value="{!faInstance.Loan_Officer__r.Name + ', ' + faInstance.Loan_Officer__r.Title}" /></td>
+                                <td align="right"><b>Phone</b></td>
+                                <td align="left"><apex:outputField value="{!faInstance.Loan_Officer__r.Work_Phone__c}" /></td>                           
+                            </tr>
+                            
+                            <tr>
+                                <td align="right"><b>Email</b></td>
+                                <td align="left"><apex:outputField value="{!faInstance.Loan_Officer__r.Email}" /></td>                                
+                                <td align="right"><b>Fax</b></td>
+                                <td align="left"><apex:outputField value="{!faInstance.Loan_Officer__r.Fax}" /></td>                           
+                            </tr>
+                        </table>                     
+                    </div>
+                </div>
+                
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Section 2 - Property Information</h3>
+                    </div>
+                
+                    <div class="panel-body">  
+                        
+                        <table class="table">
+                            <tr>
+                                <td align="right"><b>{!$ObjectType.Financial_Application__c.fields.Property_Address__c.Label}</b></td>
+                                <td align="left"><apex:outputField value="{!faInstance.Property_Address__c}" /></td>
+                                
+                                <td align="right"><b>Number of Bedrooms</b></td>
+                                <td align="left"><apex:outputField value="{!faInstance.of_Bedrooms__c}" /></td>                           
+                            </tr>
+                            <tr>
+                                <td align="right"><b>{!$ObjectType.Financial_Application__c.fields.Development_Name__c.Label}</b></td>
+                                <td align="left"><apex:outputField value="{!faInstance.Development_Name__c}" /></td>
+                                
+                                <td align="right"><b>Number of Bathrooms</b></td>
+                                <td align="left"><apex:outputField value="{!faInstance.of_Bathrooms__c}" /></td>                           
+                            </tr>
+                        </table>                        
+                    </div>
+                </div>
+                                
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Section 3 - Borrower Information</h3>
+                    </div>
+                
+                    <div class="panel-body">  
+                        <table class="table">
+                            <tr>
+                                <td align="right"><b>Primary Borrower Name</b></td>
+                                <td align="left"><apex:outputText value="{!borrower.First_Name__c + ' ' + borrower.Last_Name__c}" /></td>
+                                
+                                <td align="right"><b>Occupation</b></td>
+                                <td align="left"><apex:outputField value="{!borrower.Occupation__c}" /></td>                           
+                            </tr>
+                            <tr>
+                                <td align="right"><b>Current Address</b></td>
+                                <td align="left"><apex:outputText escape="false" value="{!borrower.Full_Address__c}" /></td>
+                                
+                                <td align="right"><b>Email</b></td>
+                                <td align="left"><apex:outputField value="{!borrower.Email_Address__c}" /></td>                           
+                            </tr>
+                            <tr>
+                                <td align="right"><b>Home Phone</b></td>
+                                <td align="left"><apex:outputField value="{!borrower.Home_Phone__c}" /></td>
+                                
+                                <td align="right"><b>Work Phone</b></td>
+                                <td align="left"><apex:outputField value="{!borrower.Work_Phone__c}" /></td>                           
+                            </tr>
+                            <tr>
+                                <td align="right"><b>Ethnicity</b></td>
+                                <td align="left"><apex:outputField value="{!borrower.Race_Ethnicity_optional__c}" /></td>
+                                
+                                <td align="right"><b>Household Size</b></td>
+                                <td align="left">which field?</td>
+                            </tr>                            
+                        </table>
+                        
+                        <br/>
+                        <b> List of Household Members </b><br/>
+                        <table class="table table-striped" >
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Borrower Role</th>
+                                    <th>Relationship to Borrower</th>                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <apex:repeat var="fam" value="{!faInstance.Financial_Application_Members1__r}">
+                                    <tr style="{!If(fam.Borrower_Role__c == 'Primary Borrower', 'display:none;', '')}">
+                                        <td><apex:outputText value="{!fam.First_Name__c + ' ' + fam.Last_Name__c}" /></td>
+                                        <td><apex:outputField value="{!fam.Borrower_Role__c}" /></td>
+                                        <td><apex:outputField value="{!fam.Relationship_to_Head_of_Household__c}" /></td>
+                                    </tr>
+                                </apex:repeat>
+                            </tbody>
+                        </table>      
+                        
+                        <br/>
+                        <b> List of Household Members Income </b><br/>
+                        <table class="table table-striped" >
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Income Type</th>
+                                    <th>Name of Employer</th>
+                                    <th>Estimated Annual Income</th>                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <apex:repeat var="inc" value="{!faInstance.Financial_Application_Incomes__r}">
+                                    <tr>
+                                        <td><apex:outputField value="{!inc.Name}" /></td>
+                                        <td><apex:outputText value="{!inc.RecordType.Name}" /></td>
+                                        <td><apex:outputField value="{!inc.Employer_Name__c}" /></td>
+                                        <td><apex:outputField value="{!inc.Annual_Income_Amount__c}" /></td>
+                                    </tr>
+                                </apex:repeat>
+                            </tbody>
+                        </table>      
+                        
+                        <br/>
+                        <b> List of Household Members Assets</b><br/>
+                        <table class="table table-striped" >
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Asset Type</th>
+                                    <th>Name of Institution</th>
+                                    <th>Retirement Asset Type</th>
+                                    <th>Current Cash Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <apex:repeat var="ast" value="{!faInstance.Financial_Application_Assets__r}">
+                                    <tr>
+                                        <td><apex:outputField value="{!ast.Name}" /></td>
+                                        <td><apex:outputText value="{!ast.Asset_Type__c}" /></td>
+                                        <td><apex:outputField value="{!ast.Name_of_Institution__c}" /></td>
+                                        <td><apex:outputField value="{!ast.Retirement_Asset_Type__c}" /></td>
+                                        <td><apex:outputField value="{!ast.Current_Cash_Value_of_Gift__c}" /></td>
+                                    </tr>
+                                </apex:repeat>
+                            </tbody>
+                        </table>      
+                    </div>
+                </div>
+                
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Section 4 - Details of Purchase</h3>
+                    </div>
+                
+                    <div class="panel-body">  
+                        <table class="table">
+                            <tr>
+                                <td align="right"><b>{!$ObjectType.Financial_Application__c.fields.Purchase_Price__c.Label}</b></td>
+                                <td align="left"><apex:outputField value="{!faInstance.Purchase_Price__c}" /></td>
+                                
+                                <td align="right"><b>{!$ObjectType.Financial_Application__c.fields.Estimated_Closing_Costs__c.Label}</b></td>
+                                <td align="left"><apex:outputField value="{!faInstance.Estimated_Closing_Costs__c}" /></td>                           
+                            </tr>
+                            <tr>
+                                <td align="right"><b>{!$ObjectType.Financial_Application__c.fields.Amount_of_First_Mortgage__c.Label}</b></td>
+                                <td align="left"><apex:outputField value="{!faInstance.Amount_of_First_Mortgage__c}" /></td>
+                                
+                                <td align="right"><b>{!$ObjectType.Financial_Application__c.fields.Estimated_Prepaid_Escrow__c.Label}</b></td>
+                                <td align="left"><apex:outputField value="{!faInstance.Estimated_Prepaid_Escrow__c}" /></td>                           
+                            </tr>
+                            <tr>
+                                <td align="right"><b>{!$ObjectType.Financial_Application__c.fields.Ratio_First_Mortgage_Purchase_Price__c.Label}</b></td>
+                                <td align="left"><apex:outputField value="{!faInstance.Ratio_First_Mortgage_Purchase_Price__c}" /></td>
+                                
+                                <td align="right"><b>{!$ObjectType.Financial_Application__c.fields.Total_Costs__c.Label}</b></td>
+                                <td align="left"><apex:outputField value="{!faInstance.Total_Costs__c}" /></td>                           
+                            </tr>
+                            <tr>
+                                <td align="right"><b>{!$ObjectType.Financial_Application__c.fields.Loan_Term_of_1st_Mortgage_Years__c.Label}</b></td>
+                                <td align="left"><apex:outputField value="{!faInstance.Loan_Term_of_1st_Mortgage_Years__c}" /></td>
+                                
+                                <td align="right"><b>{!$ObjectType.Financial_Application__c.fields.Interest_Rate__c.Label}</b></td>
+                                <td align="left"><apex:outputField value="{!faInstance.Interest_Rate__c}" /></td>                           
+                            </tr>
+                        </table>                       
+                    </div>
+                </div>
+                
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Section 5 - Declarations</h3>
+                    </div>
+                
+                    <div class="panel-body">  
+                        
+                        <b> 1. Have any of the borrowers every owned any property as a principle residence? </b>
+                        &nbsp;
+                        <apex:outputField value="{!faInstance.Has_Borrower_or_co_borrowers_owned_prop__c}" />
+                        <br/><br/>
+                        
+                        <b> 2. Do you intend to occupy the property within 60 days of close of escrow?</b>
+                        &nbsp;
+                        <apex:outputField value="{!faInstance.Borrowers_move_in_60_days_post_closing__c}" />
+                        <br/><br/>
+                        
+                        <b> 3. Are there outstanding judgments against any of the borrowers?</b>
+                        &nbsp;
+                        <apex:outputField value="{!faInstance.Oustanding_judgements_against_borrowers__c}" />
+                        <br/>
+                        
+                        <b> Outstanding  judgment explanation: </b>
+                        &nbsp;
+                        <apex:outputField value="{!faInstance.Outstanding_Judgement_Explanation__c}" />
+                        <br/><br/>
+                        
+                        <b> 4. Have any of the borrowers declared bankruptcy in the last 7 years?</b>
+                        &nbsp;
+                        <apex:outputField value="{!faInstance.Has_anyone_declared_bankruptcy_last_7yr__c}" />
+                        <br/>
+                        
+                        <b> Bankruptcy declaration explanation: </b>
+                        &nbsp;
+                        <apex:outputField value="{!faInstance.Bankrupty_Declaration_Explanation__c}" />
+                    </div>
+                </div>
+            </div>        
+        </apex:define>        
+    </apex:composition>
+
+</apex:page>

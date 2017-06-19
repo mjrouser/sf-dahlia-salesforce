@@ -209,7 +209,11 @@ global without sharing class API_Application {
 		global Boolean noEmail;
 		global Boolean noAddress;
 		global Boolean hasAltMailingAddress;
-		
+		global String xCoordinate;
+		global String yCoordinate;
+		global String whichComponentOfLocatorWasUsed;
+		global Decimal candidateScore;
+        
 		private String parseDate(Date inputDate) {
 			if (inputDate != null) {
 				Time myTime = Time.newInstance(0, 0, 0, 0);
@@ -318,7 +322,10 @@ global without sharing class API_Application {
 			this.noAddress = am.No_Address__c;
 			this.hasAltMailingAddress = am.Has_Alt_Mailing_Address__c;
 			this.appMemberType = am.type__c;
-			
+			this.xCoordinate = am.X_Coordinate__c;
+			this.yCoordinate = am.Y_Coordinate__c;
+			this.whichComponentOfLocatorWasUsed = am.Which_component_of_locator_was_used__c;
+			this.candidateScore = am.Candidate_Score__c;
 		}
 
 		global Contact toContact() {
@@ -397,7 +404,11 @@ global without sharing class API_Application {
 			am.No_Address__c = this.noAddress == null ? false : this.noAddress;
 			am.Has_Alt_Mailing_Address__c = this.hasAltMailingAddress == null ? false : this.hasAltMailingAddress;
 			am.type__c = this.appMemberType;
-			
+			am.X_Coordinate__c = this.xCoordinate;
+			am.Y_Coordinate__c = this.yCoordinate;
+			am.Which_component_of_locator_was_used__c = this.whichComponentOfLocatorWasUsed;
+			am.Candidate_Score__c = this.candidateScore;
+            
 			return am;
 		}
 		

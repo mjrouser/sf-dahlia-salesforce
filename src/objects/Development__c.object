@@ -283,6 +283,7 @@
         <columns>Name_of_Development__c</columns>
         <columns>Project_ID__c</columns>
         <columns>CREATED_DATE</columns>
+        <columns>Development_Zip_Code__c</columns>
         <filterScope>Everything</filterScope>
         <label>All Developments</label>
     </listViews>
@@ -302,6 +303,10 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Developments</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <searchResultsAdditionalFields>Name_of_Development__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Development_Street_Address__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Development_City__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

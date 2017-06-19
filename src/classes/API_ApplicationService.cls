@@ -43,6 +43,7 @@ global without sharing class API_ApplicationService {
 		' Mailing_Street__c, Mailing_City__c, Mailing_State__c, Mailing_Zip_Code__c,' +
 		' Work_in_SF__c, Relationship_to_Applicant__c, Living_with_HIV_AIDS__c, Sexual_Orientation__c, Sexual_Orientation_Other__c,' + 
 		' Gender__c, Gender_Other__c, Ethnicity__c, Race__c, Type__c, Primary_Language__c, Other_Language__c,' + 
+		' Candidate_Score__c, Which_component_of_locator_was_used__c, X_Coordinate__c, Y_Coordinate__c,' + 
 		' No_Phone__c, No_Email__c, No_Address__c, Has_Alt_Mailing_Address__c,' + 
 		' Alternate_Contact_Type__c, Alternate_Contact_Type_Other__c, Agency_Name__c, Same_Address_as_Applicant__c, Neighborhood_Preference_Match__c';
 
