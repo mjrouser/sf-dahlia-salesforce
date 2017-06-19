@@ -1,0 +1,125 @@
+<apex:page docType="html-5.0" controller="CS_MOHCDDownPayRequestCC" showHeader="false" showChat="false" sidebar="false" standardStylesheets="false" >
+    
+    <style>
+        
+        label {
+            display: inline-block;
+            margin-bottom: 5px;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+            
+    </style>
+            
+    <apex:composition template="mohcdTemplate">        
+        <apex:define name="mohbody">
+            
+            <div class="col-md-9">        
+                
+                <apex:form >
+                    
+                    <div class="panel panel-primary" style="{!IF(bIsSubmitted = true, 'display:none;', '')}">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Request Down Payment Assistance</h3>                            
+                        </div>
+                        <div class="panel-body">                           
+                            <p><b>The San Francisco Mayor’s Office of Housing and Community Development (MOHCD) offers a number of first-time 
+                            homebuyer programs.  For more detailed information about the MOHCD down payment assistance and Mortgage Credit 
+                            Certificate programs please visit  www.sfmocd.org.</b></p>
+
+                            <p>Follow the steps below to select a MOHCD approved lender and get a loan pre-approval to purchase a BMR unit or 
+                            apply for down payment assistance to purchase a market rate home. Current BMR owners can request a refinance here as well. 
+                            After selecting a lending institution and a loan officer, let  he or she know what you are requesting them to do by 
+                            making selections in Step 2.</p>
+                            
+                            <p>If you are applying to enter a lottery for the purchase of a BMR unit, please select the application you would like 
+                            your loan officer review for loan pre-approval. Once you click the "Submit Request" button, your selected Lender will be 
+                            notified of your request and will contact you to work on your application.</p> 
+                        </div>            
+                    </div>
+                    <div class="panel panel-primary">            
+                        <div class="panel-heading">                            
+                            <h3 class="panel-title">{!IF(bIsSubmitted = false, 'Step 1: Select a Lender and Loan Officer', 'Request for Down Payment Assistance and/or BMR Loan Pre-Approval')}</h3>
+                        </div>
+                        <div class="panel-body">                                                               
+                            <apex:pageMessages escape="false" ></apex:pageMessages><br/>
+                            <center><apex:commandButton value="Search for a Lender" action="/apex/mohcdSearchLender?m=dpa" rendered="{!!bIsSubmitted}" styleClass="btn btn-primary" /></center>
+                            <br/>                                  
+                            <table class="table" style="{!IF(ISNULL(conLender.Id), 'display:none;', '')}">
+                                <tr>                            
+                                    <td align="right"><b>Loan Officer First Name</b></td>
+                                    <td align="left">{!conlender.FirstName}</td>
+                                    
+                                    <td align="right"><b>Last Name</b></td>
+                                    <td align="left">{!conlender.LastName}</td>                           
+                                </tr>
+                                <tr>
+                                    <td align="right"><b>Phone Number</b></td>
+                                    <td align="left">{!conlender.Work_Phone__c}</td>
+                                    
+                                    <td align="right"><b>Email</b></td>
+                                    <td align="left">{!conlender.Email}</td>                           
+                                </tr>
+                                <tr>
+                                    <td align="right"><b>Lender</b></td>
+                                    <td align="left">{!conlender.Account.Name}</td>
+                                    
+                                    <td align="right"><b>Current Address</b></td>
+                                    <td align="left">{!conlender.MailingStreet + ', ' + conlender.MailingCity + ', ' + conlender.MailingState + ', ' + conlender.MailingCountry + ', ' + conlender.MailingPostalCode}</td>                           
+                                </tr>
+                            </table>                                           
+                        </div>
+                    </div>
+                    
+                    <div class="panel panel-primary" style="{!IF(bIsSubmitted = true, 'display:none;', '')}">            
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Step 2: Let Your Loan Officer Know What You Are Requesting</h3>
+                        </div>
+                        <div class="panel-body">                            
+                            <apex:selectRadio layout="pageDirection" value="{!dalpRequest.Housing_Type__c}">
+                                <apex:selectOptions value="{!RequestTypes}"/>
+                            </apex:selectRadio>               
+                        </div>
+                    </div>
+                    
+                    <div class="panel panel-primary" style="{!IF(bIsSubmitted = true, 'display:none;', '')}">            
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Step 3: For BMR Purchase Only, Choose Your Housing Application</h3>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>                                    
+                                        <th>Select</th>
+                                        <th>Housing Application #</th>
+                                        <th>Property Address</th>
+                                        <th>Application Status</th>                                    
+                                    </tr>
+                                </thead>
+                                <tbody>                                                    
+                                    <apex:repeat var="ha" value="{!lHousingAppWraps}">
+                                        <tr>
+                                            <td>
+                                                <apex:inputcheckbox styleClass="style2" value="{!ha.isSelected}" />
+                                            </td>                                        
+                                            <td>{!ha.ha.Name}</td>                                        
+                                            <td><apex:outputText escape="false" value="{!ha.ha.Property_of_Interest__r.Property_Address_Marketing__c}"></apex:outputText> </td>
+                                            <td>{!ha.ha.Application_Status__c}</td>
+                                        </tr>
+                                    </apex:repeat>
+                                </tbody>
+                            </table>
+                            <br/>
+                            <center>           
+                                <apex:commandButton value="Submit Request" action="{!submitFinancialProgramRequest}" styleClass="btn btn-primary" />
+                            </center> 
+                        </div>
+                    </div>  
+                </apex:form>
+                
+            </div>
+        
+        </apex:define>        
+    </apex:composition>
+    
+</apex:page>

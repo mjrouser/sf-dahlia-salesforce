@@ -1,0 +1,62 @@
+<!--
+Author: Kimiko Roberto
+Date: 08 May 2014
+Description: Selected Property page for SFMOHCD
+Revision(s)
+-->
+
+<apex:page standardController="Properties__c" extensions="SfmohprogramsSelectedPropCont">
+  <!-- Begin Default Content REMOVE THIS -->
+  <apex:sectionHeader title="SFMOHCD" subtitle="Property Selected"/>
+  <apex:form id="myForm">
+      <apex:commandLink onclick="window.scroll(0,window.innerWidth)" reRender="none" >jump to photos>></apex:commandLink>
+      <apex:pageBlock id="pb">
+        <apex:pageBlockButtons >
+                <apex:commandButton value="Apply" action="{!applyProperty}" />
+        </apex:pageBlockButtons>
+        <apex:pageBlockSection id="pbs">
+            <apex:outputField value="{!Properties__c.Name}" />
+            <apex:outputField value="{!Properties__c.Price__c}" />
+            <apex:outputField value="{!Properties__c.Occupancy_Type__c}" />
+            <apex:outputField value="{!Properties__c.of_Bedrooms__c}" />
+            <apex:outputField value="{!Properties__c.Neighborhood__c}" />
+            <apex:outputField value="{!Properties__c.of_Bathrooms__c}" />
+            <apex:outputField value="{!Properties__c.Area_Sq_Ft__c}" />
+            <apex:outputField value="{!Properties__c.of_Below_Ground_Parking_Spaces__c}" />
+            <apex:outputField value="{!Properties__c.of_Surface_Level_Above_Parking_Spaces__c}" />
+            <apex:outputField value="{!Properties__c.Apt_Unit__c}" />
+            <apex:outputField value="{!Properties__c.Email__c}" />
+            <apex:outputField value="{!Properties__c.Street_Number__c}" />
+            <apex:outputField value="{!Properties__c.Parent_Development__c}" />
+            <apex:outputField value="{!Properties__c.Street_Name__c}" />
+            <apex:outputField value="{!Properties__c.Lot__c}" />
+            <apex:outputField value="{!Properties__c.City__c}" />
+            <apex:outputField value="{!Properties__c.New_or_Existing__c}" />
+            <apex:outputField value="{!Properties__c.State__c}" />
+            <apex:outputField value="{!Properties__c.Block__c}" />
+            <apex:outputField value="{!Properties__c.Zip_Code__c}" />       
+            <apex:outputField value="{!Properties__c.Phone_Number__c}" />     
+            <apex:outputField value="{!Properties__c.Maximum_Household_Income_Allowed__c}" />
+            <apex:outputField value="{!Properties__c.Parking_Price_for_Rental_Units__c}" />
+            <apex:outputField value="{!Properties__c.Price_With_Parking__c}" />
+            <apex:outputField value="{!Properties__c.Price_Without_Parking__c}" />
+            <apex:outputField value="{!Properties__c.Monthly_Rent__c}" />
+            <apex:outputField value="{!Properties__c.Unit_Floor__c}" />
+            <apex:outputField value="{!Properties__c.Unit_Square_Footage__c}" />
+            <apex:outputField value="{!Properties__c.Monthly_Rent__c}" />
+            <apex:outputText value="" />
+            <apex:outputField value="{!Properties__c.Property_Photo_1__c}" />
+            <apex:outputField value="{!Properties__c.Photo_1_Caption__c}" />
+            <apex:outputField value="{!Properties__c.Property_Photo_2__c}" />
+            <apex:outputField value="{!Properties__c.Photo_2_Caption__c}" />
+            <apex:outputField value="{!Properties__c.Property_Photo_3__c}" />
+            <apex:outputField value="{!Properties__c.Photo_3_Caption__c}" />
+            <apex:outputField value="{!Properties__c.Property_Photo_4__c}" />
+            <apex:outputField value="{!Properties__c.Photo_4_Caption__c}" />
+            
+        
+        
+        </apex:pageBlockSection>
+      </apex:pageBlock>
+  </apex:form>
+</apex:page>

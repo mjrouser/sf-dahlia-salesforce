@@ -1,0 +1,82 @@
+<!--
+Author: Kimiko Roberto
+Date: 15 May 2014
+Description: New COPP Request page for SFMOHCD
+Revision(s)
+-->
+
+<apex:page controller="SfmohprogramsNewCertAppCont" showHeader="true" sidebar="true">
+
+
+    <!--apex:sectionHeader title="SFMOHCD" subtitle="New Certificate Application" /-->
+    <table>
+        <tr>
+            <!-- <td>
+                <apex:composition template="sampleSideWin">
+                
+                </apex:composition>
+            </td> -->
+
+            <td>
+                <apex:pageBlock title="Certificate of Preference Program - Eligibility Search" id="pbText">
+                    <font color="#ff1493"><apex:facet name="header">
+                     <span style="color:red; font-size: 18pt; font-weight:bold">Certificate of Preference Program - Eligibility Search</span>
+                     </apex:facet>     </font>
+                    <p><strong><span style="font-size: 16px;">Directions: Please Select a household member from the dropdown and fill out all the information below in order for MOHCD to properly assess your eligibility. When you are complete, hit Submit.</span></strong></p>
+
+                    <p><strong><span style="font-size: 16px;">If you would like to call to have this eligibility search conducted, please reach us at 415-701-5613.</span></strong></p>
+                </apex:pageBlock>
+            
+                <apex:form id="myForm">
+                    <apex:pageBlock id="myPb" >
+                        <style>
+                            body .bPageBlock .pbBody .grey .pbSubheader{
+                                background-color:#c0c0c0
+                            }
+                            body .bPageBlock .pbBody .grey .pbSubheader h3{
+                                color:#000
+                            }
+                        </style>
+                        <apex:pageBlockButtons location="bottom">
+                            <apex:commandButton value="Submit for Eligibility Search" action="{!submitRequest}"/>
+                        </apex:pageBlockButtons>
+                        <apex:pageBlockSection id="myPbsRci" title="Requester's Contact Information">
+                            <apex:selectList value="{!conId}" size="1" label="Select Household Member">
+                                <apex:selectOptions value="{!Picklist}"  />
+                                <apex:actionsupport event="onchange" action="{!selectContact}" reRender="myPb,myPbsRci"/>
+                            </apex:selectList>
+                            <apex:outputText value="" />
+                            <apex:outputText id="fName" label="First Name" value="{!firstName}"/>
+                            <apex:outputText id="address" label="Current Address" value="{!address}"/>
+                            <apex:outputText id="lName" label="Last Name" value="{!lastName}"/>
+                            <apex:outputText value="" />
+                            <apex:outputText id="phone" label="Phone Number"  value="{!phone}"/>
+                            <apex:outputText value="" />
+                            <apex:outputText id="email" label="Email" value="{!email}"/>
+                        </apex:pageBlockSection>
+                        <apex:pageBlockSection id="myPbs1" title="Part 1 - Displacement Information">
+                            <apex:outputText style="font-weight: bold;font-size: 13px;" value="Did you live in.." />
+                            <apex:outputText value="" />
+                            <apex:inputCheckbox id="isWest" label="Western Addition between 1966 and 1975?" value="{!isWestern}"/>
+                            <apex:inputCheckbox id="isHunters" label="Hunters Point between 1966 and 1975?" value="{!isHunters}"/>
+                        </apex:pageBlockSection>
+                        <apex:pageBlockSection id="myPbs2" title="Part 2 - What we need from you" >
+                            <apex:inputTextarea cols="50" rows="5" id="dpAdd1" label="Displacement Address 1" value="{!dpAdd1}"/>
+                            <apex:inputText id="yearOfDisplacement" label="In what year were you displaced for Address 1?" value="{!yrOfDp}"/>
+                            <apex:inputTextarea cols="50" rows="5" id="dpAdd2" label="Displacement Address 2" value="{!dpAdd2}"/>
+                            <apex:inputText id="yearOfDisplacement2" label="In what year were you displaced for Address 2?" value="{!yrOfDp2}"/>
+                            <apex:inputText id="headOfHouse" label="Name of Household when displaced" value="{!nameOfHHDp}"/>
+                            <apex:inputText id="relheadOfHouse" label="Relationship to Head of Household" value="{!relToHH}" />
+
+                            
+
+                        </apex:pageBlockSection>
+                    </apex:pageBlock>
+                </apex:form>
+
+
+            </td>
+        </tr>
+    </table>
+    
+    </apex:page>

@@ -1,0 +1,22 @@
+<apex:component >
+    
+    <apex:attribute name="propName" description="This is the name of property" type="String" required="true"/>
+    <apex:attribute name="appStatus" description="This is the status of your housing application" type="String" required="true"/>
+    <br/>
+    <div class="row"> 
+        <div class="col-md-7">
+            <h2 style="color: #428bca;">  <b> {!propName} </b>  </h2>
+        </div>
+        <div class="col-md-3" style="{!IF(appStatus != 'Submitted', 'display : none;', '')}">
+            <apex:commandButton action="{!$Site.Prefix}/mohcdMyHouseApps" value="CHECK STATUS" styleclass="customBtn2" style="width:210px;">  </apex:commandbutton>
+        </div>
+        <div class="col-md-3" style="{!IF(appStatus == 'Submitted', 'display : none;', '')}">
+            &nbsp;
+        </div>
+        <div class="col-md-2">
+            <!--<button type="button" style="width:100px;" class="customBtn" onclick="javascript:confirm('This will close your current application screen! Are you sure?')?window.open('','_self').close():false;"></button>-->            
+            <apex:commandButton action="{!$Site.Prefix}/mohcdMyHouseApps" value="CLOSE" styleclass="customBtn" style="width:100px;">  </apex:commandbutton>
+        </div>    
+    </div>   
+    <br/> 
+</apex:component>

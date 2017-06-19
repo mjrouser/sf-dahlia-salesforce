@@ -1,0 +1,130 @@
+<apex:page docType="html-5.0" id="communitiesSelfRegPage" controller="CS_MOHCDRegisterCC" title="MOHCD Registration" showHeader="false" showChat="false" sidebar="false" standardStylesheets="false"> 
+    <style>
+        
+        label {
+            display: inline-block;
+            margin-bottom: 5px;
+            font-weight: 700;
+            margin-left: 5px;
+            margin-right: 10px;
+        }
+            
+    </style>
+    
+    <apex:composition template="mohcdTemplateUnAuth">        
+        <apex:define name="mohbody">    
+            <div class="col-md-1"> </div>           
+            <div class="col-md-11">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                                             
+                        <apex:form style="text-align: right;">
+                            <apex:commandButton styleClass="btn btn-info" action="/mohcdLogin" rendered="{!ISPICKVAL($User.UserType,'Guest')}" value="Home" immediate="true"/>
+                        </apex:form>
+                        
+                        <h2>SF DAHLIA - Registration</h2> 
+                        
+                        <p><a href="http://www.sfmohcd.org/Modules/ShowDocument.aspx?documentid=8769" target="_blank">Click here</a> for more information about registering for DAHLIA.</p>
+                                                                       
+                        <!-- <apex:pageBlock >
+                            <apex:pageBlockSection id="subheader" columns="1" >
+                                <p><strong><span style="font-family:arial;color:red;font-size: 16px;">**Special Registration Instruction: Determining if You Have or Have Not Participated in a MOHCD Housing or Financial Program**</span></strong></p>
+                                
+                                <p><span style="font-size: 12px;">In the registration form below, you will be asked, <b>"Are you or have you ever been a participant in a MOHCD housing/financial program?".</b></span></p>
+                                
+                                <p><strong><span style="font-size: 14px;color:#000514;">What 'YES' Means:</span></strong></p>
+                                
+                                <p><span style="font-size: 12px;"><i>You are currently and/or have been a participant in one or more MOHCD housing and/or financial programs (for example, you are or have been a resident in a Below Market Rate, City Second, or Limited Equity Program unit and/or you are or have been a recipient of a MOHCD financial program fund, such as DALP, FR DALP, BMR DALP, PIC, TND, or City Second Loan).</i></span></p>
+                                
+                                <p><strong><span style="font-size: 14px;color:#000514;">What 'NO' Means:</span></strong></p>
+                                
+                                <p><span style="font-size: 12px;"><i>You are not and have <b>never</b> been a participant in any MOHCD housing or financial program (for example, you are not or have never been a resident in a Below Market Rate, City Second, or Limited Equity Program unit, nor have you ever been a recipient  of a MOHCD financial program fund, such as DALP, FR DALP, BMR DALP, PIC, TND, or City Second Loan)</i></span></p>
+                                
+                            </apex:pageBlockSection>
+                        </apex:pageBlock> -->
+                        
+                        <br/>
+                        
+                        <apex:form id="theForm" forceSSL="true" >
+                            <div style="color:red;font-weight:bolder">
+                                <apex:pageMessages id="error"/>
+                            </div>                            
+                                <apex:pageBlock id="pb" >
+                                     <br/>                               
+                                    <apex:pageBlockButtons location="bottom" >
+                                        <apex:commandButton styleClass="btn btn-info" action="{!registerUser}" value="{!$Label.site.submit}" id="submit" tabindex="10" reRender="error"/>
+                                        <br />
+                                        <hr />
+                                        <p style="color: orange; text-decoration: underline;">HELP</p>
+                                    </apex:pageBlockButtons>
+                                 
+                                    <apex:pageBlockSection id="pbs" columns="2" >                                        
+                                        <apex:selectRadio value="{!appType}" label="Are you currently or have you ever owned a BMR or participated in a MOHCD housing program?" tabindex="1">
+                                            <apex:selectOptions value="{!type}"/>
+                                            <apex:actionsupport event="onclick" action="{!checkAppType}" reRender="pb,pbs,regId"/>
+                                        </apex:selectRadio>                                        
+
+                                        <apex:outputLabel value="" />
+                                        <apex:inputText styleClass="form-control" required="{!isRequired}" id="firstName" value="{!firstName}" label="First Name" tabindex="2" />
+                                        <br/><br/>
+                                        <apex:inputText styleClass="form-control" required="{!isRequired}" id="lastName" value="{!lastName}" label="Last Name" tabindex="3"/>                                    
+                                        <br/><br/>
+                                        <apex:inputText styleClass="form-control" required="{!isRequired}" id="zipcode" value="{!zipcode}" label="Current Zipcode" tabindex="4"/>
+                                        <br/><br/>
+                                        <apex:inputText styleClass="form-control" required="{!isRequired}" id="email" value="{!email}" label="{!$Label.site.email}" tabindex="5"/>
+                                        <br/><br/>
+                                        <apex:inputText styleClass="form-control" required="{!isRequired}" id="regId" value="{!regId}" label="Registration Code" tabindex="6" rendered="{!isNew}"/>
+                                        <br/><br/>
+                                        
+                                    </apex:pageBlockSection>
+                                    
+                                    <br/>
+                                    <apex:pageBlockSection id="pbsBday" columns="2" >
+                                        <apex:pageBlockSectionItem dataStyle="width:590px;">
+                                            <b>Birthday</b>
+                                        </apex:pageBlockSectionItem>
+                                        
+                                        <apex:pageBlockSectionItem >
+                                        
+                                            <apex:outPutPanel >
+                                                <apex:selectList size="1" value="{!currentMonth}" tabindex="7">
+                                                    <apex:actionSupport event="onchange" rerender="daysList"/>
+                                                    <apex:selectOptions value="{!monthsList}"/>
+                                                </apex:selectList>
+                                                &nbsp;
+                                                <apex:selectList size="1" value="{!currentDay}" id="daysList" tabindex="8">
+                                                        <apex:selectOptions value="{!daysList}" rendered="{!currentMonth=1 ||
+                                                                                                            currentMonth=2 ||
+                                                                                                            currentMonth=3 ||
+                                                                                                            currentMonth=4 ||
+                                                                                                            currentMonth=5 ||
+                                                                                                            currentMonth=6 ||
+                                                                                                            currentMonth=7 ||
+                                                                                                            currentMonth=8 ||
+                                                                                                            currentMonth=9 ||
+                                                                                                            currentMonth=10 ||
+                                                                                                            currentMonth=11 ||
+                                                                                                            currentMonth=12}"/>
+                                                                                                            
+                                                </apex:selectList>
+                                                &nbsp;
+                                                <apex:selectList size="1" value="{!currentYear}" tabindex="9">
+                                                        <apex:selectOptions value="{!yearsList}"/>
+                                                </apex:selectList>     
+                                            </apex:outPutPanel>
+                                                                                      
+                                        </apex:pageBlockSectionItem>
+                                        
+                                    </apex:pageBlockSection>
+                                    
+                                    <br/>
+                                    
+                            </apex:pageblock>
+                        </apex:form>
+                    </div>
+                </div>
+            </div> 
+            
+        </apex:define>        
+    </apex:composition>  
+</apex:page>

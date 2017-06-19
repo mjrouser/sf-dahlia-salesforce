@@ -1,0 +1,86 @@
+<!--
+Author: Kimiko Roberto
+Date: 24 April 2014
+Description: Registration page for SFMOHCD
+Revision(s)
+-->
+
+
+<apex:page id="communitiesSelfRegPage" showHeader="true" controller="SfmohprogramsSelfRegController2" title="{!$Label.site.user_registration}">
+   <style>
+  .dateFormat{display:none}
+   </style>
+     <apex:define name="body"> 
+<apex:sectionHeader title="SFMOHCD" subtitle="New User Registration"/> 
+
+      <center>
+<apex:pageBlock >
+<apex:pageBlockSection id="subheader" columns="1" >
+<p><strong><span style="font-family:arial;color:red;font-size: 16px;">**Special Registration Instruction: Determining if You Have or Have Not Participated in a MOHCD Housing or Financial Program**</span></strong></p>
+<p><span style="font-size: 12px;">In the registration form below, you will be asked, <b>"Are you or have you ever been a participant in a MOHCD housing/financial program?".</b></span></p>
+<p><strong><span style="font-size: 14px;color:#000514;">What 'YES' Means:</span></strong></p>
+<p><span style="font-size: 12px;"><i>You are currently and/or have been a participant in one or more MOHCD housing and/or financial programs (for example, you are or have been a resident in a Below Market Rate, City Second, or Limited Equity Partnership unit and/or you are or have been a recipient of a MOHCD financial program fund, such as DALP, FR DALP, BMR DALP, PIC, TND, or City Second Loan).</i></span></p>
+<p><strong><span style="font-size: 14px;color:#000514;">What 'NO' Means:</span></strong></p>
+<p><span style="font-size: 12px;"><i>You are not and have <b>never</b> been a participant in any MOHCD housing or financial program (for example, you are not or have never been a resident in a Below Market Rate, City Second, or Limited Equity Partnership unit, nor have you ever been a recipient  of a MOHCD financial program fund, such as DALP, FR DALP, BMR DALP, PIC, TND, or City Second Loan)</i></span></p>
+</apex:pageBlockSection>
+</apex:pageBlock>
+<apex:form id="theForm" forceSSL="true">
+                    <apex:pageMessages id="error"/>
+                    <apex:pageBlock id="pb">
+                      <apex:pageBlockButtons >
+                            <apex:commandButton action="{!registerUser}" value="{!$Label.site.submit}" id="submit" tabindex="8"/>
+                      </apex:pageBlockButtons>
+                      <apex:pageBlockSection id="pbs" columns="2" >
+                        <apex:selectRadio value="{!appType}" label="Are you or have you ever been a participant in a MOHCD housing/financial program?" tabindex="1">
+                          <apex:selectOptions value="{!type}"/>
+                          <apex:actionsupport event="onclick" action="{!checkAppType}" reRender="pb,pbs,regId"/>
+                        </apex:selectRadio>        
+                        <apex:outputText value=""/>         
+                        <apex:inputText required="{!isRequired}" id="firstName" value="{!firstName}" label="First Name" tabindex="2" />
+                        <apex:inputText required="{!isRequired}" id="zipcode" value="{!zipcode}" label="Current Address Zipcode" tabindex="6"/>
+                        <apex:inputText required="{!isRequired}" id="lastName" value="{!lastName}" label="Last Name" tabindex="3"/>
+                        <apex:inputText required="{!isRequired}" id="email" value="{!email}" label="{!$Label.site.email}" tabindex="6"/>
+                        <apex:inputText required="{!isRequired}" id="regId" value="{!regId}" label="Registration Code" tabindex="5" rendered="{!isNew}"/>
+                       </apex:pageBlockSection>
+                        
+                        <table align="center" width="100%">
+                            <tr>
+                                <td width="18.5%" align="right" style="padding: 0px 18px; font-weight:bold; font-size:11px;">
+                                    Birthdate
+                                    
+                                </td>
+                                <td>
+                                    <apex:selectList size="1" value="{!currentMonth}">
+                                        <apex:actionSupport event="onchange" rerender="daysList"/>
+                                    <apex:selectOptions value="{!monthsList}"/>
+                                    </apex:selectList>
+                                    <apex:selectList size="1" value="{!currentDay}" id="daysList">
+                                        <apex:selectOptions value="{!daysList}" rendered="{!currentMonth=1 ||
+                                                                                            currentMonth=2 ||
+                                                                                            currentMonth=3 ||
+                                                                                            currentMonth=4 ||
+                                                                                            currentMonth=5 ||
+                                                                                            currentMonth=6 ||
+                                                                                            currentMonth=7 ||
+                                                                                            currentMonth=8 ||
+                                                                                            currentMonth=9 ||
+                                                                                            currentMonth=10 ||
+                                                                                            currentMonth=11 ||
+                                                                                            currentMonth=12}"/>
+                                                                                            
+                                    </apex:selectList>
+                                    <apex:selectList size="1" value="{!currentYear}">
+                                        <apex:selectOptions value="{!yearsList}"/>
+                                    </apex:selectList>
+                                </td>
+                                <td width="50%"></td>
+                            </tr>
+                        </table>
+                    </apex:pageBlock>
+                  <br/>
+</apex:form>
+     </center>
+      <br/>
+    </apex:define>
+
+</apex:page>

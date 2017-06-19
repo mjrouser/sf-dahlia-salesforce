@@ -1,0 +1,29 @@
+<apex:page docType="html-5.0" showHeader="false" showChat="false" sidebar="false" standardStylesheets="false">
+    
+    <apex:composition template="mohcdTemplateUnAuth">        
+        <apex:define name="mohbody">    
+            <div class="col-md-1"> </div>
+           
+            <div class="col-md-11">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Contact Us</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>The best way to reach MOHCD for assistance with DAHLIA is by email at sfhousinginfo@sfgov.org – we will respond to your email during normal business hours within 24 hours of receipt.</p>
+                        <p>You can also reach MOHCD by telephone. (415) 701-5500.  We will respond to your voicemail message during normal business hours within 48 hours of receipt.</p>
+                        <p>However you contact MOHCD, please be sure to provide your first and last name. Tell us your full address including unit number and the best way to reach you during normal business hours. 
+                           Please let us know how we can help you so that we can refer you to the best possible staff person for your particular question or problem.</p>
+                        <p>When leaving voicemail messages please remember to speak slowly and spell your first and last name.</p>
+                        <apex:form >
+                            <apex:commandButton styleClass="btn btn-primary" action="/mohcdHome" rendered="{!NOT(ISPICKVAL($User.UserType,'Guest'))}" value="Home" immediate="true"></apex:commandButton>                            
+                            <apex:commandButton styleClass="btn btn-primary" action="/mohcdLogin" rendered="{!ISPICKVAL($User.UserType,'Guest')}" value="HOME" immediate="true"/>
+                        </apex:form>    
+                    </div>
+                </div>
+            </div> 
+            
+        </apex:define>        
+    </apex:composition>
+    
+</apex:page>

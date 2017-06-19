@@ -1,0 +1,116 @@
+<apex:page controller="CS_MOHCDLoginCC" docType="html-5.0" showHeader="false" showChat="false" sidebar="false" standardStylesheets="false">
+    
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>MOHCD</title>
+
+        <!-- Bootstrap -->
+        <apex:stylesheet value="{!URLFOR($Resource.bootstrap, 'css/bootstrap.min.css')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.MOHCD_Community_Resources, 'css/mohcd.css')}"/>
+        
+        <style>
+            #pageBackground {                
+                background:url({!URLFOR($Resource.MOHCD_Community_Resources,'images/mainbackgroundv2.jpg')}) no-repeat 8% 0 #F0F0F0 !important;
+            }
+        </style> 
+    </head>
+    
+    <body>
+        <div id="pageBackground">    
+            <!-- Button HTML (to Trigger Modal) -->
+
+            <!-- Login Modal -->
+            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+                        </div>
+                        <apex:form >                            
+                            <div class="modal-body">
+                                
+                                <apex:pageMessage severity="error" summary="{!strErrorMessages}" rendered="{!IF(strErrorMessages != '', true, false)}" escape="false"></apex:pageMessage>
+                                
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Username (typically your email address)</label>                                    
+                                    <apex:inputText value="{!username}" id="username" styleClass="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <apex:inputSecret id="password" value="{!password}" styleClass="form-control" />
+                                </div>
+                                <!--<a href="#">Forgot password?</a>
+                                <apex:outputLink value="{!$Page.mohcdForgotPassword}"> Forgot Your Password?</apex:outputLink>
+                                <br/><br/>
+                                <apex:outputLink value="{!$Page.mohcdRegister}"> Not yet registered? Click here to register for a new account! </apex:outputLink> -->
+                                For help, please contact SF MOHCD at 415-701-5500
+                            </div>
+                    
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>                                
+                                <apex:commandButton action="{!login}" styleClass="btn btn-success" value="Sign In" />
+                            </div>
+                        </apex:form>
+                    </div>
+                </div>
+            </div>  <!-- end Login Modal -->  
+     
+            <div class="container">        
+                <div class="row">
+                    <div class="col-md-1">&nbsp;</div>
+                    
+                    <c:MOHHeader />
+                    
+                    <div class="col-md-5" >
+                        <apex:form >
+                            <div style="{!IF(ISPICKVAL($User.UserType,'Guest'), '', 'display : none;')}; text-align: right;" >
+                                <!--<apex:commandButton action="{!$Site.Prefix}/mohcdBrowseListings" value="Browse Listings" styleclass="btn btn-info">  </apex:commandbutton>
+                                &nbsp;<apex:commandButton action="{!$Site.Prefix}/mohcdRegister" value="Register" styleclass="btn btn-info"> </apex:commandbutton>-->
+                                &nbsp;<button type="button" class="btn btn-info" data-toggle="modal" data-target="#loginModal">Sign In</button>
+                                &nbsp;<!--<apex:commandButton styleclass="btn btn-info" action="{!$Site.Prefix}/mohcdContactUs" value="Help/Contact Us"></apex:commandButton>-->
+                            </div>
+                            
+                            <div style="{!IF(ISPICKVAL($User.UserType,'Guest'), 'display : none;', '')}" >
+                                <!--<apex:commandButton action="{!$Site.Prefix}/mohcdBrowseListings" value="Browse Listings" styleclass="btn btn-info">  </apex:commandbutton>-->
+                                &nbsp;<apex:commandButton styleClass="btn btn-info" action="{!$Site.Prefix}/mohcdHome" rendered="{!NOT(ISPICKVAL($User.UserType,'Guest'))}" value="Home"></apex:commandButton>
+                                &nbsp;<apex:commandButton styleClass="btn btn-info" action="{!$Site.Prefix}/mohcdLogout" rendered="{!NOT(ISPICKVAL($User.UserType,'Guest'))}" value="Sign Out"></apex:commandButton>
+                                &nbsp;<!--<apex:commandButton styleclass="btn btn-info" action="{!$Site.Prefix}/mohcdContactUs" value="Help/Contact Us"></apex:commandButton>-->
+                            </div>                            
+                        </apex:form>
+                    </div>
+                </div>              
+                <br />
+                
+                <div class="row">
+                    <!--<div class="col-md-1"> </div>-->
+                    <apex:insert name="mohbody"></apex:insert>
+                </div>
+                
+                <hr />
+                <c:MOHFooter />
+                
+            </div>       
+        </div> <!-- end pageBackground -->
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="{!URLFOR($Resource.bootstrap, 'js/bootstrap.min.js')}"></script>
+    </body>
+    
+    <script> 
+        var isLoginFailed = {!isLoginFailed}; 
+        console.log('====='+isLoginFailed);       
+        if(isLoginFailed) {
+            console.log('==im true==='+isLoginFailed); 
+            $('#loginModal').modal({'show': true});      
+        } else {
+            console.log('==im false==='+isLoginFailed);
+            $('#loginModal').modal({'show': false});       
+        }
+    </script>    
+</apex:page>

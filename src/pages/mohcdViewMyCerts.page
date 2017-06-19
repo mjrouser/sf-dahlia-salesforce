@@ -1,0 +1,59 @@
+<apex:page docType="html-5.0" controller="CS_MOHCDViewMyCertsCC" showHeader="false" showChat="false" sidebar="false" standardStylesheets="false" >
+    
+    <apex:composition template="mohcdTemplate">        
+        <apex:define name="mohbody">
+            
+            <div class="col-md-9">    
+            
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">View My Certificate Status</h3>                            
+                    </div>
+                    <div class="panel-body">                           
+                        <p>                        
+                            <b> Directions : </b>                                
+                            Below is a list of all Certificate Programs for which you have requested an eligibility check or applied.
+                            To view an application, click the Record ID you would like to view. If the request/application is not yet submitted, you may continue to work on it.
+                        </p> 
+                    </div>            
+                </div>
+                                
+                <div class="panel panel-primary">                    
+                    <div class="panel-body">
+                                                
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>                                    
+                                    <th>Record ID</th>
+                                    <th>Record Type</th>
+                                    <th>Submit Date</th>                                    
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>                                                    
+                                <apex:repeat var="cert" value="{!lMyCertificatePrograms}">
+                                    <tr>
+                                        <td>
+                                            <apex:outputLink value="/mohcdCertificateProgramDetails?id={!cert.Id}">{!cert.Name}</apex:outputLink>
+                                        </td>                                        
+                                        <td>{!cert.RecordType.Name}</td>                                        
+                                        <td>
+                                            <apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                                                <apex:param value="{!cert.Submit_Date__c}" /> 
+                                            </apex:outputText>        
+                                        </td>                                                                               
+                                        <td>{!cert.Application_Status__c}</td>
+                                    </tr>
+                                </apex:repeat>
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                </div>
+                 
+            </div>
+        
+        </apex:define>        
+    </apex:composition>
+        
+</apex:page>

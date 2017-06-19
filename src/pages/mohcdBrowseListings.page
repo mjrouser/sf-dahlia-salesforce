@@ -1,0 +1,268 @@
+<apex:page controller="CS_MOHCDBrowseListingCC" action="{!init}" docType="html-5.0" showHeader="false" showChat="false" sidebar="false" standardStylesheets="false" >
+
+    <apex:composition template="mohcdBrowseTemplate">
+          
+        <apex:define name="mohleftnav">       
+            <apex:form >
+                
+                
+                <div class="panel panel-primary">                            
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Search Properties</h3>
+                    </div>
+                    
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="OccupancyType">Occupancy Type</label><br />                            
+                            <apex:selectList styleClass="form-control" id="occupancyType" value="{!strSelectedOccupancyType}" size="1" style="width:200px">
+                                <apex:selectOptions value="{!OccupancyTypes}" />
+                                <apex:actionSupport event="onchange" action="{!init}" rerender="listingform"/>
+                            </apex:selectList>
+                        </div> 
+                                             
+                        <div class="form-group">
+                            <label for="propertyType">Property Type</label><br />                            
+                            <apex:selectList styleClass="form-control" id="propertyType" value="{!strSelectedPropertyType}" size="1" style="width:200px">
+                                <apex:selectOptions value="{!PropertyTypes}" />
+                                <apex:actionSupport event="onchange" action="{!init}" rerender="listingform"/>
+                            </apex:selectList>
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label for="newOrExisting">New or Existing Construction</label><br />                            
+                            <apex:selectList styleClass="form-control" id="newOrExisting" value="{!strSelectedNewOrExisting}" size="1" style="width:200px">
+                                <apex:selectOptions value="{!NewOrExisting}" />
+                                <apex:actionSupport event="onchange" action="{!init}" rerender="listingform"/>
+                            </apex:selectList>
+                        </div>   
+                        
+                        <div class="form-group">
+                            <label>Price Between</label><br />                            
+                            <apex:input type="text" value="{!intMinPrice}" style="width:100px;" title="Min" onkeypress="return validateField(event, this, 'Decimal');"> 
+                                <apex:actionSupport event="onchange" action="{!init}" rerender="listingform"/>
+                            </apex:input>    
+                            &nbsp; to &nbsp;
+                            <apex:input type="text" value="{!intMaxPrice}" style="width:100px;" title="Max" onkeypress="return validateField(event, this, 'Decimal');">
+                                <apex:actionSupport event="onchange" action="{!init}" rerender="listingform"/>
+                            </apex:input>
+                        </div>
+                                               
+                        <div class="form-group">
+                            <label># of Bedrooms</label><br />                            
+                            <apex:input type="text" value="{!strMinBedrooms}" style="width:100px;" title="Min" onkeypress="return validateField(event, this, 'Numbers');"> 
+                                <apex:actionSupport event="onchange" action="{!init}" rerender="listingform"/>
+                            </apex:input>
+                            &nbsp; to &nbsp;
+                            <apex:input type="text" value="{!intMaxBedrooms}" style="width:100px;" title="Max" onkeypress="return validateField(event, this, 'Numbers');">    
+                                <apex:actionSupport event="onchange" action="{!init}" rerender="listingform"/>
+                            </apex:input>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label># of Bathrooms</label><br />                            
+                            <apex:input type="text" value="{!dcMinBathrooms}" style="width:100px;" title="Min" onkeypress="return validateField(event, this, 'Decimal');">
+                                <apex:actionSupport event="onchange" action="{!init}" rerender="listingform"/>
+                            </apex:input>
+                            &nbsp; to &nbsp;
+                            <apex:input type="text" value="{!dcMaxBathrooms}" style="width:100px;" title="Max" onkeypress="return validateField(event, this, 'Decimal');">
+                                <apex:actionSupport event="onchange" action="{!init}" rerender="listingform"/>
+                            </apex:input>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Area in Sq Ft</label><br />                            
+                            <apex:input type="text" value="{!dcMinArea}" style="width:100px;" title="Min" onkeypress="return validateField(event, this, 'Decimal');"> 
+                                <apex:actionSupport event="onchange" action="{!init}" rerender="listingform"/>
+                            </apex:input>
+                            &nbsp; to &nbsp;
+                            <apex:input type="text" value="{!dcMaxArea}" style="width:100px;" title="Max" onkeypress="return validateField(event, this, 'Decimal');">
+                                <apex:actionSupport event="onchange" action="{!init}" rerender="listingform"/>
+                            </apex:input>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Zip Code</label><br />                            
+                            <apex:input type="text" value="{!strZipCode}" style="width:200px;" title="Zip Code">
+                                <apex:actionSupport event="onchange" action="{!init}" rerender="listingform"/>
+                            </apex:input>
+                        </div>
+                        
+                        <apex:commandButton action="{!init}" value="Search" styleClass="btn btn-info" rerender="listingform"/>
+                        &nbsp;<apex:commandButton styleClass="btn btn-info" action="{!$Site.Prefix}/mohcdHome" rendered="{!NOT(ISPICKVAL($User.UserType,'Guest'))}" value="Back to Main Menu"></apex:commandButton>  
+                        
+                            <apex:commandButton styleClass="btn btn-info" action="/mohcdLogin" rendered="{!ISPICKVAL($User.UserType,'Guest')}" value="Back to Home Page" immediate="true"/>
+                       
+                    </div>                            
+                </div> 
+            </apex:form>
+        </apex:define>
+    
+          
+        <apex:define name="mohlistbody">    
+            <style>
+                #tooltip1 { position: relative; }
+                #tooltip1 a span { display: none; color: #FFFFFF; }
+                #tooltip1 a:hover span { 
+                    display: block; position: absolute; 
+                    width: 500px; 
+                    //background: #aaa url(http://photos3.zillow.com/p_h/IS9ptg3g6qk9e00000000000.jpg); 
+                    height: 300px; 
+                    left: 100px; 
+                    top: -10px; 
+                    color: #FFFFFF; 
+                    padding: 0 5px; 
+                }
+                
+                .tooltip-wrap {
+                    position: relative;
+                    scrollbar: false;
+                }
+                .tooltip-wrap .tooltip-content {
+                    display: none;
+                    position: absolute;
+                    bottom: 5%;
+                    left: 5%;
+                    right: 5%;
+                    background-color: #fff;
+                    padding: .1em;
+                    scrollbar: false;
+                }
+                .tooltip-wrap:hover .tooltip-content {
+                    display: block;
+                    width: 400px;
+                    height: 300px;
+                    background-color: #fff; 
+                    left: -420px; 
+                    top: -200px;
+                    overflow : hidden; 
+                    border: 5px solid #fff;
+                    scrollbar: false;
+                }
+            </style>          
+            <apex:form id="listingform">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Browse Properties and Apply</h3>                            
+                    </div>
+                    <div class="panel-body">                           
+                        <p><b>The Affordable Housing Opportunities section below lists all properties with currently available BMR units 
+                        in the Inclusionary Program.</b> To view the details of a property listed below, click on the name.</p> 
+                        
+                        <p>If you are ready to apply, select a property from the list below an click “Apply”. To filter properties to match your housing 
+                        needs,  enter your preferences in the boxes to the left, then click the "Search".</p>
+                        
+                        <p>When searching using the “Price Between” filter option, enter a purchase price range for ownership opportunities and a monthly 
+                        rent amount for rental opportunities.</p>
+                    </div>
+                </div>                                   
+                
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Matching Properties</h3>                            
+                    </div>
+                    <div class="panel-body">   
+                        <apex:pageMessages ></apex:pageMessages>                 
+                        <table class="table table-striped" id="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <apex:commandLink action="{!preparePropertiesList}" value="Name {!IF(propSortExpression='Occupancy_Type__c',IF(propSortDirection='ASC','▼','▲'),'')}" rerender="listingform">
+                                            <apex:param value="Name" name="column" assignTo="{!propSortExpression}" ></apex:param>
+                                        </apex:commandLink>
+                                    </th> 
+                                    <th>
+                                        Price Range
+                                    </th>
+                                    <th>
+                                        <apex:commandLink action="{!preparePropertiesList}" value="Occupancy {!IF(propSortExpression='Occupancy_Type__c',IF(propSortDirection='ASC','▼','▲'),'')}" rerender="listingform">
+                                            <apex:param value="Occupancy_Type__c" name="column" assignTo="{!propSortExpression}" ></apex:param>
+                                        </apex:commandLink>
+                                    </th> 
+                                     
+                                    <th>
+                                        <apex:commandLink action="{!preparePropertiesList}" value="Type {!IF(propSortExpression='Property_Type__c',IF(propSortDirection='ASC','▼','▲'),'')}" rerender="listingform">
+                                            <apex:param value="Property_Type__c" name="column" assignTo="{!propSortExpression}" ></apex:param>
+                                        </apex:commandLink>
+                                    </th>                                    
+                                    <th>
+                                        <apex:commandLink action="{!preparePropertiesList}" value="Build {!IF(propSortExpression='New_or_Existing__c',IF(propSortDirection='ASC','▼','▲'),'')}" rerender="listingform">
+                                            <apex:param value="New_or_Existing__c" name="column" assignTo="{!propSortExpression}" ></apex:param>
+                                        </apex:commandLink>
+                                    </th> 
+                                    
+                                    <th>
+                                        Bedrooms
+                                    </th>
+                                    <th>
+                                        Bathrooms
+                                    </th>
+                                    
+                                    <th>
+                                        Sq. Footage
+                                    </th>  
+                                    <th>
+                                        <apex:commandLink action="{!preparePropertiesList}" value="Neighborhood {!IF(propSortExpression='Neighborhood__c',IF(propSortDirection='ASC','▼','▲'),'')}" rerender="listingform">
+                                            <apex:param value="Neighborhood__c" name="column" assignTo="{!propSortExpression}" ></apex:param>
+                                        </apex:commandLink>
+                                    </th>                                                                  
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <apex:repeat value="{!lProperties}" var="prop">
+                                    <tr >
+                                        <td>                                    
+                                            <div class="tooltip-wrap">
+                                                <a target="_blank" href="/housingprograms/mohcdViewListing?id={!prop.id}">
+                                                    {!prop.Name}
+                                                    <apex:outputPanel rendered="{!IF(prop.Property_Photo_1__c != '', true, false)}">                                                        
+                                                        <div class="tooltip-content">
+                                                            <center><apex:outputField value="{!prop.Property_Photo_1__c}" style="width:380px;height:300px;padding:5px;"/> </center>
+                                                        </div>
+                                                    </apex:outputPanel>                                                    
+                                                </a>
+                                            </div>
+                                        </td>                                                                            
+                                        <td>{!prop.Search_Price_Min__c} <div style="{!IF(prop.Search_Price_Max__c != null,'', 'display:none;')}">to {!prop.Search_Price_Max__c}</div></td>
+                                        <td>{!prop.Occupancy_Type__c}</td>
+                                        <td>{!prop.Property_Type__c}</td>
+                                        <td>{!prop.New_or_Existing__c}</td>
+                                        <td><apex:outputField value="{!prop.Search_Bedrooms__c}" /></td> 
+                                        <td><apex:outputField value="{!prop.Search_Bathrooms__c}" /></td>
+                                        <td>{!prop.Search_Sq_Ft_Min__c} <div style="{!IF(prop.Search_Sq_Ft_Max__c != null,'', 'display:none;')}">to {!prop.Search_Sq_Ft_Max__c}</div></td>
+                                        
+                                        <td>{!prop.Neighborhood__c}</td>   
+                                    </tr>
+                                </apex:repeat>                            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>   
+            </apex:form>    
+        </apex:define>
+    </apex:composition>    
+    <script>
+        function validateField(e, element, allow) {
+            if (allow == 'Decimal'){AllowableCharacters='1234567890.';}
+            if (allow == 'Numbers'){AllowableCharacters='1234567890';}
+            if (allow == 'Date'){AllowableCharacters='1234567890/';}
+            
+            var k = document.all?parseInt(e.keyCode): parseInt(e.which);
+            if (k!=13 && k!=8 && k!=0){
+                
+                if (allow == 'Decimal') {
+                    if (k == 46 && element.value.indexOf('.') > -1) {
+                        return false;
+                    }
+                }
+                
+                if ((e.ctrlKey==false) && (e.altKey==false)) {
+                return (AllowableCharacters.indexOf(String.fromCharCode(k))!=-1);
+                } else {
+                return true;
+                }
+            } else {
+                return true;
+            }
+        }
+    </script>
+</apex:page>
