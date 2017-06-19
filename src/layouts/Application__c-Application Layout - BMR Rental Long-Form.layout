@@ -29,6 +29,14 @@
                 <behavior>Readonly</behavior>
                 <field>of_Reviewed_Flagged_Applications__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Total_Monthly_Rent__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Preferences_Received_Count__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -137,18 +145,6 @@
     </layoutSections>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>Application_Asset__c.Application__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>Application_Income1__c.Application__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>Application_Employment__c.Application__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
         <fields>Type__c</fields>
         <fields>First_Name__c</fields>
         <fields>Middle_Name__c</fields>
@@ -158,7 +154,6 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Conflicting_Application__c</fields>
         <fields>Manually_Flagged__c</fields>
         <fields>System_Flagged__c</fields>
         <fields>Review_Status__c</fields>
@@ -167,12 +162,10 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Application__c</fields>
-        <fields>Manually_Flagged__c</fields>
-        <fields>System_Flagged__c</fields>
-        <fields>Review_Status__c</fields>
-        <fields>Listing__c</fields>
-        <relatedList>Flagged_Application__c.Conflicting_Application__c</relatedList>
+        <fields>Document_Type__c</fields>
+        <fields>UPDATEDBY_USER</fields>
+        <fields>CREATED_DATE</fields>
+        <relatedList>Attachment__c.Related_Application__c</relatedList>
     </relatedLists>
     <relatedObjects>Applicant_Household__c</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
@@ -181,7 +174,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00hf0000000X6Wz</masterLabel>
+        <masterLabel>00h0P00000UtTIG</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

@@ -10,8 +10,13 @@
 // *****************************************************************************
 // 
 // *****************************************************************************
-trigger ApplicationTrigger on Application__c (before update) {
-	ListingApplicationStatusChangeAction.runHandler(); 
-	
-	//ApplicationStatusChangeAction.runHandler(); 
+trigger ApplicationTrigger on Application__c (before update, after update) {
+    ListingApplicationStatusChangeAction.runHandler(); 
+    
+    if(trigger.isAfter) 
+		rollUpSummaryAction.runHandler('Listing_Lottery_Preference__c', 'Total_Submitted_Apps__c','Application_Preference__c', 'Listing_Preference_ID__c','Id','Application_Is_Submitted__c', 'Application__c', 'Status__c');
+    
+    
+ //  ApplicationStatusChangeAction.runHandler(); 
+
 }

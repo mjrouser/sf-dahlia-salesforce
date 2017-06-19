@@ -117,6 +117,7 @@
     </listViews>
     <listViews>
         <fullName>All1</fullName>
+        <columns>NAME</columns>
         <columns>OBJECT_ID</columns>
         <columns>Body__c</columns>
         <columns>Method__c</columns>

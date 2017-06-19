@@ -139,6 +139,20 @@
         <type>Currency</type>
     </fields>
     <fields>
+        <fullName>Answered_Community_Screening__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Answered Community Screening</inlineHelpText>
+        <label>Meets Community Requirement</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Boolean_Blank</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Applicant_Household__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
@@ -529,12 +543,11 @@ IF(
         <fullName>Form_Metadata__c</fullName>
         <externalId>false</externalId>
         <label>Form Metadata</label>
-        <length>255</length>
-        <required>false</required>
+        <length>131072</length>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Gender__c</fullName>
@@ -574,6 +587,63 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Has_ADA_Priorities_Selected__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>ADA Priorities Selected</inlineHelpText>
+        <label>ADA Priorities Selected</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Priority</valueSetName>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Has_DevelopmentalDisability__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Qualifying Developmentally Disabled</inlineHelpText>
+        <label>Reserved - Developmentally Disabled</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Boolean_Blank</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Has_Military_Service__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Qualifying Served in Military?</inlineHelpText>
+        <label>Reserved - US Military</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Boolean_Blank</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Has_Rent_Burden_HUD__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Qualifying RentBurden HUD?</inlineHelpText>
+        <label>Qualifying Rent Burden HUD</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Boolean_Blank</valueSetName>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Housing_Voucher_or_Subsidy__c</fullName>
@@ -860,6 +930,16 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
                 </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>Lottery_Attendance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>If checked, lottery label will be created for applicant</inlineHelpText>
+        <label>Lottery Attendance</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Lottery_Number_Manual__c</fullName>
@@ -1153,6 +1233,18 @@ IF(
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Preferences_Received_Count__c</fullName>
+        <externalId>false</externalId>
+        <label>Preferences Received Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Primary_Applicant__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <description>Primary applicant on the application</description>
@@ -1187,6 +1279,34 @@ IF(
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Qualifying_RentBurden_HUD__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Qualifying RentBurden HUD?</inlineHelpText>
+        <label>Qualifying RentBurden HUD</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Boolean_Blank</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Qualifying_Served_in_Military__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Qualifying Served in Military?</inlineHelpText>
+        <label>Reserved - U.S. Military</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Boolean_Blank</valueSetName>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Race__c</fullName>
@@ -1365,6 +1485,18 @@ IF(
         <type>Summary</type>
     </fields>
     <fields>
+        <fullName>Total_Monthly_Rent__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Total Monthly Rent</inlineHelpText>
+        <label>Total Monthly Rent</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
         <fullName>Work_in_SF_Preference_Member__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
@@ -1464,12 +1596,14 @@ IF(
         <columns>Application_Submission_Type__c</columns>
         <columns>Applicant__c</columns>
         <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_birth__c</columns>
         <columns>Status__c</columns>
-        <columns>DTHP_Preference__c</columns>
-        <columns>Live_Work_Preference__c</columns>
-        <columns>Neighborhood_Preference__c</columns>
-        <columns>Phone__c</columns>
-        <columns>Second_Phone__c</columns>
+        <columns>Housing_Voucher_or_Subsidy__c</columns>
+        <columns>Annual_Income__c</columns>
+        <columns>Monthly_Income__c</columns>
+        <columns>Total_Household_Size__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -1573,6 +1707,71 @@ IF(
             <value>Submitted,Removed</value>
         </filters>
         <label>Argenta 909</label>
+    </listViews>
+    <listViews>
+        <fullName>Brighton_11_16</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Applicant__c</columns>
+        <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_birth__c</columns>
+        <columns>Status__c</columns>
+        <columns>Annual_Income__c</columns>
+        <columns>Monthly_Income__c</columns>
+        <columns>Total_Household_Size__c</columns>
+        <columns>Application_Language__c</columns>
+        <columns>General_Lottery__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </filters>
+        <filters>
+            <field>Listing__c</field>
+            <operation>equals</operation>
+            <value>280 Brighton Avenue</value>
+        </filters>
+        <label>280 Brighton 11/30/16</label>
+    </listViews>
+    <listViews>
+        <fullName>Brighton_11_16_paper</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Applicant__c</columns>
+        <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_birth__c</columns>
+        <columns>Status__c</columns>
+        <columns>Housing_Voucher_or_Subsidy__c</columns>
+        <columns>Annual_Income__c</columns>
+        <columns>Monthly_Income__c</columns>
+        <columns>Total_Household_Size__c</columns>
+        <columns>Application_Language__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </filters>
+        <filters>
+            <field>Listing__c</field>
+            <operation>equals</operation>
+            <value>280 Brighton Avenue</value>
+        </filters>
+        <filters>
+            <field>Application_Submission_Type__c</field>
+            <operation>equals</operation>
+            <value>Paper</value>
+        </filters>
+        <label>280 Brighton 11/30/16 paper</label>
     </listViews>
     <listViews>
         <fullName>COP_Confirmed_Applications</fullName>
@@ -1715,21 +1914,33 @@ IF(
         <label>Draft_Applications_LSeven</label>
     </listViews>
     <listViews>
-        <fullName>EVIVA_Applications</fullName>
+        <fullName>L_Seven_Initial_Lease_Up</fullName>
         <columns>Listing__c</columns>
         <columns>NAME</columns>
-        <columns>Primary_Applicant__c</columns>
-        <columns>Application_Submission_Type__c</columns>
         <columns>Application_Submitted_Date__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_birth__c</columns>
+        <columns>Neighborhood_Preference__c</columns>
+        <columns>Neighborhood_Preference_Manual__c</columns>
+        <columns>Neighborhood_Preference_Member__c</columns>
+        <columns>Live_Work_Preference__c</columns>
         <columns>Status__c</columns>
-        <columns>Lottery_Rank__c</columns>
+        <columns>Residence_Address__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Listing__c</field>
+            <field>Status__c</field>
             <operation>equals</operation>
-            <value>EVIVA</value>
+            <value>Submitted</value>
         </filters>
-        <label>EVIVA Applications</label>
+        <filters>
+            <field>Listing__c</field>
+            <operation>contains</operation>
+            <value>Seven</value>
+        </filters>
+        <label>L Seven Initial Lease-Up</label>
     </listViews>
     <listViews>
         <fullName>L_Seven_Initial_Lease_Up_Removed</fullName>
@@ -1831,28 +2042,6 @@ IF(
         <label>L Seven Paper Submissions</label>
     </listViews>
     <listViews>
-        <fullName>Nema_3_29_2017_Lottery</fullName>
-        <columns>NAME</columns>
-        <columns>Applicant__c</columns>
-        <columns>Application_Submission_Type__c</columns>
-        <columns>Application_Submitted_Date__c</columns>
-        <columns>General_Lottery_Rank__c</columns>
-        <columns>Listing__c</columns>
-        <columns>Number_of_Flags__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Listing__c</field>
-            <operation>equals</operation>
-            <value>Nema</value>
-        </filters>
-        <filters>
-            <field>Status__c</field>
-            <operation>equals</operation>
-            <value>Submitted</value>
-        </filters>
-        <label>Nema (3/29/2017 Lottery)</label>
-    </listViews>
-    <listViews>
         <fullName>Nema_Unit_1208_738_RR</fullName>
         <columns>Listing__c</columns>
         <columns>NAME</columns>
@@ -1881,24 +2070,6 @@ IF(
         <label>Nema Units 1208 &amp; 738 Re-Rental</label>
     </listViews>
     <listViews>
-        <fullName>Test_Applications</fullName>
-        <columns>NAME</columns>
-        <columns>Applicant__c</columns>
-        <columns>Primary_Applicant__c</columns>
-        <columns>Email__c</columns>
-        <columns>Application_Submission_Type__c</columns>
-        <columns>Application_Submitted_Date__c</columns>
-        <columns>Status__c</columns>
-        <columns>CREATED_DATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Primary_Applicant__c</field>
-            <operation>contains</operation>
-            <value>test</value>
-        </filters>
-        <label>Test Applications</label>
-    </listViews>
-    <listViews>
         <fullName>X1_Polk_Submitted_Applications</fullName>
         <columns>Listing__c</columns>
         <columns>NAME</columns>
@@ -1917,7 +2088,7 @@ IF(
         <label>1 Polk Submitted Applications</label>
     </listViews>
     <listViews>
-        <fullName>X855_Brannan_All_Apps</fullName>
+        <fullName>X280_Brighton_11_30_16_NRHP</fullName>
         <columns>Listing__c</columns>
         <columns>NAME</columns>
         <columns>Application_Submitted_Date__c</columns>
@@ -1941,10 +2112,120 @@ IF(
         </filters>
         <filters>
             <field>Listing__c</field>
-            <operation>contains</operation>
-            <value>855 Brannan</value>
+            <operation>equals</operation>
+            <value>280 Brighton Avenue</value>
         </filters>
-        <label>855 Brannan All Apps</label>
+        <filters>
+            <field>Neighborhood_Preference__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>280 Brighton 11/30/16 NRHP</label>
+    </listViews>
+    <listViews>
+        <fullName>X280_Brighton_12_19_2016_COP</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Applicant__c</columns>
+        <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_birth__c</columns>
+        <columns>Status__c</columns>
+        <columns>Housing_Voucher_or_Subsidy__c</columns>
+        <columns>Annual_Income__c</columns>
+        <columns>Monthly_Income__c</columns>
+        <columns>Total_Household_Size__c</columns>
+        <columns>Application_Language__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Listing__c</field>
+            <operation>equals</operation>
+            <value>280 Brighton Avenue</value>
+        </filters>
+        <filters>
+            <field>COP_Preference__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </filters>
+        <label>280 Brighton 12/19/2016 COP</label>
+    </listViews>
+    <listViews>
+        <fullName>X280_Brighton_12_19_2016_Live_Work</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Applicant__c</columns>
+        <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_birth__c</columns>
+        <columns>Status__c</columns>
+        <columns>Housing_Voucher_or_Subsidy__c</columns>
+        <columns>Annual_Income__c</columns>
+        <columns>Monthly_Income__c</columns>
+        <columns>Total_Household_Size__c</columns>
+        <columns>Application_Language__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </filters>
+        <filters>
+            <field>Listing__c</field>
+            <operation>equals</operation>
+            <value>280 Brighton Avenue</value>
+        </filters>
+        <filters>
+            <field>Live_Work_Preference__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>280 Brighton 12/19/2016 Live/Work</label>
+    </listViews>
+    <listViews>
+        <fullName>X280_Brighton_12_19_2016_Live_Work1</fullName>
+        <columns>Listing__c</columns>
+        <columns>NAME</columns>
+        <columns>Application_Submitted_Date__c</columns>
+        <columns>Application_Submission_Type__c</columns>
+        <columns>Applicant__c</columns>
+        <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Date_of_birth__c</columns>
+        <columns>Status__c</columns>
+        <columns>Housing_Voucher_or_Subsidy__c</columns>
+        <columns>Annual_Income__c</columns>
+        <columns>Monthly_Income__c</columns>
+        <columns>Total_Household_Size__c</columns>
+        <columns>Application_Language__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </filters>
+        <filters>
+            <field>Listing__c</field>
+            <operation>equals</operation>
+            <value>280 Brighton Avenue</value>
+        </filters>
+        <filters>
+            <field>Live_Work_Preference__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>280 Brighton 12/19/2016 Live/Work</label>
     </listViews>
     <listViews>
         <fullName>all280_Fell_Initial_Lease_Up</fullName>
@@ -1969,8 +2250,8 @@ IF(
         </filters>
         <filters>
             <field>Listing__c</field>
-            <operation>equals</operation>
-            <value>280 Fell Street Apartments</value>
+            <operation>contains</operation>
+            <value>280 Fell</value>
         </filters>
         <label>280 Fell Initial Lease-Up</label>
     </listViews>
@@ -2235,6 +2516,17 @@ IF(
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Priority</picklist>
+            <values>
+                <fullName>Hearing impaired</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Referral_Source__c</picklist>
             <values>
                 <fullName>Developer Website</fullName>
@@ -2368,6 +2660,21 @@ IF(
             </values>
             <values>
                 <fullName>Paper</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Boolean_Blank</picklist>
+            <values>
+                <fullName>Left Blank</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -2561,6 +2868,25 @@ IF(
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Priority</picklist>
+            <values>
+                <fullName>Hearing impaired</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mobility impaired</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vision impaired</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Referral_Source__c</picklist>
             <values>
                 <fullName>Developer Website</fullName>
@@ -2664,7 +2990,7 @@ IF(
     </recordTypes>
     <recordTypes>
         <fullName>Multi_Family_Rental_Short_Form</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Multi-Family Rental Short Form Application</description>
         <label>Multi-Family Rental Short-Form</label>
         <picklistValues>

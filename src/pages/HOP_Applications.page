@@ -87,7 +87,7 @@
                     Visualforce.remoting.Manager.invokeAction(
                         '{!$RemoteAction.HOP_ApplicationsController.getRecords}', 
                         "Application__c",
-                        "Name, Listing__c,Listing__r.Name, Last_Name__c, First_Name__c, Application_Submitted_Date__c, COP_Preference__c, DTHP_Preference__c, Neighborhood_Preference__c, Live_Work_Preference__c",
+                        "Name, Listing__c,Listing__r.Name, Last_Name__c, First_Name__c, Application_Submitted_Date__c, Application_Submission_Type__c",/*, COP_Preference__c, DTHP_Preference__c, Neighborhood_Preference__c, Live_Work_Preference__c*/
                         getWhereClause(),                        
                         function(result, event){
                             debugger;

@@ -15,7 +15,16 @@ public without sharing class HOP_ApplicationFormController extends HOP_Controlle
 
     // This will hold the current Application currently being edited (new or existing).
     public Application__c app {get; set;}
-
+	
+	// This will hold the current Listing tied to the Application currently being edited (new or existing).
+	public Listing__c listing {get; set;}
+	
+	// True if "Reserve type" on any units attached to the listing = "developmental disabilities"
+	public Boolean hasDevelopmentalDisabilitiesUnits { get; set; }
+	
+	// True if "Reserve type" on any units attached to the listing = "veterans"
+	public Boolean hasVeteransUnits { get; set; }
+	
     // Certain fields (read-only or cross-object) need to be queried separately
     // because the Application API can't set those on an Application__c object created from scratch
     public Application__c appName {get; set;}
@@ -29,6 +38,9 @@ public without sharing class HOP_ApplicationFormController extends HOP_Controlle
     // A list of all the Household Members (without the Primary Applicant or the Alternate Contact!)
     // on the current Application.
     public List<Application_Member__c> householdMembers {get; set;}
+
+	// A list of all Preferences on the current Application.
+    public List<ShortFormPreferenceWrapper> shortFormPreferences {get; set;}
 
     // Because the adding/editing of Household Members must also work for brand new Applications,
     // in which case the Household Member records don't have an Id yet - we use their index in the
@@ -45,6 +57,23 @@ public without sharing class HOP_ApplicationFormController extends HOP_Controlle
         }
         set;
     }
+    
+    // Because the adding/editing of Shortform Preference must also work for brand new Applications,
+    // in which case the Shortform Preference records don't have an Id yet - we use their index in the
+    // shortformPreferences list (0, 1 etc.) to uniquely identify them
+    public List<Integer> shortFormPreferencesIndexes {
+        get {
+            shortFormPreferencesIndexes = new List<Integer>();
+            if (shortFormPreferences == null) return shortFormPreferencesIndexes;
+            if (shortFormPreferences.size() == 0) return shortFormPreferencesIndexes;
+            for (Integer i = 0; i < shortFormPreferences.size(); i++) {
+                shortFormPreferencesIndexes.add(i);
+            }
+            return shortFormPreferencesIndexes;
+        }
+        set;
+    }
+    
 
     // List of dropdown options for the three preference picklists - Neighborhood, DTHP and COP.
     // The list is made up of all the Household Members, plus the Primary Applicant and the --None-- option.
@@ -67,22 +96,82 @@ public without sharing class HOP_ApplicationFormController extends HOP_Controlle
         }
         set;
     }
+    
+    // List of dropdown options including all preferences related to listing
+    public List<SelectOption> listingPreferenceSO {
+    	get {
+    		system.debug('selectedListingPreference:::so::' + selectedListingPreference);
+    		Set<Id> selectedPrefs = new Set<Id>();
+    		for (ShortFormPreferenceWrapper sfPrefW : shortFormPreferences) {
+    			selectedPrefs.add(sfPrefW.shortFormPreference.Listing_Preference_ID__c);
+    		}
+    		listingPreferenceSO = new List<SelectOption>();
+            listingPreferenceSO.add(new SelectOption('-1', '-- None --'));
+            List<Listing_Lottery_Preference__c> listingPrefs = [SELECT Id, Preference_Name__c FROM Listing_Lottery_Preference__c WHERE Listing__c = :listingId];
+            for (Listing_Lottery_Preference__c lp : listingPrefs) {
+            	if (!selectedPrefs.contains(lp.Id) || lp.Id == selectedListingPreference) {//on edit selectedListingPreference should be displayed into the list
+            		listingPreferenceSO.add(new SelectOption(lp.Id, lp.Preference_Name__c));
+            	}
+            }
+            return listingPreferenceSO;
+    	}
+    	set;
+    }
+    
+    //selected listing preference
+    public String selectedListingPreference {
+    	get;
+        set {
+        	selectedListingPreference = value;
+        	currentShortFormPreference.shortFormPreference.Listing_Preference_ID__c = selectedListingPreference;
+        	for (SelectOption so : listingPreferenceSO) {
+        		if (so.getValue() == selectedListingPreference) {
+        			currentShortFormPreference.listingPrefName = so.getLabel();
+        		}
+        	}
+        	
+        }
+    }
 
     // When editing a household member, this will hold that Household Member currently being edited.
     // If no household member is currently being edited, this will be null.
     public Application_Member__c currentHouseholdMember {get; set;}
 
+	// When editing a shortform preference, this will hold that Shortform Preference currently being edited.
+    // If no shortform preference is currently being edited, this will be null.
+    public ShortFormPreferenceWrapper currentShortFormPreference {get; set;}
+	
     // Most HOP pages support a retUrl parameter that enables "Back" navigation to the previous page.
     public String retUrl {get; set;}
 
     // The index of the currently selected Household Member that's being edited (-1 if none)
     public Integer selectedHouseholdMemberIdx {get; set;}
 
+	// The index of the currently selected Preference that's being edited (-1 if none)
+    public Integer selectedShortFormPreferenceIdx {get; set;}
+    
+    public boolean isTotalMonthlyRentEditable {
+    	get {
+    		return Schema.SObjectType.Application__c.fields.getMap().get('Total_Monthly_Rent__c').getDescribe().isUpdateable();
+		}
+    	set;
+    }
+
     // The neighborhoodPreference variable is linked to the corresponding picklist, therefore its value
     // will be a number (0, 1 etc.) which is the index of the selected Household Member.
     // When setting this, also get the corresponding Household Member Id (if it exists)
     // and set it automatically on the Application variable.
-    public String neighborhoodPreference {
+    public String selectedApplicationMember {
+        get;
+        set {
+        	selectedApplicationMember = value;
+        	currentShortFormPreference.shortFormPreference.Application_Member__c = householdMemberIdFromPreference(selectedApplicationMember);
+        	currentShortFormPreference.personWhoClaimed = selectedApplicationMember != '-1' || currentShortFormPreference.shortFormPreference.Application_Member__c != null ? properName(householdMemberFromPreference(selectedApplicationMember)) : '';
+        	currentShortFormPreference.selectedAppMember = selectedApplicationMember;
+        }
+    }
+    
+    /*public String neighborhoodPreference {
         get;
         set {
             neighborhoodPreference = value;
@@ -124,7 +213,7 @@ public without sharing class HOP_ApplicationFormController extends HOP_Controlle
             workInSfPreference = value;
             app.Work_in_SF_Preference_Member__c = householdMemberIdFromPreference(workInSfPreference);
         }
-    }
+    }*/
 
     // Listing Id & Name
     public Id listingId {get; set;}
@@ -171,6 +260,9 @@ public without sharing class HOP_ApplicationFormController extends HOP_Controlle
     private static String properName(Application_Member__c appMember) {
         return (nvl(appMember.First_Name__c) + ' ' + nvl(appMember.Middle_Name__c) + ' ' + nvl(appMember.Last_Name__c)).normalizeSpace();
     }
+    
+    //store additional info for existing application preference
+    public static Map<Id,Application_Preference__c> existingAppPrefMap { get; set; }
 
     private void init() {
         app = new Application__c(Application_Language__c = 'English', Application_Submission_Type__c = HOP_Constants.PAPER_APPLICATION);
@@ -179,7 +271,26 @@ public without sharing class HOP_ApplicationFormController extends HOP_Controlle
         alternateContact = null;
         householdMembers = new List<Application_Member__c>();
         selectedHouseholdMemberIdx = -1;
+        selectedShortFormPreferenceIdx = -1;
+        shortFormPreferences = new List<ShortFormPreferenceWrapper>();
     }
+    
+    // Helper method that queries a Listing record by its Id
+	private static Listing__c getListingById(String paramListingId) {
+		List<Listing__c> listings = [
+			SELECT
+				Id, Name, Reserved_community_type__c,
+				(SELECT Id, Unit__r.Reserved_Type__c FROM Listing_Units__r)
+			FROM Listing__c
+			WHERE Id = :paramListingId
+		];
+
+		if (listings.size() == 0) {
+			return null;
+		} else {
+			return listings[0];
+		}
+	}
     
     public HOP_ApplicationFormController() {
         super();
@@ -211,7 +322,8 @@ public without sharing class HOP_ApplicationFormController extends HOP_Controlle
             }
 
             // Query additionally needed info. Check to see that the Lottery is not yet Complete (if it is, do not allow the Application to be edited.)
-            appName = [ SELECT Name, Listing__c, Listing__r.Account__c, Listing__r.Name, Status__c, Is_Lottery_Complete__c
+            appName = [ SELECT Name, Listing__c, Listing__r.Account__c, Listing__r.Name, Status__c, Is_Lottery_Complete__c,
+            			(SELECT Id, Preference_Name__c, Person_who_claimed_Name__c,Lottery_Status__c FROM Application_Preferences__r)  //////// Added Lottery_Status__c by Nish to get status of AppPref //////////////
                         FROM Application__c
                         WHERE Id = :paramApplicationId];
             if (appName.Is_Lottery_Complete__c == true) {
@@ -239,32 +351,54 @@ public without sharing class HOP_ApplicationFormController extends HOP_Controlle
             for (API_Application.Person p : sf.householdMembers) {
                 householdMembers.add(p.toApplicationMember());
             }
+            existingAppPrefMap = new Map<Id,Application_Preference__c>();
+            for (Application_Preference__c appPref : appName.Application_Preferences__r) {
+            	existingAppPrefMap.put(appPref.Id,appPref);
+            }
+            for (API_Application.ShortFormPreference sfPref : sf.shortFormPreferences) {
+                shortFormPreferences.add(new ShortFormPreferenceWrapper(sfPref.toApplicationPreference()));
+            }
 
             // For the five preferences, load the corresponding Household Member's index (-1 if not set) into five corresponding variables.
-            neighborhoodPreference = preferenceFromHouseholdMemberId(app.Neighborhood_Preference_Member__c);
+            /*neighborhoodPreference = preferenceFromHouseholdMemberId(app.Neighborhood_Preference_Member__c);
             dthpPreference = preferenceFromHouseholdMemberId(app.DTHP_Preference_Member__c);
             copPreference = preferenceFromHouseholdMemberId(app.COP_Preference_Member__c);
             liveInSfPreference = preferenceFromHouseholdMemberId(app.Live_in_SF_Preference_Member__c);
-            workInSfPreference = preferenceFromHouseholdMemberId(app.Work_in_SF_Preference_Member__c);
+            workInSfPreference = preferenceFromHouseholdMemberId(app.Work_in_SF_Preference_Member__c);*/
 
             listingId = appName.Listing__c;
             listingName = appName.Listing__r.Name;
+        	listing = getListingById(listingId);
+        
         } else {
             // If a Listing Id parameter is provided:
             // Check to see if a Listing with the provided Id exists. If not, display an error.
-            List<Listing__c> listings = [SELECT Id, Name FROM Listing__c WHERE Id = :paramListingId];
-            if (listings.size() != 1) {
+            //List<Listing__c> listings = [SELECT Id, Name FROM Listing__c WHERE Id = :paramListingId];
+            listing = getListingById(paramListingId);
+            if (listing == null) {
                 ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, HOP_Constants.ERROR_LISTING_NOT_FOUND));
                 hasErrors = true;
                 return;
             }
             // The new Application is linked to the requested Listing and its Type is automatically set to Paper.
-            app.Listing__c = listings[0].Id;
+            app.Listing__c = listing.Id;
             app.Application_Submission_Type__c = HOP_Constants.PAPER_APPLICATION;
 
-            listingId = listings[0].Id;
-            listingName = listings[0].Name;
+            listingId = listing.Id;
+            listingName = listing.Name;
         }
+        
+        hasDevelopmentalDisabilitiesUnits = false;
+		hasVeteransUnits = false;
+		
+		for (Listing_Unit__c listingUnit : listing.Listing_Units__r) {
+			if (listingUnit.Unit__r.Reserved_Type__c == HOP_Constants.UNIT_DEVELOPMENTAL_DISABILITIES) {
+				hasDevelopmentalDisabilitiesUnits = true;
+			}
+			if (listingUnit.Unit__r.Reserved_Type__c == HOP_Constants.UNIT_VETERAN) {
+				hasVeteransUnits = true;
+			}
+		}
     }
 
 
@@ -274,8 +408,26 @@ public without sharing class HOP_ApplicationFormController extends HOP_Controlle
         app.Applicant__r = primaryApplicant;
         app.Alternate_Contact__r = alternateContact;
         API_Application.ShortForm sf = new API_Application.ShortForm(app, householdMembers);
-
-        if (app.Neighborhood_Preference_Member__c == null && neighborhoodPreference != '-1') {
+        
+        system.debug('shortFormPreferences:::' + shortFormPreferences);
+        sf.shortFormPreferences = new List<API_Application.ShortFormPreference>();
+		if (shortFormPreferences != null) {
+			for (ShortFormPreferenceWrapper sfPrefW : shortFormPreferences) {
+				system.debug('sfPrefW:::' + sfPrefW);
+				system.debug('sfPrefW:::' + sfPrefW.shortFormPreference);
+				API_Application.ShortFormPreference sfPref = new API_Application.ShortFormPreference(sfPrefW.shortFormPreference);
+				system.debug('sfPref:::' + sfPref);
+				if (/*app.Neighborhood_Preference_Member__c == null && */sfPrefW.selectedAppMember != null && sfPrefW.selectedAppMember != '-1') {
+					sfPref.naturalKey = new API_Application.Person(householdMemberFromPreference(sfPrefW.selectedAppMember)).getKey();
+				}
+				sf.shortFormPreferences.add(sfPref);
+				
+			}
+		}
+        
+       
+        
+        /*if (app.Neighborhood_Preference_Member__c == null && neighborhoodPreference != '-1') {
             sf.neighborhoodResidencePreferenceNatKey = new API_Application.Person(householdMemberFromPreference(neighborhoodPreference)).getKey();
         }
         if (app.DTHP_Preference_Member__c == null && dthpPreference != '-1') {
@@ -289,7 +441,7 @@ public without sharing class HOP_ApplicationFormController extends HOP_Controlle
         }
         if (app.Work_in_SF_Preference_Member__c == null && workInSfPreference != '-1') {
             sf.workInSfPreferenceNatKey = new API_Application.Person(householdMemberFromPreference(workInSfPreference)).getKey();
-        }
+        }*/
         sf = API_ApplicationService.upsertShortform(sf);
 
         PageReference viewPage = new PageReference('/apex/HOP_ApplicationView?id=' + sf.id);
@@ -343,6 +495,83 @@ public without sharing class HOP_ApplicationFormController extends HOP_Controlle
     public void deleteHouseholdMember() {
         if (selectedHouseholdMemberIdx != -1) {
             householdMembers.remove(selectedHouseholdMemberIdx);
+        }
+    }
+    
+    //Shortform Preference
+    // Creates a new Shortform Preference
+    public void newShortFormPreference() {
+        system.debug('currentShortFormPreference::' + currentShortFormPreference);
+        currentShortFormPreference = new ShortFormPreferenceWrapper(new Application_Preference__c());
+        currentShortFormPreference.shortFormPreference.Application__c = app.Id;
+        system.debug('currentShortFormPreference::' + currentShortFormPreference);
+        selectedListingPreference = null;
+        system.debug('selectedListingPreference::' + selectedListingPreference);
+        selectedApplicationMember = '-1';
+        selectedShortFormPreferenceIdx = -1;
+    }
+
+    // Adds the new Shortform Preference to the list. The currentShortformPreference is now null.
+    public void addShortFormPreference() {
+        system.debug('currentShortFormPreference::' + currentShortFormPreference);
+        system.debug('selectedListingPreference::' + selectedListingPreference);
+        shortFormPreferences.add(currentShortFormPreference);
+        cancelShortFormPreference();
+        system.debug('shortFormPreferences::' + shortFormPreferences);
+    }
+
+    // Add and New convenience button. Adds the new Shortform Preference to the list and prepares another new (empty) one
+    public void addShortFormPreferenceAndNew() {
+        addShortFormPreference();
+        newShortFormPreference();
+    }
+
+    // Saves the Shortform Preference currently being edited
+    public void saveShortFormPreference() {
+        system.debug('currentShortFormPreference::' + currentShortFormPreference);
+        system.debug('selectedListingPreference::' + selectedListingPreference);
+        cancelShortFormPreference();
+    }
+
+    // Cancels the current Shortform Preference edit
+    public void cancelShortFormPreference() {
+        currentShortFormPreference = null;
+    }
+
+    // Edits the selected existing Shortform Preference
+    public void editShortFormPreference() {
+    	if (selectedShortFormPreferenceIdx != -1) {
+            currentShortFormPreference = shortFormPreferences[selectedShortFormPreferenceIdx];
+            system.debug('currentShortFormPreference:::' + currentShortFormPreference);
+            selectedListingPreference = currentShortFormPreference.shortFormPreference.Listing_Preference_ID__c;
+            system.debug('selectedListingPreference:::' + selectedListingPreference);
+            selectedApplicationMember = preferenceFromHouseholdMemberId(currentShortFormPreference.shortFormPreference.Application_Member__c);
+        }
+    }
+
+    // Delete the selected existing Shortform Preference
+    public void deleteShortFormPreference() {
+        if (selectedShortFormPreferenceIdx != -1) {
+            shortFormPreferences.remove(selectedShortFormPreferenceIdx);
+        }
+    }
+    
+    // created this wrapper as some fields are formula fields and their values are available only after insert
+    public class ShortFormPreferenceWrapper {
+    	public Application_Preference__c shortFormPreference { get; set; }
+    	public String listingPrefName { get; set; }
+    	public String selectedAppMember { get; set; }
+    	public String personWhoClaimed { get; set; }
+        public String LotteryStatus { get; set; }
+    	
+    	public ShortFormPreferenceWrapper(Application_Preference__c shortFormPreference) {
+    		this.shortFormPreference = shortFormPreference;
+    		listingPrefName = shortFormPreference.Id != null && existingAppPrefMap != null && existingAppPrefMap.containsKey(shortFormPreference.Id) ? existingAppPrefMap.get(shortFormPreference.Id).Preference_Name__c : '';
+    		personWhoClaimed = shortFormPreference.Id != null && existingAppPrefMap != null && existingAppPrefMap.containsKey(shortFormPreference.Id) ? existingAppPrefMap.get(shortFormPreference.Id).Person_who_claimed_Name__c : '';
+            
+            ///////////////// Nish Added LotteryStatus to be displayed in edit page //////////////////////////
+            LotteryStatus = shortFormPreference.Id != null && existingAppPrefMap != null && existingAppPrefMap.containsKey(shortFormPreference.Id) ? existingAppPrefMap.get(shortFormPreference.Id).Lottery_Status__c : '';
+
         }
     }
 

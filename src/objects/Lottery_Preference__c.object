@@ -62,6 +62,19 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Auto_Grants_Preference__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Auto Grants Preference</label>
+        <referenceTo>Lottery_Preference__c</referenceTo>
+        <relationshipLabel>Preferences</relationshipLabel>
+        <relationshipName>Preferences</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Description__c</fullName>
         <externalId>false</externalId>
         <inlineHelpText>Enter the description of this preference</inlineHelpText>

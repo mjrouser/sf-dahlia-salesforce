@@ -45,10 +45,12 @@ global class API_ShortForm {
         RestRequest req = RestContext.request;
         RestResponse res = RestContext.response;
 		API_LoggingService.logRequest(req);
-		
+		/*
         API_Application.ShortForm sf = (API_Application.ShortForm)JSON.deserialize(req.requestBody.toString(), API_Application.ShortForm.class);
 		sf.applicationSubmissionType = ELECTRONIC_SUBMISSION_TYPE;
-        
+        			system.debug('sf deserialized' + sf);
+        */
+        API_Application.ShortForm sf = API_Application.newShortForm(req.requestBody.toString());
         if (sf.id != null) {
         	Boolean invalidId = false;
         	try {
@@ -69,6 +71,7 @@ global class API_ShortForm {
         }
         
         res.statusCode = 200;
+        system.debug('sf:::' + sf);
         return API_ApplicationService.upsertShortform(sf);
     }
 

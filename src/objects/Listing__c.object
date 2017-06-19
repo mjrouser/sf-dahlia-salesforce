@@ -697,6 +697,21 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>General_Application_Total__c</fullName>
+        <externalId>false</externalId>
+        <label>General Application Total</label>
+        <summaryFilterItems>
+            <field>Application__c.Preferences_Received_Count__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Application__c.Listing__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
         <fullName>In_Lottery__c</fullName>
         <description>The number of applications that will be included in the lottery.</description>
         <externalId>false</externalId>
@@ -852,6 +867,7 @@
     </fields>
     <fields>
         <fullName>LotteryResultsURL__c</fullName>
+        <defaultValue>&quot;http://sfmohcd.org/node/1112&quot;</defaultValue>
         <externalId>false</externalId>
         <label>Lottery Results PDF URL</label>
         <required>false</required>
@@ -1374,6 +1390,42 @@
         <visibleLines>12</visibleLines>
     </fields>
     <fields>
+        <fullName>Program_Type__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Differentiates between Listings for rentals and ownerships</inlineHelpText>
+        <label>Program Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>IH-RENTAL</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>IH-OWN</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>OCII-OWN</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>OCII-RENTAL</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>MF-RENTAL</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Project_ID__c</fullName>
         <externalId>false</externalId>
         <formula>Building__r.Project_ID__c</formula>
@@ -1478,6 +1530,17 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
+        <fullName>Reserved_Community_Requirement__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Building__r.Reserved_Community_Requirement__c)</formula>
+        <label>Reserved Community Requirement</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Reserved_community_maximum_age__c</fullName>
         <externalId>false</externalId>
         <formula>Building__r.Reserved_community_maximum_age__c</formula>
@@ -1526,6 +1589,16 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SASE_Required_for_Lottery_Ticket__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>SASE Required for Lottery Ticket. Uncheck this box if no SASE is required to receive a lottery ticket/number for this listing.</inlineHelpText>
+        <label>SASE Required for Lottery Ticket</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Services_Onsite__c</fullName>
@@ -1600,6 +1673,38 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Tenure__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Listings can have different status, as it relates to ownership and rental. It could be new, or it could be up again. These &quot;Tenure&quot; statuses capture those values.</inlineHelpText>
+        <label>Tenure</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New rental</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Re-rental</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>New sale</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Resale</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Total_Applications__c</fullName>
@@ -1738,7 +1843,6 @@
         <columns>Account__c</columns>
         <columns>Status__c</columns>
         <columns>Application_Due_Date__c</columns>
-        <columns>Accepting_Online_Applications__c</columns>
         <columns>Lottery_Date__c</columns>
         <columns>Lottery_Results_Date__c</columns>
         <columns>Submitted_Applications__c</columns>
@@ -1749,67 +1853,17 @@
         <label>All</label>
     </listViews>
     <listViews>
-        <fullName>All_active</fullName>
-        <columns>Application_Due_Date__c</columns>
-        <columns>NAME</columns>
-        <columns>Account__c</columns>
-        <columns>Status__c</columns>
-        <columns>Units_Available__c</columns>
-        <columns>Accepting_Online_Applications__c</columns>
-        <columns>Submitted_Applications__c</columns>
-        <columns>Flagged_Applications__c</columns>
-        <columns>Removed_from_Lottery__c</columns>
-        <columns>Lottery_Date__c</columns>
-        <columns>Lottery_Results_Date__c</columns>
-        <columns>Lottery_Status__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Status__c</field>
-            <operation>equals</operation>
-            <value>Active</value>
-        </filters>
-        <label>Active</label>
-    </listViews>
-    <listViews>
-        <fullName>All_open</fullName>
-        <booleanFilter>1 AND 2</booleanFilter>
-        <columns>NAME</columns>
-        <columns>Account__c</columns>
-        <columns>Status__c</columns>
-        <columns>Application_Due_Date__c</columns>
-        <columns>Accepting_Online_Applications__c</columns>
-        <columns>Lottery_Date__c</columns>
-        <columns>Lottery_Results_Date__c</columns>
-        <columns>Submitted_Applications__c</columns>
-        <columns>Flagged_Applications__c</columns>
-        <columns>Removed_from_Lottery__c</columns>
-        <columns>Lottery_Status__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Status__c</field>
-            <operation>equals</operation>
-            <value>Active</value>
-        </filters>
-        <filters>
-            <field>Application_Due_Date__c</field>
-            <operation>greaterThan</operation>
-            <value>TODAY</value>
-        </filters>
-        <label>Open</label>
-    </listViews>
-    <listViews>
         <fullName>Listing_Details</fullName>
         <columns>NAME</columns>
         <columns>Building__c</columns>
         <columns>Building_Street_Address__c</columns>
         <columns>Status__c</columns>
         <columns>Application_Due_Date__c</columns>
-        <columns>In_Lottery__c</columns>
-        <columns>Submitted_Applications__c</columns>
         <columns>Lottery_Date__c</columns>
         <columns>CREATED_DATE</columns>
         <columns>LAST_UPDATE</columns>
-        <columns>LotteryResultsURL__c</columns>
+        <columns>Leasing_Agent_Name__c</columns>
+        <columns>Leasing_Agent_Street__c</columns>
         <filterScope>Everything</filterScope>
         <label>Listing Details</label>
     </listViews>
@@ -1880,7 +1934,7 @@ if( lotteryStatus== &quot;Lottery Complete&quot; || lotteryStatus == &quot;In Pr
  alert(&quot;Lottery has already been run&quot;);
 } else {
 
-message = sforce.apex.execute(&quot;LOT_RandomDrawService&quot;, &quot;runLottery&quot;, {listingID:&quot;{!Listing__c.Id}&quot;,isPreferenceLottery:false}); 
+message = sforce.apex.execute(&quot;LOT_RandomDrawService&quot;, &quot;runLottery&quot;, {listingID:&quot;{!Listing__c.Id}&quot;}); 
 if (message != &apos;&apos;) 
 { 
 alert(message); 
@@ -1921,7 +1975,7 @@ if( lotteryStatus == &quot;In Progress&quot;){
 } else {
 
 
-message = sforce.apex.execute(&quot;LOT_RandomDrawService&quot;, &quot;runLottery&quot;, {listingID:&quot;{!Listing__c.Id}&quot;,isPreferenceLottery:true}); 
+message = sforce.apex.execute(&quot;LOT_RandomDrawService&quot;, &quot;runLottery&quot;, {listingID:&quot;{!Listing__c.Id}&quot;}); 
 if (message != &apos;&apos;) 
 { 
 alert(message); 

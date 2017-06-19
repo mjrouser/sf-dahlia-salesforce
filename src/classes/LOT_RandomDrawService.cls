@@ -1,55 +1,49 @@
 global with sharing class LOT_RandomDrawService {
     public class ErrorException extends Exception {}
     
-    static webservice void runLottery(String listingID, Boolean isPreferenceLottery) {
+    static webservice void runLottery(String listingID) {
         Listing__c listing = [SELECT Id, Name, Lottery_Status__c FROM Listing__c WHERE Id = : listingID];
-        if(!isPreferenceLottery) {
-            if(listing.Lottery_Status__c == null || listing.Lottery_Status__c == 'Not Yet Run'){
-                
-                Map<String,ID> entities = getEntities(listingID) ;
-                LOT_RandomDrawReq.Drawing drawing = new LOT_RandomDrawReq.Drawing();
-                LOT_RandomDrawReq.DrawingParams params = new LOT_RandomDrawReq.DrawingParams();
-                params.title = 'Drawing for listing - ' + listingID;
-                //params.recordType = 'test'; //'public';
-                params.entries = new List<String>(entities.keySet()); //our map is reversed-  
-                params.winnerCount = (entities.size() < 50000) ? entities.size() : 50000;
-                drawing.params = params;
-                LOT_RandomDrawReq req = new LOT_RandomDrawReq(drawing);
-                req.sendRequest();
-                system.debug('error::::' + req);
-                LOT_RandomDrawReq.DrawingResult drawResult = req.drawResult;
-                
-                //system.debug('drawResult.result:::' + drawResult.result);
-                if (drawResult == null) {
-                    throw new ErrorException('There are no drawing results returned from Random.org.');
-                    return;
-                } else if (drawResult.error != null) {
-                    throw new ErrorException(drawResult.error.message);
-                    return;
-                }
-                
-                if (drawResult != null && drawResult.result.winners.size() > 0) {
-                    //update listing to in progress
-                    listing.Lottery_Status__c = 'In Progress';
-                    listing.Number_of_Applications__c = entities.size();
-                    listing.Draw_ID__c = '' + drawResult.result.drawID;
-                    //listing.LotteryResultsURL__c = drawResult.result.url;
-                    //listing.Lottery_End_Time__c = drawResult.result.completionTime;
-                    update listing;
-                    
-                    Database.executeBatch(new LOT_RandomDrawBatch(drawResult.result.winners, entities, listingID));
-                } else {
-                    listing.Lottery_Status__c = 'Lottery Complete';
-                    update listing;
-                }
+        if(listing.Lottery_Status__c == null || listing.Lottery_Status__c == 'Not Yet Run'){
+            
+            Map<String,ID> entities = getEntities(listingID) ;
+            LOT_RandomDrawReq.Drawing drawing = new LOT_RandomDrawReq.Drawing();
+            LOT_RandomDrawReq.DrawingParams params = new LOT_RandomDrawReq.DrawingParams();
+            params.title = 'Drawing for listing - ' + listingID;
+            //params.recordType = 'test'; //'public';
+            params.entries = new List<String>(entities.keySet()); //our map is reversed-  
+            params.winnerCount = (entities.size() < 50000) ? entities.size() : 50000;
+            drawing.params = params;
+            LOT_RandomDrawReq req = new LOT_RandomDrawReq(drawing);
+            req.sendRequest();
+            system.debug('error::::' + req);
+            LOT_RandomDrawReq.DrawingResult drawResult = req.drawResult;
+            
+            //system.debug('drawResult.result:::' + drawResult.result);
+            if (drawResult == null) {
+                throw new ErrorException('There are no drawing results returned from Random.org.');
+                return;
+            } else if (drawResult.error != null) {
+                throw new ErrorException(drawResult.error.message);
+                return;
             }
-        } else {
-            listing.Lottery_Status__c = 'In Progress';
-            system.debug('listing:::' + listing);
-            update listing;
-            system.debug('listing::2:' + listing);
-            preferenceLottery(listingID);
+            
+            if (drawResult != null && drawResult.result.winners.size() > 0) {
+                //update listing to in progress
+                listing.Lottery_Status__c = 'In Progress';
+                listing.Number_of_Applications__c = entities.size();
+                listing.Draw_ID__c = '' + drawResult.result.drawID;
+                //listing.LotteryResultsURL__c = drawResult.result.url;
+                //listing.Lottery_End_Time__c = drawResult.result.completionTime;
+                update listing;
+                
+                system.debug('drawResult.result.winners::::' + drawResult.result.winners);
+                Database.executeBatch(new LOT_RandomDrawBatch(drawResult.result.winners, entities, listingID));
+            } else {
+                listing.Lottery_Status__c = 'Lottery Complete';
+                update listing;
+            }
         }
+      
     }
     
     private static Map<String,ID>  getEntities(String listingID) {
@@ -63,7 +57,7 @@ global with sharing class LOT_RandomDrawService {
         
         return entities;
     }
-    
+    /*
     public static void preferenceLottery(Id listingId) {
         //System.enqueueJob(new LOT_QueueUpPreferenceBatches(null, null, null, listingId));
         
@@ -94,5 +88,32 @@ global with sharing class LOT_RandomDrawService {
         }
         
         Database.executeBatch(prefBatch);
+    }*/
+     static webservice void calculateLotteryRanks(Id listingId) {
+        //System.enqueueJob(new LOT_QueueUpPreferenceBatches(null, null, null, listingId));
+        
+        Map<string,string> applicationPreference = new Map<string,string>();
+   //    	Map<ID,Listing_Lottery_Preference__c > lotteryPrefs = new Map<ID,Listing_Lottery_Preference__c >  ([select id ,Listing__c, Order__c from Listing_Lottery_Preference__c where listingID =:listingId]);
+        List<Application_Preference__c > applicationPrefs = [select id ,Listing_Preference_ID__c, Application__c, Application__r.Lottery_Rank__c from Application_Preference__c where Application__r.listing__c = :listingId AND Application__r.Status__c = 'Submitted' order by Listing_Preference_ID__c, Application__r.Lottery_Rank__c];
+		if (applicationPrefs.size() == 0) {
+			return;
+		}
+		Integer counter=1;
+		ID currentListingID = applicationPrefs[0].Listing_Preference_ID__c;
+   		for (Application_Preference__c appPref : applicationPrefs) {
+   			if (appPref.Listing_Preference_ID__c != currentListingID) {
+   				currentListingID = appPref.Listing_Preference_ID__c;
+   				counter = 1;
+   			}
+   			appPref.Preference_Lottery_Rank__c = counter++;
+            system.debug('appPref:::' + appPref);
+   		}
+   		
+        update applicationPrefs;
+   		Listing__c listing = [SELECT Id, Name, Lottery_Status__c FROM Listing__c WHERE Id = : listingID];
+   		
+   		listing.Lottery_Status__c = 'Lottery Complete';
+        update listing;
+     
     }
 }

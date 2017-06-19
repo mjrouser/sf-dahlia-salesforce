@@ -159,14 +159,6 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Listing__c</fields>
-        <fields>Lottery_Number__c</fields>
-        <fields>Rank__c</fields>
-        <fields>Status__c</fields>
-        <relatedList>Lottery_Member__c.Household__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
         <relatedList>Listing__c.Account__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>

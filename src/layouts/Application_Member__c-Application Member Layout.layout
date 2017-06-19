@@ -214,6 +214,14 @@
                 <behavior>Edit</behavior>
                 <field>DOB_Text__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>isFiltered__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Candidate_Score__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -221,8 +229,16 @@
                 <field>Neighborhood_Preference_Match__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>isFiltered__c</field>
+                <behavior>Edit</behavior>
+                <field>Which_component_of_locator_was_used__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>X_Coordinate__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Y_Coordinate__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -256,6 +272,22 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+    <relatedLists>
+        <excludeButtons>New</excludeButtons>
+        <fields>Preference_Name__c</fields>
+        <fields>Lottery_Status__c</fields>
+        <fields>Preference_Lottery_Rank__c</fields>
+        <fields>Opt_Out__c</fields>
+        <fields>NAME</fields>
+        <relatedList>Application_Preference__c.Application_Member__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Document_Type__c</fields>
+        <fields>UPDATEDBY_USER</fields>
+        <fields>CREATED_DATE</fields>
+        <relatedList>Attachment__c.Related_Application_Member__c</relatedList>
+    </relatedLists>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>

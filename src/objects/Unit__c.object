@@ -335,12 +335,13 @@ IF(ISPICKVAL(Unit_Type__c,&apos;2 BR&apos;), 2,
     <fields>
         <fullName>Number_of_bedrooms_formula__c</fullName>
         <externalId>false</externalId>
-        <formula>IF(ISPICKVAL(Unit_Type__c,&apos;1 BR&apos;), 1,
+        <formula>IF(ISPICKVAL(Unit_Type__c,&apos;Large Studio&apos;), 1, 
+IF(ISPICKVAL(Unit_Type__c,&apos;1 BR&apos;), 1,
 IF(ISPICKVAL(Unit_Type__c,&apos;2 BR&apos;), 2, 
 IF(ISPICKVAL(Unit_Type__c,&apos;3 BR&apos;), 3,
 IF(ISPICKVAL(Unit_Type__c,&apos;4 BR&apos;), 4,
 IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
-0)))))</formula>
+0))))))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Number of bedrooms</label>
         <precision>18</precision>
@@ -699,6 +700,10 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
                     <default>false</default>
                 </value>
                 <value>
+                    <fullName>Large Studio</fullName>
+                    <default>false</default>
+                </value>
+                <value>
                     <fullName>1 BR</fullName>
                     <default>false</default>
                 </value>
@@ -871,23 +876,7 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
         <picklistValues>
             <picklist>Priority</picklist>
             <values>
-                <fullName>Developmental disabilities</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Hearing impaired</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Hearing%2FVision impaired</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mobility impaired</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mobility%2Fhearing%2Fvision impaired</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -896,10 +885,6 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
             </values>
             <values>
                 <fullName>Veteran</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Vision impaired</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -992,10 +977,6 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
         <picklistValues>
             <picklist>Priority</picklist>
             <values>
-                <fullName>Developmental disabilities</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Hearing impaired</fullName>
                 <default>false</default>
             </values>
@@ -1008,7 +989,7 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
                 <default>false</default>
             </values>
             <values>
-                <fullName>Mobility%2Fhearing%2Fvision impaired</fullName>
+                <fullName>Mobility%2FHearing%2FVision impaired</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1078,6 +1059,10 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
             </values>
             <values>
                 <fullName>5 BR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Large Studio</fullName>
                 <default>false</default>
             </values>
             <values>

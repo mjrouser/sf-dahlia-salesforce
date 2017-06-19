@@ -54,6 +54,26 @@ private class HOP_ApplicationViewControllerTest {
 
 			Application__c myDraftApp = new Application__c(Listing__c = myListing.Id, Status__c = HOP_Constants.DRAFT_APPLICATION);
 			insert myDraftApp;
+        	
+            Development__c dev = new Development__c();
+            dev.Name_of_Development__c = 'amli';
+            dev.Project_ID__c = '123';
+            insert dev;
+          
+            Building__c build = new Building__c();
+            build.Development__c = dev.Id;
+            build.Developer__c = cuAccount.Id;
+            insert build;
+        
+        	Unit__c unit = new Unit__c();
+            unit.property__c  = build.id;
+            unit.BMR_Rent_Monthly__c = 400;
+            unit.Rent_Multiple__c=3;
+            unit.of_AMI_for_Pricing_Unit__c=55;
+            unit.Listing__c = myListing.id;
+            unit.Number_of_Bedrooms__c = 3;
+        	unit.Reserved_Type__c = 'Developmental disabilities';
+            insert unit;
 
 	        Id LENDING_AGENT_CONTACT_RTID = [SELECT Id FROM RecordType WHERE SObjectType = 'Contact' AND DeveloperName = 'Lending_Agent'].Id;
 			Contact cuContact = new Contact(RecordTypeId = LENDING_AGENT_CONTACT_RTID, AccountId = cuAccount.Id, LastName = 'PMC');

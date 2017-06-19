@@ -30,6 +30,10 @@
                 <behavior>Edit</behavior>
                 <field>Account__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>General_Application_Total__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -89,26 +93,6 @@
         <label>Availability</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>COPUnitsAvailable__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>COP_App_Total__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>DTHPUnitsAvailable__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>DTHP_App_Total__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>General_App_Total__c</field>
-            </layoutItems>
-            <layoutItems>
                 <emptySpace>true</emptySpace>
             </layoutItems>
             <layoutItems>
@@ -125,22 +109,6 @@
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LiveWorkUnitsAvailable__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Live_Work_App_Total__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>NeighborhoodUnitsAvailable__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Neighborhood_App_Total__c</field>
-            </layoutItems>
             <layoutItems>
                 <emptySpace>true</emptySpace>
             </layoutItems>
@@ -331,6 +299,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
+                <field>Number_of_Applications__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
                 <field>Lottery_Results__c</field>
             </layoutItems>
             <layoutItems>
@@ -398,10 +370,6 @@
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Number_of_Applications__c</field>
-            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Application_Phone__c</field>
@@ -592,12 +560,8 @@
         <fields>NAME</fields>
         <fields>Application_Submitted_Date__c</fields>
         <fields>Status__c</fields>
-        <fields>Lottery_Number__c</fields>
         <fields>Lottery_Rank__c</fields>
-        <fields>COP_Preference__c</fields>
-        <fields>DTHP_Preference__c</fields>
-        <fields>Live_Work_Preference__c</fields>
-        <fields>Neighborhood_Preference__c</fields>
+        <fields>General_Lottery__c</fields>
         <relatedList>Application__c.Listing__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -643,7 +607,7 @@
         <fields>Preference_Name__c</fields>
         <fields>Order__c</fields>
         <fields>Available_Units__c</fields>
-        <fields>Description__c</fields>
+        <fields>Total_Submitted_Apps__c</fields>
         <relatedList>Listing_Lottery_Preference__c.Listing__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -657,9 +621,6 @@
     <relatedLists>
         <fields>NAME</fields>
         <relatedList>Flagged_Record_Set__c.Listing__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

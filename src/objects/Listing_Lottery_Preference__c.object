@@ -53,6 +53,18 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
+        <fullName>Auto_Grants_Preference__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Auto Grants Preference</label>
+        <referenceTo>Listing_Lottery_Preference__c</referenceTo>
+        <relationshipLabel>Listing Preferences</relationshipLabel>
+        <relationshipName>Listing_Preferences</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Available_Units__c</fullName>
         <externalId>false</externalId>
         <label>Available Units</label>
@@ -123,6 +135,14 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>PDF_URL__c</fullName>
+        <externalId>false</externalId>
+        <label>PDF URL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
         <fullName>Preference_Name__c</fullName>
         <externalId>false</externalId>
         <formula>Lottery_Preference__r.Name</formula>
@@ -144,6 +164,28 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>Total_Submitted_App__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Submitted App</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Submitted_Apps__c</fullName>
+        <externalId>false</externalId>
+        <label>Applications</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
     <label>Listing Preference</label>
     <listViews>
         <fullName>All</fullName>
@@ -155,6 +197,7 @@
         <columns>NRHP_District__c</columns>
         <columns>Lottery_Preference__c</columns>
         <columns>Preference_Name__c</columns>
+        <columns>Total_Submitted_Apps__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -164,6 +207,9 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Listing Preferences</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Listing__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Lottery_Preference__c</lookupDialogsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
 </CustomObject>

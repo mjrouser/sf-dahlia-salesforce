@@ -67,7 +67,35 @@ private class ListingServiceTest {
         llp.Lottery_Preference__c = lp.Id;
         insert llp;
         */
+        
+        Application_Member__c appM = new Application_Member__c(Application__c = app.Id, First_Name__c = 'Test', Last_Name__c = 'lastName', Date_of_Birth__c = date.today().addYears(-20), Neighborhood_Preference_Match__c = 'Matches');
+        insert appM;
+        
+        Lottery_Preference__c lotPref = new Lottery_Preference__c(Name = 'Neighborhood Resident Housing Preference (NRHP)');
+		Lottery_Preference__c lotPref2 = new Lottery_Preference__c(Name = 'Live or Work in San Francisco Preference');
+		Lottery_Preference__c lotPref3 = new Lottery_Preference__c(Name = 'Certificate of Preference (COP)');
+		Lottery_Preference__c lotPref4 = new Lottery_Preference__c(Name = 'Displaced Tenant Housing Preference (DTHP)');
+		List<Lottery_Preference__c> lotPrefList = new List<Lottery_Preference__c>{lotPref,lotPref2,lotPref3,lotPref4};
+		insert lotPrefList;
+		
+		Listing_Lottery_Preference__c listingPref = new Listing_Lottery_Preference__c(Listing__c = listing.Id, Lottery_Preference__c = lotPrefList[0].Id);
+		Listing_Lottery_Preference__c listingPref2 = new Listing_Lottery_Preference__c(Listing__c = listing.Id, Lottery_Preference__c = lotPrefList[1].Id);
+		Listing_Lottery_Preference__c listingPref3 = new Listing_Lottery_Preference__c(Listing__c = listing.Id, Lottery_Preference__c = lotPrefList[2].Id);
+		Listing_Lottery_Preference__c listingPref4 = new Listing_Lottery_Preference__c(Listing__c = listing.Id, Lottery_Preference__c = lotPrefList[3].Id);
+		List<Listing_Lottery_Preference__c> listingPrefList = new List<Listing_Lottery_Preference__c>{listingPref, listingPref2, listingPref3, listingPref4};
+		insert listingPrefList;
+		
+		Application_Preference__c appPref = new Application_Preference__c(Application__c = app.Id, Listing_Preference_ID__c = listingPrefList[0].Id, Application_Member__c = appM.Id);
+        Application_Preference__c appPref2 = new Application_Preference__c(Application__c = app.Id, Listing_Preference_ID__c = listingPrefList[1].Id, Application_Member__c = appM.Id);
+        Application_Preference__c appPref3 = new Application_Preference__c(Application__c = app.Id, Listing_Preference_ID__c = listingPrefList[2].Id, Application_Member__c = appM.Id);
+        Application_Preference__c appPref4 = new Application_Preference__c(Application__c = app.Id, Listing_Preference_ID__c = listingPrefList[3].Id, Application_Member__c = appM.Id);
+        List<Application_Preference__c> appPrefs = new List<Application_Preference__c>{appPref,appPref2,appPref3,appPref4};
+        insert appPrefs;
+        
+        Id unitRtId = Schema.SObjectType.Unit__c.getRecordTypeInfosByName().get('BMR Rental').getRecordTypeId();
+        
         Unit__c unit = new Unit__c();
+        unit.RecordTypeId = unitRtId;
         unit.property__c  = build.id;
         unit.BMR_Rent_Monthly__c = 400;
         unit.Rent_Multiple__c=2;
@@ -77,13 +105,14 @@ private class ListingServiceTest {
         insert unit;
         
         Unit__c unit1 = new Unit__c();
+        unit1.RecordTypeId = unitRtId;
         unit1.property__c  = build.id;
         unit1.BMR_Rent_Monthly__c = 400;
         unit1.Rent_Multiple__c=2;
         unit1.of_AMI_for_Pricing_Unit__c=55;
         unit1.Listing__c = listing1.id;
         unit1.Number_of_Bedrooms__c = 3;
-        unit1.Priority_Type__c = 'Senior';
+        unit1.Priority_Type__c = 'Vision impaired';
         insert unit1;
         
         Unit__c unit2 = new Unit__c();
@@ -235,7 +264,7 @@ private class ListingServiceTest {
         List<Listing__c> lstList = [SELECT name, Building__c, Account__c, Application_Due_Date__c, Status__c, Does_Match__c, Min_Occupancy__c FROM Listing__c where Name = 'somelisting1'];
         
         testLD = ListingService.getListingDetails(lstList);
-        system.assertEquals(testLD[0].prioritiesDescriptor[0].Name, 'Senior');
+        system.assertEquals(testLD[0].prioritiesDescriptor[0].Name, 'Vision impaired');
         system.assertEquals(testLD[0].prioritiesDescriptor[0].numberOfUnits, 1);
     }
 }

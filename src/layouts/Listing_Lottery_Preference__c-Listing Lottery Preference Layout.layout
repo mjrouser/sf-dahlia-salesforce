@@ -27,6 +27,18 @@
                 <behavior>Readonly</behavior>
                 <field>Read_More_URL__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Total_Submitted_Apps__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Auto_Grants_Preference__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PDF_URL__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -77,6 +89,22 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+    <relatedLists>
+        <excludeButtons>New</excludeButtons>
+        <fields>Application__c</fields>
+        <fields>Preference_Lottery_Rank__c</fields>
+        <fields>Person_who_claimed_Name__c</fields>
+        <fields>Lottery_Status__c</fields>
+        <fields>NAME</fields>
+        <fields>Application_Status__c</fields>
+        <relatedList>Application_Preference__c.Listing_Preference_ID__c</relatedList>
+        <sortField>Preference_Lottery_Rank__c</sortField>
+        <sortOrder>Asc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Listing_Lottery_Preference__c.Auto_Grants_Preference__c</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>

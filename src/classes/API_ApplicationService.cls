@@ -43,27 +43,37 @@ global without sharing class API_ApplicationService {
 		' Mailing_Street__c, Mailing_City__c, Mailing_State__c, Mailing_Zip_Code__c,' +
 		' Work_in_SF__c, Relationship_to_Applicant__c, Living_with_HIV_AIDS__c, Sexual_Orientation__c, Sexual_Orientation_Other__c,' + 
 		' Gender__c, Gender_Other__c, Ethnicity__c, Race__c, Type__c, Primary_Language__c, Other_Language__c,' + 
+		' Candidate_Score__c, Which_component_of_locator_was_used__c, X_Coordinate__c, Y_Coordinate__c,' + 
 		' No_Phone__c, No_Email__c, No_Address__c, Has_Alt_Mailing_Address__c,' + 
 		' Alternate_Contact_Type__c, Alternate_Contact_Type_Other__c, Agency_Name__c, Same_Address_as_Applicant__c, Neighborhood_Preference_Match__c';
-
+	
+	private static final String SHORTFORM_PREFERENCE_FIELDLIST =
+		'Id, Application__c, Listing_Preference_ID__c, Application_Member__c, Type_of_proof__c, Lottery_Status__c, If_combined_individual_preference__c, Opt_Out__c';
+	
+	private static final String LISTING_PREFERENCE_FIELDLIST =
+		'Id, Listing__c, Lottery_Preference__c, Preference_Name__c';
+	
+	
 	private static final String SHORTFORM_FIELDLIST =
-		'Id, Applicant_Household__c, Listing__c,' +
+		'Id, recordtypeid, Applicant_Household__c, Listing__c,' +
 		prefixQuery('Applicant__r.', APPLICATION_MEMBER_FIELDLIST) +
 		', ' +
 		prefixQuery('Alternate_Contact__r.', APPLICATION_MEMBER_FIELDLIST) +
-		', Status__c, Is_Resident__c, Referral_Source__c, Housing_Voucher_or_Subsidy__c ' +
+		', Status__c, Is_Resident__c, Referral_Source__c, Housing_Voucher_or_Subsidy__c, Total_Monthly_Rent__c ' +
 		', Terms_Acknowledged__c, Name, Application_Submission_Type__c, Primary_Applicant__c, Live_Work_Preference_Paper__c ' + 
 		', Live_Work_Opt_Out__c, DTHP_Opt_Out__c, COP_Opt_Out__c, NRHP_Opt_Out__c' + 
 		', COP_Preference_Member__c, DTHP_Preference_Member__c, Neighborhood_Preference_Member__c, Lottery_Number__c, Lottery_Number_Manual__c, Form_Metadata__c' +
 		', Work_in_SF_Preference_Member__c, Live_in_SF_Preference_Member__c, Total_Household_Gross_Income__c, Application_Language__c, Application_Submitted_Date__c ' + 
-		', Live_in_SF_Preference_Proof__c, Neighborhood_Preference_Proof__c, Work_in_SF_Preference_Proof__c, Annual_Income__c, Monthly_Income__c';
+		', Live_in_SF_Preference_Proof__c, Neighborhood_Preference_Proof__c, Work_in_SF_Preference_Proof__c, Annual_Income__c, Monthly_Income__c' + 
+		', Has_Military_Service__c, Has_Rent_Burden_HUD__c, Has_DevelopmentalDisability__c, Answered_Community_Screening__c, Has_ADA_Priorities_Selected__c, ' + 
+		'(SELECT ' + SHORTFORM_PREFERENCE_FIELDLIST + ' FROM Application_Preferences__r)';
 
 	private static final String APPLICATION_FIELDLIST =
 		'Id, Applicant_Household__c, Listing__c, Name,' +
 		prefixQuery('Applicant__r.Contact__r.', CONTACT_FIELDLIST) +
 		', ' +
 		prefixQuery('Alternate_Contact__r.Contact__r.', CONTACT_FIELDLIST) +
-		', Live_Work_Opt_Out__c, DTHP_Opt_Out__c, COP_Opt_Out__c, NRHP_Opt_Out__c' + 
+		', Live_Work_Opt_Out__c, DTHP_Opt_Out__c, COP_Opt_Out__c, NRHP_Opt_Out__c, Total_Monthly_Rent__c' + 
 		', Status__c, Is_Resident__c, Referral_Source__c, Housing_Voucher_or_Subsidy__c , Application_Submitted_Date__c' +
 		', Terms_Acknowledged__c, Total_Household_Gross_Income__c, Application_Language__c, Application_Submission_Type__c, Lottery_Number__c, Lottery_Number_Manual__c, Form_Metadata__c' +
 		', Annual_Income__c, Monthly_Income__c, Primary_Applicant__c, Live_Work_Preference_Paper__c';
@@ -150,6 +160,24 @@ global without sharing class API_ApplicationService {
 			APPLICATION_MEMBER_FIELDLIST +
 			' FROM Application_Member__c' +
 			' WHERE Application__c IN :appIds'
+		);
+	}
+	
+	public static List<Application_Preference__c> getShortformPreferencesByApplicationIds(Set<Id> appIds) {
+		return Database.query(
+			'SELECT ' +
+			SHORTFORM_PREFERENCE_FIELDLIST +
+			' FROM Application_Preference__c' +
+			' WHERE Application__c IN :appIds'
+		);
+	}
+	
+	public static List<Listing_Lottery_Preference__c> getListingPreferencesByListingIds(Set<Id> listingIds) {
+		return Database.query(
+			'SELECT ' +
+			LISTING_PREFERENCE_FIELDLIST +
+			' FROM Listing_Lottery_Preference__c' +
+			' WHERE Listing__c IN :listingIds'
 		);
 	}
 	
@@ -263,7 +291,7 @@ global without sharing class API_ApplicationService {
 			return null;
 		} else {
 			List<Application_Member__c> hms = getApplicationMembersByApplicationId(app.Id);
-			return new API_Application.ShortForm(app, hms);
+			return  API_Application.newShortForm(app, hms);
 		}
 	}
 
@@ -288,7 +316,7 @@ global without sharing class API_ApplicationService {
 		//create shortform for each app
 		List<API_Application.ShortForm> sfs = new List<API_Application.ShortForm>();
 		for (Application__c app : apps) {
-			sfs.add(new API_Application.ShortForm(app, appMemberToAppMap.get(app.Id)));
+			sfs.add( API_Application.newShortForm(app, appMemberToAppMap.get(app.Id)));
 		}
 		return sfs;
 	}
@@ -400,22 +428,22 @@ global without sharing class API_ApplicationService {
 		return householdMemberAppMember;
 	} 
 		
-	private static Application__c saveApplication(API_Application.ShortForm sf ) {
+	private static Application__c saveApplication(API_Application.ShortForm sf) {
 		API_Application.Person primaryApplicant = sf.primaryApplicant;
 		API_Application.Person alternateContact = sf.alternateContact;
 		Application__c app = sf.toApplication();
 		
 		if (primaryApplicant != null) {
 			primaryApplicant.appMemberType = PRIMARY_APPLICANT;
+			primaryApplicant = upsertPrimaryPerson(primaryApplicant);
 		} 
 		if (alternateContact != null) {
 			alternateContact.appMemberType = ALTERNATE_CONTACT;
 		}
-		primaryApplicant = upsertPrimaryPerson(primaryApplicant);
 		app = sf.toApplication();
 		upsert app; // insert it here to get the app id. if its a new record
-	 
-	
+		
+		
 		Map<String, Application_Member__c> keyToAppMember = new Map<String, Application_Member__c>();
 		List<Application_Member__c> appMembersToUpsert = new List<Application_Member__c>();
 		///add application members
@@ -432,7 +460,7 @@ global without sharing class API_ApplicationService {
 		}
 		Application_Member__c alternateContactAppMember;
 		
-		if (alternateContact!=null) {
+		if (alternateContact != null) {
 			 
 			String alternateKey = alternateContact.getKey();
 			
@@ -440,30 +468,29 @@ global without sharing class API_ApplicationService {
 			
 			alternateContactAppMember = toApplicationMember(alternateContact,ALTERNATE_CONTACT,app.id);
 			appMembersToUpsert.add(alternateContactAppMember);
+			
 			//key is unique but if its not. alternate contact overrites household 
-				
-			//if (alternateKey!=null) {
-				keyToAppMember.put(alternateKey, alternateContactAppMember);
-			//} // else we ignore malformed keys
+			keyToAppMember.put(alternateKey, alternateContactAppMember);
 		}
 		Application_Member__c primaryAppMember;
 		
+		if (primaryApplicant!=null) {
 		String primaryKey = primaryApplicant.getKey();
-		if  (primaryKey!=null ) {
+
 			system.debug('primary contact set:::' + primaryApplicant);
 			
 			primaryAppMember = toApplicationMember(primaryApplicant,PRIMARY_APPLICANT,app.id);
 			appMembersToUpsert.add(primaryAppMember);
-			//key is unique but if its not. primary contact overrites household 
 			
+			//key is unique but if its not. primary contact overrites household 
 			keyToAppMember.put(primaryKey, primaryAppMember);
 			
 		
 		}
 		upsert keyToAppMember.values();
 		//upsert appMembersToUpsert;
-		system.debug('appMembersToUpsert' + appMembersToUpsert);
-		system.debug ( 'alternateContact' + alternateContact+ 'alternateContactAppMember ' + alternateContactAppMember);
+		system.debug('appMembersToUpsert: ' + appMembersToUpsert);
+		system.debug ('alternateContact: ' + alternateContact + 'alternateContactAppMember: ' + alternateContactAppMember);
 		// finalize application
 		
 		//set primary applicant - contact
@@ -472,9 +499,10 @@ global without sharing class API_ApplicationService {
 		app.Applicant__c = primaryApplicant == null ? null : primaryAppMember.id;
 		//set aternate application - application member
 		app.Alternate_Contact__c = alternateContact == null ? null : alternateContactAppMember.id;
+		upsert app;
 		
 		//set natural keys
-		if (sf.certOfPreferenceNatKey != null && keyToAppMember.containsKey(sf.certOfPreferenceNatKey.toLowerCase())) {
+		/*if (sf.certOfPreferenceNatKey != null && keyToAppMember.containsKey(sf.certOfPreferenceNatKey.toLowerCase())) {
 			app.COP_Preference_Member__c = keyToAppMember.get(sf.certOfPreferenceNatKey.toLowerCase()).Id;
 		}
 		if (sf.displacedPreferenceNatKey != null && keyToAppMember.containsKey(sf.displacedPreferenceNatKey.toLowerCase())) {
@@ -488,10 +516,39 @@ global without sharing class API_ApplicationService {
 		}
 		if (sf.neighborhoodResidencePreferenceNatKey != null && keyToAppMember.containsKey(sf.neighborhoodResidencePreferenceNatKey.toLowerCase())) {
 			app.Neighborhood_Preference_Member__c = keyToAppMember.get(sf.neighborhoodResidencePreferenceNatKey.toLowerCase()).Id;
+		}*/
+		
+		system.debug('keys:::' + keyToAppMember.keySet());
+		//ShortForm preferences
+		Map<Id,Listing_Lottery_Preference__c> listingPrefMap = new Map<Id,Listing_Lottery_Preference__c>(getListingPreferencesByListingIds(new Set<Id>{sf.listingId}));
+		List<Application_Preference__c> appPrefToUpsert = new List<Application_Preference__c>();
+		Set<String> usedPrefKeys = new Set<String>();
+		system.debug('sf.shortFormPreferences:::' + sf.shortFormPreferences);
+		if (sf.shortFormPreferences != null) {
+			for (API_Application.ShortFormPreference sfPref : sf.shortFormPreferences) {
+				if (listingPrefMap == null || !listingPrefMap.containsKey(sfPref.listingPreferenceID)) {
+					sfPref.listingPreferenceID = null;//if listing preference doesn't match throw exception
+				}
+				system.debug('sfPref.Natkey:::' + sfPref.naturalKey);
+				
+				if (sfPref.naturalKey != null && keyToAppMember.containsKey(sfPref.naturalKey.toLowerCase())) {
+					sfPref.appMemberID = keyToAppMember.get(sfPref.naturalKey.toLowerCase()).Id;
+				}
+				if (sfPref.applicationID == null) {
+					sfPref.applicationID = app.Id;
+				}
+				Application_Preference__c appPref = sfPref.toApplicationPreference();
+				if (sfPref.getKey() != null && !usedPrefKeys.contains(sfPref.getKey())) {
+					usedPrefKeys.add(sfPref.getKey());
+				}
+				appPrefToUpsert.add(appPref);
+				
+				system.debug('appPrefToUpsert:::' + appPrefToUpsert);
+			}
 		}
-		upsert app;
-		system.debug('the app' + app);
-		//delete extra householdmembers
+		
+		upsert appPrefToUpsert;
+		
 		return app;
 	}
 	
@@ -514,22 +571,21 @@ global without sharing class API_ApplicationService {
 		}
 		for (household)
 	}*/
-	private static Application__c updateSF (API_Application.ShortForm sf ) {
+	private static Application__c updateSF (API_Application.ShortForm sf) {
 	
 		API_Application.ShortForm existingSf = getShortformById(sf.Id);
 		if (existingSf.status != 'Submitted' && sf.status == 'Submitted') {
 			sf.validateLotteryRun();
 		}
-		system.debug('existing sf' +existingSf );
-		system.debug('submitted sf' +sf );
+		system.debug('existing sf' + existingSf);
+		system.debug('submitted sf' + sf);
 		
 		//appmember= select id from appmember where appmember.applicationid = sf.id and contactid = sf.contact.id
 		//primaryApplicant.appmemberid = appmember.id
-	//	Set<ID> existingAppMemberIDS = getAppMemberIDSApp(sf.ID);
+		//Set<ID> existingAppMemberIDS = getAppMemberIDSApp(sf.ID);
 		
-		Map<String,ID > existingMemberMap = new Map<String,ID >();
+		Map<String,ID> existingMemberMap = new Map<String,ID>();
 		Set<ID> existingIDS = new Set<ID>();
-				Set<ID> existingNatgural = new Set<ID>();
 		
 		//add alternate contact Id
 		if (existingSf.alternateContact != null && existingSf.alternateContact.appMemberId != null) {
@@ -548,15 +604,15 @@ global without sharing class API_ApplicationService {
 		if (sf.primaryApplicant != null && existingSf.primaryApplicant!=null ) {
 			sf.primaryApplicant.contactId = String.isEmpty(sf.primaryApplicant.contactId) ? existingSf.primaryApplicant.contactId : sf.primaryApplicant.contactId;
 			sf.primaryApplicant.appmemberid = String.isEmpty(sf.primaryApplicant.appmemberid) ? existingSf.primaryApplicant.appmemberid : sf.primaryApplicant.appmemberid;
-			existingIDS.remove(sf.primaryApplicant.appmemberid );
+			existingIDS.remove(sf.primaryApplicant.appmemberid);
 		}
-		//not sure this line is needed-  ll it adds alternate contact tot he current app member list
+		//not sure this line is needed-  ll it adds alternate contact to the current app member list
 		
 		if (sf.alternateContact != null  && existingSf.alternateContact!=null) {
 			sf.alternateContact.appMemberId = String.isEmpty(sf.alternateContact.appMemberId) ? existingSf.alternateContact.appMemberId : sf.alternateContact.appMemberId;
 			
 			if (sf.alternateContact.appMemberId != null) {
-				existingIDS.remove(sf.alternateContact.appMemberId)	;
+				existingIDS.remove(sf.alternateContact.appMemberId);
 	
 			}
 		}
@@ -566,7 +622,7 @@ global without sharing class API_ApplicationService {
 				if (existingMemberMap.containsKey(key)) {
 					ID appMemberID = existingMemberMap.get(key);
 					if (householdMember.appmemberid == null) {
-						householdMember.appmemberid =appMemberID;
+						householdMember.appmemberid = appMemberID;
 						// a key can only be used once 
 						
 						existingMemberMap.remove(key); 
@@ -575,18 +631,48 @@ global without sharing class API_ApplicationService {
 					}
 					//existing householdmember appid
 				}
-				if (householdMember.appmemberid!=null) {
+				if (householdMember.appmemberid != null) {
 					system.debug('HH key removed');
 					
-					existingIDS.remove(householdMember.appmemberid );
+					existingIDS.remove(householdMember.appmemberid);
 					
 				}
-				
 			}
-			
-		} 
+		}
+		
+		Set<Id> existingPrefIds = new Set<Id>();
+		Map<String,ID> existingPrefMap = new Map<String,ID>();
+		if (existingSf.shortFormPreferences != null) {
+			//add existing shortformPreference Ids
+			for (API_Application.ShortFormPreference sfPref : existingSf.shortFormPreferences) {
+				existingPrefMap.put(sfPref.getKey(),sfPref.shortformPreferenceID);
+				existingPrefIds.add(sfPref.shortformPreferenceID);
+			}
+		}
+		
+		if (sf.shortFormPreferences != null) {
+			for (API_Application.ShortFormPreference sfPref : sf.shortFormPreferences) {
+				String key = sfPref.getKey();
+				if (existingPrefMap.containsKey(key)) {
+					ID sfPrefID = existingPrefMap.get(key);
+					if (sfPref.shortformPreferenceID == null) {
+						sfPref.shortformPreferenceID = sfPrefID;
+						// a key can only be used once 
+						existingPrefMap.remove(key); 
+						system.debug('Pref key removed');
+					}
+					//existing pref appid
+				}
+				if (sfPref.shortformPreferenceID != null) {
+					system.debug('Pref key removed');
+					existingPrefIds.remove(sfPref.shortformPreferenceID);
+				}
+			}
+		}
+		
+		
 		system.debug('sf:::' + sf);
-		Application__c app =   saveApplication(sf);
+		Application__c app = saveApplication(sf);
 		
 		List<Application_Member__c> toBeDeletedApplicationMembers = new List<Application_Member__c>();
 		for (ID appMemberID :existingIDS) {
@@ -594,6 +680,13 @@ global without sharing class API_ApplicationService {
 			
 		}
 		delete toBeDeletedApplicationMembers;
+		
+		List<Application_Preference__c> toBeDeletedApplicationPrefs = new List<Application_Preference__c>();
+		for (ID prefID : existingPrefIds) {
+			toBeDeletedApplicationPrefs.add(new Application_Preference__c(Id = prefID));
+			
+		}
+		delete toBeDeletedApplicationPrefs;
 		
 		/*
 		Set<ID> currentAppMemberIDS = getAppMemberIDSApp(sf.ID);
@@ -611,9 +704,8 @@ global without sharing class API_ApplicationService {
 		*/
 		return  app;
 		
-		 
-	} 
-	 
+	}
+	
 	public static API_Application.ShortForm upsertShortform(API_Application.ShortForm sf) {
 		if (sf == null) return null;
 		if (sf.status != 'Draft') {

@@ -78,7 +78,7 @@
         <fullName>Rule_Name__c</fullName>
         <description>This is auto-populated from the trigger Rule_Name__c</description>
         <externalId>false</externalId>
-        <label>Rule Name</label>
+        <label>Flagged Fields</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -116,7 +116,7 @@
     <fields>
         <fullName>Total_Number_of_Pending_Review__c</fullName>
         <externalId>false</externalId>
-        <label>Total Number of Pending Review</label>
+        <label>Applications Pending Review</label>
         <summaryFilterItems>
             <field>Flagged_Application__c.Review_Status__c</field>
             <operation>equals</operation>
@@ -147,25 +147,6 @@
             <value>TODAY</value>
         </filters>
         <label>Created Today</label>
-    </listViews>
-    <listViews>
-        <fullName>Nema_Lottery_3_29_2017</fullName>
-        <columns>NAME</columns>
-        <columns>OBJECT_ID</columns>
-        <columns>DuplicateRecordSetID__c</columns>
-        <columns>Listing__c</columns>
-        <columns>Rule_Name__c</columns>
-        <columns>Total_Number_of_Duplicates__c</columns>
-        <columns>Total_Number_of_Pending_Review__c</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Listing__c</field>
-            <operation>equals</operation>
-            <value>Nema</value>
-        </filters>
-        <label>Nema (Lottery 3/29/2017)</label>
     </listViews>
     <listViews>
         <fullName>X280_Brighton_Flags</fullName>
