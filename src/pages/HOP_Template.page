@@ -1,0 +1,185 @@
+<apex:page applyBodyTag="false" applyHtmlTag="false" controller="HOP_TemplateController" id="HOP_Template"
+           docType="HTML-5.0" showChat="false" showHeader="false" sidebar="false" standardStylesheets="false">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            <apex:insert name="title" />
+        </title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+        <link rel="stylesheet" href="{!URLFOR($Resource.HOP, '/css/bootstrap.min.css')}" />
+        <style>
+            .top-general-alert.alert {
+                padding: 0;
+                display: block;
+                margin-bottom: 0;
+                border: none;
+                text-align: center;
+            }
+            .top-general-alert.alert ul {
+                list-style-type: none;
+            }
+            .sectionHeader h4 {
+                display: inline-block;
+            }
+            .sectionHeader h4 ~ button,
+            .sectionHeader h4 ~ input[type=button],
+            .sectionHeader h4 ~ input[type=submit],
+            input[type=submit] ~ input[type=submit] {
+                margin-left: 15px;
+            }
+            .sectionHeader h5 {
+                margin-bottom: 0px;
+            }
+            .section {
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            .section.form-group-section {
+                padding-bottom: 0;
+            }
+            .section.none-section {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+            .lookupInput .form-control {
+                display: inline-block;
+                width: auto;
+            }
+            .lookupInput a.form-control {
+                position: relative;
+                top: 2px;
+                font-family: 'Glyphicons Halflings';
+                font-style: normal;
+                font-weight: 400;
+                -webkit-font-smoothing: antialiased;
+            }
+            .lookupInput a.form-control:before {
+                content: "\e003";
+            }
+            .ellipsis {
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+            .autocomplete-loading {
+                background: white url('{!URLFOR($Resource.HOP, "/images/autocompleteLoading.gif")}') right center no-repeat !important;
+            }
+            .table {
+                margin-bottom: 0;
+            }
+            form.form-horizontal {
+                padding: 15px 0;
+            }
+            .form-control.required {
+                -webkit-box-shadow: -3px 0px 0px 0px #c00;
+                -moz-box-shadow: -3px 0px 0px 0px #c00;
+                box-shadow: -3px 0px 0px 0px #c00;
+            }
+            .form-control.required:focus {
+                -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6),-3px 0px 0px 0px #c00;
+                -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6),-3px 0px 0px 0px #c00;
+                box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6),-3px 0px 0px 0px #c00;
+            }
+            .input-error {
+                moz-box-shadow: 0 0 0px #9ecaed;
+                webkit-box-shadow: 0 0 0px #9ecaed;
+                box-shadow: 0 0 0px #9ecaed;
+                -webkit-animation: mymove 1s cubic-bezier(0.39, 0.575, 0.565, 1);
+                animation: mymove 1s cubic-bezier(0.39, 0.575, 0.565, 1);
+            }
+            @-webkit-keyframes mymove {
+                0% {
+                    moz-box-shadow: none;
+                    webkit-box-shadow: none;
+                    box-shadow: none;
+                }
+                33% {
+                    moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #c00;
+                    webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #c00;
+                    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #c00;
+                }
+                66% {
+                    moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #c00;
+                    webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #c00;
+                    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #c00;
+                }
+                100% {
+                    moz-box-shadow: none;
+                    webkit-box-shadow: none;
+                    box-shadow: none;
+                }
+            }
+            @keyframes mymove {
+                0% {
+                    moz-box-shadow: none;
+                    webkit-box-shadow: none;
+                    box-shadow: none;
+                }
+                33% {
+                    moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #c00;
+                    webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #c00;
+                    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #c00;
+                }
+                66% {
+                    moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #c00;
+                    webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #c00;
+                    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #c00;
+                }
+                100% {
+                    moz-box-shadow: none;
+                    webkit-box-shadow: none;
+                    box-shadow: none;
+                }
+            }
+        </style>
+        <apex:insert name="styles" />
+        <script src="{!URLFOR($Resource.HOP, '/js/modernizr.js')}" />
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="wrapper">
+            <apex:insert name="header">
+                <c:HOP_Header />
+            </apex:insert>
+            <div class="container" id="main" style="margin-top: 50px;">
+                <div class="bs-container">
+                    <div id="responseErrors" class="top-general-alert alert alert-danger" role="alert" aria-hidden="true"></div>
+                    <apex:insert name="error" />
+                    <apex:insert name="body" />
+                </div>
+                <footer>
+                    <!-- <p>&copy; Company 2015</p> -->
+                </footer>
+            </div>
+        </div>
+        <script src="{!URLFOR($Resource.HOP, '/js/jquery-2.2.4.min.js')}"></script>
+        <script src="{!URLFOR($Resource.HOP, '/js/bootstrap.min.js')}"></script>
+
+        <!-- Custom scripts are inserted here after our javascript libraries, and site wide code have loaded -->
+        <apex:insert name="scripts" />
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <!-- <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script> -->
+    </body>
+</html>
+
+</apex:page>

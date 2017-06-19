@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>mohcdHousingAttachments</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Document_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Document Type/ Purpose</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Tax Return and W-2 Forms</fullName>
+                    <default>true</default>
+                </value>
+                <value>
+                    <fullName>Income Tax Affidavit</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Bank Statement</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Retirement Account Statement</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Verification of Employment Form</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Employment Offer Letter</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Pay stub</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Profit/Loss Statement</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Schedule C</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Self-employed Affidavit</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Unemployed Affidavit</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Gift Letter</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Loan Pre-approval Letter</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>First Time Homebuyer Certificate</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>HomeownershipSF Consent Form</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Lender’s Certificate of Borrower’s Eligibility</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Housing_Application__c</fullName>
+        <externalId>false</externalId>
+        <label>Related To</label>
+        <referenceTo>Housing_Application__c</referenceTo>
+        <relationshipLabel>Housing Application Attachments</relationshipLabel>
+        <relationshipName>Housing_Application_Attachments</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>View__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&quot;/housingprograms/servlet/servlet.FileDownload?file=&quot;+Type__c,&quot;View&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>View</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Housing Application Attachment</label>
+    <nameField>
+        <label>Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Housing Application Attachments</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>
