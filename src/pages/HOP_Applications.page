@@ -48,8 +48,11 @@
                 <apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/moment.min.js')}"/>
                 <apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/jquery.datetimepicker.full.min.js')}"/>
                 <apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/typeahead.bundle.min.js')}"/>
+                <apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/moment-timezone.min.js')}"/>
+                <apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/moment-timezone-with-data.min.js')}"/>
                 
                 <script>
+                moment.tz.setDefault('{!myuser.TimeZoneSidKey}');
                 function setGetParameter(paramName, paramValue){
                     var url = window.location.href;
                     var hash = location.hash;
@@ -99,8 +102,12 @@
                                     if ( result.dataRows[j].hasOwnProperty(result.dataColumns[i].data) ) {
                                         if(result.dataColumns[i].type==='date'){
                                             var dateNumVal=new Date(result.dataRows[j][result.dataColumns[i].data]);
-                                            result.dataRows[j][result.dataColumns[i].data]=moment(dateNumVal).format('M/D/YYYY');
+                                            result.dataRows[j][result.dataColumns[i].data]=moment.utc(dateNumVal).format('M/D/YYYY');
                                         }
+                                         if(result.dataColumns[i].type==='datetime'){
+                                            var dateNumVal=new Date(result.dataRows[j][result.dataColumns[i].data]);
+                                            result.dataRows[j][result.dataColumns[i].data]=moment(dateNumVal).format('M/D/YYYY');
+                                        }   
                                         if(result.dataColumns[i].type==='boolean'){
                                             var boolvalue=result.dataRows[j][result.dataColumns[i].data];
                                             if(boolvalue ===false){

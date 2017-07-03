@@ -162,7 +162,7 @@
     <fields>
         <fullName>Application_City__c</fullName>
         <externalId>false</externalId>
-        <label>Application City</label>
+        <label>PO Box City</label>
         <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -184,7 +184,7 @@
     <fields>
         <fullName>Application_Organization__c</fullName>
         <externalId>false</externalId>
-        <label>Application Organization</label>
+        <label>PO Box Organization</label>
         <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -204,7 +204,7 @@
     <fields>
         <fullName>Application_Postal_Code__c</fullName>
         <externalId>false</externalId>
-        <label>Application Postal Code</label>
+        <label>PO Box Postal Code</label>
         <length>10</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -216,7 +216,7 @@
         <fullName>Application_State__c</fullName>
         <defaultValue>&quot;CA&quot;</defaultValue>
         <externalId>false</externalId>
-        <label>Application State</label>
+        <label>PO Box State</label>
         <length>2</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -227,7 +227,7 @@
     <fields>
         <fullName>Application_Street_Address__c</fullName>
         <externalId>false</externalId>
-        <label>Application Street Address</label>
+        <label>PO Box Address</label>
         <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -355,7 +355,7 @@
         <fullName>Building__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
-        <label>Building</label>
+        <label>Building Record Number</label>
         <referenceTo>Building__c</referenceTo>
         <relationshipLabel>Listings</relationshipLabel>
         <relationshipName>Listings</relationshipName>
@@ -631,7 +631,7 @@
         <label>Draw ID</label>
         <length>20</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -764,7 +764,7 @@
     <fields>
         <fullName>Leasing_Agent_Phone__c</fullName>
         <externalId>false</externalId>
-        <formula>Building__r.Leasing_Agent__r.Phone</formula>
+        <formula>Building__r.Leasing_Agent__r.Work_Phone__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Leasing Agent Phone</label>
         <required>false</required>
@@ -871,7 +871,7 @@
         <externalId>false</externalId>
         <label>Lottery Results PDF URL</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Url</type>
     </fields>
@@ -882,7 +882,7 @@
         <label>Lottery City</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -892,7 +892,7 @@
         <externalId>false</externalId>
         <label>Lottery Date</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -902,7 +902,7 @@
         <label>Lottery End Time</label>
         <length>16</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -914,7 +914,7 @@
         <inlineHelpText>End of the Lottery - DateTime</inlineHelpText>
         <label>Lottery End</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -923,7 +923,7 @@
         <externalId>false</externalId>
         <label>Lottery Preferences</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -951,7 +951,7 @@
         <inlineHelpText>Date Lottery Results are posted</inlineHelpText>
         <label>Lottery Results Date</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -973,7 +973,7 @@
         <label>Lottery Start Time</label>
         <length>16</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -983,7 +983,7 @@
         <externalId>false</externalId>
         <label>Lottery Status</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1010,7 +1010,7 @@
         <label>Lottery Street Address</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -1023,7 +1023,7 @@
         <label>Lottery Summary</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -1033,7 +1033,7 @@
         <externalId>false</externalId>
         <label>Lottery URL</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Url</type>
     </fields>
@@ -1043,7 +1043,7 @@
         <label>Lottery Venue</label>
         <length>80</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -1115,7 +1115,7 @@
     <fields>
         <fullName>Maximum_waitlist_size__c</fullName>
         <externalId>false</externalId>
-        <label>Maximum waitlist size</label>
+        <label>Final Waitlist Size</label>
         <precision>4</precision>
         <required>false</required>
         <scale>0</scale>
@@ -1167,7 +1167,7 @@
         <externalId>false</externalId>
         <label>Neighborhood Preference PDF URL</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Url</type>
     </fields>
@@ -1275,11 +1275,11 @@
     <fields>
         <fullName>Number_of_people_currently_on_waitlist__c</fullName>
         <externalId>false</externalId>
-        <label>Number of people currently on waitlist</label>
+        <label>Current Waitlist Size</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -1750,7 +1750,8 @@
         <externalId>false</externalId>
         <formula>Maximum_waitlist_size__c - Number_of_people_currently_on_waitlist__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Total waitlist openings</label>
+        <inlineHelpText>Open Waitlist Slots</inlineHelpText>
+        <label>Open Waitlist Slots</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -1805,7 +1806,7 @@
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <inlineHelpText>Does this building have a waitlist?</inlineHelpText>
-        <label>Has waitlist?</label>
+        <label>Open Waitlist</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -1849,8 +1850,58 @@
         <columns>Flagged_Applications__c</columns>
         <columns>Removed_from_Lottery__c</columns>
         <columns>Lottery_Status__c</columns>
+        <columns>Accepting_Online_Applications__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>All_active</fullName>
+        <columns>Application_Due_Date__c</columns>
+        <columns>NAME</columns>
+        <columns>Account__c</columns>
+        <columns>Status__c</columns>
+        <columns>Units_Available__c</columns>
+        <columns>Accepting_Online_Applications__c</columns>
+        <columns>Submitted_Applications__c</columns>
+        <columns>Flagged_Applications__c</columns>
+        <columns>Removed_from_Lottery__c</columns>
+        <columns>Lottery_Date__c</columns>
+        <columns>Lottery_Results_Date__c</columns>
+        <columns>Lottery_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </filters>
+        <label>Active</label>
+    </listViews>
+    <listViews>
+        <fullName>All_open</fullName>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <columns>NAME</columns>
+        <columns>Account__c</columns>
+        <columns>Status__c</columns>
+        <columns>Application_Due_Date__c</columns>
+        <columns>Accepting_Online_Applications__c</columns>
+        <columns>Lottery_Date__c</columns>
+        <columns>Lottery_Results_Date__c</columns>
+        <columns>Submitted_Applications__c</columns>
+        <columns>Flagged_Applications__c</columns>
+        <columns>Removed_from_Lottery__c</columns>
+        <columns>Lottery_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </filters>
+        <filters>
+            <field>Application_Due_Date__c</field>
+            <operation>greaterThan</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>Open</label>
     </listViews>
     <listViews>
         <fullName>Listing_Details</fullName>
@@ -1862,8 +1913,6 @@
         <columns>Lottery_Date__c</columns>
         <columns>CREATED_DATE</columns>
         <columns>LAST_UPDATE</columns>
-        <columns>Leasing_Agent_Name__c</columns>
-        <columns>Leasing_Agent_Street__c</columns>
         <filterScope>Everything</filterScope>
         <label>Listing Details</label>
     </listViews>
@@ -1897,6 +1946,14 @@
         <customTabListAdditionalFields>Lottery_Date__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Lottery_Results_Date__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Number_of_Applications__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Building_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Building_Street_Address__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Building_City__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Total_Units_in_the_Bldg_including_BMR__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Building__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Building_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Building_Street_Address__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Building_City__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <webLinks>
@@ -1934,7 +1991,7 @@ if( lotteryStatus== &quot;Lottery Complete&quot; || lotteryStatus == &quot;In Pr
  alert(&quot;Lottery has already been run&quot;);
 } else {
 
-message = sforce.apex.execute(&quot;LOT_RandomDrawService&quot;, &quot;runLottery&quot;, {listingID:&quot;{!Listing__c.Id}&quot;}); 
+message = sforce.apex.execute(&quot;LOT_RandomDrawService&quot;, &quot;runLottery&quot;, {listingID:&quot;{!Listing__c.Id}&quot;,isPreferenceLottery:false}); 
 if (message != &apos;&apos;) 
 { 
 alert(message); 
@@ -1975,7 +2032,7 @@ if( lotteryStatus == &quot;In Progress&quot;){
 } else {
 
 
-message = sforce.apex.execute(&quot;LOT_RandomDrawService&quot;, &quot;runLottery&quot;, {listingID:&quot;{!Listing__c.Id}&quot;}); 
+message = sforce.apex.execute(&quot;LOT_RandomDrawService&quot;, &quot;runLottery&quot;, {listingID:&quot;{!Listing__c.Id}&quot;,isPreferenceLottery:true}); 
 if (message != &apos;&apos;) 
 { 
 alert(message); 

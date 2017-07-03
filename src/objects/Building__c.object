@@ -616,7 +616,7 @@
         <fullName>Maximum_waitlist_size__c</fullName>
         <description>Manually-entered number to indicate the maximum size of the waitlist for this building</description>
         <externalId>false</externalId>
-        <label>Maximum waitlist size</label>
+        <label>Final Waitlist Size</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -797,6 +797,10 @@
                     <default>false</default>
                 </value>
                 <value>
+                    <fullName>Tenderloin</fullName>
+                    <default>false</default>
+                </value>
+                <value>
                     <fullName>Treasure Island/YBI</fullName>
                     <default>false</default>
                 </value>
@@ -861,7 +865,7 @@
         <description>Manually-entered number to indicate how many people are currently on this waitlist</description>
         <externalId>false</externalId>
         <inlineHelpText>How many people are currently on the waitlist?</inlineHelpText>
-        <label>Number of people currently on waitlist</label>
+        <label>Current Waitlist Size</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -885,10 +889,10 @@
         <fullName>Number_of_waitlist_openings__c</fullName>
         <description>Captures how many available spots are currently on this waitlist, by using the entered number of people on the waitlist and the maximum size</description>
         <externalId>false</externalId>
-        <formula>Maximum_waitlist_size__c -  Number_of_people_currently_on_waitlist__c</formula>
+        <formula>Maximum_waitlist_size__c - Number_of_people_currently_on_waitlist__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <inlineHelpText>Maximum waitlist size - number of people currently on waitlist</inlineHelpText>
-        <label>Number of waitlist openings</label>
+        <label>Open Waitlist Slots</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -1840,8 +1844,8 @@
         <defaultValue>false</defaultValue>
         <description>Indicator to determine if this building is also keeping applications on a waitlist</description>
         <externalId>false</externalId>
-        <inlineHelpText>Does this building have a waitlist?</inlineHelpText>
-        <label>Has waitlist?</label>
+        <inlineHelpText>Does this building have an open waitlist?</inlineHelpText>
+        <label>Open Waitlist</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -1892,7 +1896,7 @@
     </listViews>
     <nameField>
         <displayFormat>PR-{000000}</displayFormat>
-        <label>Property Auto-Number</label>
+        <label>Building Record Number</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
@@ -1903,6 +1907,12 @@
         <customTabListAdditionalFields>Leasing_Agent__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Leasing_Company__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>New_or_Existing__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Property_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Building_Street_Address__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Building_City__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Property_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Building_Street_Address__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Building_City__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
 </CustomObject>

@@ -34,6 +34,10 @@
                 <behavior>Readonly</behavior>
                 <field>General_Application_Total__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Program_Type__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -47,6 +51,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Status__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Tenure__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -93,6 +101,26 @@
         <label>Availability</label>
         <layoutColumns>
             <layoutItems>
+                <behavior>Edit</behavior>
+                <field>COPUnitsAvailable__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>COP_App_Total__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>DTHPUnitsAvailable__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>DTHP_App_Total__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>General_App_Total__c</field>
+            </layoutItems>
+            <layoutItems>
                 <emptySpace>true</emptySpace>
             </layoutItems>
             <layoutItems>
@@ -109,6 +137,22 @@
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LiveWorkUnitsAvailable__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Live_Work_App_Total__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>NeighborhoodUnitsAvailable__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Neighborhood_App_Total__c</field>
+            </layoutItems>
             <layoutItems>
                 <emptySpace>true</emptySpace>
             </layoutItems>
@@ -368,6 +412,10 @@
                 <behavior>Edit</behavior>
                 <field>Blank_paper_application_can_be_picked_up__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SASE_Required_for_Lottery_Ticket__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -557,6 +605,9 @@
         <style>CustomLinks</style>
     </layoutSections>
     <relatedLists>
+        <relatedList>RelatedNoteList</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>NAME</fields>
         <fields>Application_Submitted_Date__c</fields>
         <fields>Status__c</fields>
@@ -591,6 +642,8 @@
         <relatedList>Listing_Image__c.Listing__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <customButtons>New_Unit</customButtons>
+        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Unit_Type__c</fields>
         <fields>BMR_Minimum_Annual_Income_Needed__c</fields>

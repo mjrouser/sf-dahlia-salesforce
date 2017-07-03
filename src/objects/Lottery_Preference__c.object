@@ -65,7 +65,7 @@
         <fullName>Auto_Grants_Preference__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
-        <label>Auto Grants Preference</label>
+        <label>Auto Grant Preference</label>
         <referenceTo>Lottery_Preference__c</referenceTo>
         <relationshipLabel>Preferences</relationshipLabel>
         <relationshipName>Preferences</relationshipName>
@@ -122,6 +122,7 @@
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
+        <columns>Auto_Grants_Preference__c</columns>
         <columns>Active__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>

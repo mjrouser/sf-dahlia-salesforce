@@ -10,23 +10,23 @@
 
 public without sharing virtual class HOP_ControllerBase {
 
-	// Current User's record is queried for the licence name and Account Id.
-	// Available to all the controllers that implement this base class.
-	public User myUser {get; set;}
-	
-	// Grants access to the following constants on all the controllers that implement this base class
-	// The constants are used on several of the HOP pages
-	public String COMMUNITY_LICENSE_NAME {get { return HOP_Constants.COMMUNITY_LICENSE_NAME; }}
-	public String DRAFT_APPLICATION {get { return HOP_Constants.DRAFT_APPLICATION; }}
-	public String PAPER_APPLICATION {get { return HOP_Constants.PAPER_APPLICATION; }}
-	
-	public HOP_ControllerBase() {
-		// Queries the current User's licence name and Account Id
-		myUser = [SELECT Id, Contact.AccountId, Profile.UserLicense.Name FROM User WHERE Id = :UserInfo.getUserId()];
-	}
-	 @RemoteAction
+    // Current User's record is queried for the licence name and Account Id.
+    // Available to all the controllers that implement this base class.
+    public User myUser {get; set;}
+    
+    // Grants access to the following constants on all the controllers that implement this base class
+    // The constants are used on several of the HOP pages
+    public String COMMUNITY_LICENSE_NAME {get { return HOP_Constants.COMMUNITY_LICENSE_NAME; }}
+    public String DRAFT_APPLICATION {get { return HOP_Constants.DRAFT_APPLICATION; }}
+    public String PAPER_APPLICATION {get { return HOP_Constants.PAPER_APPLICATION; }}
+    
+    public HOP_ControllerBase() {
+        // Queries the current User's licence name and Account Id
+        myUser = [SELECT Id, Contact.AccountId, Profile.UserLicense.Name,TimeZoneSidKey FROM User WHERE Id = :UserInfo.getUserId()];
+    }
+     @RemoteAction
     public static dataTableResponse getRecords(string objectName,string fieldList,string whereClause) {
-        User myUser = [SELECT Id, Contact.AccountId, Profile.UserLicense.Name FROM User WHERE Id = :UserInfo.getUserId()];
+        User myUser = [SELECT Id, Contact.AccountId, Profile.UserLicense.Name,TimeZoneSidKey  FROM User WHERE Id = :UserInfo.getUserId()];
         
         string queryString ='select '+fieldList+' from '+objectName;
         if(whereClause != null && whereClause != ''){
@@ -71,14 +71,17 @@ public without sharing virtual class HOP_ControllerBase {
             Schema.DisplayType FldType = field.getType();
             this.data=name;           
             if(FldType==schema.displaytype.reference || FldType==schema.displaytype.id){
-            	this.visible=false;
-            	
+                this.visible=false;
+                
             }
             if(FldType==schema.displaytype.string || FldType==schema.displaytype.id || FldType==schema.displaytype.phone || FldType==schema.displaytype.reference || FldType==schema.displaytype.url || FldType==schema.displaytype.email){
                 type='string';
             }            
-            if(FldType==schema.displaytype.date || FldType==schema.displaytype.datetime){
+            if(FldType==schema.displaytype.date){
                 type='date';
+            }
+            if(FldType==schema.displaytype.datetime){
+                type='datetime';
             }
             if(FldType==schema.displaytype.boolean){
                 type='boolean';

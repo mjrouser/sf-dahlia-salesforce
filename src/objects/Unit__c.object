@@ -549,7 +549,7 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
     <fields>
         <fullName>Property__c</fullName>
         <externalId>false</externalId>
-        <label>Property</label>
+        <label>Building Record Number</label>
         <referenceTo>Building__c</referenceTo>
         <relationshipLabel>Units</relationshipLabel>
         <relationshipName>Units</relationshipName>
@@ -876,7 +876,23 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
         <picklistValues>
             <picklist>Priority</picklist>
             <values>
+                <fullName>Developmental disabilities</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Hearing impaired</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hearing%2FVision impaired</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mobility impaired</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mobility%2FHearing%2FVision impaired</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -885,6 +901,10 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
             </values>
             <values>
                 <fullName>Veteran</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vision impaired</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -976,6 +996,10 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
         </picklistValues>
         <picklistValues>
             <picklist>Priority</picklist>
+            <values>
+                <fullName>Developmental disabilities</fullName>
+                <default>false</default>
+            </values>
             <values>
                 <fullName>Hearing impaired</fullName>
                 <default>false</default>
@@ -1084,4 +1108,20 @@ IF(ISPICKVAL(Unit_Type__c,&apos;5 BR&apos;),5,
         <errorConditionFormula>AND(NOT(ISBLANK(BMR_Rent_Monthly__c)), NOT(ISBLANK( Rent_percent_of_income__c)))</errorConditionFormula>
         <errorMessage>Enter data in either &quot;Monthly rent (if $)&quot; or &quot;Monthly Rent (if % of income)&quot;, but not both.</errorMessage>
     </validationRules>
+    <webLinks>
+        <fullName>New_Unit</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>New Unit</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/a0b/e?CF00NU0000005zAdK={!Listing__c.Name}
+&amp;CF00NU0000005zAdK_lkid={!Listing__c.Id}
+&amp;CF00NU0000005zAX2_lkid={!Listing__c.BuildingId__c}
+&amp;CF00NU0000005zAX2={!Listing__c.Building__c}
+&amp;RecordType=012U00000001q6e</url>
+    </webLinks>
 </CustomObject>

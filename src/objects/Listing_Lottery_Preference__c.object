@@ -56,7 +56,7 @@
         <fullName>Auto_Grants_Preference__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
-        <label>Auto Grants Preference</label>
+        <label>Auto Grant Preference</label>
         <referenceTo>Listing_Lottery_Preference__c</referenceTo>
         <relationshipLabel>Listing Preferences</relationshipLabel>
         <relationshipName>Listing_Preferences</relationshipName>
@@ -178,7 +178,7 @@
     <fields>
         <fullName>Total_Submitted_Apps__c</fullName>
         <externalId>false</externalId>
-        <label>Applications</label>
+        <label>Total Submitted App</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -203,7 +203,7 @@
     </listViews>
     <nameField>
         <displayFormat>LP-{00000}</displayFormat>
-        <label>Listing Preference Name</label>
+        <label>Listing Preference Number</label>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Listing Preferences</pluralLabel>

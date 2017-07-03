@@ -215,10 +215,6 @@
                 <field>DOB_Text__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>isFiltered__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Candidate_Score__c</field>
             </layoutItems>
@@ -229,8 +225,8 @@
                 <field>Neighborhood_Preference_Match__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Which_component_of_locator_was_used__c</field>
+                <behavior>Required</behavior>
+                <field>isFiltered__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -239,6 +235,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Y_Coordinate__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Which_component_of_locator_was_used__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>

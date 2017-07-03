@@ -1010,6 +1010,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <columns>Date_of_Birth__c</columns>
         <columns>City__c</columns>
         <columns>Work_in_SF__c</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -1029,6 +1030,7 @@ Renamed again to Application Member from Application Household on 6/16/16 per cl
         <lookupDialogsAdditionalFields>Contact__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Phone__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Email__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Date_of_Birth__c</lookupDialogsAdditionalFields>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <startsWith>Vowel</startsWith>

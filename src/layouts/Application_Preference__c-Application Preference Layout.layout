@@ -131,13 +131,6 @@
     </layoutSections>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Preference_Name__c</fields>
-        <fields>Preference_Lottery_Rank__c</fields>
-        <fields>Receives_Preference__c</fields>
-        <relatedList>Application_Preference__c.Auto_Grants_Preference__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
         <fields>Document_Type__c</fields>
         <fields>UPDATEDBY_USER</fields>
         <fields>CREATED_DATE</fields>
@@ -149,7 +142,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h4D000000RCzr</masterLabel>
+        <masterLabel>00h4B000000JeEk</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

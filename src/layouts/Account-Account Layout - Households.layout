@@ -159,6 +159,8 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Building__c</fields>
+        <fields>Building_Name__c</fields>
         <relatedList>Listing__c.Account__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>

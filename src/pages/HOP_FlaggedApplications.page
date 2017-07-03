@@ -41,6 +41,8 @@
             <apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/moment.min.js')}"/>
             <apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/jquery.datetimepicker.full.min.js')}"/>
             <apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/typeahead.bundle.min.js')}"/>
+            <apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/moment-timezone.min.js')}"/>
+            <apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/moment-timezone-with-data.min.js')}"/>
             <script>
             
             function loadData(){
@@ -49,6 +51,7 @@
                 : '';
                 debugger;
                 $.noConflict();
+                moment.tz.setDefault('{!myuser.TimeZoneSidKey}');
                 Visualforce.remoting.Manager.invokeAction(
                     '{!$RemoteAction.HOP_FlaggedApplicationsController.getRecords}', 
                     "Flagged_Record_Set__c",
@@ -62,10 +65,14 @@
                             debugger;
                             for(var j=0;j<result.dataRows.length;j++){
                                 if ( result.dataRows[j].hasOwnProperty(result.dataColumns[i].data) ) {
-                                    if(result.dataColumns[i].type==='date'){
-                                        var dateNumVal=new Date(result.dataRows[j][result.dataColumns[i].data]);
-                                        result.dataRows[j][result.dataColumns[i].data]=moment(dateNumVal).format('M/D/YYYY');
-                                    }   
+                                     if(result.dataColumns[i].type==='date'){
+                                            var dateNumVal=new Date(result.dataRows[j][result.dataColumns[i].data]);
+                                            result.dataRows[j][result.dataColumns[i].data]=moment.utc(dateNumVal).format('M/D/YYYY');
+                                        }
+                                         if(result.dataColumns[i].type==='datetime'){
+                                            var dateNumVal=new Date(result.dataRows[j][result.dataColumns[i].data]);
+                                            result.dataRows[j][result.dataColumns[i].data]=moment(dateNumVal).format('M/D/YYYY');
+                                        }     
                                 }else{
                                     result.dataRows[j][result.dataColumns[i].data]='';
                                 }

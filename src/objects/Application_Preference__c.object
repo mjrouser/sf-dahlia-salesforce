@@ -129,7 +129,7 @@
         <deleteConstraint>SetNull</deleteConstraint>
         <description>parent application preference</description>
         <externalId>false</externalId>
-        <label>Auto Grants Preference</label>
+        <label>Auto Grant Preference</label>
         <referenceTo>Application_Preference__c</referenceTo>
         <relationshipLabel>Application Preferences</relationshipLabel>
         <relationshipName>Application_Preferences</relationshipName>
@@ -295,7 +295,7 @@
         <externalId>false</externalId>
         <formula>Listing_Preference_ID__r.Preference_Name__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Preference Name</label>
+        <label>Preference</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -382,7 +382,7 @@ ISPICKVAL(Lottery_Status__c, &apos;Valid - Added&apos;)
     <label>Application Preference</label>
     <nameField>
         <displayFormat>AP-{0000000000}</displayFormat>
-        <label>Application Preference ID</label>
+        <label>Application Preference Number</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>

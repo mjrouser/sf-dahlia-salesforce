@@ -81,5 +81,9 @@
         <members>Listing__c.Run_Preference_Lottery</members>
         <name>WebLink</name>
     </types>
+    <types>
+        <members>*</members>
+        <name>Workflow</name>
+    </types>
     <version>38.0</version>
 </Package>

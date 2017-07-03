@@ -581,9 +581,11 @@ IF(ISPICKVAL( Applicant__r.Gender__c, &quot;Decline to State&quot;), &quot;Decli
     <fields>
         <fullName>General_Lottery__c</fullName>
         <externalId>false</externalId>
-        <formula>NOT(OR(DTHP_Preference__c,Live_Work_Preference__c,COP_Preference__c, Neighborhood_Preference__c ))</formula>
+        <formula>/*NOT(OR(DTHP_Preference__c,Live_Work_Preference__c,COP_Preference__c, Neighborhood_Preference__c ))*/
+
+Preferences_Received_Count__c == 0</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>General Lottery</label>
+        <label>General Lottery (No Preferences)</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -1604,6 +1606,7 @@ IF(
         <columns>Annual_Income__c</columns>
         <columns>Monthly_Income__c</columns>
         <columns>Total_Household_Size__c</columns>
+        <columns>Live_Work_Preference__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

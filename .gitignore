@@ -1,8 +1,4 @@
-/src/classes/*
-/src/pages/*
-/src/components/*
-/src/staticresources/*
-/src/triggers/*
+
 !/src/classes/Listing*
 !/src/classes/API*
 !/src/classes/API*

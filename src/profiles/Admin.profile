@@ -1241,7 +1241,7 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Application_Preference__c.Auto_Grant_Count__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -6676,9 +6676,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Listing_Lottery_Preference__c.PDF_URL__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -7028,7 +7028,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Listing__c.General_Application_Total__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>

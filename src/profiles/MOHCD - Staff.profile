@@ -1241,14 +1241,14 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Application_Preference__c.Auto_Grant_Count__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Application_Preference__c.Auto_Grants_Preference__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -1598,7 +1598,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Application__c.Live_Work_Preference__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -1658,7 +1658,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Application__c.Neighborhood_Preference_Address__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -1683,7 +1683,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Application__c.Neighborhood_Preference__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -1701,9 +1701,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Application__c.Preferences_Received_Count__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -6651,9 +6651,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Listing_Lottery_Preference__c.Auto_Grants_Preference__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -6676,9 +6676,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Listing_Lottery_Preference__c.PDF_URL__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -7028,7 +7028,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Listing__c.General_Application_Total__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -8026,9 +8026,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Lottery_Preference__c.Auto_Grants_Preference__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -13574,13 +13574,11 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Application__c.BMR_Rental_Short_Form</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Approved_Certificate__c.Certificate_of_Preference</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -13591,7 +13589,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Certificate_Program__c.COP</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -13602,7 +13599,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Compliance__c.Ownership_Verification</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -13618,7 +13614,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Financial_Application_Asset__c.Assets_with_an_Account</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -13649,7 +13644,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Financial_Application_Income__c.Employment_Income</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -13670,7 +13664,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Financial_Application_Member__c.Household_Member</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -13696,7 +13689,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Financial_Application__c.DALP</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -13722,7 +13714,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Housing_Application_Asset__c.Assets_with_an_Account</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -13753,7 +13744,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Housing_Application_Income__c.Employment_Income</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -13774,13 +13764,11 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Housing_Application_Member__c.Household_Member</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Housing_Application__c.BMR_Ownership</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -13791,7 +13779,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Loan_Activity__c.Capital_Improvements</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -13822,13 +13809,11 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Members__c.Household_Member</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Personal_Asset__c.Assets_with_an_Account</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -13859,7 +13844,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Personal_Income__c.Employment_Income</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -13885,7 +13869,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Properties__c.Development</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -13906,7 +13889,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Unit__c.BMR_Rental</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
