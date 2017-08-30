@@ -1,0 +1,1543 @@
+<apex:page applyBodyTag="false" applyHtmlTag="false" id="HOP_Listing" controller="HOP_ListingController"
+		   docType="HTML-5.0" showChat="false" showHeader="false" sidebar="false" standardStylesheets="false">
+	  <apex:composition template="HOP_Template">
+		<apex:define name="title">View Listing</apex:define>
+		
+		<apex:define name="styles">
+			<style type="text/css">
+				.nav > li.disabled {
+				cursor: not-allowed;
+				}
+				.nav > li.disabled > a {
+				color: #999;
+				pointer-events: none;
+				}
+			</style>
+			<apex:stylesheet value="{!URLFOR($Resource.SalesforceDataTables, '/css/dataTables.bootstrap.min.css')}"/>
+			<apex:stylesheet value="{!URLFOR($Resource.SalesforceDataTables, '/css/buttons.dataTables.min.css')}"/>
+			<apex:stylesheet value="{!URLFOR($Resource.SalesforceDataTables, '/css/select.dataTables.min.css')}"/>
+			<apex:stylesheet value="{!URLFOR($Resource.SalesforceDataTables, '/css/typeahead.bundle.min.css')}"/>
+		</apex:define>
+		
+		<apex:define name="error">
+			<div class="top-general-alert alert alert-danger slide down" role="alert" aria-hidden="true" aria-label="Page Alerts">
+				<apex:messages styleClass="errorArea" id="errorMessages" />
+			</div>
+		</apex:define>
+		
+		<apex:define name="body">
+			<apex:form styleClass="form-horizontal" rendered="{! !hasErrors }">
+				<apex:actionFunction name="activateEditMode" reRender="titleWrapper, formWrapper">
+					<apex:param name="p1" value="true" assignTo="{!editMode}" />
+				</apex:actionFunction>
+				<apex:actionFunction name="saveListing" action="{!saveListing}" reRender="titleWrapper, formWrapper, errorMessages, lstLoadedScript"
+									 oncomplete="tryInitRelated();" />
+				
+				<apex:outputPanel layout="block" rendered="{! !ISBLANK(retUrl) }">
+					<div class="form-group">
+						<div class="col-xs-12">
+							<a href="{!retUrl}">Back to previous page</a>
+						</div>
+					</div>
+				</apex:outputPanel>
+				
+				<apex:outputPanel layout="block" id="titleWrapper">
+					<div class="form-group">
+						<div class="col-xs-12 sectionHeader">
+							<apex:outputPanel layout="none" rendered="{! editMode }">
+								<h4>{! IF(lst.Id == null, 'New Listing', 'Listing ' + lst.Name) }</h4>
+							</apex:outputPanel>
+							<apex:outputPanel layout="none" rendered="{! !editMode }">
+								<h4>{! 'Listing ' + lst.Name }</h4>
+							</apex:outputPanel>
+						</div>
+					</div>
+				</apex:outputPanel>
+				
+				<ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="active">
+						<a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details</a>
+					</li>
+					<li role="presentation" class="disabled" id="liRelInfo">
+						<a href="#related" aria-controls="related" role="tab" data-toggle="tab">Related Information</a>
+					</li>
+				</ul>
+				
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="details">
+						<apex:outputPanel layout="block" id="formWrapper">
+							<div class="form-group">
+								<!-- <div class="col-xs-12 sectionHeader">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<button type="button" class="btn btn-primary" onclick="saveListing();">Save</button>
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<button type="button" class="btn btn-default" onclick="activateEditMode();">Edit</button>
+</apex:outputPanel>
+</div> -->
+							</div>
+							<div class="section" style="padding-bottom: 0;">
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Owner</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.OwnerId}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Owner.Name}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Application Due Date</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Application_Due_Date__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Application_Due_Date__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Listing Name</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Name}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Name}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Number of Applications</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Number_of_Applications__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Submitted_Applications__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<!-- <div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Status</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<apex:inputField value="{!lst.Status__c}" styleClass="form-control" />
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Status__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div> -->
+								</div>
+								<!-- <div class="row">
+<div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Building</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<apex:inputField value="{!lst.Building__c}" styleClass="form-control" />
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Building__r.Name}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div>
+<div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Min Occupancy</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<apex:inputField value="{!lst.Min_Occupancy__c}" styleClass="form-control" />
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Min_Occupancy__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div>
+<div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Min BR</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<apex:inputField value="{!lst.Min_BR__c}" styleClass="form-control" />
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Min_BR__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div>
+</div> -->
+								<!-- <div class="row">
+<div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Lottery Winners</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Lottery_Winners__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div>
+<div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Max BR</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<apex:inputField value="{!lst.Max_BR__c}" styleClass="form-control" />
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Max_BR__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div>
+</div> -->
+								<!-- <div class="row">
+<div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Lottery Results</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Lottery_Results__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div>
+<div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Min Income</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<apex:inputField value="{!lst.Min_Income__c}" styleClass="form-control" />
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Min_Income__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div>
+</div> -->
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Account</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Account__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Account__r.Name}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">AMI Percentage</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.AMI_Percentage__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.AMI_Percentage__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<!-- <div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Max Occupancy</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<apex:inputField value="{!lst.Max_Occupancy__c}" styleClass="form-control" />
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Max_Occupancy__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div>
+<div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Max Income</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<apex:inputField value="{!lst.Max_Income__c}" styleClass="form-control" />
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Max_Income__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div> -->
+								</div>
+								<div class="row">
+									<!-- <div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Neighborhood Preference PDF URL</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.NeighborHoodPreferenceUrl__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.NeighborHoodPreferenceUrl__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div> -->
+									
+								</div>
+								<!-- <div class="row">
+
+</div> -->
+							</div>
+							<div class="form-group">
+								<div class="col-xs-12 sectionHeader">
+									<h4>Building Information</h4>
+								</div>
+							</div>
+							<div class="section" style="padding-bottom: 0;">
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Building Name</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Building_Name__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Neighborhood</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Neighborhood__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Building Street Address</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Building_Street_Address__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Developer</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Developer__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Building City</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Building_City__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Photo URL</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static ellipsis">
+														<apex:outputLink value="{!lst.Building_URL__c}">
+															<apex:outputField value="{!lst.Building_URL__c}" />
+														</apex:outputLink>
+													</p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Building State</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Building_State__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Year Built</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputText value="{!lst.Year_Built__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Building Zip Code</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Building_Zip_Code__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<!-- <div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Description</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<apex:inputField value="{!lst.Description__c}" styleClass="form-control" />
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Description__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div> -->
+								</div>
+								<!-- <div class="row">
+<div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Lottery Preferences</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<apex:inputField value="{!lst.Lottery_Preferences__c}" styleClass="form-control" />
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Lottery_Preferences__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div>
+</div> -->
+							</div>
+							<div class="form-group">
+								<div class="col-xs-12 sectionHeader">
+									<h4>Listing Preferences</h4>
+								</div>
+							</div>
+							<div id="SFDT_ListingPreferences" class="section" style="overflow: auto;">
+								<!-- <table id="listingPreferencesTable" class="table table-striped table-bordered" cellspacing="0" width="100%"></table> -->
+								<apex:outputPanel layout="none" rendered="{!listingPreferences.size == 0}">
+									<p style="margin: 0;">No Preferences</p>
+								</apex:outputPanel>
+								<apex:outputPanel layout="none" rendered="{!listingPreferences.size > 0}">
+									<table class="table table-bordered" id="shortFormPreferencesTable">
+										<thead>
+											<tr>
+												<th>Preference Name</th>
+												<th>Description for this listing</th>
+												<th>PDF URL</th>
+												<th>Order</th>
+												<th>Available units</th>
+											</tr>
+										</thead>
+										<tbody>
+											<apex:repeat value="{!listingPreferences}" var="listingPreference">
+												<tr>
+													<td><apex:outputField value="{!listingPreference.Preference_Name__c}" /></td>
+													<td><apex:outputField value="{!listingPreference.Description__c}" /></td>
+													<td><apex:outputField value="{!listingPreference.PDF_URL__c}" /></td>
+													<td><apex:outputField value="{!listingPreference.Order__c}" /></td>
+													<td><apex:outputField value="{!listingPreference.Available_Units__c}" /></td>
+												</tr>
+											</apex:repeat>
+										</tbody>
+									</table>
+								</apex:outputPanel>
+							</div>
+							<div class="form-group">
+								<div class="col-xs-12 sectionHeader">
+									<h4>Accessibility, Amenities, Fees</h4>
+								</div>
+							</div>
+							<div class="section" style="padding-bottom: 0;">
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Accessibility</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Accessibility__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Accessibility__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Application Fee</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Fee__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Fee__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Amenities</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Amenities__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Amenities__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Deposit Min</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Deposit_Min__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Deposit_Min__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Costs Not Included</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Costs_Not_Included__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Costs_Not_Included__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Deposit Max</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Deposit_Max__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Deposit_Max__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-xs-12 sectionHeader">
+									<h4>Lottery Information</h4>
+								</div>
+							</div>
+							<div class="section" style="padding-bottom: 0;">
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Lottery Date</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Lottery_Date__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Lottery_Date__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Lottery Results Date</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Lottery_Results_Date__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Lottery_Results_Date__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Lottery Venue</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Lottery_Venue__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Lottery_Venue__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Lottery Status</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Lottery_Status__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Lottery_Status__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Lottery Street Address</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Lottery_Street_Address__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Lottery_Street_Address__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Lottery Summary</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Lottery_Summary__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Lottery_Summary__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<!-- <div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Lottery Start Time</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<apex:inputField value="{!lst.Lottery_Start_Time__c}" styleClass="form-control" />
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Lottery_Start_Time__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div> -->
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Lottery City</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Lottery_City__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Lottery_City__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- <div class="row">
+<div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Lottery URL</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<apex:inputField value="{!lst.Lottery_URL__c}" styleClass="form-control" />
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static ellipsis">
+<apex:outputLink value="{!lst.Lottery_URL__c}">
+<apex:outputField value="{!lst.Lottery_URL__c}" />
+</apex:outputLink>
+</p>
+</apex:outputPanel>
+</div>
+</div>
+</div>
+<div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Draw ID</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<apex:inputField value="{!lst.Draw_ID__c}" styleClass="form-control" />
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Draw_ID__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div>
+</div> -->
+							</div>
+							<div class="form-group">
+								<div class="col-xs-12 sectionHeader">
+									<h4>Application Information</h4>
+								</div>
+							</div>
+							<div class="section" style="padding-bottom: 0;">
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Application Phone</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Application_Phone__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Application_Phone__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Office Hours</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Office_Hours__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Office_Hours__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Application Organization</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Application_Organization__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Application_Organization__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<!-- <div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Office Open</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<apex:inputField value="{!lst.Office_Open__c}" styleClass="form-control" />
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Office_Open__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div> -->
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Application Street Address</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Application_Street_Address__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Application_Street_Address__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<!-- <div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Office Closed</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<apex:inputField value="{!lst.Office_Closed__c}" styleClass="form-control" />
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Office_Closed__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div> -->
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Application City</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Application_City__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Application_City__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Download URL</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Download_URL__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static ellipsis">
+														<apex:outputLink value="{!lst.Download_URL__c}">
+															<apex:outputField value="{!lst.Download_URL__c}" />
+														</apex:outputLink>
+													</p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Application State</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Application_State__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Application_State__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<!-- <div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Organization URL</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Organization_URL__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div> -->
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Application Postal Code</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Application_Postal_Code__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Application_Postal_Code__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-xs-12 sectionHeader">
+									<h4>Leasing Agent and Developer Information</h4>
+								</div>
+							</div>
+							<div class="section" style="padding-bottom: 0;">
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Leasing Agent Name</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Leasing_Agent_Name__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Leasing Agent Title</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Leasing_Agent_Title__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Leasing Agent Email</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Leasing_Agent_Email__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Leasing Agent Phone</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Leasing_Agent_Phone__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--
+<div class="section" style="padding-bottom: 0;">
+<div class="row">
+<div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Preference Detail</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<apex:inputField value="{!lst.Preference_Detail__c}" styleClass="form-control" />
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Preference_Detail__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Rental History</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<apex:inputField value="{!lst.Eviction_History__c}" styleClass="form-control" />
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Eviction_History__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div>
+<div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Criminal Background</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<apex:inputField value="{!lst.Criminal_History__c}" styleClass="form-control" />
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Criminal_History__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Rental Assistance</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<apex:inputField value="{!lst.Rental_Assistance__c}" styleClass="form-control" />
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Rental_Assistance__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div>
+<div class="col-sm-6">
+<div class="form-group">
+<label class="col-sm-6 control-label">Credit History</label>
+<div class="col-sm-6">
+<apex:outputPanel layout="none" rendered="{! editMode }">
+<apex:inputField value="{!lst.Credit_Rating__c}" styleClass="form-control" />
+</apex:outputPanel>
+<apex:outputPanel layout="none" rendered="{! !editMode }">
+<p class="form-control-static"><apex:outputField value="{!lst.Credit_Rating__c}" /></p>
+</apex:outputPanel>
+</div>
+</div>
+</div>
+</div>
+</div>
+-->
+							<div class="form-group">
+								<div class="col-xs-12 sectionHeader">
+									<h4>Additional Eligibility Rules</h4>
+								</div>
+							</div>
+							<div class="section" style="padding-bottom: 0;">
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Building Selection Criteria</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Building_Selection_Criteria__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Building_Selection_Criteria__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Rental History</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Eviction_History__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Eviction_History__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Credit History</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Credit_Rating__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Credit_Rating__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Criminal Background</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Criminal_History__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Criminal_History__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-xs-12 sectionHeader">
+									<h4>Additional Information</h4>
+								</div>
+							</div>
+							<div class="section" style="padding-bottom: 0;">
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Required Documents</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Required_Documents__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Required_Documents__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Smoking Policy</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Smoking_Policy__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Smoking_Policy__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Important Program Rules</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Legal_Disclaimers__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<div class="form-control-static">
+														<apex:outputField value="{!lst.Legal_Disclaimers__c}" />
+													</div>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-6 control-label">Pet Policy</label>
+											<div class="col-sm-6">
+												<apex:outputPanel layout="none" rendered="{! editMode }">
+													<apex:inputField value="{!lst.Pet_Policy__c}" styleClass="form-control" />
+												</apex:outputPanel>
+												<apex:outputPanel layout="none" rendered="{! !editMode }">
+													<p class="form-control-static"><apex:outputField value="{!lst.Pet_Policy__c}" /></p>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</apex:outputPanel>
+					</div>
+					
+					<div role="tabpanel" class="tab-pane" id="related">
+						<div class="form-group">
+							<div class="col-xs-12 sectionHeader">
+								<h4>Applications</h4>
+							</div>
+						</div>
+						<div id="SFDT_Applications" class="section" style="overflow: auto;">
+							<table id="applicationsTable" class="table table-striped table-bordered" cellspacing="0" width="100%"></table>
+						</div>
+						<div class="form-group">
+							<div class="col-xs-12 sectionHeader">
+								<h4>Open Houses</h4>
+							</div>
+						</div>
+						<div id="SFDT_OpenHouses" class="section" style="overflow: auto;">
+							<table id="openHousesTable" class="table table-striped table-bordered" cellspacing="0" width="100%"></table>
+						</div>
+						<div class="form-group">
+							<div class="col-xs-12 sectionHeader">
+								<h4>Information Sessions</h4>
+							</div>
+						</div>
+						<div id="SFDT_InformationSessions" class="section" style="overflow: auto;">
+							<table id="informationSessionsTable" class="table table-striped table-bordered" cellspacing="0" width="100%"></table>
+						</div>
+					</div>
+				</div>
+			</apex:form>
+		</apex:define>
+		
+		<apex:define name="scripts">
+			
+			<apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/jquery-2.2.4.min.js')}"/>
+			<apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/bootstrap.min.js')}"/>			
+			<apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/jquery.dataTables.min.js')}"/>
+			<apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/dataTables.bootstrap.min.js')}"/>
+			<apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/dataTables.select.min.js')}"/>
+			<apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/dataTables.keyTable.min.js')}"/>			
+			<apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/dataTables.buttons.min.js')}"/>
+			<apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/moment.min.js')}"/>
+			<apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/jquery.datetimepicker.full.min.js')}"/>
+			<apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/typeahead.bundle.min.js')}"/>
+			<apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/moment-timezone.min.js')}"/>
+			<apex:includeScript value="{!URLFOR($Resource.SalesforceDataTables, '/js/moment-timezone-with-data.min.js')}"/>
+			
+			<apex:outputPanel id="lstLoadedScript" layout="block">
+				<script>
+				var lstId = '{!lst.Id}';
+				var lstLoaded = {!lst.Id != null};
+				</script>
+			</apex:outputPanel>
+			<script>
+			moment.tz.setDefault('{!myuser.TimeZoneSidKey}');
+			var relatedShown = false;
+			var listingPreferencesTableData;
+			var applicationsTableData;
+			var openHousesTableData;
+			var informationSessionsTableData;
+			
+			
+			
+			
+			function loadRelatedTabData(){
+				$.noConflict();
+				Visualforce.remoting.Manager.invokeAction(
+					'{!$RemoteAction.HOP_ListingController.getRecords}', 
+					"Listing_Lottery_Preference__c",
+					"Id,Preference_Name__c, Description__c, PDF_URL__c, Order__c, Available_Units__c",
+					"Listing__c = '" + lstId + "'",						
+					function(result, event){
+						debugger;
+						//if (!remotingErrorHandler(event)) return;
+						
+						for(var i=0;i<result.dataColumns.length;i++){
+							debugger;
+							for(var j=0;j<result.dataRows.length;j++){
+								if ( result.dataRows[j].hasOwnProperty(result.dataColumns[i].data) ) {
+									if(result.dataColumns[i].type==='date'){
+											var dateNumVal=new Date(result.dataRows[j][result.dataColumns[i].data]);
+											result.dataRows[j][result.dataColumns[i].data]=moment.utc(dateNumVal).format('M/D/YYYY');
+										}
+										 if(result.dataColumns[i].type==='datetime'){
+											var dateNumVal=new Date(result.dataRows[j][result.dataColumns[i].data]);
+											result.dataRows[j][result.dataColumns[i].data]=moment(dateNumVal).format('M/D/YYYY');
+										}	  
+								}else{
+									result.dataRows[j][result.dataColumns[i].data]='';
+								}
+							}
+						}
+						var dataRows=result.dataRows;
+						debugger; 
+						var pleaseWaitString = '<div class="pleaseWaitWrapper">' +
+							'<img src="/img/loading32.gif" alt="Loading" style="vertical-align: middle;"/>' +
+							'<br />Please wait...' +
+							'</div>';
+						$('#listingPreferencesTable').html('');
+						
+						listingPreferencesTableData = $('#listingPreferencesTable').DataTable({
+							'paging': true,
+							'pageLength': 10,
+							'ordering': true,
+							'info': true,
+							'processing': true,
+							'select': true,
+							
+							'language': {
+								'loadingRecords': pleaseWaitString,
+								'processing': pleaseWaitString
+							},						   
+							data: result.dataRows,								
+							columns: result.dataColumns,
+							
+						});
+						listingPreferencesTableData.select.info( false );
+					}, 
+					
+					{escape: true}
+				);
+				
+				
+				
+				if (!relatedShown && lstLoaded) {
+					$('#liRelInfo').removeClass('disabled');
+					
+					var whereClause = '{!myUser.Profile.UserLicense.Name}' == '{!COMMUNITY_LICENSE_NAME}'
+					? " AND Status__c != '{!DRAFT_APPLICATION}'"
+					: '';
+					debugger;
+					
+					Visualforce.remoting.Manager.invokeAction(
+						'{!$RemoteAction.HOP_ListingController.getRecords}', 
+						"Application__c",
+						"Id,Listing__c,Listing__r.Name, Name, Last_Name__c, First_Name__c, Application_Submitted_Date__c",
+						"Listing__c = '" + lstId + "'" + whereClause,						
+						function(result, event){
+							debugger;
+							//if (!remotingErrorHandler(event)) return;
+							
+							for(var i=0;i<result.dataColumns.length;i++){
+								debugger;
+								for(var j=0;j<result.dataRows.length;j++){
+									if ( result.dataRows[j].hasOwnProperty(result.dataColumns[i].data) ) {
+										 if(result.dataColumns[i].type==='date'){
+											var dateNumVal=new Date(result.dataRows[j][result.dataColumns[i].data]);
+											result.dataRows[j][result.dataColumns[i].data]=moment.utc(dateNumVal).format('M/D/YYYY');
+										}
+										 if(result.dataColumns[i].type==='datetime'){
+											var dateNumVal=new Date(result.dataRows[j][result.dataColumns[i].data]);
+											result.dataRows[j][result.dataColumns[i].data]=moment(dateNumVal).format('M/D/YYYY');
+										}	
+									}else{
+										result.dataRows[j][result.dataColumns[i].data]='';
+									}
+								}
+							}
+							var dataRows=result.dataRows;
+							debugger; 
+							var pleaseWaitString = '<div class="pleaseWaitWrapper">' +
+								'<img src="/img/loading32.gif" alt="Loading" style="vertical-align: middle;"/>' +
+								'<br />Please wait...' +
+								'</div>';
+							$('#applicationsTable').html('');
+							
+							applicationsTableData = $('#applicationsTable').DataTable({
+								'paging': true,
+								'pageLength': 10,
+								'ordering': true,
+								'info': true,
+								'processing': true,
+								'select': true,
+								
+								'language': {
+									'loadingRecords': pleaseWaitString,
+									'processing': pleaseWaitString
+								},
+								'dom': 'lfrt<"dt-bottom-row"ip>',						   
+								data: result.dataRows,								
+								columns: result.dataColumns,
+								
+							});
+							applicationsTableData.select.info( false );
+							applicationsTableData.on('select', function( e, dt, type, indexes ) {
+							   debugger;
+							   $('.selectableButton').removeClass('disabled');
+							});
+							applicationsTableData.on('deselect', function( e, dt, type, indexes ) {
+							   debugger;
+							   $('.selectableButton').addClass('disabled');
+							});
+							//var r= $('<div class="row"><div class="col-md-2 col-md-offset-2"><input type="button" value="View" id="viewApplication"/><input type="button" value="New" id="addApp"/></div></div>');
+							var r= $('<div class="col-md-3 col-md-offset-2"><div class="dt-buttons"><a class = "dt-button selectableButton disabled" id="viewApplication">View</a><a class = "dt-button" id="addApp">New</a></div></div>');
+							$(".dt-bottom-row").append(r);
+							$('#viewApplication').click(function(){
+								debugger;
+								if($(this).hasClass('disabled')!==true){
+									var selectedRow = '';
+									var selRow = applicationsTableData.rows({
+										'selected': true
+									});
+									selectedRow = selRow.data()['0'];
+									if(selectedRow ===undefined){
+										alert('Select atleast 1 row');
+										return;
+									}
+									window.location = '/apex/HOP_ApplicationView?id=' + selectedRow.Id +
+										'&retUrl=' + encodeURIComponent(window.location.pathname + window.location.search);
+								 }	   
+							});
+							$('#addApp').click(function(){
+								debugger;
+								/*var selectedRow = '';
+								
+									var selRow = applicationsTableData.rows({
+										'selected': true
+									});
+									selectedRow = selRow.data()['0'];
+									if(selectedRow ===undefined){
+										alert('Select atleast 1 row');
+										return;
+									}*/
+								 if($(this).hasClass('disabled')!==true){   
+									if ({!lst.Lottery_Status__c == 'Lottery Complete'}) {
+										alert('The Lottery is already Complete, you cannot Add any more Applications');
+										return;
+									}
+									window.location = '/apex/HOP_ApplicationForm?listingId=' + lstId +
+													  '&retUrl=' + encodeURIComponent(window.location.pathname + window.location.search);
+									}				  
+							});
+							
+						}, 
+						
+						{escape: true}
+					);
+					
+					Visualforce.remoting.Manager.invokeAction(
+						'{!$RemoteAction.HOP_ListingController.getRecords}', 
+						"Open_Houses__c",
+						"Id,Listing__c,Listing__r.Name, Name, Date__c, Start_Time__c, End_Time__c",
+						"Listing__c = '" + lstId + "'",						
+						function(result, event){
+							debugger;
+							//if (!remotingErrorHandler(event)) return;
+							
+							for(var i=0;i<result.dataColumns.length;i++){
+								debugger;
+								for(var j=0;j<result.dataRows.length;j++){
+									if ( result.dataRows[j].hasOwnProperty(result.dataColumns[i].data) ) {
+										if(result.dataColumns[i].type==='date'){
+											var dateNumVal=new Date(result.dataRows[j][result.dataColumns[i].data]);
+											result.dataRows[j][result.dataColumns[i].data]=moment.utc(dateNumVal).format('M/D/YYYY');
+										}
+										 if(result.dataColumns[i].type==='datetime'){
+											var dateNumVal=new Date(result.dataRows[j][result.dataColumns[i].data]);
+											result.dataRows[j][result.dataColumns[i].data]=moment(dateNumVal).format('M/D/YYYY');
+										}	  
+									}else{
+										result.dataRows[j][result.dataColumns[i].data]='';
+									}
+								}
+							}
+							var dataRows=result.dataRows;
+							debugger; 
+							var pleaseWaitString = '<div class="pleaseWaitWrapper">' +
+								'<img src="/img/loading32.gif" alt="Loading" style="vertical-align: middle;"/>' +
+								'<br />Please wait...' +
+								'</div>';
+							$('#openHousesTable').html('');
+							
+							openHousesTableData = $('#openHousesTable').DataTable({
+								'paging': true,
+								'pageLength': 10,
+								'ordering': true,
+								'info': true,
+								'processing': true,
+								'select': true,
+								
+								'language': {
+									'loadingRecords': pleaseWaitString,
+									'processing': pleaseWaitString
+								},
+								//'dom': 'lfrt<"dt-bottom-row"ip>',						   
+								data: result.dataRows,								
+								columns: result.dataColumns,
+								
+							});
+							openHousesTableData.select.info( false );
+							
+						}, 
+						
+						{escape: true}
+					);
+					Visualforce.remoting.Manager.invokeAction(
+						'{!$RemoteAction.HOP_ListingController.getRecords}', 
+						"Information_Session__c",
+						"Id,Listing__c, Listing__r.Name,Name, Date__c, Start_Time__c, End_Time__c, Venue__c, Street_Address__c, City__c",
+						"Listing__c = '" + lstId + "'",						
+						function(result, event){
+							debugger;
+							//if (!remotingErrorHandler(event)) return;
+							
+							for(var i=0;i<result.dataColumns.length;i++){
+								debugger;
+								for(var j=0;j<result.dataRows.length;j++){
+									if ( result.dataRows[j].hasOwnProperty(result.dataColumns[i].data) ) {
+										 if(result.dataColumns[i].type==='date'){
+											var dateNumVal=new Date(result.dataRows[j][result.dataColumns[i].data]);
+											result.dataRows[j][result.dataColumns[i].data]=moment.utc(dateNumVal).format('M/D/YYYY');
+										}
+										 if(result.dataColumns[i].type==='datetime'){
+											var dateNumVal=new Date(result.dataRows[j][result.dataColumns[i].data]);
+											result.dataRows[j][result.dataColumns[i].data]=moment(dateNumVal).format('M/D/YYYY');
+										}	  
+									}else{
+										result.dataRows[j][result.dataColumns[i].data]='';
+									}
+								}
+							}
+							var dataRows=result.dataRows;
+							debugger; 
+							var pleaseWaitString = '<div class="pleaseWaitWrapper">' +
+								'<img src="/img/loading32.gif" alt="Loading" style="vertical-align: middle;"/>' +
+								'<br />Please wait...' +
+								'</div>';
+							$('#informationSessionsTable').html('');
+							
+							informationSessionsTableData = $('#informationSessionsTable').DataTable({
+								'paging': true,
+								'pageLength': 10,
+								'ordering': true,
+								'info': true,
+								'processing': true,
+								'select': true,
+								
+								'language': {
+									'loadingRecords': pleaseWaitString,
+									'processing': pleaseWaitString
+								},						   
+								data: result.dataRows,								
+								columns: result.dataColumns,
+								
+							});
+							informationSessionsTableData.select.info( false );
+							
+						}, 
+						
+						{escape: true}
+					);
+					relatedShown = true;
+				}
+			}
+			
+			$(document).ready(function() {
+				debugger;
+				loadRelatedTabData();
+				//loadListingPreferences();
+			});
+			</script>
+		</apex:define>
+	</apex:composition>
+</apex:page>

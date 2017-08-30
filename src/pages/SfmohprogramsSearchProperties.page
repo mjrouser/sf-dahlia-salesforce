@@ -1,0 +1,296 @@
+<apex:page id="myPage" controller="SfmohPropertySearchController" sidebar="true">
+  <!--apex:sectionHeader title="SFMOHCD" subtitle="Browse Our Listed Properties" /-->
+  <apex:form id="myForm">
+  <apex:pageMessages id="errors" />
+ 
+  <apex:pageBlock id="pb" title="Find Me A Property!" mode="edit">
+      <font color="#ff1493"><apex:facet name="header">
+                     <p></p>
+                     <span style="color:red; font-size: 18pt; font-weight:bold"> Find Me A Property!</span>
+                     </apex:facet>     </font>
+                     <p></p>
+ 
+  <table width="100%" border="0">
+  <tr>  
+    <td width="150" valign="top">
+ 
+      <apex:pageBlock title="Parameters" mode="edit" id="criteria">
+ 
+      <script type="text/javascript">
+       
+      function doSearch() {
+        searchServer(
+          document.getElementById("myPage:myForm:pb:criteria:occupancyType").value,
+          document.getElementById("myPage:myForm:pb:criteria:proptype").value,
+          document.getElementById("myPage:myForm:pb:criteria:buildingType").value,
+          document.getElementById("price_min").value,
+          document.getElementById("price_max").value,
+          document.getElementById("numBedroomsmin").value,
+          document.getElementById("numBedroomsmax").value,
+          document.getElementById("numBathroomsmin").value,
+          document.getElementById("numBathroomsmax").value,
+          document.getElementById("areaSqFtmin").value,
+          document.getElementById("areaSqFtmax").value,
+          document.getElementById("myPage:myForm:pb:criteria:neighborhood").value,
+          document.getElementById("zipCode").value
+          
+          );
+      }
+      </script> 
+ 
+      <apex:actionFunction name="searchServer" action="{!runSearch}" rerender="results,debug,errors">
+          <apex:param name="occupancyType" value="" />
+          <apex:param name="proptype" value="" />
+          <apex:param name="buildingType" value="" />
+          <apex:param name="price_min" value="" />
+          <apex:param name="price_max" value="" />
+          <apex:param name="numBedroomsmin" value="" />
+          <apex:param name="numBedroomsmax" value="" />
+          <apex:param name="numBathroomsmin" value="" />
+          <apex:param name="numBathroomsmax" value="" />
+          <apex:param name="areaSqFtmin" value="" />
+          <apex:param name="areaSqFtmax" value="" />         
+          <apex:param name="neighborhood" value="" />
+          <apex:param name="zipCode" value="" />
+          
+      </apex:actionFunction>
+ 
+      <table cellpadding="2" cellspacing="2">
+      <tr>
+        <td style="font-weight:bold;">Occupancy Type<br/>
+            <!--apex:inputField id="occupancyType" value="{!prop_detail.Occupancy_Type__c}" style="width: 100px" onchange="doSearch();"/-->
+            <apex:selectList id="occupancyType" value="{!prop_detail.Occupancy_Type__c}" size="1" style="width:100px" onchange="doSearch();">
+              <apex:selectOptions value="{!OccupancyTypeList}" />
+            </apex:selectList>
+         <!-- <input type="text" id="occupancyType" onkeyup="doSearch();"/>-->
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold;">Property Type<br/>
+            <!--apex:inputField id="proptype" value="{!prop_detail.Property_Type__c}" style="width: 100px" onchange="doSearch();"/-->
+            <apex:selectList id="proptype" value="{!prop_detail.Property_Type__c}" size="1" style="width:100px" onchange="doSearch();">
+              <apex:selectOptions value="{!PropertyTypeList}" />
+            </apex:selectList>
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold;">New or Existing<br/>
+            <!--apex:inputField id="buildingType" value="{!prop_detail.New_or_Existing__c}" style="width: 100px" onchange="doSearch();"/-->
+            <apex:selectList id="buildingType" value="{!prop_detail.New_or_Existing__c}" size="1" style="width:100px" onchange="doSearch();">
+              <apex:selectOptions value="{!NeworExistingList}" />
+            </apex:selectList>
+       <!-- <input type="text" id="buildingType" onkeyup="doSearch();"/>-->
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold;">Price<br/>
+            <apex:outputLabel value="min" for="price_min"/>&nbsp;
+            <input type="text" id="price_min" maxlength="6" size="6" onchange="doSearch();"/><br/>
+            <apex:outputLabel value="max" for="price_max"/>
+            <input type="text" id="price_max" maxlength="6" size="6" onchange="doSearch();"/>
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold;"># of Bedrooms<br/>
+            <apex:outputLabel value="min" for="numBedroomsmin"/>&nbsp;
+            <input type="text" id="numBedroomsmin" maxlength="6" size="6" onchange="doSearch();"/><br/>
+            <apex:outputLabel value="max" for="numBedroomsmax"/>
+            <input type="text" id="numBedroomsmax" maxlength="6" size="6" onchange="doSearch();"/>
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold;"># of Bathrooms<br/>
+            <apex:outputLabel value="min" for="numBathroomsmin"/>&nbsp;
+            <input type="text" id="numBathroomsmin" maxlength="6" size="6" onchange="doSearch();"/><br/>
+            <apex:outputLabel value="max" for="numBathroomsmax"/>
+            <input type="text" id="numBathroomsmax" maxlength="6" size="6" onchange="doSearch();"/>
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold;">Area in Sq Ft<br/>
+            <apex:outputLabel value="min" for="areaSqFtmin"/>&nbsp;
+            <input type="text" id="areaSqFtmin" maxlength="6" size="6" onchange="doSearch();"/><br/>
+            <apex:outputLabel value="max" for="areaSqFtmax"/>
+            <input type="text" id="areaSqFtmax" maxlength="6" size="6" onchange="doSearch();"/>
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold;">Neighborhood<br/>
+            <!--apex:inputField id="neighborhood" value="{!prop_detail.Neighborhood__c}" style="width: 100px" onchange="doSearch();" /-->
+            <apex:selectList id="neighborhood" value="{!prop_detail.Neighborhood__c}" size="1" style="width:100px" onchange="doSearch();">
+              <apex:selectOptions value="{!NeighborhoodList}" />
+            </apex:selectList>
+            <!--<apex:panelGrid columns="3" id="abcd">
+
+                <apex:selectList id="sel1" value="{!leftselected}" multiselect="true" style="width:100px" size="5">
+        
+                    <apex:selectOptions value="{!unselectedvalues}" />
+        
+                </apex:selectList>
+
+                <apex:panelGroup >
+
+                    <br/>
+
+                        <apex:commandButton value=">>" action="{!selectclick}" reRender="abcd">
+                        </apex:commandButton>
+
+                        
+
+                    
+
+                    <br/><br/>
+
+                    
+                        <apex:commandButton value="<<" action="{!unselectclick}" reRender="abcd">
+                        </apex:commandButton>
+                        
+
+
+                </apex:panelGroup>
+
+                <apex:selectList id="sel2" value="{!rightselected}" multiselect="true" style="width:100px" size="5" onchange="doSearch();">
+    
+                    <apex:selectOptions value="{!SelectedValues}" />
+    
+                </apex:selectList>
+
+            </apex:panelGrid>
+        <!--<input type="text" id="neighborhood" onkeyup="doSearch();"/>-->
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold;">Zip Code<br/>
+        <!--<apex:inputField id="zipCode" value="{!prop_detail.Zip_Code__c}" onchange="doSearch();"/>-->
+            <input type="text" id="zipCode" maxlength="5" size="13" onkeyup="doSearch();"/>
+        </td>
+      </tr>
+      </table>
+ 
+      </apex:pageBlock>
+ 
+    </td>
+    <td valign="top">
+ 
+    <apex:pageBlock mode="edit" id="results">
+ 
+        <apex:pageBlockTable id="tbprop" value="{!properties}" var="property">
+            
+
+            <apex:column >
+                <apex:facet name="header">
+                    <apex:commandLink value="Property Name" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="Name" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                </apex:facet>
+                <apex:outputLink value="/{!property.id}">{!property.Name}</apex:outputLink>
+            </apex:column>
+            
+            
+            
+            <apex:column >
+                <apex:facet name="header">
+                    <apex:commandLink value="Price" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="Price__c" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                </apex:facet>
+                <apex:outputField value="{!property.Price__c}"/>
+            </apex:column>
+ 
+            <apex:column >
+                <apex:facet name="header">
+                    <apex:commandLink value="Occupancy Type" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="Occupancy_Type__c" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                </apex:facet>
+                <apex:outputField value="{!property.Occupancy_Type__c}"/>
+            </apex:column>
+ 
+            <apex:column >
+                <apex:facet name="header">
+                    <apex:commandLink value="Zip Code" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="Zip_Code__c" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                </apex:facet>
+                <apex:outputField value="{!property.Zip_Code__c}"/>
+            </apex:column>
+            
+            <apex:column >
+                <apex:facet name="header">
+                    <apex:commandLink value="# of Bedrooms" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="of_bedrooms__c" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                </apex:facet>
+                <apex:outputField value="{!property.of_Bedrooms__c}"/>
+            </apex:column>
+            
+            <apex:column >
+                <apex:facet name="header">
+                    <apex:commandLink value="# of Bathrooms" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="of_bathrooms__c" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                </apex:facet>
+                <apex:outputField value="{!property.of_Bathrooms__c}"/>
+            </apex:column>
+            
+            <apex:column >
+                <apex:facet name="header">
+                    <apex:commandLink value="Area in Sq Ft" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="Area_Sq_Ft__c" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                </apex:facet>
+                <apex:outputField value="{!property.Area_Sq_Ft__c}"/>
+            </apex:column>
+            
+            <apex:column >
+                <apex:facet name="header">
+                    <apex:commandLink value="New or Existing" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="New_or_Existing__c" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                </apex:facet>
+                <apex:outputField value="{!property.New_or_Existing__c}"/>
+            </apex:column>
+            
+            <apex:column >
+                <apex:facet name="header">
+                    <apex:commandLink value="Neighborhood" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="Neighborhood__c" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                </apex:facet>
+                <apex:outputField value="{!property.Neighborhood__c}"/>
+            </apex:column>
+            
+            <apex:column >
+                <apex:facet name="header">
+                    <apex:commandLink value="Property Type" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="Property_Type__c" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                </apex:facet>
+                <apex:outputField value="{!property.Property_Type__c}"/>
+            </apex:column>
+ 
+        </apex:pageBlockTable>
+ 
+    </apex:pageBlock>
+ 
+    </td>
+  </tr>
+  </table>
+ 
+  
+
+  </apex:pageBlock>
+  
+  
+
+
+
+  </apex:form>
+
+  
+
+    
+ 
+  
+  
+</apex:page>

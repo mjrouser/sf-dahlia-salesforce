@@ -1,0 +1,54 @@
+<apex:component >
+
+    <head>
+        <meta name="google-translate-customization" content="f715d0dfed7cfab2-46f1962c5f58cd47-g7b036da56e905dcd-31"></meta>
+    </head>
+
+    <div class="col-md-6">                    
+        <apex:image url="{!URLFOR($Resource.MOHCD_Community_Resources, 'images/logo.png')}" alt="Seal of the City and County of San Francisco" /><br /><br />
+        <apex:image url="{!URLFOR($Resource.MOHCD_Community_Resources, 'images/ccsf.png')}" alt="City & County of San Francisco" /><br />
+        <a href="http://www.sfmohcd.org/index.aspx?page=321" target="_blank">
+            <apex:image url="{!URLFOR($Resource.MOHCD_Community_Resources, 'images/banner_moh.png')}" alt="Mayor's Office of Housing and Community Development" />
+        </a><br /><br />
+        <div style="margin-left: -2em;">
+        
+        </div>
+        
+        <!-- GOOGLE TRANSLATE -->
+        <!-- <div id="google_translate_element"></div>
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+            }
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        -->
+        <!-- END GOOGLE TRANSLATE -->
+        
+        <!-- THIS SECTION OF CODE PLACES GOOGLE TRANSLATE TO RIGHT OF MOHCD BANNER, BUT IT WON'T AUTO REPOSITION ON SMALLER SCREENS (i.e., mobile devices)
+        <table width="1000">
+            <tr>
+                <td>
+                    <a href="http://www.sfmohcd.org/index.aspx?page=321" target="_blank">
+                        <apex:image url="{!URLFOR($Resource.MOHCD_Community_Resources, 'images/banner_moh.png')}" alt="Mayor's Office of Housing and Community Development" />
+                    </a>
+                </td>
+                <td style="text-align: right;">
+                    GOOGLE TRANSLATE
+                    <div id="google_translate_element"></div>
+                    <script type="text/javascript">
+                        function googleTranslateElementInit() {
+                          new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+                        }
+                    </script>
+                    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                    END GOOGLE TRANSLATE
+            </tr>
+        </table>
+        -->
+        
+        
+         
+    </div>
+
+</apex:component>
