@@ -1,0 +1,33 @@
+<apex:page docType="html-5.0" showHeader="false" showChat="false" sidebar="false" standardStylesheets="false">
+    
+    <apex:composition template="mohcdTemplateUnAuth">        
+        <apex:define name="mohbody">    
+            <div class="col-md-1"> </div>
+           
+            <div class="col-md-11">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <h3>Welcome to the San Francisco Database of Affordable Housing Listings, Information, and Applications (DAHLIA) for Inclusionary Housing properties</h3>
+                        <p>&nbsp;</p>
+                        <p style="font-size:1.4em;">DAHLIA will soon help San Francisco residents:</p>
+                        <ul style="1.2em;">
+                        <li>Find and apply for rental and homeownership below-market-rate (BMR) lotteries. </li>
+                        <li>Select a Mayor’s Office of Housing and Community Development (MOHCD) approved lender and apply for Down Payment Assistance Loan Programs (DALP) and Mortgage Credit Certificates.</li>
+                        <li>Check eligibility and apply for housing lottery preference programs for households displaced by government action and Ellis Act evictees.</li>
+                        <li>Sell, refinance, or pay off BMR property or DALP loans.</li>
+                        <li>And much more...</li>
+                        </ul>
+                        <p>&nbsp;</p>
+                        <!-- <p style="font-size:1.4em;">Get Started!</p>
+                        <p><span style="color: blue; text-decoration: underline;">Click here</span> to see current listings.</p>
+                        <p><span style="color: blue; text-decoration: underline;">Click here</span> to register for a DAHLIA account and apply.</p>
+                        <p>&nbsp;</p>
+                        <p style="color: orange; text-decoration: underline;">Help</p> -->
+                    </div>
+                </div>
+            </div> 
+            
+        </apex:define>        
+    </apex:composition>
+    
+</apex:page>

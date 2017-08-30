@@ -1,0 +1,270 @@
+<!--
+Author: Ronald Martinez
+Date: 14 JUN 2014
+Description: New COPP Request page for SFMOHCD
+Revision(s)
+Cloned from SfmohprogramsNewCertApp2 - Ronald Martinez 07/14/14
+-->
+<apex:page docType="html-5.0" controller="CS_MOHCDCOPPCC" showChat="false" showHeader="false" sidebar="false" standardStylesheets="false">
+    <apex:composition template="mohcdTemplate">
+        <apex:define name="mohbody">
+            <div class="col-md-9">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Certificate of Preference (COP) Program - Eligibility Search</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>Certificate of Preference holders are primarily households displaced by the San Francisco Redevelopment Agency action in Redevelopment Project Areas during the 1960’s and 1970’s, but may also include other persons displaced by government action. For an overview of the program, go to:<br />
+                        <a href="http://www.sf-moh.org/index.aspx?page=1148" target="_blank">COP Program Overview</a></p>
+                        
+                        <p>Frequently asked questions:<br />
+                        <a href="http://www.sf-moh.org/modules/showdocument.aspx?documentid=7515" target="_blank">COP Program FAQ's</a></p>
+                        
+                        <p>Certificate of Preference Program Rules:<br />
+                        <a href="http://www.sf-moh.org/modules/showdocument.aspx?documentid=7516" target="_blank">COP Program Rules</a></p>
+                        
+                        <p>If you believe that you or a household member qualifies for a Certificate of Preference under this program, please select a household member from the dropdown and complete the form below. MOHCD requires this information to properly assess your eligibility.</p>
+                        
+                        <p>If you would like to call to have this eligibility search conducted or to receive a replacement copy of your certificate, please reach us at 415-701-5613.</p> 
+                    </div>
+                    
+                </div>
+                <apex:form >
+                    <div class="panel panel-primary" id="myPbsRci">  
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Part 1 - Contact Information</h3>
+                        </div>
+                        <div class="panel-body">
+                            
+                            <div class="messagePanel" style="{!IF(OR(ErrorsPresent, SuccessPresent), '', 'display : none;')}">
+                                <apex:pageMessages ></apex:pageMessages>
+                            </div>
+                            <br/>
+                                                         
+                            <div class="row">
+                                <div class="col-md-3">
+                                        <b>Select Household Member</b>
+                                    </div>
+                                <div class="col-md-3">
+                                    <apex:selectList styleClass="form-control" value="{!conId}" size="1">
+                                        <apex:selectOptions value="{!Picklist}"  />
+                                        <apex:actionsupport event="onchange" action="{!selectContact}" reRender="myPb,name,address,phone,email "/>
+                                     </apex:selectList>
+                                </div>
+                                   
+                                <div class="col-md-3">
+                                    &nbsp;                                     
+                                </div>
+                                <div class="col-md-3">
+                                    &nbsp; 
+                                </div> 
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-3">
+                                     &nbsp;
+                                </div>
+                                <div class="col-md-3">
+                                    &nbsp;
+                                </div>
+                                   
+                                <div class="col-md-3">
+                                    &nbsp;                                     
+                                </div>
+                                <div class="col-md-3">
+                                    &nbsp; 
+                                </div> 
+                            </div>
+                            
+                            <div class="row"> 
+                                <div class="col-md-3">                                    
+                                    <b>Name</b>
+                                    <br />
+                                    <b>Phone Number</b>
+                                    <br />
+                                    <b>Email</b>
+                                </div>
+                                <div class="col-md-3">
+                                    <apex:outputText id="name" value="{!name}"/>
+                                    <br />
+                                    <apex:outputText id="phone" value="{!phone}"/>
+                                    <br />
+                                    <apex:outputText id="email" value="{!email}"/>
+                                </div>                          
+     
+                                <div class="col-md-3">                                    
+                                    <b>Current Address</b>
+                                </div>
+                                <div class="col-md-3">
+                                    <apex:outputText id="address" value="{!address}"/>     
+                                </div> 
+                            </div>
+                            
+                        </div>   <!-- end of div panel body -->                        
+                    </div>    <!-- end of div panel primary -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Part 2 - Displacement Information</h3>
+                        </div>
+                        
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <b>Eligibility for a certificate of preference requires a minimum of 1 of the following 2 checkboxes to be selected to reflect your situation.</b>    
+                                </div>
+                            </div>
+                            
+                            <br />
+                            
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <apex:inputCheckbox id="isWest" value="{!isWestern}" styleClass="style2"/>
+                                    &nbsp;
+                                    Check this box if you lived in San Francisco's Western Addition/Fillmore neighborhood between 1966 and 1975
+                                </div>   
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <apex:inputCheckbox id="isHunters" value="{!isHunters}" styleClass="style2"/>
+                                    &nbsp;
+                                    Check this box if you lived in San Francisco's Hunters Point neighborhood between 1966 and 1975
+                                </div>  
+                            </div>
+                        </div>
+                    </div> <!--end of panel primary -->
+                    
+                    
+                    <!-- PART 2 -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Part 3 - Displaced Household Information</h3>
+                        </div>
+                        
+                        <div class="panel-body">
+                           <div class="row">
+                                <div class="col-md-12">
+                                    <b>Please enter information for at least one displacement address below.</b>    
+                                </div>
+                            </div>
+                            
+                            <br />
+                            
+                            <div class="row"> 
+                                <div class="col-md-3">                                    
+                                    <b>Displacement Address 1</b>
+                                </div>
+                                <div class="col-md-3">
+                                    <apex:inputTextarea styleClass="form-control" id="dpAdd1" value="{!dpAdd1}"/>    
+                                </div>                          
+     
+                                <div class="col-md-3">                                    
+                                    <b>What year were you displaced from Address 1?</b>
+                                </div>
+                                <div class="col-md-3">
+                                    <apex:inputText styleclass="form-control" id="yearOfDisplacement" value="{!yrOfDp}"/>    
+                                </div> 
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-12">
+                                    &nbsp;
+                                </div>
+                            </div>                        
+                            
+                            <div class="row"> 
+                                <div class="col-md-3">                                    
+                                    <b>Displacement Address 2</b>
+                                </div>
+                                <div class="col-md-3">
+                                    <apex:inputTextarea styleClass="form-control" id="dpAdd2" value="{!dpAdd2}"/>    
+                                </div>                          
+     
+                                <div class="col-md-3">                                    
+                                    <b>What year were you displaced from Address 2?</b>
+                                </div>
+                                <div class="col-md-3">
+                                    <apex:inputText styleclass="form-control" id="yearOfDisplacement2" value="{!yrOfDp2}"/>   
+                                </div> 
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    &nbsp;
+                                </div>
+                            </div>
+                            
+                            <hr />
+
+                            <div class="row"> 
+                                <div class="col-md-3">                                    
+                                    <b>Name of Head of Household when Displaced from Address 1. </b> 
+                                    Please include all last names the Head of Household may have used.
+                                </div>
+                                <div class="col-md-3">
+                                    <apex:inputTextArea styleclass="form-control" id="headOfHouse" value="{!nameOfHHDp}"/>  
+                                </div>                          
+     
+                                <div class="col-md-3">                                    
+                                    <b>Relationship to Head of Household</b>
+                                </div>
+                                <div class="col-md-3">
+                                    <apex:inputText styleclass="form-control" id="relheadOfHouse" value="{!relToHH}" />   
+                                </div> 
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-12">
+                                    &nbsp;
+                                </div>
+                            </div>
+                            
+                            <div class="row"> 
+                                <div class="col-md-3">                                    
+                                    <b>Name Head of Household when Displaced from Address 2 (if any)</b>
+                                </div>
+                                <div class="col-md-3">
+                                    <apex:inputTextArea styleclass="form-control" id="headOfHouse2" value="{!nameOfHHDp2}"/>  
+                                </div>                          
+     
+                                <div class="col-md-3">                                    
+                                    <b>Relationship to Second Head of Household (if any)</b>
+                                </div>
+                                <div class="col-md-3">
+                                    <apex:inputText styleclass="form-control" id="relheadOfHouse2" value="{!relToHH2}" />   
+                                </div> 
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-12">
+                                    &nbsp;
+                                </div>
+                            </div>                           
+                        </div>
+                    </div> <!--end of panel primary -->
+                    
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Final Step</h3>
+                        </div>
+                        
+                        <div class="row">
+                            <br/>
+                            <center>
+                                <apex:commandButton value="Submit for Eligibility Search" action="{!submitRequest}" styleClass="btn btn-primary"/> 
+                            </center>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div> <!--end of panel primary -->
+                    
+                </apex:form>              
+            </div>
+        </apex:define>  
+    </apex:composition> 
+   
+
+</apex:page>

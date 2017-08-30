@@ -1,0 +1,23 @@
+<apex:page sidebar="true" standardController="Custom_Attachment__c" extensions="CS_MOHCDAttachments" tabStyle="Financial_Application__c">
+<apex:sectionHeader subtitle="Attach File to Financial Application {!finApp.Name}"/>
+    <apex:form >
+        <apex:pageMessages id="showErrorMsg"></apex:pageMessages>
+        <apex:pageblock >
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!doSave}"/>
+                <apex:commandButton value="Cancel" action="{!doCancel}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1">
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="File" for="file_File"/>
+                    <apex:inputFile id="file_File" value="{!fileBody}" fileName="{!fileName}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Select Document Type/Purpose : " for="file_Type"/>
+                    <apex:inputField value="{!finAttachment.Document_Type__c}" id="file_Type"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageblock>
+    </apex:form>
+</apex:page>

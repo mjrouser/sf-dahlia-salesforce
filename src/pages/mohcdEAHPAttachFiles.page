@@ -1,0 +1,74 @@
+<apex:page docType="html-5.0" controller="CS_MOHCDEAHPAttachFilesCC" showHeader="false" showChat="false" sidebar="false" standardStylesheets="false">
+    <style>
+        .attachment{
+            border-top:1px solid #ddd;
+            font-size:15px;
+            font-weight:700;
+            padding: 1% 0 0 0;
+        }
+        .attachmentTable{
+            width:100%;
+            text-align:center;
+        }
+        .attachmentTable th{
+            text-align:center;
+        }
+    </style>
+    <apex:composition template="mohcdTemplate">        
+        <apex:define name="mohbody">                       
+            <div class="col-md-9">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Add Attachments </h2>
+                    </div>
+                    <div class="panel-body">
+                        
+                        <apex:form >
+                            
+                            <apex:pageMessages /><br />                            
+                            <div class="form-group">
+                                <apex:outputText ><b>Your are going to add below Attachments this time!</b></apex:outputText> 
+                                <apex:dataTable value="{!attachmentFileNames}" var="a">
+                                    <apex:column value="{!a}"/>                    
+                                </apex:dataTable>
+                            </div>
+                            
+                            <div class="form-group">                                
+                                <div class="row" >
+                                    <div class="col-md-12" >                                        
+                                        <apex:inputFile id="inpf" value="{!fileAttachmentBody}" filename="{!fileAttachmentName}" contentType="{!fileAttachmentContentType}"/>
+                                        <br/>
+                                        <b style="vertical-align: top;">Select Document Type/Purpose: </b>                                        
+                                        <apex:selectList styleClass="form-control" size="1" value="{!fileAttachmentDescription}" >                                            
+                                            <apex:selectOptions value="{!EAHPTypes}"/>
+                                        </apex:selectList>
+                                        <br/>
+                                        
+                                    </div>
+                                </div>    
+                            </div>
+                            
+                            <div class="form-group">  
+                                <apex:actionStatus startText="Processing" stopText="" id="attachstatus"/>   
+                                <apex:commandbutton status="attachstatus" action="{!addAttachment}" styleClass="btn btn-primary" value="Attach File" />
+                                &nbsp;<apex:commandButton action="{!done}" styleClass="btn btn-primary" value="Done"/>
+                            </div>
+                            
+                        </apex:form>
+                        <div style="width:100%;">
+                            <p class="attachment">List of Attachments</p>
+                            <apex:pageBlock >
+                                <apex:pageBlockTable styleClass="attachmentTable" title="List of Attachments" value="{!lAttachmentWraps}" var="attachment" rendered="{!lAttachmentWraps.size > 0}">
+                                    <apex:column headerValue="File Name" value="{!attachment.name}"/>
+                                    <apex:column headerValue="File Size" value="{!attachment.size}"/>
+                                    <apex:column headerValue="Type" value="{!attachment.description}"/>                                        
+                                </apex:pageBlockTable>
+                            </apex:pageBlock>
+                        </div>    
+                        <br /><br /><br /><br /><br />
+                    </div>
+                </div>                    
+            </div>
+        </apex:define>        
+    </apex:composition>       
+</apex:page>

@@ -1,0 +1,57 @@
+<apex:page standardController="Task" extensions="CS_MOHCDInitialSaleOfMyHomeCC" docType="html-5.0" showHeader="false" sidebar="false" standardStylesheets="false">
+    <apex:composition template="mohcdTemplate">
+        <apex:define name="mohbody">
+            <div class="col-md-9">
+                <apex:form >
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Initiate Sale of My Home</h3>
+                        </div>
+                        <div class="panel-body">
+                            <h4> Instructions </h4>
+                            <p>If you are the owner of a BMR, City Second, or LEP unit and would like to sell, please follow these steps:<br />
+                            1) Contact a Real Estate Agent<br />
+                            2) Enter the required Real Estate Agent information below<br />
+                            3) Click 'Submit'<br />
+                            4) Your Real Estate Agent will work with MOHCD and you to list your property and transfer ownership based on program rules and regulations</p>
+                            
+                            <div align="center">
+                                <apex:pageMessage id="memberPageMessage" severity="error" summary="{!pageMessage }" rendered="{!IF(pageMessage != null, true, false)}" escape="false"></apex:pageMessage>                            
+                            </div>
+                            
+                            <table class="table">
+                                
+                                <tr>
+                                    <td colspan="2" align="center"><b>Real Estate Agent Information</b></td>
+                                </tr>
+                                <tr>
+                                    <td width="50%" align="right">Real Estate Agent Name</td>
+                                    <td width="50%"><apex:inputText value="{!realEstateAgentName}"/></td>
+                                </tr>
+                                <tr>
+                                    <td width="50%" align="right">Real Estate Agent License No.</td>
+                                    <td width="50%"><apex:inputText value="{!realEstateAgentLicenseNo}"/></td>
+                                </tr>
+                                <tr>
+                                    <td width="50%" align="right">Real Estate Agent Company Name</td>
+                                    <td width="50%"><apex:inputText value="{!realEstateAgentCompanyName}"/></td>
+                                </tr>
+                                <tr>
+                                    <td width="50%" align="right">Real Estate Agent Phone No.</td>
+                                    <td width="50%"><apex:inputText value="{!realEstateAgentPhoneNo}"/></td>
+                                </tr>
+                                <tr>
+                                    <td width="50%" align="right">Real Estate Agent Email Address</td>
+                                    <td width="50%"><apex:inputText value="{!realEstateAgentEmailAddress}"/></td>
+                                </tr>
+                                
+                            </table>
+                   
+                            <center><apex:commandButton value="Submit" action="{!createTask}" styleClass="btn btn-primary"/></center>
+                        </div>
+                    </div>
+                </apex:form>
+            </div>
+        </apex:define> 
+    </apex:composition>   
+</apex:page>
