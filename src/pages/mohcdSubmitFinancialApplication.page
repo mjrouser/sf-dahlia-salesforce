@@ -1,8 +1,0 @@
-<apex:page standardController="Financial_Application__c" extensions="CS_MOHCDSubmitFinancialApplicationCX" action="{!init}" showChat="false" showHeader="false" sidebar="false" standardStylesheets="false">
-    
-    <apex:form >
-        <apex:pageMessages ></apex:pageMessages>    
-        <br/>    
-        <apex:commandButton action="/{!faInstance.Id}" value="Back" immediate="true" />
-    </apex:form>
-</apex:page>
