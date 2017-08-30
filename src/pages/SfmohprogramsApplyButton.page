@@ -1,3 +1,0 @@
-<apex:page showHeader="true" sidebar="true" standardController="Properties__c" extensions="SfmohprogramsApplyButtonCont" action="{!applyProperty}">
-	
-</apex:page>
