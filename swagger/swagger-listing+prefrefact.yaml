@@ -1218,9 +1218,6 @@
         Unit_Floor__c:
           type: string
           description: ''
-        Other_Accessibility_Information__c:
-          type: string
-          description: Other Accessibility Information
         Number_of_Bathrooms__c:
           type: number
           format: double
@@ -1232,11 +1229,32 @@
           type: number
           format: double
           description: 'percent in the format of 100.00 (whole numbers not decimals) showing rent precent of income'
-        building_priority__c:
+        Status__c:
           type: string
-          description: 'name of priority attached to this unit - this priority comes from a subset of building priorities'
-      
-
+          description: 'Unit status'
+        Property_Type__c:
+          type: string
+          description: 'Property Type'
+        Priority_Type__c:
+          type: string
+          description:  'Priority Type'
+        Priority_Grouping__c:
+          type: string
+          description: 'Property Grouping'
+        Reserved_Type__c:
+          type: string
+          description: 'Reserved type'
+        AMI_chart_type__c:
+          type: string
+          description: 'Chart type'
+        AMI_chart_year__c:
+          type: number
+          format: double
+          description: Other Accessibility Information
+        of_AMI_for_Pricing_Unit__c:
+          type: number
+          format: double
+          description: 'percent of unit. ex:  50.00'
 
     AMI:
       type: "object"
@@ -1258,16 +1276,7 @@
           type: "number"
           description: "amount of threshhold"
 
-    Lottery_Preference__c:
-      type: object
-      description: ''
-      properties:
-        Name:
-          type: string
-          description: ''
-        Description__c:
-          type: string
-          description: ''
+
 
     Lottery_Member__c:
       type: object
@@ -1313,28 +1322,21 @@
           type: array
           items:
               $ref: '#/definitions/ShortFormPreference'
-        worksInSanFrancisco:
-          type: "boolean"
-          description: "currently works In SF"
+     
         referral:
           type: "string"
           description: "how applicant found out about the program (multiselect)"
         agreeToTerms:
           type: "boolean"
           description: "applicant agrees to terms of application"
-        xhouseholdVouchersSubsidies:
-          type: "string"
-          description: "household has vouchers or subsidies - Value {true, false, <blank>}"
+ 
         annualIncome:
           type: "number"
           description: "either annual or monthly needs to be specified"
         monthlyIncome:
           type: "number"
           description: "either annual or monthly needs to be specified"
-        liveInSfPreferenceManual:
-          type: "boolean"
-          description: "manual override for livework preference"
-    
+
         status:
           type: "string"
           description: "application status"
@@ -1351,25 +1353,33 @@
         lotteryNumber:
           type: "string"
           description: "lottery number"
+        lotteryNumberManual:
+          type: "string"
+          description: "lottery number manual"
+        formMetadata:
+          type: "string"
+          description: "metadata for the form"
         answeredCommunityScreening:
           type: "string"
-          description: "Answer to community building screening question: \"Yes\" or \"No\", defaults to blank."
+          description: "Answer to community building screening question:   {\"Yes\", \"No\", \" left blank.\" }"
         totalMonthlyRent:
           type: "number"
           description: "Total monthly rent, in dollars, paid by applicant and all household members on the application."
-        hasVouchersSubsidies:
+        adaPrioritiesSelected:
           type: "string"
-          description: "Answer to public housing question: \"Yes\" or \"No\", defaults to blank."
+          description: "if ada priorities are selected. for the form"
         hasPublicHousing:
           type: "string"
-          description: "Answer to public housing question: \"Yes\" or \"No\", defaults to blank."
-   
+          description: "Answer to public housing question: {\"Yes\", \"No\", \" left blank.\" }"
+        householdVouchersSubsidies:
+          type: "string"
+          description: "household has vouchers or subsidies - Value {true, false, left blank}"
         hasMilitaryService:
           type: "string"
-          description: "Answer to question about military service: \"Yes\" or \"No\", defaults to blank."
+          description: "Answer to question about military service:  {\"Yes\", \"No\", \" left blank.\" }"
         hasDevelopmentalDisability:
           type: "string"
-          description: "Answer to question about disability: \"Yes\" or \"No\", defaults to blank."
+          description: "Answer to question about disability: {\"Yes\", \"No\", \" left blank.\" }"
     
     LotteryResult:
       type: "object"
@@ -1427,6 +1437,9 @@
         name:
           type: "string"
           description: "preference"
+        pdfUrl:
+          type: "string"
+          description: "pdf url related to the listing preference"
         preferenceName:
           type: "string"
           description: "preference name"
@@ -1454,24 +1467,35 @@
       type: "object"
       description: "Application preference"
       properties:
-        preferenceType:
+        shortFormPreferenceID:
           type: "string"
-          description: "preference type (COP, DTHP etc..)"
+          description: "this links to the application preference ID record"
       
         appMemberID:
           type: "string"
           description: "application Member ID"
- 
+        applicationID:
+          type: "string"
+          description: "application ID"
+        optOut:
+          type: "boolean"
+          description: "if the customer opted out of this"
+        ifCombinedIndividualPreference:
+          type: "string"
+          description: "if it is a combined preference"
+        additionalDetails:
+          type: "string"
+          description: "additional details"
         naturalKey:
           type: "string"
           description: "naturalKey"
-     
         listingPreferenceID:
           type: "string"
           description: "listing Preference ID"
         preferenceProof:
           type: "string"
           description: "type of proof given "
+          
     ListingResult:
       type: "object"
       description: "lottery result - deprecated"
@@ -1568,12 +1592,15 @@
         PreferenceName:
           type: "string"
           description: "Preference name, (liveWork,COP,DCP,Neighborhood)"
-        TotalSubmitted:
+        TotalSubmittedApps:
           type: "number"
           description: "total applications for preference"
         UnitsAvailable:
           type: "number"
           description: "total slots for preference"
+        PreferenceOrder:
+          type: "number"
+          description: "the order of the preference on the listing"
         PreferenceResults:
           type: array
           items:
@@ -1670,11 +1697,17 @@
 
     Attachment:
       type: "object"
-      description: "Applicant Contact"
+      description: "Attachment object"
       properties:
         ApplicationID:
           type: "string"
           description: "3rd party webAppID that api consumers can set ID - shoud be unique per source and ID"
+        AttachmentID:
+          type: "string"
+          description: "SFDC of the AttachmentID"
+        CustomAttachmentID:
+          type: "string"
+          description: "SFDC of the Attachment__c ID "
         ApplicationMemberID:
           type: "string"
           description: "App Member ID"
@@ -1684,10 +1717,13 @@
         DocumentType:
           type: "string"
           description: "document Type"
-        UploadedDate:
+        UploadDate:
           type: "string"
           format: "date"
           description: "date the file was submitted - if blank defaulted to today"
+        FileName:
+          type: "string"
+          description: "Name of the file"
         Body:
           type: "string"
           format: "base64"
@@ -1825,30 +1861,4 @@
         hasAltMailingAddress:
           type: "boolean"
           description: "the front end validates if user has an alternative mailing address"
-    
-    Attachment__C:
-      type: "object"
-      description: "deprecated  - Applicant Contact"
-      properties:
-        ID:
-          type: "string"
-          description: "Salesforce AttachmentID"
-        ParentId:
-          type: "string"
-          description: "the application id"
-        Name:
-          type: "string"
-          description: "the preference Name"
-        ContentType:
-          type: "string"
-          description: "the content type"
-        BodyLength:
-          type: "number"
-          description: "the length in bytes"
-        Body:
-          type: "string"
-          description: "url to the download : /services/data/v36.0/sobjects/Attachment/<AttachmenID>/Body "
-        Description:
-          type: "string"
-          description: "the description of the file"
-         
+  
