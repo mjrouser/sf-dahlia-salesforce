@@ -1199,37 +1199,7 @@
       type: object
       description: ''
       properties:
-        Unit_Type__c:
-          type: string
-          description: Description of units.
-        BMR_Rent_Monthly__c:
-          type: number
-          description: Monthly Rent for BMR Unit
-        BMR_Rental_Minimum_Monthly_Income_Needed__c:
-          type: number
-          description: ''
-        Unit_Square_Footage__c:
-          type: number
-          format: double
-          description: Square Footage of the Unit.
-        Unit_Number__c:
-          type: string
-          description: ''
-        Unit_Floor__c:
-          type: string
-          description: ''
-        Number_of_Bathrooms__c:
-          type: number
-          format: double
-          description: ''
-        isReserved__c:
-          type: boolean
-          description: 'is this unit reserved or not'
-        rent_percent_of_income__c:
-          type: number
-          format: double
-          description: 'percent in the format of 100.00 (whole numbers not decimals) showing rent precent of income'
-        Status__c:
+        status__c:
           type: string
           description: 'Unit status'
         Property_Type__c:
@@ -1250,12 +1220,42 @@
         AMI_chart_year__c:
           type: number
           format: double
-          description: Other Accessibility Information
+          description: 'Other Accessibility Information'
         of_AMI_for_Pricing_Unit__c:
           type: number
           format: double
           description: 'percent of unit. ex:  50.00'
-
+        Unit_Type__c:
+          type: string
+          description: 'Description of units.'
+        BMR_Rent_Monthly__c:
+          type: number
+          description: 'Monthly Rent for BMR Unit'
+        BMR_Rental_Minimum_Monthly_Income_Needed__c:
+          type: number
+          description: ''
+        Unit_Square_Footage__c:
+          type: number
+          format: double
+          description: 'Square Footage of the Unit.'
+        Unit_Number__c:
+          type: string
+          description: ''
+        Unit_Floor__c:
+          type: string
+          description: ''
+        Number_of_Bathrooms__c:
+          type: number
+          format: double
+          description: ''
+        isReserved__c:
+          type: boolean
+          description: 'is this unit reserved or not'
+        rent_percent_of_income__c:
+          type: number
+          format: double
+          description: 'percent in the format of 100.00 (whole numbers not decimals) showing rent precent of income'
+          
     AMI:
       type: "object"
       description: "summary statistics of a given unit type per listing"
@@ -1275,8 +1275,6 @@
         amount:
           type: "number"
           description: "amount of threshhold"
-
-
 
     Lottery_Member__c:
       type: object
