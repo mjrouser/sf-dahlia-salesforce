@@ -8,6 +8,8 @@
         <members>API_ShortFormTest</members>
         <members>API_ShortForm_UploadAttachment</members>
         <members>API_ShortForm_UploadAttachmentTest</members>
+		<members>ApplicationCreateAppPreferenceAction</members>
+		<members>ApplicationCreateAppPreferenceTest</members>
         <members>HOP_ApplicationFormController</members>
         <members>HOP_ApplicationFormControllerTest</members>
         <members>HOP_ApplicationViewController</members>
@@ -37,7 +39,9 @@
     <types>
         <members>Attachment__c</members>
         <members>Building__c</members>
+		<members>Development__c</members>
         <members>Listing__c</members>
+		<members>Listing_Unit__c</members>
         <members>Application_Preference__c</members>
         <members>BMR_Review_and_Analysis__c</members>
         <members>Pay_Stub__c</members>
