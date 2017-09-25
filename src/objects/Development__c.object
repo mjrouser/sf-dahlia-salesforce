@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Read</externalSharingModel>
+    <fields>
+        <fullName>City_Planner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>City Planner</label>
+        <lookupFilter>
+            <active>true</active>
+            <errorMessage>Please select a city planner.</errorMessage>
+            <filterItems>
+                <field>Contact.Account.Name</field>
+                <operation>equals</operation>
+                <value>CCSF - Planners</value>
+            </filterItems>
+            <infoMessage>Please select the city planner who&apos;s responsible.</infoMessage>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Developments</relationshipLabel>
+        <relationshipName>Developments</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Developer_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Contact Name for the Developer</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Contact Name for the Developer</inlineHelpText>
+        <label>Developer Contact</label>
+        <lookupFilter>
+            <active>true</active>
+            <errorMessage>The Developer Contact must be associated with the Developer.</errorMessage>
+            <filterItems>
+                <field>Contact.AccountId</field>
+                <operation>equals</operation>
+                <valueField>$Source.Developer__c</valueField>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Developments (Developer Contact)</relationshipLabel>
+        <relationshipName>Developments1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Developer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Developer who is responsible for this development.</description>
+        <externalId>false</externalId>
+        <label>Developer</label>
+        <lookupFilter>
+            <active>true</active>
+            <errorMessage>Must be a developer</errorMessage>
+            <filterItems>
+                <field>Account.RecordType.Name</field>
+                <operation>equals</operation>
+                <value>Property Management</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Developments</relationshipLabel>
+        <relationshipName>Developments</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Development_City__c</fullName>
+        <defaultValue>&quot;San Francisco&quot;</defaultValue>
+        <description>City of the Development - Defaults to San Francisco</description>
+        <externalId>false</externalId>
+        <inlineHelpText>City of the Development - Defaults to San Francisco</inlineHelpText>
+        <label>Development City</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Development_State__c</fullName>
+        <defaultValue>&quot;CA&quot;</defaultValue>
+        <description>Development State - Defaults to CA</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Development State - Defaults to CA</inlineHelpText>
+        <label>Development State</label>
+        <length>2</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Development_Street_Address__c</fullName>
+        <description>Street number and Street of the Property Development. (i.e. 1000 S. Market Street)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Street number and Street of the Property Development. (i.e. 1000 S. Market Street)</inlineHelpText>
+        <label>Development Street Address</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Development_Zip_Code__c</fullName>
+        <description>Zip Code for the Development.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Zip Code for the Development.</inlineHelpText>
+        <label>Development Zip Code</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name_of_City_and_County_of_SF_Planner__c</fullName>
+        <description>Name of the City and County of San Francisco Planner</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of the City and County of San Francisco Planner</inlineHelpText>
+        <label>Name of City and County of SF Planner</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name_of_Development__c</fullName>
+        <externalId>false</externalId>
+        <label>Name of Development</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_ID__c</fullName>
+        <description>Project ID used to capture and validate NRHP district on the web app.</description>
+        <externalId>false</externalId>
+        <label>MOHCD Project ID</label>
+        <length>8</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property_Manager_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Property Manager Contact</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Property Manager Contact</inlineHelpText>
+        <label>Property Manager Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Developments (Property Manager Contact)</relationshipLabel>
+        <relationshipName>Developments2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Property_Manager__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Property Manager for the Development.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Property Manager for the Development.</inlineHelpText>
+        <label>Property Manager</label>
+        <lookupFilter>
+            <active>true</active>
+            <errorMessage>Must be a property manager</errorMessage>
+            <filterItems>
+                <field>Account.RecordType.Name</field>
+                <operation>equals</operation>
+                <value>Property Management</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Developments (Property Manager)</relationshipLabel>
+        <relationshipName>Developments1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>sfxId__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <externalId>true</externalId>
+        <label>sfxId</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>Development</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>Name_of_Development__c</columns>
+        <columns>NAME</columns>
+        <columns>Developer__c</columns>
+        <columns>Property_Manager__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Developments</fullName>
+        <columns>NAME</columns>
+        <columns>Name_of_Development__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Developments</label>
+    </listViews>
+    <listViews>
+        <fullName>Developers_View</fullName>
+        <columns>NAME</columns>
+        <columns>Name_of_Development__c</columns>
+        <columns>Developer__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>Developers View</label>
+    </listViews>
+    <nameField>
+        <displayFormat>DVL-{000000}</displayFormat>
+        <label>Development Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Developments</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

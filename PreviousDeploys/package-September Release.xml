@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>API_Application</members>
+        <members>API_ApplicationService</members>
+        <members>API_ApplicationServiceTest</members>
+        <members>API_ShortForm</members>
+        <members>API_ShortFormTest</members>
+        <members>API_ShortForm_UploadAttachment</members>
+        <members>API_ShortForm_UploadAttachmentTest</members>
+        <members>ApplicationCreateAppPreferenceAction</members>
+        <members>ApplicationCreateAppPreferenceTest</members>
+        <members>HOP_ApplicationFormController</members>
+        <members>HOP_ApplicationFormControllerTest</members>
+        <members>HOP_ApplicationViewController</members>
+        <members>HOP_ApplicationViewControllerTest</members>
+        <members>HOP_Constants</members>
+        <members>LOT_ApplicationPreferenceRankBatch</members>
+        <members>LOT_RandomDrawBatch</members>
+        <members>LOT_RandomDrawService</members>
+        <members>LOT_RandomDrawServiceTest</members>
+        <members>ListingLotteryResultApi</members>
+        <members>ListingLotteryResultApiTest</members>
+        <members>ListingService</members>
+        <members>ListingServiceTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>HOP_ApplicationForm</members>
+        <members>HOP_ApplicationView</members>
+        <members>HOP_FlaggedApplications</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>ApplicationPreference</members>
+        <members>ApplicationTrigger</members>
+        <members>ListingPreference</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>Flagged_Record_Set__c.hideOnCommunity__c</members>
+        <members>Flagged_Record_Set__c.Rule_Name__c</members>
+        <members>Flagged_Record_Set__c.Total_Number_of_Pending_Review__c</members>
+        <members>Unit__c.Max_Occupancy__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Application_Member__c</members>
+        <members>Application_Preference__c</members>
+        <members>Application__c</members>
+        <members>Attachment__c</members>
+        <members>Building__c</members>
+        <members>Development__c</members>
+        <members>Listing_Lottery_Preference__c</members>
+        <members>Listing_Unit__c</members>
+        <members>Listing__c</members>
+        <members>Unit__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>AMI_Chart_Types</members>
+        <members>Boolean_Blank</members>
+        <members>Priority</members>
+        <name>GlobalValueSet</name>
+    </types>
+    <types>
+        <members>Application_Member__c-Application Member Layout</members>
+        <members>Application_Preference__c-Application Preference Layout</members>
+        <members>Application__c-Application Layout - Rental Short Form</members>
+        <members>Attachment__c-Attachment Layout</members>
+        <members>Building__c-Building Layout</members>
+        <members>Listing_Lottery_Preference__c-Listing Lottery Preference Layout</members>
+        <members>Listing__c-Listing Layout</members>
+        <members>Lottery_Preference__c-Preference Layout</members>
+        <members>Unit__c-BMR Ownership</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>APIOnly</members>
+        <members>Admin</members>
+        <members>MOHCD - Household</members>
+        <members>MOHCD - Leasing Agent</members>
+        <members>MOHCD - Leasing Agent Clerk</members>
+        <members>MOHCD - Lender</members>
+        <members>MOHCD - Property Agent</members>
+        <members>MOHCD - Read Only</members>
+        <members>MOHCD - Staff</members>
+        <members>MOHCD System Administrator</members>
+        <name>Profile</name>
+    </types>
+    <version>38.0</version>
+</Package>

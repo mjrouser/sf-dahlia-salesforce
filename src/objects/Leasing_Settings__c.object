@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>settings for the leasing community</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Default_Owner__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>SFDC ID of default owner on Account in Leasing community</description>
+        <externalId>false</externalId>
+        <label>Default Owner</label>
+        <length>18</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>Leasing Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>

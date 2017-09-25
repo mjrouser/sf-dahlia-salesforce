@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Stores a &quot;snapshot in time&quot; of which preferences were claimed or opted-out of for each application, and any related application members (household members), if applicable.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Additional_Details__c</fullName>
+        <description>Additional details for preference, e.g. DTHP Certificate Number</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter additional details for this preference.</inlineHelpText>
+        <label>Additional Details</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Application_Is_Submitted__c</fullName>
+        <externalId>false</externalId>
+        <formula>ISPICKVAL( Application__r.Status__c , &apos;Submitted&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Application Submitted</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Application_Member__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Application Member Number</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>$Source.Application__c</field>
+                <operation>equals</operation>
+                <valueField>Application_Member__c.Application__c</valueField>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Application_Member__c</referenceTo>
+        <relationshipLabel>Application Preferences</relationshipLabel>
+        <relationshipName>Application_Preferences</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Application_Status__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Application__r.Status__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Application Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Application__c</fullName>
+        <description>The related Application that this preference was saved for.</description>
+        <externalId>false</externalId>
+        <label>Application</label>
+        <referenceTo>Application__c</referenceTo>
+        <relationshipLabel>Application Preferences</relationshipLabel>
+        <relationshipName>Application_Preferences</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Auto_Grant_Count__c</fullName>
+        <description>Total number of application preferences this preference is auto granted by</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For example: Live/Work can be triggered in general by NRHP, DTHP - if this application qualifies for both nhrp and dthp the sum here would be 2</inlineHelpText>
+        <label>Auto Grant Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Auto_Grants_Preference__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>parent application preference</description>
+        <externalId>false</externalId>
+        <label>Auto Grants Preference</label>
+        <referenceTo>Application_Preference__c</referenceTo>
+        <relationshipLabel>Application Preferences</relationshipLabel>
+        <relationshipName>Application_Preferences</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>If_combined_individual_preference__c</fullName>
+        <description>If selected preference is combined, this field captures the individual preference they may have selected on the front end.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The individual preference selected, if this is a combined preference lottery bucket.</inlineHelpText>
+        <label>If combined, individual preference</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Live in SF</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Work in SF</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Assisted Housing</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Rent Burdened</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Is_Auto_Granted__c</fullName>
+        <externalId>false</externalId>
+        <formula>Auto_Grant_Count__c &gt; 0</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Granted From Other Preference</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Listing_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>Application__r.Listing__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Listing ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Listing_Preference_ID__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Listing Preference Number</label>
+        <referenceTo>Listing_Lottery_Preference__c</referenceTo>
+        <relationshipLabel>Application Preferences</relationshipLabel>
+        <relationshipName>Application_Preferences</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Lottery_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Pre-Lottery Validation</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Unconfirmed</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Valid for lottery</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Invalid for lottery</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Valid - Added</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Does not receive preference</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                </value>
+                <value>
+                    <fullName>Needs pre-lottery validation</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                </value>
+                <value>
+                    <fullName>Receives preference</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>MOHCD_Preference_Assertion__c</fullName>
+        <description>Allows MOHCD Admin to manually qualify a person. When set to &quot;Valid for Lottery&quot;, &quot;Receives Preference&quot; is changed to &quot;True&quot;.</description>
+        <externalId>false</externalId>
+        <label>MOHCD Preference Assertion</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Valid for lottery</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Invalid for lottery</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Opt_Out__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If user actively opted-out of this preference, the relationship will be created and this box will be checked. May or may not have a related application member. Status will remain blank.</description>
+        <externalId>false</externalId>
+        <label>Applicant Opted Out</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Person_who_claimed_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Application_Member__r.Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Application Member Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Preference_Lottery_Rank__c</fullName>
+        <externalId>false</externalId>
+        <label>Preference Rank</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Preference_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Listing_Preference_ID__r.Preference_Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Preference</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Preference_Order__c</fullName>
+        <externalId>false</externalId>
+        <formula>Listing_Preference_ID__r.Order__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Preference Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Receives_Preference__c</fullName>
+        <externalId>false</externalId>
+        <formula>OR(
+
+And(Auto_Grant_Count__c &gt; 0,NOT(ISPICKVAL(MOHCD_Preference_Assertion__c, &apos;Invalid for lottery&apos;))),
+AND(NOT(ISBLANK(Application_Member__c)), NOT(ISPICKVAL(Lottery_Status__c, &apos;Invalid for lottery&apos;)), NOT(ISPICKVAL(MOHCD_Preference_Assertion__c, &apos;Invalid for lottery&apos;))), 
+ISPICKVAL(Lottery_Status__c, &apos;Valid - Added&apos;),
+ISPICKVAL(MOHCD_Preference_Assertion__c, &apos;Valid for lottery&apos;)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Receives Preference</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Type_of_proof__c</fullName>
+        <externalId>false</externalId>
+        <label>Type of Proof</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Telephone bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Cable and internet bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Gas bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Electric bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Garbage bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Water bill</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Paystub</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Public benefits record</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>School record</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Paystub with employer address</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Letter from employer</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Letter documenting homelessness</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Lease and rent proof</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Lease</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Third-Party Proof of SF Homelessness</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Application Preference</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>del_aps</fullName>
+        <columns>Application__c</columns>
+        <columns>NAME</columns>
+        <columns>Preference_Name__c</columns>
+        <columns>Lottery_Status__c</columns>
+        <columns>Receives_Preference__c</columns>
+        <columns>Listing_ID__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Listing_ID__c</field>
+            <operation>equals</operation>
+            <value>a0W0P00000F6nSW</value>
+        </filters>
+        <label>del aps</label>
+    </listViews>
+    <nameField>
+        <displayFormat>AP-{0000000000}</displayFormat>
+        <label>Application Preference Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Application Preferences</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <startsWith>Vowel</startsWith>
+</CustomObject>
