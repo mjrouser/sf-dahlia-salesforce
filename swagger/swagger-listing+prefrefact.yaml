@@ -163,27 +163,7 @@ paths:
           description: An array of listing
           schema:
             $ref: '#/definitions/ListingResult'
-  '/LotteryResult/{lotteryNumber}':
-    get:
-      description: >-
-        This returns lottery results for a lottery number. If no lottery number
-        is found it will return a not found response.
-      parameters:
-        - name: lotteryNumber
-          in: path
-          description: lottery number to look up
-          required: true
-          type: string
-      tags:
-        - Listing
-      responses:
-        '200':
-          description: Lottery results for an application
-          schema:
-            $ref: '#/definitions/LotteryResult'
-        '404':
-          description: Lottery number not found
-  '/Listing/Lottery/{listingID}':
+  '/Listing/{listingID}/Lottery':
     get:
       description: >-
         This returns the lottery information for a listing. If listingID is
@@ -198,9 +178,34 @@ paths:
         - Listing
       responses:
         '200':
-          description: An array of listing
+          description: Lottery information for a listing
           schema:
             $ref: '#/definitions/Lottery'
+  '/Listing/{listingID}/LotteryResult/{lotteryNumber}':
+    get:
+      description: >-
+        This returns lottery results for a lottery number. If no lottery number
+        is found it will return a not found response.
+      parameters:
+        - name: listingID
+          in: path
+          description: ID of listing
+          required: true
+          type: string
+        - name: lotteryNumber
+          in: path
+          description: lottery number to look up
+          required: true
+          type: string
+      tags:
+        - Listing
+      responses:
+        '200':
+          description: Lottery results for an application
+          schema:
+            $ref: '#/definitions/LotteryResult'
+        '404':
+          description: Lottery number not found
   '/ListingDetails/{sfdcid}':
     get:
       description: This returns the Listing information and its summary information.
