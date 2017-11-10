@@ -163,29 +163,10 @@ paths:
           description: An array of listing
           schema:
             $ref: '#/definitions/ListingResult'
-  '/Listing/{listingID}/Lottery':
+  '/Listing/LotteryResult/{listingID}/{lotteryNumber}':
     get:
       description: >-
-        This returns the lottery information for a listing. If listingID is
-        incorrect it will error.
-      parameters:
-        - name: listingID
-          in: path
-          description: listingID for lottery
-          required: true
-          type: string
-      tags:
-        - Listing
-      responses:
-        '200':
-          description: Lottery information for a listing
-          schema:
-            $ref: '#/definitions/Lottery'
-  '/Listing/{listingID}/LotteryResult/{lotteryNumber}':
-    get:
-      description: >-
-        This returns lottery results for a lottery number. If no lottery number
-        is found it will return a not found response.
+        This returns lottery results for a lottery number. If no lottery number is found it will return a not found response.
       parameters:
         - name: listingID
           in: path
@@ -201,11 +182,32 @@ paths:
         - Listing
       responses:
         '200':
-          description: Lottery results for an application
+          description: An array of listing
           schema:
             $ref: '#/definitions/LotteryResult'
         '404':
           description: Lottery number not found
+  '/Listing/LotteryResult/{listingID}':
+    get:
+      description: >-
+        This returns the Listing result - with 1 applicationResult inside this
+        is the Application with the appropriate lottery number.  If no
+        lotteryNumber fits, applicationsResult will be empty.  If listing
+        isIncorrect it will error.
+      parameters:
+        - name: listingID
+          in: path
+          description: listingID for lottery
+          required: true
+          type: string
+      tags:
+        - Listing
+      deprecated: true
+      responses:
+        '200':
+          description: Lottery results for an application
+          schema:
+            $ref: '#/definitions/LotteryResult'
   '/ListingDetails/{sfdcid}':
     get:
       description: This returns the Listing information and its summary information.
@@ -946,39 +948,49 @@ definitions:
       Application_Phone__c:
         type: string
         description: ''
-      Lottery_Summary__c:
-        type: string
-        description: Summary of the Lottery Results.
+      In_Lottery__c:
+        type: integer
+        description: Number of applications in the lottery
       Listing_Other_Notes__c:
         type: string
         description: Listing Other Notes.
-      Lottery_Results_Date__c:
+      LotteryResultsURL__c:
         type: string
-        format: date
-        description: Date Lottery Results are posted
-      Lottery_End__c:
-        type: string
-        format: date-time
-        description: End of the Lottery - DateTime
-      Lottery_Start_Time__c:
-        type: string
-        description: ''
-      Lottery_End_Time__c:
-        type: string
-        description: ''
-      Lottery_Venue__c:
-        type: string
-        description: ''
-      Lottery_Street_Address__c:
-        type: string
-        description: ''
+        description: Url of lottery results PDF
       Lottery_City__c:
         type: string
         description: ''
       Lottery_Date__c:
         type: string
         format: date-time
-        description: ''
+        description: Date and time of lottery
+      Lottery_Results__c:
+        type: boolean
+        description: Indicates there is at least one lottery winner
+      Lottery_Results_Date__c:
+        type: string
+        format: date
+        description: Date Lottery Results are posted
+      Lottery_Status__c:
+        type: string
+        enum: ['Not Yet Run', 'In Progress', 'Lottery Complete']
+        description: Status of lottery
+      Lottery_Street_Address__c:
+        type: string
+        description: Street address of lottery location
+      Lottery_Venue__c:
+        type: string
+        description: Location of lottery
+      Lottery_General_Pool:
+        type: object
+        description: Information about general pool of lottery
+        properties:
+          totalSubmittedApps:
+            type: integer
+            description: Total number of applications in the general lottery bucket
+          unitsAvailable:
+            type: integer
+            description: Total number of units available for general lottery
       AMI_Percentage__c:
         type: 'null'
         description: ''
@@ -1018,15 +1030,6 @@ definitions:
       Leasing_Agent_Zip__c:
         type: string
         description: ''
-      Lottery_Results__c:
-        type: boolean
-        description: Indicates there is at least one lottery winner
-      Lottery_Winners__c:
-        type: number
-        format: double
-        description: >-
-          Rollup sumary with Count of people who have been selected as winning
-          lottery and therefore, the status of their lottery member = Winner.
       NeighborHoodPreferenceUrl__c:
         type: string
         description: neightborhood Preference URL
@@ -1074,9 +1077,6 @@ definitions:
         description: >-
           Detailed Information about other costs not included with rent.
           Converted to text field from currency.
-      Lottery_Preferences__c:
-        type: string
-        description: ''
       Rental_Assistance__c:
         type: string
         description: To be further built but placeholder for rental assistance
@@ -1313,56 +1313,6 @@ definitions:
       hasDevelopmentalDisability:
         type: string
         description: 'Answer to question about disability: "Yes" or "No", defaults to blank.'
-  Lottery:
-    type: object
-    description: lottery result
-    properties:
-      listingID:
-        type: string
-        description: Listing ID
-      preferences:
-        type: array
-        items:
-          $ref: '#/definitions/ListingPreference'
-      generalPool:
-        type: object
-        description: General lottery pool information
-        properties:
-          totalSubmittedApps:
-            type: integer
-            description: Total number of applications in the general lottery bucket
-          unitsAvailable:
-            type: integer
-            description: Total units availble for general lottery
-      URL:
-        type: string
-        description: Is this used?
-      lotteryResultsURL:
-        type: string
-        description: Location of lottery results PDF
-      lotteryAppTotal:
-        type: integer
-        description: Total number of applications in lottery
-      lotteryCity:
-        type: string
-        description: City where the lottery is run
-      lotteryDate:
-        type: string
-        format: date
-        description: Date of the lottery
-      lotteryEndTime:
-        type: string
-        format: date
-        description: Is this used?
-      lotteryPreferences:
-        type: string
-        description: Is this used?
-      lotteryResults:
-        type: boolean
-        description: If the lottery has results
-      officeHours:
-        type: string
-        description: Is this used?
   LotteryResult:
     type: object
     description: Lottery result for a lottery number
@@ -1395,48 +1345,82 @@ definitions:
       generalPoolRank:
         type: integer
         description: >-
-          Rank in general lottery if applicant did not qualify or claim any
-          preferences
+          Rank in general lottery if applicant did not qualify or claim any preferences
+  LotteryResultOld:
+    type: object
+    description: lottery result
+    properties:
+      listingID:
+        type: string
+        description: listing ID
+      LotteryBuckets:
+        type: array
+        items:
+          $ref: '#/definitions/LotteryBucket'
+      URL:
+        type: string
+        description: randome.org url
+      lotteryResultsURL:
+        type: string
+        description: link to a file
+      lotteryAppTotal:
+        type: number
+        description: total applications for  lottery
+      lotteryCity:
+        type: string
+        description: listing lottery City
+      lotteryDate:
+        type: string
+        format: date
+        description: 'lottery date '
+      lotteryEndTime:
+        type: string
+        format: date
+        description: 'lottery date '
+      lotteryPreferences:
+        type: string
+        description: preferences
+      lotteryResults:
+        type: boolean
+        description: lotteryResults
+      officeHours:
+        type: string
+        description: office hours
   ListingPreference:
     type: object
     description: Listing preference
     properties:
       listingPreferenceID:
         type: string
-        description: Salesforce ID
+        description: Salesforce ID of listing preference
       listingID:
         type: string
-        description: Listing Salesforce ID
-      name:
-        type: string
-        description: Listing preference number
+        description: Salesforce ID of listing
       preferenceName:
         type: string
-        description: Name of preference
+        description: Name of listing preference 
       order:
-        type: number
-        description: Order to display in list of preferences
+        type: integer
+        description: Priority of the preference in relation to other preferences for the listing
       pdfUrl:
         type: string
-        description: >-
-          Location of PDF with which lottery numbers that qualified for 
-          preference
+        description: URL of a lottery results PDF for the preference
       description:
         type: string
-        description: Listing preference description
+        description: Description of the listing preference
       readMoreUrl:
         type: string
         format: url
-        description: Location of more information about preference
+        description: URL with more information about the preference
       NRHPDistrict:
         type: string
-        description: Neighborhood district used for pre-qualifying addresses for preference
+        description: District used to qualify applicants for Neighborhood Resident Housing Preference
       totalSubmittedApps:
-        type: number
-        description: Total number of applications that have claimed preference
+        type: integer
+        description: Total number of applications claiming and qualifying for listing preference
       unitsAvailable:
-        type: number
-        description: Total units available for preference
+        type: integer
+        description: Total number of units available for listing preference
   ShortFormPreference:
     type: object
     description: Application preference
@@ -1543,6 +1527,40 @@ definitions:
       incomeMatch:
         type: boolean
         description: does income match passed criteria
+  LotteryBucket:
+    type: object
+    description: list of application results by preference
+    properties:
+      PreferenceName:
+        type: string
+        description: 'Preference name, (liveWork,COP,DCP,Neighborhood)'
+      TotalSubmitted:
+        type: number
+        description: total applications for preference
+      UnitsAvailable:
+        type: number
+        description: total slots for preference
+      PreferenceResults:
+        type: array
+        items:
+          $ref: '#/definitions/PreferenceResult'
+  PreferenceResult:
+    type: object
+    description: ApplicationResult
+    properties:
+      applicationID:
+        type: string
+        description: ApplicationID ID
+      lotteryNumber:
+        type: string
+        description: 'the lottery number  '
+      preferenceRank:
+        type: number
+        description: raw rank for this live work - which are treated as one preference
+      lotteryRank:
+        type: integer
+        format: int32
+        description: raw lottery rank returned form drawing
   PreferenceBucket:
     type: object
     description: 'list of application results by preference ( deprecated) '
