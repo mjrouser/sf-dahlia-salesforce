@@ -1337,14 +1337,21 @@ definitions:
         type: array
         items:
           type: object
-          description: 'Preferences the applicant qualified for with rankings, if available'
+          description: Application preferences for the applicant
           properties:
             listingPreferenceId:
               type: string
             preferenceName:
               type: string
+            claimedPreference:
+              type: boolean
+              description: Whether or not the applicant claimed the preference on their application
+            receivesPreference:
+              type: boolean
+              description: Whether or not the applicant receives the preference in the lottery
             preferenceRank:
               type: integer
+              description: Applicant's ranking for the preference in the lottery
       generalPoolRank:
         type: integer
         description: >-
